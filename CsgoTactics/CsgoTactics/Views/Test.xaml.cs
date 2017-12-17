@@ -67,7 +67,7 @@ namespace CsgoTactics.Views
 
             DataAccess.AddSteamInventory("123", "bdm");
 
-            DataAccess.AddCsgoInventory(WebServices.DataReceiver.GetInventoryString("http://steamcommunity.com/profiles/76561197988463243/inventory/json/730/2"), "123", "720");
+            DataAccess.AddCsgoInventory(WebServices.DataReceiver.GetInventoryString("http://steamcommunity.com/profiles/76561197988463243/inventory/json/730/2"), "123", "730");
 
             //DataAccess.ResetDatabase();
 
@@ -83,7 +83,7 @@ namespace CsgoTactics.Views
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            DataAccess.AddCsgoInventory(WebServices.DataReceiver.GetInventoryString("http://steamcommunity.com/profiles/76561197988463243/inventory/json/730/2"), "123", "720");
+            DataAccess.AddCsgoInventory(WebServices.DataReceiver.GetInventoryString("http://steamcommunity.com/profiles/76561197988463243/inventory/json/730/2"), "123", "730");
         }
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
