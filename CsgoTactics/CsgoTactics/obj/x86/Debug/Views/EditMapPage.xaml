@@ -1,0 +1,93 @@
+﻿<Page
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:CsgoTactics.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:controls="using:CsgoTactics.Controls"
+    xmlns:Converters="using:CsgoTactics.Converters"
+    x:Class="CsgoTactics.Views.EditMapPage"
+    d:DataContext="{d:DesignData /SampleData/EditPageViewModelSampleData.xaml}"
+    mc:Ignorable="d">
+
+    <Page.Resources>
+        <Converters:NumberMultiplier x:Key="NumberMultiplier"/>
+    </Page.Resources>
+
+    <Page.DataContext>
+        <Binding Path="EditMapPageViewModel" Source="{StaticResource Locator}"/>
+    </Page.DataContext>
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" DataContext="{Binding Map}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="2*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="2*"/>
+        </Grid.ColumnDefinitions>
+        <TextBlock Grid.Row="0" Grid.Column="0" Text="Add Map" Width="auto" Height="auto" FontSize="60"/>
+        <StackPanel x:ConnectionId='1' x:Name="MapInfo" Grid.Row="1" Grid.Column="0" Orientation="Horizontal">
+            <Grid Width="{Binding ElementName=MapInfo, Path=ActualWidth}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <StackPanel Orientation="Vertical" Grid.Column="0" Margin="8">
+                    <TextBlock Text="Name der Map:" />
+                    <TextBox x:ConnectionId='18' x:Name="TextBoxMapName" Style="{StaticResource TextBoxStyle1}" Text="{Binding MapName, Mode=TwoWay}" />
+                    <TextBlock Text="Typ der Map:"/>
+                    <TextBox x:ConnectionId='19' x:Name="TextBoxMapType" Style="{StaticResource TextBoxStyle1}" Text="{Binding MapType, Mode=TwoWay}" />
+                </StackPanel>
+                <StackPanel Orientation="Vertical" Grid.Column="1" Margin="8">
+                    <TextBlock Text="Bessere Seite:"/>
+                    <TextBox x:ConnectionId='16' x:Name="TextBoxMapTeam" Style="{StaticResource TextBoxStyle1}" />
+                    <TextBlock Text="Beschreibung der Map:"/>
+                    <TextBox x:ConnectionId='17' x:Name="TextBoxDescription" Style="{StaticResource TextBoxStyle1}" />
+                </StackPanel>
+            </Grid>
+        </StackPanel>
+        <StackPanel x:ConnectionId='2' x:Name="MapStats" Grid.Row="2" Grid.Column="0" Orientation="Horizontal">
+            <Grid Width="{Binding ElementName=MapInfo, Path=ActualWidth}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <StackPanel x:ConnectionId='7' x:Name="StackpanelStatsGames" Grid.Column="0" Margin="8">
+                    <controls:GaugeChartGrid StartAngle="0" Angle1="60" InnerRadius="25" OuterRadius="50" Margin="49,8,48,8" BackgroundRingColor="Aqua" RingSliceColor1="DarkGreen" Text="60" />
+                    <TextBlock Text="Rounds WON:"/>
+                    <TextBox x:ConnectionId='13' x:Name="TextBoxRoundsWon" Style="{StaticResource TextBoxStyle1}" />
+                    <TextBlock Text="Rounds LOST:"/>
+                    <TextBox x:ConnectionId='14' x:Name="TextBoxRoundsLost" Style="{StaticResource TextBoxStyle1}" />
+                    <TextBlock Text="Rounds Tied:"/>
+                    <TextBox x:ConnectionId='15' x:Name="TextBoxRoundsTied" Style="{StaticResource TextBoxStyle1}" />
+                </StackPanel>
+                <StackPanel x:ConnectionId='8' x:Name="StackPanelStatsRounds" Grid.Column="1" Margin="8">
+                    <controls:GaugeChartGrid StartAngle="0" Angle1="60" InnerRadius="25" OuterRadius="50" Margin="8" BackgroundRingColor="Aqua" RingSliceColor1="DarkGreen" />
+                    <TextBlock Text="Number of Headshots:"/>
+                    <TextBox x:ConnectionId='11' x:Name="TextBoxHeadshots" Style="{StaticResource TextBoxStyle1}" />
+
+                    <TextBlock Text="Number of Aces:"/>
+                    <TextBox x:ConnectionId='12' x:Name="TextBoxAce" Style="{StaticResource TextBoxStyle1}" />
+                </StackPanel>
+                <StackPanel x:ConnectionId='9' x:Name="StackPanelStatsMVP" Grid.Column="2" Margin="8">
+                    <controls:GaugeChartGrid StartAngle="0" Angle1="60" InnerRadius="25" OuterRadius="50" Margin="8" BackgroundRingColor="Aqua" RingSliceColor1="DarkGreen" />
+                    <TextBlock Text="Number of MVPs:"/>
+                    <TextBox x:ConnectionId='10' x:Name="TextBoxMVP" Style="{StaticResource TextBoxStyle1}" />
+                </StackPanel>
+            </Grid>
+        </StackPanel>
+        <StackPanel Grid.Row="0" Grid.Column="1" Background="AliceBlue" Padding="8">
+            <Button x:ConnectionId='5' x:Name="ButtonAddIcon"                             Content="Select Icon"/>
+            <Image x:ConnectionId='6' x:Name="ImagePreviewIcon" Source="{Binding MapIconImagePath}" Height="200" Width="200" />
+        </StackPanel>
+        <StackPanel Grid.Row="1" Grid.Column="1" Grid.RowSpan="2" Background="AliceBlue" Padding="8">
+            <Button x:ConnectionId='3' x:Name="ButtonAddMap"                            Content="Select Map Image"/>
+            <Image x:ConnectionId='4' x:Name="ImagePreviewMapImg" Source="{Binding MapImagePath}" Height="500" Width="500"/>
+        </StackPanel>
+    </Grid>
+</Page>
+

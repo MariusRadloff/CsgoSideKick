@@ -1,0 +1,311 @@
+﻿<ViewModels:MainPageViewModel xmlns:ViewModels="using:CsgoTactics.ViewModels" xmlns:Models="using:CsgoTactics.Models">
+	<ViewModels:MainPageViewModel.Maps>
+        <Models:Map MapName="S!Mirage" 
+                    MapImagePath="ms-appx:///Images/Maps/de_mirage-map-callouts.jpg" 
+                    MapTeam="n.a." 
+                    MapType="Bomb" 
+                    MapDescription="no description" 
+                    MapId="de_mirage" 
+                    MapIconImagePath="ms-appx:///Images/Icons/icon_mirage.png">
+			<!--<Models:Map.MapSpots>
+				<Models:Spot SpotName="Integer quisque" SpotId="Aliquam aptent dictumst eleifend" SpotType="Convallis ante" SpotDescription="Mus auctor donec">
+					<Models:Spot.SpotCoord>
+						<Models:SpotCoord X="46" Y="51"/>
+					</Models:Spot.SpotCoord>
+				</Models:Spot>
+				<Models:Spot SpotName="Facilisi etiam" SpotId="Arcu congue vestibulum" SpotType="Vestibulum dignissim" SpotDescription="Fusce adipiscing vivamus nec diam">
+					<Models:Spot.SpotCoord>
+						<Models:SpotCoord X="98" Y="15"/>
+					</Models:Spot.SpotCoord>
+				</Models:Spot>
+				<Models:Spot SpotName="Aliquet elit blandit commodo" SpotId="Faucibus eget aliquam habitant" SpotType="Conubia elementum cursus enim" SpotDescription="Erat dictum">
+					<Models:Spot.SpotCoord>
+						<Models:SpotCoord X="87" Y="26"/>
+					</Models:Spot.SpotCoord>
+				</Models:Spot>
+				<Models:Spot SpotName="Parturient interdum" SpotId="Lectus inceptos facilisis eros" SpotType="Lorem libero nibh lobortis" SpotDescription="Nisi ligula nascetur litora nisl">
+					<Models:Spot.SpotCoord>
+						<Models:SpotCoord X="31" Y="17"/>
+					</Models:Spot.SpotCoord>
+				</Models:Spot>
+				<Models:Spot SpotName="Morbi adipiscing luctus" SpotId="Pharetra vestibulum vestibulum cubilia" SpotType="Non parturient nulla vestibulum dapibus" SpotDescription="Fermentum placerat proin per">
+					<Models:Spot.SpotCoord>
+						<Models:SpotCoord X="76" Y="92"/>
+					</Models:Spot.SpotCoord>
+				</Models:Spot>
+			</Models:Map.MapSpots>-->
+			<Models:Map.MapStat>
+                <Models:Statistic TotalGames="100" WonGames="50" LostGames="30" TiedGames="20" Accuracy="977.91" TotalFrags="71" HsFrags="87" LostRounds="10" MvpRounds="84" WonRounds="15" TotalRounds="142"/>
+			</Models:Map.MapStat>
+		</Models:Map>
+        <Models:Map MapName="S!Dust2" MapImagePath="ms-appx:///Images/Maps/de_dust2-map-callouts.jpg" MapTeam="n.a." MapType="Bomb" MapDescription="no description" MapId="de_dust2" MapIconImagePath="ms-appx:///Images/Icons/icon_dust_2.png">
+			<!--<Models:Map.MapSpots>
+				<Models:Spot SpotName="Montes vel" SpotId="Pulvinar parturient" SpotType="Sagittis malesuada vestibulum" SpotDescription="Nam odio nostra senectus vestibulum">
+					<Models:Spot.SpotCoord>
+						<Models:SpotCoord X="50" Y="76"/>
+					</Models:Spot.SpotCoord>
+				</Models:Spot>
+				<Models:Spot SpotName="Dis orci" SpotId="Sociosqu ornare sed penatibus adipiscing" SpotType="Pede platea quam iaculis" SpotDescription="Suscipit primis est lacinia">
+					<Models:Spot.SpotCoord>
+						<Models:SpotCoord X="10" Y="50"/>
+					</Models:Spot.SpotCoord>
+				</Models:Spot>
+				<Models:Spot SpotName="Fames sapien" SpotId="Quis rutrum" SpotType="Parturient semper sociis" SpotDescription="Urna taciti tellus tempor">
+					<Models:Spot.SpotCoord>
+						<Models:SpotCoord X="79" Y="94"/>
+					</Models:Spot.SpotCoord>
+				</Models:Spot>
+				<Models:Spot SpotName="Hac ipsum" SpotId="Felis torquent vestibulum tempus" SpotType="Ultrices cras duis vestibulum" SpotDescription="Adipiscing vehicula">
+					<Models:Spot.SpotCoord>
+						<Models:SpotCoord X="46" Y="58"/>
+					</Models:Spot.SpotCoord>
+				</Models:Spot>
+				<Models:Spot SpotName="Volutpat amet" SpotId="Nunc justo laoreet" SpotType="Tortor turpis porttitor maecenas natoque" SpotDescription="Lacus praesent">
+					<Models:Spot.SpotCoord>
+						<Models:SpotCoord X="14" Y="96"/>
+					</Models:Spot.SpotCoord>
+				</Models:Spot>
+			</Models:Map.MapSpots>-->
+			<Models:Map.MapStat>
+                <Models:Statistic Accuracy="977.91" TotalFrags="71" HsFrags="87" LostRounds="10" MvpRounds="84" TiedGames="13" WonRounds="15" TotalRounds="142"/>
+			</Models:Map.MapStat>
+		</Models:Map>
+        <Models:Map MapName="S!Inferno" MapImagePath="ms-appx:///Images/Maps/de_inferno-map-callouts.jpg" MapTeam="n.a." MapType="Bomb" MapDescription="no description" MapId="de_inferno" MapIconImagePath="ms-appx:///Images/Icons/icon_inferno.png">
+			<!--<Models:Map.MapSpots>
+				<Models:Spot SpotName="Metus venenatis" SpotId="Massa eleifend non elit" SpotType="Morbi vulputate per" SpotDescription="Facilisi curabitur phasellus mauris neque">
+					<Models:Spot.SpotCoord>
+						<Models:SpotCoord X="58" Y="96"/>
+					</Models:Spot.SpotCoord>
+				</Models:Spot>
+				<Models:Spot SpotName="Faucibus sed convallis nulla" SpotId="Consequat enim netus vestibulum" SpotType="Nullam dignissim" SpotDescription="Pretium sem">
+					<Models:Spot.SpotCoord>
+						<Models:SpotCoord X="13" Y="19"/>
+					</Models:Spot.SpotCoord>
+				</Models:Spot>
+				<Models:Spot SpotName="Habitant aptent inceptos" SpotId="Porta erat purus eros" SpotType="Interdum auctor sit elementum facilisis" SpotDescription="Congue lobortis fermentum cursus nascetur">
+					<Models:Spot.SpotCoord>
+						<Models:SpotCoord X="84" Y="78"/>
+					</Models:Spot.SpotCoord>
+				</Models:Spot>
+				<Models:Spot SpotName="Vestibulum vel" SpotId="Rhoncus pharetra" SpotType="Nam nibh adipiscing parturient" SpotDescription="Nisi sodales fringilla">
+					<Models:Spot.SpotCoord>
+						<Models:SpotCoord X="35" Y="42"/>
+					</Models:Spot.SpotCoord>
+				</Models:Spot>
+				<Models:Spot SpotName="Placerat nunc" SpotId="Habitasse vestibulum nisl risus" SpotType="Dictum odio lectus hendrerit" SpotDescription="Sed libero">
+					<Models:Spot.SpotCoord>
+						<Models:SpotCoord X="31" Y="82"/>
+					</Models:Spot.SpotCoord>
+				</Models:Spot>
+			</Models:Map.MapSpots>-->
+			<Models:Map.MapStat>
+                <Models:Statistic Accuracy="977.91" TotalFrags="71" HsFrags="87" LostRounds="10" MvpRounds="84" TiedGames="13" WonRounds="15" TotalRounds="142"/>
+			</Models:Map.MapStat>
+		</Models:Map>
+        <Models:Map MapName="S!Nuke" MapImagePath="ms-appx:///Images/Maps/de_nuke-map-callouts.jpg" MapTeam="n.a." MapType="Bomb" MapDescription="no description" MapId="de_nuke" MapIconImagePath="ms-appx:///Images/Icons/icon_nuke.png">
+			<!--<Models:Map.MapSpots>
+				<Models:Spot SpotName="Quam donec sociosqu parturient penatibus" SpotId="Mattis malesuada mauris pede" SpotType="Integer quis vestibulum mollis urna" SpotDescription="Montes nostra ornare suscipit quisque">
+					<Models:Spot.SpotCoord>
+						<Models:SpotCoord X="35" Y="72"/>
+					</Models:Spot.SpotCoord>
+				</Models:Spot>
+				<Models:Spot SpotName="Fusce cras est" SpotId="Vivamus platea etiam" SpotType="Duis hac nunc leo primis" SpotDescription="Rutrum aliquam amet porttitor sapien">
+					<Models:Spot.SpotCoord>
+						<Models:SpotCoord X="15" Y="85"/>
+					</Models:Spot.SpotCoord>
+				</Models:Spot>
+				<Models:Spot SpotName="Lorem torquent aliquet morbi tristique" SpotId="Tincidunt vestibulum ante" SpotType="Nulla adipiscing ultrices" SpotDescription="Blandit arcu semper parturient">
+					<Models:Spot.SpotCoord>
+						<Models:SpotCoord X="67" Y="46"/>
+					</Models:Spot.SpotCoord>
+				</Models:Spot>
+				<Models:Spot SpotName="Diam sociis taciti mus" SpotId="Vestibulum ultricies" SpotType="Commodo proin nec vestibulum eget" SpotDescription="Tellus adipiscing tempor non vehicula">
+					<Models:Spot.SpotCoord>
+						<Models:SpotCoord X="77" Y="52"/>
+					</Models:Spot.SpotCoord>
+				</Models:Spot>
+				<Models:Spot SpotName="Tempus elit tortor venenatis" SpotId="Volutpat conubia maecenas praesent" SpotType="Parturient per cubilia" SpotDescription="Vestibulum augue turpis accumsan vestibulum">
+					<Models:Spot.SpotCoord>
+						<Models:SpotCoord X="14" Y="49"/>
+					</Models:Spot.SpotCoord>
+				</Models:Spot>
+			</Models:Map.MapSpots>-->
+			<Models:Map.MapStat>
+                <Models:Statistic Accuracy="977.91" TotalFrags="71" HsFrags="87" LostRounds="10" MvpRounds="84" TiedGames="13" WonRounds="15" TotalRounds="142"/>
+			</Models:Map.MapStat>
+		</Models:Map>
+        <Models:Map MapName="S!Cache" MapImagePath="ms-appx:///Images/Maps/de_cache-map-callouts.jpg" MapTeam="n.a." MapType="Bomb" MapDescription="no description" MapId="de_cache" MapIconImagePath="ms-appx:///Images/Icons/icon_cache.png">
+			<!--<Models:Map.MapSpots>
+				<Models:Spot SpotName="Eros inceptos" SpotId="Euismod faucibus vestibulum habitant morbi" SpotType="Phasellus vestibulum auctor neque adipiscing" SpotDescription="Nibh congue">
+					<Models:Spot.SpotCoord>
+						<Models:SpotCoord X="81" Y="35"/>
+					</Models:Spot.SpotCoord>
+				</Models:Spot>
+				<Models:Spot SpotName="Lobortis nascetur nisl feugiat sit" SpotId="Cursus interdum sem nisi netus" SpotType="Gravida pharetra iaculis parturient lacinia" SpotDescription="Consequat nunc vestibulum">
+					<Models:Spot.SpotCoord>
+						<Models:SpotCoord X="52" Y="16"/>
+					</Models:Spot.SpotCoord>
+				</Models:Spot>
+				<Models:Spot SpotName="Laoreet pulvinar dictum vestibulum porta" SpotId="Nulla vel placerat" SpotType="Lectus sagittis purus adipiscing" SpotDescription="Parturient vestibulum senectus">
+					<Models:Spot.SpotCoord>
+						<Models:SpotCoord X="68" Y="78"/>
+					</Models:Spot.SpotCoord>
+				</Models:Spot>
+				<Models:Spot SpotName="Sociosqu risus" SpotId="Nam libero convallis" SpotType="Sed dignissim" SpotDescription="Suscipit ligula">
+					<Models:Spot.SpotCoord>
+						<Models:SpotCoord X="10" Y="72"/>
+					</Models:Spot.SpotCoord>
+				</Models:Spot>
+				<Models:Spot SpotName="Ultrices elementum orci" SpotId="Dis vestibulum odio torquent" SpotType="Pede quam velit" SpotDescription="Vehicula quis volutpat facilisis">
+					<Models:Spot.SpotCoord>
+						<Models:SpotCoord X="50" Y="67"/>
+					</Models:Spot.SpotCoord>
+				</Models:Spot>
+			</Models:Map.MapSpots>-->
+			<Models:Map.MapStat>
+                <Models:Statistic Accuracy="977.91" TotalFrags="71" HsFrags="87" LostRounds="10" MvpRounds="84" TiedGames="13" WonRounds="15" TotalRounds="142"/>
+			</Models:Map.MapStat>
+		</Models:Map>
+        <Models:Map MapName="S!Cobblestone" MapImagePath="ms-appx:///Images/Maps/de_cbble-map-callouts.jpg" MapTeam="n.a." MapType="Bomb" MapDescription="no description" MapId="de_cbble" MapIconImagePath="ms-appx:///Images/Icons/icon_cbble.png">
+			<!--<Models:Map.MapSpots>
+				<Models:Spot SpotName="Nec non adipiscing sodales eleifend" SpotId="Nunc rhoncus mollis dictumst hendrerit" SpotType="Viverra donec parturient aliquam facilisi" SpotDescription="Amet etiam">
+					<Models:Spot.SpotCoord>
+						<Models:SpotCoord X="36" Y="93"/>
+					</Models:Spot.SpotCoord>
+				</Models:Spot>
+				<Models:Spot SpotName="Fusce diam himenaeos lorem eget" SpotId="Montes ante arcu" SpotType="Elit morbi imperdiet" SpotDescription="Nostra integer">
+					<Models:Spot.SpotCoord>
+						<Models:SpotCoord X="88" Y="85"/>
+					</Models:Spot.SpotCoord>
+				</Models:Spot>
+				<Models:Spot SpotName="Ornare per malesuada" SpotId="Quisque faucibus vestibulum nulla proin" SpotType="Vestibulum adipiscing penatibus parturient" SpotDescription="Vestibulum habitant inceptos enim">
+					<Models:Spot.SpotCoord>
+						<Models:SpotCoord X="32" Y="34"/>
+					</Models:Spot.SpotCoord>
+				</Models:Spot>
+				<Models:Spot SpotName="Adipiscing sed" SpotId="Vestibulum interdum vivamus augue platea" SpotType="Primis dolor" SpotDescription="Sem lobortis erat rutrum">
+					<Models:Spot.SpotCoord>
+						<Models:SpotCoord X="23" Y="21"/>
+					</Models:Spot.SpotCoord>
+				</Models:Spot>
+				<Models:Spot SpotName="Vel parturient" SpotId="Aliquam porttitor fames aliquet sit" SpotType="Felis blandit" SpotDescription="Eros ipsum">
+					<Models:Spot.SpotCoord>
+						<Models:SpotCoord X="28" Y="61"/>
+					</Models:Spot.SpotCoord>
+				</Models:Spot>
+			</Models:Map.MapSpots>-->
+			<Models:Map.MapStat>
+                <Models:Statistic Accuracy="977.91" TotalFrags="71" HsFrags="87" LostRounds="10" MvpRounds="84" TiedGames="13" WonRounds="15" TotalRounds="142"/>
+			</Models:Map.MapStat>
+		</Models:Map>
+        <Models:Map MapName="S!Overpass" MapImagePath="ms-appx:///Images/Maps/de_overpass-map-callouts.jpg" MapTeam="n.a." MapType="Bomb" MapDescription="no description" MapId="de_overpass" MapIconImagePath="ms-appx:///Images/Icons/icon_overpass.png">
+			<!--<Models:Map.MapSpots>
+				<Models:Spot SpotName="Tellus neque nunc" SpotId="Pulvinar tristique ultricies morbi" SpotType="Venenatis tempor vulputate hac" SpotDescription="Leo curabitur sagittis">
+					<Models:Spot.SpotCoord>
+						<Models:SpotCoord X="33" Y="13"/>
+					</Models:Spot.SpotCoord>
+				</Models:Spot>
+				<Models:Spot SpotName="Odio adipiscing" SpotId="Euismod tempus netus" SpotType="Tortor parturient turpis nulla phasellus" SpotDescription="Feugiat vestibulum">
+					<Models:Spot.SpotCoord>
+						<Models:SpotCoord X="17" Y="61"/>
+					</Models:Spot.SpotCoord>
+				</Models:Spot>
+				<Models:Spot SpotName="Nec consequat vestibulum" SpotId="Gravida porta orci mus" SpotType="Varius aenean senectus pede adipiscing" SpotDescription="Non per">
+					<Models:Spot.SpotCoord>
+						<Models:SpotCoord X="56" Y="63"/>
+					</Models:Spot.SpotCoord>
+				</Models:Spot>
+				<Models:Spot SpotName="Mauris vestibulum iaculis sed purus" SpotId="Parturient quam quis convallis" SpotType="Vestibulum sem" SpotDescription="Adipiscing lacinia">
+					<Models:Spot.SpotCoord>
+						<Models:SpotCoord X="47" Y="57"/>
+					</Models:Spot.SpotCoord>
+				</Models:Spot>
+				<Models:Spot SpotName="Vestibulum dignissim laoreet sociosqu adipiscing" SpotId="Parturient vestibulum risus nullam" SpotType="Suscipit aptent elementum urna" SpotDescription="Sit velit cras facilisis">
+					<Models:Spot.SpotCoord>
+						<Models:SpotCoord X="72" Y="43"/>
+					</Models:Spot.SpotCoord>
+				</Models:Spot>
+			</Models:Map.MapSpots>-->
+			<Models:Map.MapStat>
+                <Models:Statistic Accuracy="977.91" TotalFrags="71" HsFrags="87" LostRounds="10" MvpRounds="84" TiedGames="13" WonRounds="15" TotalRounds="142"/>
+			</Models:Map.MapStat>
+		</Models:Map>
+        <Models:Map MapName="S!Train" MapImagePath="ms-appx:///Images/Maps/de_train-map-callouts.jpg" MapTeam="n.a." MapType="Bomb" MapDescription="no description" MapId="de_train" MapIconImagePath="ms-appx:///Images/Icons/icon_train.png">
+            <!--<Models:Map.MapSpots>
+                <Models:Spot SpotName="Elit fringilla dictum ultrices habitasse" SpotId="Adipiscing donec parturient" SpotType="Hendrerit viverra" SpotDescription="Etiam enim est hac aliquam">
+                    <Models:Spot.SpotCoord>
+                        <Models:SpotCoord X="77" Y="95"/>
+                    </Models:Spot.SpotCoord>
+                </Models:Spot>
+                <Models:Spot SpotName="Lectus libero himenaeos vestibulum" SpotId="Erat eros leo vestibulum" SpotType="Mus imperdiet nibh integer nec" SpotDescription="Non vehicula quisque vivamus nisi">
+                    <Models:Spot.SpotCoord>
+                        <Models:SpotCoord X="64" Y="33"/>
+                    </Models:Spot.SpotCoord>
+                </Models:Spot>
+                <Models:Spot SpotName="Volutpat litora blandit" SpotId="Ligula aliquam nisl aliquet nunc" SpotType="Per fusce" SpotDescription="Maecenas praesent lorem">
+                    <Models:Spot.SpotCoord>
+                        <Models:SpotCoord X="28" Y="72"/>
+                    </Models:Spot.SpotCoord>
+                </Models:Spot>
+                <Models:Spot SpotName="Luctus morbi sed sem nulla" SpotId="Adipiscing odio accumsan parturient" SpotType="Orci proin" SpotDescription="Vestibulum augue bibendum malesuada">
+                    <Models:Spot.SpotCoord>
+                        <Models:SpotCoord X="26" Y="56"/>
+                    </Models:Spot.SpotCoord>
+                </Models:Spot>
+                <Models:Spot SpotName="Sit vel" SpotId="Dictumst penatibus" SpotType="Porttitor nam" SpotDescription="Eleifend magnis dolor">
+                    <Models:Spot.SpotCoord>
+                        <Models:SpotCoord X="22" Y="41"/>
+                    </Models:Spot.SpotCoord>
+                </Models:Spot>
+            </Models:Map.MapSpots>-->
+            <Models:Map.MapStat>
+                <Models:Statistic Accuracy="977.91" TotalFrags="71" HsFrags="87" LostRounds="10" MvpRounds="84" TiedGames="13" WonRounds="15" TotalRounds="142"/>
+            </Models:Map.MapStat>
+        </Models:Map>
+    </ViewModels:MainPageViewModel.Maps>
+    <ViewModels:MainPageViewModel.ActiveMap>
+        <Models:Map MapName="S!Mirage" 
+                    MapImagePath="ms-appx:///Images/Maps/de_mirage-map-callouts.jpg" 
+                    MapTeam="n.a." 
+                    MapType="Bomb" 
+                    MapDescription="no description" 
+                    MapId="de_mirage" 
+                    MapIconImagePath="ms-appx:///Images/Icons/icon_mirage.png">
+            <!--<Models:Map.MapSpots>
+                <Models:Spot SpotName="Integer quisque" SpotId="Aliquam aptent dictumst eleifend" SpotType="Convallis ante" SpotDescription="Mus auctor donec">
+                    <Models:Spot.SpotCoord>
+                        <Models:SpotCoord X="46" Y="51"/>
+                    </Models:Spot.SpotCoord>
+                </Models:Spot>
+                <Models:Spot SpotName="Facilisi etiam" SpotId="Arcu congue vestibulum" SpotType="Vestibulum dignissim" SpotDescription="Fusce adipiscing vivamus nec diam">
+                    <Models:Spot.SpotCoord>
+                        <Models:SpotCoord X="98" Y="15"/>
+                    </Models:Spot.SpotCoord>
+                </Models:Spot>
+                <Models:Spot SpotName="Aliquet elit blandit commodo" SpotId="Faucibus eget aliquam habitant" SpotType="Conubia elementum cursus enim" SpotDescription="Erat dictum">
+                    <Models:Spot.SpotCoord>
+                        <Models:SpotCoord X="87" Y="26"/>
+                    </Models:Spot.SpotCoord>
+                </Models:Spot>
+                <Models:Spot SpotName="Parturient interdum" SpotId="Lectus inceptos facilisis eros" SpotType="Lorem libero nibh lobortis" SpotDescription="Nisi ligula nascetur litora nisl">
+                    <Models:Spot.SpotCoord>
+                        <Models:SpotCoord X="31" Y="17"/>
+                    </Models:Spot.SpotCoord>
+                </Models:Spot>
+                <Models:Spot SpotName="Morbi adipiscing luctus" SpotId="Pharetra vestibulum vestibulum cubilia" SpotType="Non parturient nulla vestibulum dapibus" SpotDescription="Fermentum placerat proin per">
+                    <Models:Spot.SpotCoord>
+                        <Models:SpotCoord X="76" Y="92"/>
+                    </Models:Spot.SpotCoord>
+                </Models:Spot>
+            </Models:Map.MapSpots>-->
+            <Models:Map.MapStat>
+                <Models:Statistic TotalGames="100" WonGames="50" LostGames="30" TiedGames="20" PercentWonGames="50" PercentLostGames="30" PercentTiedGames="20" 
+                                  TotalFrags="100" HsFrags="25" Assists="40" Accuracy="0.054" PercentHsFrags="25" 
+                                  TotalRounds="100" WonRounds="60" LostRounds="40" MvpRounds="5" PercentWonRounds="60" PercentLostRounds="40" PercentMvpRounds="5"
+                                  TotalCtRounds="50" WonCtRounds="30" LostCtRounds="20" PercentWonCtRounds="60" PercentLostCtRounds="40"
+                                  TotalTRounds="50" WonTRounds="25" LostTRounds="25" PercentWonTRounds="50" PercentLostTRounds="50"
+                                  />
+            </Models:Map.MapStat>
+        </Models:Map>
+    </ViewModels:MainPageViewModel.ActiveMap>
+</ViewModels:MainPageViewModel>

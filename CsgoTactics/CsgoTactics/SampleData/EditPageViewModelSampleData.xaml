@@ -1,0 +1,42 @@
+﻿<ViewModels:EditMapPageViewModel xmlns:ViewModels="using:CsgoTactics.ViewModels" xmlns:Models="using:CsgoTactics.Models">
+	<ViewModels:EditMapPageViewModel.Map>
+        <Models:Map MapName="S!Mirage" 
+                    MapImagePath="ms-appx:///Images/Maps/de_mirage-map-callouts.jpg" 
+                    MapTeam="n.a." 
+                    MapType="Bomb" 
+                    MapDescription="no description" 
+                    MapId="de_mirage" 
+                    MapIconImagePath="ms-appx:///Images/Icons/icon_mirage.png">
+            <!--<Models:Map.MapSpots>
+                <Models:Spot SpotName="Integer quisque" SpotId="Aliquam aptent dictumst eleifend" SpotType="Convallis ante" SpotDescription="Mus auctor donec">
+                    <Models:Spot.SpotCoord>
+                        <Models:SpotCoord X="46" Y="51"/>
+                    </Models:Spot.SpotCoord>
+                </Models:Spot>
+                <Models:Spot SpotName="Facilisi etiam" SpotId="Arcu congue vestibulum" SpotType="Vestibulum dignissim" SpotDescription="Fusce adipiscing vivamus nec diam">
+                    <Models:Spot.SpotCoord>
+                        <Models:SpotCoord X="98" Y="15"/>
+                    </Models:Spot.SpotCoord>
+                </Models:Spot>
+                <Models:Spot SpotName="Aliquet elit blandit commodo" SpotId="Faucibus eget aliquam habitant" SpotType="Conubia elementum cursus enim" SpotDescription="Erat dictum">
+                    <Models:Spot.SpotCoord>
+                        <Models:SpotCoord X="87" Y="26"/>
+                    </Models:Spot.SpotCoord>
+                </Models:Spot>
+                <Models:Spot SpotName="Parturient interdum" SpotId="Lectus inceptos facilisis eros" SpotType="Lorem libero nibh lobortis" SpotDescription="Nisi ligula nascetur litora nisl">
+                    <Models:Spot.SpotCoord>
+                        <Models:SpotCoord X="31" Y="17"/>
+                    </Models:Spot.SpotCoord>
+                </Models:Spot>
+                <Models:Spot SpotName="Morbi adipiscing luctus" SpotId="Pharetra vestibulum vestibulum cubilia" SpotType="Non parturient nulla vestibulum dapibus" SpotDescription="Fermentum placerat proin per">
+                    <Models:Spot.SpotCoord>
+                        <Models:SpotCoord X="76" Y="92"/>
+                    </Models:Spot.SpotCoord>
+                </Models:Spot>
+            </Models:Map.MapSpots>-->
+            <Models:Map.MapStat>
+                <Models:Statistic Accuracy="977.91" TotalFrags="71" HsFrags="87" LostRounds="10" MvpRounds="84" TiedGames="13" WonRounds="15" TotalRounds="142"/>
+            </Models:Map.MapStat>
+        </Models:Map>
+    </ViewModels:EditMapPageViewModel.Map>
+</ViewModels:EditMapPageViewModel>

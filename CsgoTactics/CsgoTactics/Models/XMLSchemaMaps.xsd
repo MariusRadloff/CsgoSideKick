@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema targetNamespace="http://tempuri.org/XMLSchema.xsd"
+    elementFormDefault="qualified"
+    xmlns="http://tempuri.org/XMLSchema.xsd"
+    xmlns:mstns="http://tempuri.org/XMLSchema.xsd"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:msdata="urn:schemas-microsoft-com:xml-msdata"
+>
+  <xs:element name="Maps" msdata:IsDataSet="true" msdata:Locale="en-US">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Map">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="MapId" type="xs:int" minOccurs="1" maxOccurs="1"/>
+              <xs:element name="MapName" type="xs:string" minOccurs="1" maxOccurs="1"/>
+              <xs:element name="MapType" type="xs:string" minOccurs="1" maxOccurs="1"/>
+              <xs:element name="MapTeam" type="xs:string" minOccurs="1" maxOccurs="1"/>
+              <xs:element name="MapImagePath" type="xs:anyURI" minOccurs="1" maxOccurs="1"/>
+              <xs:element name="MapIconImapePath" type="xs:anyURI" minOccurs="1" maxOccurs="1"/>
+              <xs:element name="MapDescription" type="xs:string" minOccurs="1" maxOccurs="1"/>
+              <xs:element name="MapSpots">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="SpotId" type="xs:int" minOccurs="1" maxOccurs="1"/>
+                    <xs:element name="MapName" type="xs:string" minOccurs="1" maxOccurs="1"/>
+                    <xs:element name="MapType" type="xs:string" minOccurs="1" maxOccurs="1"/>
+                    <xs:element name="MapDescription" type="xs:string" minOccurs="1" maxOccurs="1"/>
+                    <xs:element name="MapCoord" minOccurs="1" maxOccurs="1">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="Xcoord" type="xs:int" minOccurs="1" maxOccurs="1"/>
+                          <xs:element name="Ycoord" type="xs:int" minOccurs="1" maxOccurs="1"/>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>    
+  </xs:element>
+</xs:schema>

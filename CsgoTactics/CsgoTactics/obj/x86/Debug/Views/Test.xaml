@@ -1,0 +1,60 @@
+﻿<Page
+    x:Class="CsgoTactics.Views.Test"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:CsgoTactics.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:contols="using:CsgoTactics.Controls"
+    mc:Ignorable="d">
+
+    <Page.DataContext>
+        <Binding Path="TestViewModel" Source="{StaticResource Locator}"/>
+    </Page.DataContext>
+
+    <Grid Background="{StaticResource ApplicationPageBackgroundThemeBrush}">
+        <StackPanel Background="Aqua" HorizontalAlignment="Stretch" Margin="-10,0,10,0" >
+            <Grid x:ConnectionId='1' x:Name="rootGrid">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <StackPanel Grid.Column="0">
+                    <contols:GaugeChartGrid Padding="8" BackgroundRingColor="Beige" StartAngle="0" Angle1="{Binding ElementName=Slider1, Path=Value}" RingSliceColor1="DarkOliveGreen" 
+                                        InnerRadius="50" 
+                                        OuterRadius="{Binding ElementName=Slider12, Path=Value}"/>
+                    <Slider x:ConnectionId='11' x:Name="Slider1" Minimum="0" Maximum="359" Width="auto" />
+                    <Slider x:ConnectionId='12' x:Name="Slider12" Minimum="0" Maximum="300" Width="auto" />
+                </StackPanel>
+                <StackPanel Grid.Column="1" Background="Beige">
+                    <contols:GaugeChartGrid Padding="8" BackgroundRingColor="Beige" StartAngle="0" Angle1="{Binding ElementName=Slider2, Path=Value}" RingSliceColor1="DarkOliveGreen" 
+                                        InnerRadius="50" 
+                                        OuterRadius="75"/>
+                    <Slider x:ConnectionId='10' x:Name="Slider2" Minimum="0" Maximum="359" Width="auto" />
+                </StackPanel>
+                <StackPanel Grid.Column="2" Background="Crimson">
+                    <contols:GaugeChartGrid Padding="8" BackgroundRingColor="Beige" StartAngle="0" Angle1="{Binding ElementName=Slider3, Path=Value}" RingSliceColor1="DarkOliveGreen" 
+                                        InnerRadius="50" 
+                                        OuterRadius="75"/>
+                    <Slider x:ConnectionId='9' x:Name="Slider3" Minimum="0" Maximum="359" Width="auto" />
+                </StackPanel>
+            </Grid>
+            <Button Content="GetSkins"/>
+            <contols:UpDown Width="100" Height="30" VerticalAlignment="Center"  HorizontalAlignment="Center" Background="Brown"/>
+            <Button x:ConnectionId='2' x:Name="button" Content="Button" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"                     />
+            
+            <StackPanel DataContext="{Binding skins}">
+                <TextBlock x:ConnectionId='3' x:Name="WeaponName" Text="test" HorizontalAlignment="Center" FontSize="24"/>
+                <TextBlock x:ConnectionId='4' x:Name="WeaponName2" Text="test" HorizontalAlignment="Center" FontSize="24"/>
+                <TextBlock x:ConnectionId='5' x:Name="JsonText" Text="kein Text" HorizontalAlignment="Center" FontSize="16" Width="1500" Height="500"/>
+                <TextBox x:ConnectionId='6' x:Name="testTextBox" Text="test" Width="1500" Height="50" />
+                <TextBlock x:ConnectionId='7' x:Name="testTestBlock" Text="test" Width="1500" Height="50" />
+
+                <Button x:ConnectionId='8' x:Name="testButton" Content="test"                         />
+            </StackPanel>
+        </StackPanel>
+
+    </Grid>
+</Page>
+

@@ -1,0 +1,53 @@
+﻿<Page
+    x:Class="CsgoTactics.Views.InGameLivePageScenarios.Scenario1_Overview"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:CsgoTactics.Views.InGameLivePageScenarios"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <StackPanel>
+            <Border Style="{StaticResource ScenarioHeaderBorderStyle}">
+                <TextBlock Text="Overview" Style="{StaticResource SampleHeaderTextStyle}" />
+            </Border>
+            <ScrollViewer  x:Name="RootScrollViewer" Style="{StaticResource RootScrollViewerStyle}">
+                <StackPanel Orientation="Vertical">
+                    <StackPanel>
+                        <Border Style="{StaticResource ScenarioHeader2BorderStyle}">
+                            <TextBlock Text="Equipment" Style="{StaticResource SampleHeaderTextStyle}" />
+                        </Border>
+                        <StackPanel Orientation="Horizontal">
+                            
+                        </StackPanel>
+                    </StackPanel>
+                    <StackPanel>
+                        <Border Style="{StaticResource ScenarioHeader2BorderStyle}">
+                            <TextBlock Text="Armor" Style="{StaticResource SampleHeaderTextStyle}" />
+                        </Border>
+                        <StackPanel Orientation="Horizontal">
+
+                        </StackPanel>
+                    </StackPanel>
+                    <StackPanel>
+                        <Border Style="{StaticResource ScenarioHeader2BorderStyle}">
+                            <TextBlock Text="Bomb" Style="{StaticResource SampleHeaderTextStyle}" />
+                        </Border>
+                        <StackPanel Orientation="Horizontal">
+
+                        </StackPanel>
+                    </StackPanel>
+                    <StackPanel>
+                        <Border Style="{StaticResource ScenarioHeader2BorderStyle}">
+                            <TextBlock Text="Statistics" Style="{StaticResource SampleHeaderTextStyle}" />
+                        </Border>
+                        <StackPanel Orientation="Horizontal">
+
+                        </StackPanel>
+                    </StackPanel>
+                </StackPanel>
+            </ScrollViewer>
+        </StackPanel>
+    </Grid>
+</Page>

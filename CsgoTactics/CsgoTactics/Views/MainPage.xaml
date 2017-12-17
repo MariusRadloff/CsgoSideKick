@@ -1,0 +1,197 @@
+﻿<Page
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:CsgoTactics.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:data="using:CsgoTactics.Models"
+    xmlns:Controls="using:CsgoTactics.Controls"
+    xmlns:Converters="using:CsgoTactics.Converters"
+    xmlns:ViewModels="using:CsgoTactics.ViewModels"
+    x:Class="CsgoTactics.Views.MainPage"
+    d:DataContext="{d:DesignData /SampleData/MainPageViewModelSampleData.xaml}"
+    mc:Ignorable="d">
+    <Page.Resources>
+        <Converters:PercentToAngle x:Key="PercentToAngle"/>
+        <Converters:IntToPercent x:Key="IntToPercent"/>
+        <DataTemplate x:Key="MapSelect">
+            <StackPanel Orientation="Horizontal" Height="Auto" Width="300" Margin="0,4" Padding="4" BorderBrush="{StaticResource SystemControlBackgroundAccentBrush}" BorderThickness="2" Background="DimGray">
+                <Image x:Name="mapIcon" Height="50" Width="50" Source="{Binding MapIconImagePath}"/>
+                <TextBlock x:Name="mapName" Text="{Binding MapName}" FontSize="28" Foreground="White" Margin="4" VerticalAlignment="Center"/>
+            </StackPanel>
+        </DataTemplate>
+    </Page.Resources>
+
+    <Page.DataContext>
+        <Binding Path="MainPageViewModel" Source="{StaticResource Locator}"/>
+    </Page.DataContext>
+
+    <Grid x:Name="rootGrid" Background="Gainsboro">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40" />
+            <RowDefinition Height ="*" />
+        </Grid.RowDefinitions>
+        <StackPanel x:Name="Navi" Orientation="Horizontal" Grid.Row="0">
+            <Border Background="{ThemeResource SystemControlBackgroundChromeMediumBrush}">
+                <ToggleButton Style="{StaticResource SymbolButton}" Click="ToggleButton_Click">
+                    <FontIcon x:Name="Hamburger" FontFamily="Segoe MDL2 Assets" Glyph="&#xE700;"/>
+                </ToggleButton>
+            </Border>
+            <Button x:Name="MainPageButton" Content="Main Page" Click="MainPageButton_Click" Background="Transparent" Margin="12,0,0,0"/>
+            <Button x:Name="InventoryPageButton" Content="Inventory Page" Click="InventoryPageButton_Click" Background="Transparent" Margin="12,0,0,0"/>
+            <Button x:Name="LivePageButton" Content="Live Page" Click="LivePageButton_Click" Background="Transparent" Margin="12,0,0,0"/>
+            <Button x:Name="OptionsPageButton" Content="Options Page" Click="OptionsPageButton_Click" Background="Transparent" Margin="12,0,0,0"/>
+            <Button x:Name="TestPageButton" Content="Test Page" Click="TestPageButton_Click" Background="Transparent" Margin="12,0,0,0"/>
+        </StackPanel>
+        <SplitView x:Name="Splitter" IsPaneOpen="True" DisplayMode="Inline" Grid.Row="1">
+            <SplitView.Pane>
+                <RelativePanel Margin="8">
+                    <TextBlock x:Name="SampleTitle" Text="Sample Title Here" Style="{StaticResource SampleHeaderTextStyle}" TextWrapping="Wrap" Margin="0,10,0,0" />
+                    <Button x:Name="AddMapButton" Click="AddMapButton_Click" Background="Transparent" Margin="4" RelativePanel.Below="SampleTitle">
+                        <Image Source="ms-appx:///Images/Test/IconCross.png" Height="30" Width="30"/>
+                    </Button>
+                    <ListView
+					x:Name="MapsList"
+                    RelativePanel.Below="AddMapButton"
+					ItemTemplate="{StaticResource MapSelect}"
+					SelectedIndex="-1"
+					IsItemClickEnabled="True"
+					ItemClick="ListView_ItemClick"
+					IsHoldingEnabled="False" 
+					IsRightTapEnabled="False" 
+					IsDoubleTapEnabled="False" 
+					ItemsSource="{Binding Maps}" />
+                </RelativePanel>
+            </SplitView.Pane>
+            <StackPanel Orientation="Vertical" Margin="0" >
+                <ScrollViewer HorizontalScrollMode="Auto" VerticalScrollMode="Enabled" >
+                    <StackPanel x:Name="MapDataView" Orientation="Vertical" d:DataContext="{Binding ActiveMap}" DataContext="{Binding SelectedItem, ElementName=MapsList, Mode=OneWay}">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto" />
+                                <ColumnDefinition Width="auto" />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="475"/>
+                            </Grid.RowDefinitions>
+                            <StackPanel Grid.Column="0" Grid.Row="0" Margin="16">
+                                <Image x:Name="MapIconImageView" Source="{Binding MapIconImagePath}" Width="200" Height="200" Margin="16" VerticalAlignment="Top" HorizontalAlignment="Center" />
+                                <Grid Grid.Row="2" BorderBrush="Black" BorderThickness="2" Background="Gray" HorizontalAlignment="Center">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="250"/>
+                                        <ColumnDefinition Width="250"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="80"/>
+                                        <RowDefinition Height="80"/>
+                                    </Grid.RowDefinitions>
+                                    <StackPanel Grid.Column="0" Style="{StaticResource MapInfoStackPanelStyle}" >
+                                        <TextBlock Text="MapName:" />
+                                        <TextBlock Text="{Binding MapName}" />
+                                    </StackPanel>
+                                    <StackPanel Grid.Column="1" Grid.Row="0" Style="{StaticResource MapInfoStackPanelStyle}" >
+                                        <TextBlock Text="MapId:" Grid.Row="0" />
+                                        <TextBlock Text="{Binding MapId}" />
+                                    </StackPanel>
+                                    <StackPanel Grid.Column="0" Grid.Row="1" Style="{StaticResource MapInfoStackPanelStyle}" >
+                                        <TextBlock Text="MapTeam:" />
+                                        <TextBlock Text="{Binding MapTeam}" />
+                                    </StackPanel>
+                                    <StackPanel Grid.Column="1" Grid.Row="1" Style="{StaticResource MapInfoStackPanelStyle}" >
+                                        <TextBlock Text="MapType:" />
+                                        <TextBlock Text="{Binding MapType}" />
+                                    </StackPanel>
+                                </Grid>
+                                <Button x:Name="EditMapButton" Content="Edit Map" Click="EditMapButton_Click" Background="Transparent" Margin="12,0,0,0"/>
+                            </StackPanel>
+                            <Grid Grid.Column="1" Margin="16">
+                                <Image x:Name="MapImageView" Source="{Binding MapImagePath}" Width="400" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                            </Grid>
+                        </Grid>
+                        <Grid x:Name="GridStatistics" DataContext="{Binding MapStat}" Background="Gray" Width="1000" Margin="16" HorizontalAlignment="Left">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="*" />
+                            </Grid.RowDefinitions>
+                            <Grid Grid.ColumnSpan="{Binding ElementName=GridStatistics, Path=ColumnDefinitions.Count}" BorderBrush="Black" BorderThickness="2,2,2,1" >
+                                <TextBlock Text="Statistics" FontSize="24" FontWeight="Bold" Margin="24,10,10,0" />
+                            </Grid>
+                            <StackPanel x:Name="StackpanelStatsGames" Grid.Column="0" Grid.Row="1" Style="{StaticResource StatisticsStackPanelStyle}" BorderThickness="2,1,1,2">
+                                <TextBlock Text="Games:" FontSize="20" FontWeight="SemiBold" />
+                                <Controls:GaugeChartGrid StartAngle="0" InnerRadius="25" OuterRadius="50" Margin="8" BackgroundRingColor="Aqua" Text="{Binding PercentWonRounds}" isTextEnabled="True"                 
+                    			Angle1="{Binding PercentWonGames, Converter={StaticResource PercentToAngle}}" RingSliceColor1="{Binding Background, ElementName=TextBoxWonGames}" 
+                    			Angle2="{Binding PercentLostGames, Converter={StaticResource PercentToAngle}}" RingSliceColor2="{Binding Background, ElementName=TextBoxLostGames}" 
+                    			Angle3="{Binding PercentTiedGames, Converter={StaticResource PercentToAngle}}" RingSliceColor3="{Binding Background, ElementName=TextBoxTiedGames}" />
+                                <TextBlock Text="Total:"/>
+                                <TextBox x:Name="TextBoxTotalGames" Style="{StaticResource TextBoxStyle1}" Text="{Binding TotalGames, Mode=OneWay}" />
+                                <TextBlock Text="Won:"/>
+                                <TextBox x:Name="TextBoxWonGames" Style="{StaticResource TextBoxStyle1}" Text="{Binding WonGames, Mode=OneWay}" Background="Green" />
+                                <TextBlock Text="Lost:"/>
+                                <TextBox x:Name="TextBoxLostGames" Style="{StaticResource TextBoxStyle1}" Text="{Binding LostGames, Mode=OneWay}" Background="Red" />
+                                <TextBlock Text="Tied:"/>
+                                <TextBox x:Name="TextBoxTiedGames" Style="{StaticResource TextBoxStyle1}" Text="{Binding TiedGames, Mode=OneWay}" Background="Yellow" />
+                            </StackPanel>
+                            <StackPanel x:Name="StackPanelStatsRounds" Grid.Column="1" Grid.Row="1" Style="{StaticResource StatisticsStackPanelStyle}" BorderThickness="1,1,1,2" >
+                                <TextBlock Text="Rounds:" FontSize="20" FontWeight="SemiBold" />
+                                <Controls:GaugeChartGrid StartAngle="0" InnerRadius="25" OuterRadius="50" Margin="8" BackgroundRingColor="Aqua" Text="{Binding PercentWonRounds}" isTextEnabled="True" 
+                    			Angle1="{Binding PercentWonRounds, Converter={StaticResource PercentToAngle}}" RingSliceColor1="{Binding Background, ElementName=TextBoxWonRounds}" 
+                    			Angle2="{Binding PercentLostRounds, Converter={StaticResource PercentToAngle}}" RingSliceColor2="{Binding Background, ElementName=TextBoxLostRounds}"
+                    			Angle3="{Binding PercentMvpRounds, Converter={StaticResource PercentToAngle}}" RingSliceColor3="{Binding Background, ElementName=TextBoxMvpRounds}" />
+                                <TextBlock Text="Total:"/>
+                                <TextBox x:Name="TextBoxTotalRounds" Style="{StaticResource TextBoxStyle1}" Text="{Binding TotalRounds, Mode=TwoWay}" />
+                                <TextBlock Text="Won:"/>
+                                <TextBox x:Name="TextBoxWonRounds" Style="{StaticResource TextBoxStyle1}" Text="{Binding WonRounds}" Background="Green" />
+                                <TextBlock Text="Lost:"/>
+                                <TextBox x:Name="TextBoxLostRounds" Style="{StaticResource TextBoxStyle1}" Text="{Binding LostRounds}" Background="Red" />
+                                <TextBlock Text="MVP:"/>
+                                <TextBox x:Name="TextBoxMvpRounds" Style="{StaticResource TextBoxStyle1}" Text="{Binding MvpRounds}" Background="Pink" />
+                            </StackPanel>
+                            <StackPanel x:Name="StackPaneCT" Grid.Column="2" Grid.Row="1" Style="{StaticResource StatisticsStackPanelStyle}" BorderThickness="1,1,1,2" >
+                                <TextBlock Text="CT Rounds:" FontSize="20" FontWeight="SemiBold" />
+                                <Controls:GaugeChartGrid StartAngle="0" InnerRadius="25" OuterRadius="50" Margin="8" BackgroundRingColor="Aqua" Text="{Binding PercentWonCtRounds}" isTextEnabled="True"
+                    			Angle1="{Binding PercentWonCtRounds, Converter={StaticResource PercentToAngle}}" RingSliceColor1="{Binding Background, ElementName=TextBoxWonCtRounds}"
+                    			Angle2="{Binding PercentLostCtRounds, Converter={StaticResource PercentToAngle}}" RingSliceColor2="{Binding Background, ElementName=TextBoxLostCtRounds}" />
+                                <TextBlock Text="Total:"/>
+                                <TextBox x:Name="TextBoxTotalCTRounds" Style="{StaticResource TextBoxStyle1}" Text="{Binding TotalCtRounds, Mode=TwoWay}" />
+                                <TextBlock Text="Won:"/>
+                                <TextBox x:Name="TextBoxWonCtRounds" Style="{StaticResource TextBoxStyle1}" Text="{Binding WonCtRounds}" Background="Green" />
+                                <TextBlock Text="Lost:"/>
+                                <TextBox x:Name="TextBoxLostCtRounds" Style="{StaticResource TextBoxStyle1}" Text="{Binding LostCtRounds}" Background="Red" />
+                            </StackPanel>
+                            <StackPanel x:Name="StackPaneT" Grid.Column="3" Grid.Row="1" Style="{StaticResource StatisticsStackPanelStyle}" BorderThickness="1,1,1,2" >
+                                <TextBlock Text="T Rounds:" FontSize="20" FontWeight="SemiBold" />
+                                <Controls:GaugeChartGrid StartAngle="0" InnerRadius="25" OuterRadius="50" Margin="8" BackgroundRingColor="Aqua" Text="{Binding PercentWonTRounds}" isTextEnabled="True"
+                    			Angle1="{Binding PercentWonTRounds, Converter={StaticResource PercentToAngle}}" RingSliceColor1="{Binding Background, ElementName=TextBoxWonTRounds}"
+                    			Angle2="{Binding PercentLostTRounds, Converter={StaticResource PercentToAngle}}" RingSliceColor2="{Binding Background, ElementName=TextBoxLostTRounds}" />
+                                <TextBlock Text="Total:"/>
+                                <TextBox x:Name="TextBoxTotalTRounds" Style="{StaticResource TextBoxStyle1}" Text="{Binding TotalTRounds, Mode=TwoWay}" />
+                                <TextBlock Text="Won:"/>
+                                <TextBox x:Name="TextBoxWonTRounds" Style="{StaticResource TextBoxStyle1}" Text="{Binding WonTRounds}" Background="Green" />
+                                <TextBlock Text="Lost:"/>
+                                <TextBox x:Name="TextBoxLostTRounds" Style="{StaticResource TextBoxStyle1}" Text="{Binding LostTRounds}" Background="Red" />
+                            </StackPanel>
+                            <StackPanel x:Name="StackPanelStatsFrags" Grid.Column="4" Grid.Row="1" Style="{StaticResource StatisticsStackPanelStyle}" BorderThickness="1,1,2,2" >
+                                <TextBlock Text="Frags:" FontSize="20" FontWeight="SemiBold" />
+                                <Controls:GaugeChartGrid StartAngle="0" InnerRadius="25" OuterRadius="50" Margin="8" BackgroundRingColor="{Binding Background, ElementName=TextBoxTotalFrags}" Text="{Binding PercentHsFrags}" isTextEnabled="True"
+                    			Angle1="{Binding PercentHsFrags, Converter={StaticResource PercentToAngle}}" RingSliceColor1="{Binding Background, ElementName=TextBoxHeadshots}"/>
+                                <TextBlock Text="Total:"/>
+                                <TextBox x:Name="TextBoxTotalFrags" Style="{StaticResource TextBoxStyle1}" Text="{Binding TotalFrags}" />
+                                <TextBlock Text="Headshots:"/>
+                                <TextBox x:Name="TextBoxHeadshots" Style="{StaticResource TextBoxStyle1}" Text="{Binding HsFrags}" Background="Purple" />
+                                <TextBlock Text="Assists:"/>
+                                <TextBox x:Name="TextBoxAce" Style="{StaticResource TextBoxStyle1}" Text="{Binding Assists}" />
+                            </StackPanel>
+                        </Grid>
+                    </StackPanel>
+                </ScrollViewer>
+            </StackPanel>
+        </SplitView>
+    </Grid>
+</Page>

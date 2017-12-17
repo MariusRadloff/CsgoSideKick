@@ -1,0 +1,64 @@
+﻿<Page
+    x:Class="CsgoTactics.Views.AddMapPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:CsgoTactics"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+    <Page.DataContext>
+        <Binding Path="AddMapPageViewModel" Source="{StaticResource Locator}"/>
+    </Page.DataContext>
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" DataContext="{Binding Map}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="2*"/>
+        </Grid.ColumnDefinitions>
+        <TextBlock Grid.Row="0" Grid.Column="0" Text="Add Map" Width="auto" Height="auto" FontSize="60"/>
+        <StackPanel x:Name="MapInfo" Grid.Row="1" Grid.Column="0" Orientation="Horizontal">
+            <StackPanel Orientation="Vertical">
+                <TextBlock Text="Name der Map:"/>
+                <TextBox x:Name="TextBoxMapName" />
+                <TextBlock Text="Typ der Map:"/>
+                <ListBox x:Name="TextBoxMapType"/>
+            </StackPanel>
+            <StackPanel Orientation="Vertical">
+                <TextBlock Text="Bessere Seite:"/>
+                <TextBox x:Name="TextBoxMapTeam" />
+                <TextBlock Text="Beschreibung der Map:"/>
+                <ListBox x:Name="TextBoxDescription"/>
+            </StackPanel>
+        </StackPanel>
+        <StackPanel x:Name="MapStats" Grid.Row="2" Grid.Column="0" Orientation="Horizontal">
+            <StackPanel Orientation="Vertical">
+                <TextBlock Text="Rounds WON:"/>
+                <TextBox x:Name="TextBoxRoundsWon" />
+                <TextBlock Text="Rounds LOST:"/>
+                <ListBox x:Name="TextBoxRoundsLost"/>
+                <TextBlock Text="Rounds Tied:"/>
+                <ListBox x:Name="TextBoxRoundsTied"/>
+            </StackPanel>
+            <StackPanel Orientation="Vertical">
+                <TextBlock Text="Number of Headshots:"/>
+                <TextBox x:Name="TextBoxHeadshots" />
+                <TextBlock Text="Number of MVPs:"/>
+                <ListBox x:Name="TextBoxMVP"/>
+                <TextBlock Text="Number of Aces:"/>
+                <ListBox x:Name="TextBoxAce"/>
+            </StackPanel>
+        </StackPanel>
+        <StackPanel Grid.Row="0" Grid.Column="1" Background="AliceBlue">
+            <Button x:Name="ButtonAddIcon" Click="ButtonAddIcon_Click" Content="Select Icon"/>
+            <Image x:Name="ImagePreviewIcon" Source="{Binding MapImagePath}" Height="200" Width="200" />
+        </StackPanel>
+        <StackPanel Grid.Row="1" Grid.Column="1" Grid.RowSpan="2" Background="AliceBlue">
+            <Button x:Name="ButtonAddMap" Click="ButtonAddMap_Click" Content="Select Map Image"/>
+            <Image x:Name="ImagePreviewMapImg" Source="{Binding MapImagePath}" Height="500" Width="500"/>
+        </StackPanel>
+    </Grid>
+</Page>

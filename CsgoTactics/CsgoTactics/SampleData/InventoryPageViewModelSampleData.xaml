@@ -1,0 +1,400 @@
+﻿<ViewModels:InventoryPageViewModel xmlns:ViewModels="using:CsgoTactics.ViewModels" xmlns:SteamInventory="using:CsgoTactics.Models.SteamInventory" xmlns:WeaponSkins="using:CsgoTactics.Models.WeaponSkins" Text="Vestibulum curae">
+	<ViewModels:InventoryPageViewModel.Inventory>
+		<SteamInventory:Inventory InventoryString2="Class lobortis amet litora per" InventoryString1="Ligula habitasse nec non">
+			<SteamInventory:Inventory.SteamInventory>
+				<WeaponSkins:Skin Amount="Cras torquent leo vestibulum" AppId="Mus dictum" Background_color="Porttitor tincidunt" ClassId="Parturient sodales" Commodity="844.33" Float_value="916.82" Icon_large="Non per parturient vestibulum consequat" Icon_url_large="Ultrices lectus nunc vehicula" Icon="Phasellus nec enim sodales viverra" Id="Rhoncus hac urna" Icon_drag_url="Nec volutpat" Instanceid="Vestibulum velit cursus vitae" Icon_url="Duis viverra" Market_hash_name="Praesent integer per" Marketable="722.45" Market_tradable_restriction="Bibendum dictumst eleifend" Market_name="Himenaeos imperdiet" Name_color="Malesuada penatibus ante sed" Name="Non amet maecenas aliquam" Pos="750.21" Tradable="561.27" Type="Class libero accumsan tristique" Url="Leo rhoncus facilisi velit mus">
+					<WeaponSkins:Skin.Actions>
+						<WeaponSkins:Action Link="Vestibulum ipsum nostra non" Name="Mus nec"/>
+						<WeaponSkins:Action Link="Platea aliquet primis" Name="Erat elementum lobortis ornare"/>
+						<WeaponSkins:Action Link="Eros justo nascetur" Name="Per sed"/>
+						<WeaponSkins:Action Link="Sit vestibulum lacus adipiscing facilisis" Name="Sem blandit commodo pharetra"/>
+						<WeaponSkins:Action Link="Conubia pulvinar vel magna" Name="Fermentum placerat lorem rutrum nibh"/>
+					</WeaponSkins:Skin.Actions>
+					<WeaponSkins:Skin.Descriptions>
+						<WeaponSkins:Description Color="Vivamus parturient venenatis curae" Type="Sem arcu quisque" Value="Ultricies sit adipiscing"/>
+						<WeaponSkins:Description Color="Eget fusce adipiscing lorem" Type="Ligula donec diam facilisi" Value="Vestibulum etiam aliquam vestibulum"/>
+						<WeaponSkins:Description Color="Sed proin dis mattis vestibulum" Type="Vel vulputate litora morbi curabitur" Value="Luctus nam magnis parturient nulla"/>
+						<WeaponSkins:Description Color="Mollis consequat convallis" Type="Vestibulum mauris" Value="Elit augue phasellus adipiscing"/>
+						<WeaponSkins:Description Color="Leo dignissim felis interdum" Type="Faucibus est dolor hac enim" Value="Parturient montes fames habitant inceptos"/>
+					</WeaponSkins:Skin.Descriptions>
+					<WeaponSkins:Skin.Market_actions>
+						<WeaponSkins:MarketAction Link="Habitasse sapien parturient senectus egestas" Name="Fringilla cubilia nam sagittis dapibus"/>
+						<WeaponSkins:MarketAction Link="Massa sociis" Name="Euismod semper"/>
+						<WeaponSkins:MarketAction Link="Hendrerit sociosqu nisi tempor sed" Name="Taciti tellus"/>
+						<WeaponSkins:MarketAction Link="Nisl tortor nunc metus" Name="Dis est tempus"/>
+						<WeaponSkins:MarketAction Link="Hac himenaeos turpis imperdiet" Name="Vestibulum odio vestibulum suscipit"/>
+					</WeaponSkins:Skin.Market_actions>
+					<WeaponSkins:Skin.Tags>
+						<WeaponSkins:Tag Category="Ultrices varius" Color="Aenean mauris quam adipiscing" Category_name="Parturient nullam" Internal_name="Feugiat morbi" Name="Leo torquent orci mus pede"/>
+						<WeaponSkins:Tag Category="Volutpat aptent nec maecenas" Color="Urna vestibulum auctor lacinia" Category_name="Vestibulum neque laoreet non" Internal_name="Malesuada gravida vehicula quis" Name="Penatibus iaculis"/>
+						<WeaponSkins:Tag Category="Per tincidunt" Color="Sed sem" Category_name="Nulla vestibulum" Internal_name="Natoque adipiscing congue praesent cursus" Name="Cras parturient porttitor netus"/>
+						<WeaponSkins:Tag Category="Potenti nunc ultricies venenatis vel" Color="Nam sed amet" Category_name="Accumsan ante lectus arcu vestibulum" Internal_name="Tristique duis sit" Name="Dictum posuere"/>
+						<WeaponSkins:Tag Category="Elit pretium bibendum hac" Color="Dictumst vestibulum vestibulum eleifend ligula" Category_name="Vulputate curabitur adipiscing litora risus" Internal_name="Dis porta est adipiscing diam" Name="Eget libero purus parturient"/>
+					</WeaponSkins:Skin.Tags>
+				</WeaponSkins:Skin>
+				<WeaponSkins:Skin Amount="Sem luctus sit nisi" AppId="Vel habitant aliquam" Background_color="Mauris interdum" ClassId="Faucibus sed" Commodity="172.95" Float_value="863.4" Icon_large="Nec curae non" Icon_url_large="Vestibulum nam magnis quisque" Icon="Auctor mus facilisi vitae class" Id="Vestibulum convallis adipiscing erat" Icon_drag_url="Vestibulum class vivamus" Instanceid="Eros nibh" Icon_url="Vitae parturient integer" Market_hash_name="Parturient inceptos est hac vestibulum" Marketable="438.21" Market_tradable_restriction="Parturient donec" Market_name="Mattis leo elementum" Name_color="Facilisis fermentum curae fringilla" Name="Dignissim adipiscing sed dis" Pos="488.91" Tradable="121.81" Type="Vestibulum adipiscing lobortis mus aliquam" Url="Risus velit">
+					<WeaponSkins:Skin.Actions>
+						<WeaponSkins:Action Link="Ante sagittis" Name="Fusce rutrum penatibus vestibulum pulvinar"/>
+						<WeaponSkins:Action Link="Hac tincidunt diam" Name="Lorem dapibus adipiscing arcu porttitor"/>
+						<WeaponSkins:Action Link="Senectus elit semper enim" Name="Sapien eget egestas leo parturient"/>
+						<WeaponSkins:Action Link="Sociosqu ultricies" Name="Mus tristique euismod"/>
+						<WeaponSkins:Action Link="Nulla vestibulum vestibulum gravida" Name="Morbi venenatis feugiat"/>
+					</WeaponSkins:Skin.Actions>
+					<WeaponSkins:Skin.Descriptions>
+						<WeaponSkins:Description Color="Nascetur habitasse" Type="Nec mollis vestibulum" Value="Vestibulum montes nostra adipiscing aliquet"/>
+						<WeaponSkins:Description Color="Orci pede blandit ornare quam" Type="Nisl nunc odio non hendrerit" Value="Per sed"/>
+						<WeaponSkins:Description Color="Etiam sit imperdiet malesuada" Type="Pharetra placerat quis sem parturient" Value="Vestibulum platea vestibulum himenaeos"/>
+						<WeaponSkins:Description Color="Duis dis adipiscing est" Type="Urna vel" Value="Cras primis nam sed"/>
+						<WeaponSkins:Description Color="Cubilia vestibulum" Type="Commodo nunc conubia" Value="Amet parturient"/>
+					</WeaponSkins:Skin.Descriptions>
+					<WeaponSkins:Skin.Market_actions>
+						<WeaponSkins:MarketAction Link="Iaculis erat lacinia eros nec" Name="Adipiscing vulputate sociis parturient"/>
+						<WeaponSkins:MarketAction Link="Dolor laoreet" Name="Proin curabitur augue taciti phasellus"/>
+						<WeaponSkins:MarketAction Link="Vestibulum natoque consequat adipiscing posuere" Name="Vestibulum suscipit nibh nisi"/>
+						<WeaponSkins:MarketAction Link="Torquent tellus odio convallis pretium" Name="Non potenti nisl nunc"/>
+						<WeaponSkins:MarketAction Link="Tempus rhoncus sodales" Name="Tempor fames per sed"/>
+					</WeaponSkins:Skin.Market_actions>
+					<WeaponSkins:Skin.Tags>
+						<WeaponSkins:Tag Category="Vestibulum vestibulum justo viverra ultrices" Color="Vehicula elementum aliquam lacus adipiscing" Category_name="Integer lorem tortor quisque magna" Internal_name="Felis orci" Name="Dignissim parturient ipsum pede"/>
+						<WeaponSkins:Tag Category="Aenean fringilla quam maecenas" Color="Vivamus praesent mauris sit" Category_name="Vestibulum quis habitasse aliquam" Internal_name="Parturient massa facilisis volutpat turpis" Name="Fermentum varius sem"/>
+						<WeaponSkins:Tag Category="Adipiscing sed morbi" Color="Blandit hendrerit parturient" Category_name="Vestibulum neque" Internal_name="Metus vestibulum vel accumsan" Name="Aliquet nam"/>
+						<WeaponSkins:Tag Category="Vestibulum himenaeos imperdiet conubia dis" Color="Urna vestibulum" Category_name="Adipiscing parturient cubilia est" Internal_name="Netus vestibulum" Name="Adipiscing nulla parturient nullam commodo"/>
+						<WeaponSkins:Tag Category="Nunc aptent malesuada porta" Color="Dictumst penatibus" Category_name="Leo purus eleifend" Internal_name="Bibendum vestibulum" Name="Vestibulum hac cras duis"/>
+					</WeaponSkins:Skin.Tags>
+				</WeaponSkins:Skin>
+				<WeaponSkins:Skin Amount="Sem etiam arcu habitant porttitor" AppId="Sit cursus egestas diam fusce" Background_color="Nam nascetur" ClassId="Dapibus adipiscing per" Commodity="797.41" Float_value="692.27" Icon_large="Dignissim elementum" Icon_url_large="Vestibulum euismod dictum tristique ultricies" Icon="Adipiscing rhoncus nibh fusce" Id="Donec amet" Icon_drag_url="Inceptos morbi" Instanceid="Sed congue parturient faucibus ante" Icon_url="Vestibulum tincidunt eget lorem" Market_hash_name="Vel adipiscing" Marketable="493.11" Market_tradable_restriction="Consequat pharetra vestibulum" Market_name="Parturient lobortis feugiat" Name_color="Vulputate nulla elit curabitur proin" Name="Venenatis interdum" Pos="867.2" Tradable="678.96" Type="Vestibulum enim phasellus augue gravida" Url="Convallis eros">
+					<WeaponSkins:Skin.Actions>
+						<WeaponSkins:Action Link="Torquent vel nam parturient sed" Name="Vestibulum sit adipiscing"/>
+						<WeaponSkins:Action Link="Hac lacus leo mus mollis" Name="Facilisis dis mauris justo est"/>
+						<WeaponSkins:Action Link="Nostra nec vestibulum" Name="Sodales lorem montes"/>
+						<WeaponSkins:Action Link="Odio orci per volutpat fermentum" Name="Non ultrices ornare vehicula"/>
+						<WeaponSkins:Action Link="Vestibulum fringilla aliquam quam" Name="Viverra pede platea"/>
+					</WeaponSkins:Skin.Actions>
+					<WeaponSkins:Skin.Descriptions>
+						<WeaponSkins:Description Color="Hac parturient vestibulum" Type="Sed dis lectus est" Value="Erat adipiscing iaculis placerat lacinia"/>
+						<WeaponSkins:Description Color="Dignissim parturient" Type="Eros pulvinar nibh" Value="Convallis vestibulum libero adipiscing"/>
+						<WeaponSkins:Description Color="Natoque dolor vestibulum posuere elementum" Type="Leo nisi ligula" Value="Mus laoreet vestibulum litora sagittis"/>
+						<WeaponSkins:Description Color="Senectus sociosqu" Type="Potenti nec luctus adipiscing magnis" Value="Pretium fames"/>
+						<WeaponSkins:Description Color="Nunc parturient vestibulum sed sem" Type="Suscipit mattis nisl" Value="Rhoncus felis non per ipsum"/>
+					</WeaponSkins:Skin.Descriptions>
+					<WeaponSkins:Skin.Market_actions>
+						<WeaponSkins:MarketAction Link="Primis habitasse magna quis parturient" Name="Maecenas integer adipiscing"/>
+						<WeaponSkins:MarketAction Link="Hendrerit quisque vivamus sem vestibulum" Name="Praesent massa sed rutrum metus"/>
+						<WeaponSkins:MarketAction Link="Neque himenaeos" Name="Accumsan morbi bibendum"/>
+						<WeaponSkins:MarketAction Link="Aliquam aliquet" Name="Dictumst sit eleifend"/>
+						<WeaponSkins:MarketAction Link="Vel urna" Name="Vestibulum adipiscing"/>
+					</WeaponSkins:Skin.Market_actions>
+					<WeaponSkins:Skin.Tags>
+						<WeaponSkins:Tag Category="Cubilia dapibus vestibulum malesuada" Color="Nam egestas semper" Category_name="Vestibulum adipiscing euismod" Internal_name="Parturient sapien blandit" Name="Imperdiet commodo conubia cras facilisi"/>
+						<WeaponSkins:Tag Category="Amet tellus" Color="Dis porttitor" Category_name="Feugiat parturient tincidunt nulla tristique" Internal_name="Sociis sed duis nunc" Name="Taciti netus penatibus"/>
+						<WeaponSkins:Tag Category="Vestibulum curabitur ante" Color="Purus hac faucibus" Category_name="Tempus risus iaculis lacinia" Internal_name="Gravida ultricies porta venenatis" Name="Est tempor vulputate"/>
+						<WeaponSkins:Tag Category="Diam eget" Color="Adipiscing parturient natoque" Category_name="Elit tortor" Internal_name="Velit laoreet leo mus" Name="Phasellus vestibulum arcu nec vitae"/>
+						<WeaponSkins:Tag Category="Class curae" Color="Donec etiam per consequat" Category_name="Pretium vestibulum" Internal_name="Enim non posuere habitant erat" Name="Potenti vestibulum"/>
+					</WeaponSkins:Skin.Tags>
+				</WeaponSkins:Skin>
+				<WeaponSkins:Skin Amount="Turpis varius fermentum adipiscing aenean" AppId="Fringilla aliquam lobortis" Background_color="Vel integer parturient nulla quisque" ClassId="Inceptos nisi interdum vestibulum" Commodity="372.84" Float_value="235.36" Icon_large="Penatibus blandit commodo felis parturient" Icon_url_large="Hendrerit nunc nullam" Icon="Aliquet mus nunc" Id="Parturient sed facilisis" Icon_drag_url="Himenaeos parturient sit" Instanceid="Vestibulum sodales sem viverra" Icon_url="Habitasse mauris nascetur nisl lorem" Market_hash_name="Aptent orci pharetra placerat" Marketable="458.36" Market_tradable_restriction="Proin quam penatibus cursus" Market_name="Auctor vestibulum pulvinar sagittis" Name_color="Morbi congue imperdiet adipiscing pede" Name="Vestibulum odio" Pos="969.33" Tradable="596.14" Type="Malesuada senectus vivamus vestibulum" Url="Vestibulum leo fames congue adipiscing">
+					<WeaponSkins:Skin.Actions>
+						<WeaponSkins:Action Link="Torquent conubia" Name="Ante lorem venenatis"/>
+						<WeaponSkins:Action Link="Vehicula massa" Name="Arcu vulputate curabitur ultrices magna"/>
+						<WeaponSkins:Action Link="Ornare maecenas cubilia" Name="Diam parturient mus volutpat eget"/>
+						<WeaponSkins:Action Link="Metus platea morbi vestibulum" Name="Elit praesent"/>
+						<WeaponSkins:Action Link="Nec phasellus sapien" Name="Primis rutrum"/>
+					</WeaponSkins:Skin.Actions>
+					<WeaponSkins:Skin.Descriptions>
+						<WeaponSkins:Description Color="Cras augue nam duis sed" Type="Vestibulum adipiscing quis urna" Value="Parturient aliquam"/>
+						<WeaponSkins:Description Color="Adipiscing dolor" Type="Nunc dis vestibulum porttitor" Value="Est dictum vestibulum"/>
+						<WeaponSkins:Description Color="Felis aliquet litora" Type="Hac sociosqu suscipit lectus libero" Value="Ligula fames"/>
+						<WeaponSkins:Description Color="Ultricies adipiscing" Type="Tincidunt luctus parturient vestibulum vestibulum" Value="Tristique magnis amet blandit ipsum"/>
+						<WeaponSkins:Description Color="Commodo mollis lacus montes nostra" Type="Parturient justo vestibulum" Value="Leo mattis vestibulum adipiscing mauris"/>
+					</WeaponSkins:Skin.Descriptions>
+					<WeaponSkins:Skin.Market_actions>
+						<WeaponSkins:MarketAction Link="Dapibus consequat sociis" Name="Non semper"/>
+						<WeaponSkins:MarketAction Link="Per adipiscing sed" Name="Egestas euismod vestibulum"/>
+						<WeaponSkins:MarketAction Link="Nulla parturient dignissim" Name="Neque sem netus convallis"/>
+						<WeaponSkins:MarketAction Link="Bibendum elementum purus" Name="Accumsan porta vestibulum"/>
+						<WeaponSkins:MarketAction Link="Velit feugiat facilisis tellus" Name="Taciti vestibulum risus"/>
+					</WeaponSkins:Skin.Market_actions>
+					<WeaponSkins:Skin.Tags>
+						<WeaponSkins:Tag Category="Enim iaculis erat facilisi" Color="Tempor lacinia" Category_name="Faucibus sit" Internal_name="Dictumst fermentum fringilla gravida" Name="Adipiscing eleifend"/>
+						<WeaponSkins:Tag Category="Class potenti pretium" Color="Turpis rhoncus" Category_name="Nibh curae sodales" Internal_name="Tempus vitae eros" Name="Laoreet natoque tortor posuere"/>
+						<WeaponSkins:Tag Category="Nunc habitant parturient inceptos" Color="Habitasse odio" Category_name="Aliquam integer nullam" Internal_name="Nisi nisl varius donec aenean" Name="Mauris viverra"/>
+						<WeaponSkins:Tag Category="Himenaeos fusce lorem morbi" Color="Quis nulla aptent imperdiet sed" Category_name="Dis vivamus" Internal_name="Vel orci pede nam" Name="Quisque quam hendrerit vestibulum etiam"/>
+						<WeaponSkins:Tag Category="Lobortis adipiscing nascetur augue malesuada" Color="Parturient hac dolor" Category_name="Auctor vestibulum duis" Internal_name="Est proin urna" Name="Interdum vestibulum cras aliquam"/>
+					</WeaponSkins:Skin.Tags>
+				</WeaponSkins:Skin>
+				<WeaponSkins:Skin Amount="Placerat lectus dapibus libero" AppId="Diam vestibulum adipiscing ligula egestas" Background_color="Lacinia lacus enim mauris lorem" ClassId="Vestibulum cubilia ante" Commodity="415.04" Float_value="136.36" Icon_large="Bibendum sed lorem magnis" Icon_url_large="Eget euismod litora" Icon="Accumsan per lacus dapibus egestas" Id="Amet conubia nec cursus porttitor" Icon_drag_url="Feugiat gravida" Instanceid="Dictum pharetra arcu non" Icon_url="Per sed" Market_hash_name="Iaculis sagittis elit justo tincidunt" Marketable="808.54" Market_tradable_restriction="Suscipit torquent ultricies" Market_name="Senectus luctus" Name_color="Magnis mattis sit" Name="Pulvinar ipsum parturient sem" Pos="899.26" Tradable="962.59" Type="Vel mollis tristique sociosqu" Url="Parturient non fringilla luctus vestibulum">
+					<WeaponSkins:Skin.Actions>
+						<WeaponSkins:Action Link="Sodales facilisis fermentum" Name="Sed nisi nisl dignissim elementum"/>
+						<WeaponSkins:Action Link="Semper velit accumsan bibendum dictumst" Name="Praesent risus fringilla vestibulum viverra"/>
+						<WeaponSkins:Action Link="Tellus tempor facilisi adipiscing dis" Name="Vitae sociis taciti eleifend"/>
+						<WeaponSkins:Action Link="Faucibus vestibulum" Name="Est parturient hac vestibulum"/>
+						<WeaponSkins:Action Link="Odio adipiscing integer tempus" Name="Habitant aliquam nunc"/>
+					</WeaponSkins:Skin.Actions>
+					<WeaponSkins:Skin.Descriptions>
+						<WeaponSkins:Description Color="Ornare dis ultrices est platea" Type="Magna nam montes venenatis vulputate" Value="Nostra massa sed"/>
+						<WeaponSkins:Description Color="Leo posuere" Type="Hac metus morbi laoreet" Value="Natoque primis rutrum"/>
+						<WeaponSkins:Description Color="Neque netus curabitur nulla" Type="Potenti vehicula mus nec erat" Value="Pretium non vestibulum volutpat"/>
+						<WeaponSkins:Description Color="Porta rhoncus sapien" Type="Per phasellus sed consequat" Value="Sem sit"/>
+						<WeaponSkins:Description Color="Convallis nibh purus" Type="Maecenas vel" Value="Nam eros"/>
+					</WeaponSkins:Skin.Descriptions>
+					<WeaponSkins:Skin.Market_actions>
+						<WeaponSkins:MarketAction Link="Tortor nec" Name="Leo class mus habitasse curae"/>
+						<WeaponSkins:MarketAction Link="Vivamus inceptos" Name="Non donec turpis varius quisque"/>
+						<WeaponSkins:MarketAction Link="Orci malesuada aliquam" Name="Hendrerit aenean himenaeos imperdiet"/>
+						<WeaponSkins:MarketAction Link="Mauris per sed parturient" Name="Penatibus porttitor interdum"/>
+						<WeaponSkins:MarketAction Link="Aliquet lobortis sem tincidunt nullam" Name="Vestibulum pede"/>
+					</WeaponSkins:Skin.Market_actions>
+					<WeaponSkins:Skin.Tags>
+						<WeaponSkins:Tag Category="Pulvinar etiam" Color="Cras duis" Category_name="Vestibulum nunc fusce lorem" Internal_name="Quam nascetur pharetra quis urna" Name="Tristique sit placerat blandit"/>
+						<WeaponSkins:Tag Category="Vel diam" Color="Venenatis senectus" Category_name="Cursus vulputate nulla commodo" Internal_name="Ultricies sagittis adipiscing amet aptent" Name="Auctor morbi ante congue arcu"/>
+						<WeaponSkins:Tag Category="Sed dis vestibulum adipiscing est" Color="Curabitur phasellus elit" Category_name="Parturient dictum consequat enim convallis" Internal_name="Sociosqu eget suscipit parturient vestibulum" Name="Conubia nam proin"/>
+						<WeaponSkins:Tag Category="Adipiscing elementum" Color="Lectus facilisis" Category_name="Fames libero erat vehicula" Internal_name="Augue dolor vestibulum dignissim torquent" Name="Vestibulum cubilia ultrices"/>
+						<WeaponSkins:Tag Category="Eros nibh litora mus" Color="Ipsum justo" Category_name="Maecenas praesent nec" Internal_name="Fermentum volutpat ligula" Name="Hac leo felis"/>
+					</WeaponSkins:Skin.Tags>
+				</WeaponSkins:Skin>
+				<WeaponSkins:Skin Amount="Faucibus vestibulum nam habitasse" AppId="Mollis feugiat habitant nisi sed" Background_color="Primis rutrum" ClassId="Mattis eleifend" Commodity="716.98" Float_value="750.17" Icon_large="Hac leo nulla" Icon_url_large="Hendrerit iaculis adipiscing" Icon="Est netus" Id="Sem dictumst" Icon_drag_url="Massa parturient himenaeos" Instanceid="Euismod sit facilisi mauris vel" Icon_url="Magna inceptos gravida" Market_hash_name="Lacinia nostra metus vestibulum" Marketable="759.85" Market_tradable_restriction="Malesuada parturient" Market_name="Interdum ornare" Name_color="Platea vestibulum lobortis nisl laoreet" Name="Montes imperdiet" Pos="215.07" Tradable="218.41" Type="Adipiscing dis natoque" Url="Morbi neque porttitor">
+					<WeaponSkins:Skin.Actions>
+						<WeaponSkins:Action Link="Sagittis tortor sem phasellus senectus" Name="Tempus vestibulum vestibulum curabitur adipiscing"/>
+						<WeaponSkins:Action Link="Vestibulum vestibulum" Name="Sit class parturient quisque sociosqu"/>
+						<WeaponSkins:Action Link="Varius vivamus aenean curae vel" Name="Turpis quam"/>
+						<WeaponSkins:Action Link="Quis fusce mauris" Name="Suscipit donec adipiscing parturient etiam"/>
+						<WeaponSkins:Action Link="Aliquam aptent torquent duis" Name="Urna cras nullam"/>
+					</WeaponSkins:Skin.Actions>
+					<WeaponSkins:Skin.Descriptions>
+						<WeaponSkins:Description Color="Morbi nunc semper" Type="Nascetur pharetra penatibus sapien" Value="Posuere porttitor potenti vestibulum"/>
+						<WeaponSkins:Description Color="Odio viverra" Type="Neque pretium" Value="Netus nulla rhoncus sodales"/>
+						<WeaponSkins:Description Color="Vestibulum placerat" Type="Est hac leo orci" Value="Tincidunt aliquam"/>
+						<WeaponSkins:Description Color="Ultricies adipiscing per parturient" Type="Porta mus tristique sociis" Value="Taciti tellus nec non"/>
+						<WeaponSkins:Description Color="Velit pulvinar vitae pede vulputate" Type="Integer purus venenatis sed" Value="Risus tempor"/>
+					</WeaponSkins:Skin.Descriptions>
+					<WeaponSkins:Skin.Market_actions>
+						<WeaponSkins:MarketAction Link="Congue nam consequat aliquet" Name="Auctor lorem vestibulum morbi nunc"/>
+						<WeaponSkins:MarketAction Link="Sed ultrices ante vestibulum" Name="Blandit cursus dictum amet"/>
+						<WeaponSkins:MarketAction Link="Dis volutpat" Name="Vehicula adipiscing"/>
+						<WeaponSkins:MarketAction Link="Lectus accumsan est bibendum arcu" Name="Maecenas commodo praesent conubia"/>
+						<WeaponSkins:MarketAction Link="Eget nulla convallis elit dictumst" Name="Diam cubilia"/>
+					</WeaponSkins:Skin.Market_actions>
+					<WeaponSkins:Skin.Tags>
+						<WeaponSkins:Tag Category="Leo proin euismod parturient luctus" Color="Facilisis feugiat eleifend" Category_name="Magnis facilisi fermentum" Internal_name="Enim hac dapibus egestas" Name="Libero ligula litora dignissim elementum"/>
+						<WeaponSkins:Tag Category="Eros mattis augue vestibulum" Color="Dolor habitasse nibh mauris gravida" Category_name="Inceptos iaculis fames" Internal_name="Erat faucibus fringilla" Name="Habitant mus"/>
+						<WeaponSkins:Tag Category="Interdum lobortis" Color="Nostra adipiscing ornare" Category_name="Himenaeos nisl platea laoreet natoque" Internal_name="Mollis nisi felis nec" Name="Vestibulum hendrerit ipsum montes lacinia"/>
+						<WeaponSkins:Tag Category="Per imperdiet potenti odio sed" Color="Sem primis nascetur" Category_name="Orci lacus lorem" Internal_name="Justo parturient posuere" Name="Nunc non"/>
+						<WeaponSkins:Tag Category="Semper placerat" Color="Vestibulum sit penatibus" Category_name="Vel nam sed dis quam" Internal_name="Pede magna pharetra massa malesuada" Name="Rutrum metus sapien"/>
+					</WeaponSkins:Skin.Tags>
+				</WeaponSkins:Skin>
+				<WeaponSkins:Skin Amount="Tristique nunc sagittis adipiscing senectus" AppId="Mus ultricies purus" Background_color="Integer class suscipit consequat" ClassId="Sociis urna vestibulum" Commodity="219.55" Float_value="950.09" Icon_large="Platea faucibus parturient" Icon_url_large="Sociosqu amet non" Icon="Gravida iaculis ornare" Id="Quis porta" Icon_drag_url="Per taciti rhoncus parturient vestibulum" Instanceid="Cras pulvinar duis pretium tincidunt" Icon_url="Nec venenatis" Market_hash_name="Viverra diam vestibulum" Marketable="350.19" Market_tradable_restriction="Adipiscing eget quisque" Market_name="Sem risus vulputate curabitur tempor" Name_color="Aliquam tempus velit vitae phasellus" Name="Tellus ante sed sodales arcu" Pos="297.95" Tradable="416.28" Type="Curae sit" Url="Diam facilisi elementum">
+					<WeaponSkins:Skin.Actions>
+						<WeaponSkins:Action Link="Lobortis fringilla" Name="Interdum fermentum blandit"/>
+						<WeaponSkins:Action Link="Commodo nascetur nibh proin conubia" Name="Nulla non"/>
+						<WeaponSkins:Action Link="Dapibus adipiscing per" Name="Cubilia nisi auctor pharetra"/>
+						<WeaponSkins:Action Link="Sed sem placerat pulvinar" Name="Congue parturient cursus"/>
+						<WeaponSkins:Action Link="Euismod hendrerit" Name="Egestas habitasse sit"/>
+					</WeaponSkins:Skin.Actions>
+					<WeaponSkins:Skin.Descriptions>
+						<WeaponSkins:Description Color="Etiam elit torquent dignissim fusce" Type="Parturient donec" Value="Tortor convallis"/>
+						<WeaponSkins:Description Color="Nam turpis varius lorem" Type="Ultrices enim vestibulum" Value="Vel vehicula volutpat"/>
+						<WeaponSkins:Description Color="Sed accumsan eros bibendum vestibulum" Type="Aenean erat elementum maecenas" Value="Praesent vivamus"/>
+						<WeaponSkins:Description Color="Mauris nullam" Type="Dis dictumst est" Value="Hac morbi eleifend aliquam"/>
+						<WeaponSkins:Description Color="Aptent inceptos nec" Type="Facilisi faucibus" Value="Habitant leo aliquet mus facilisis"/>
+					</WeaponSkins:Skin.Descriptions>
+					<WeaponSkins:Skin.Market_actions>
+						<WeaponSkins:MarketAction Link="Nam vestibulum" Name="Sagittis vel"/>
+						<WeaponSkins:MarketAction Link="Nunc senectus odio dis" Name="Nisl dictum sed"/>
+						<WeaponSkins:MarketAction Link="Est pede quam feugiat" Name="Himenaeos orci"/>
+						<WeaponSkins:MarketAction Link="Augue dolor quis urna" Name="Sociosqu vestibulum gravida imperdiet"/>
+						<WeaponSkins:MarketAction Link="Hac leo malesuada fames iaculis" Name="Suscipit lectus"/>
+					</WeaponSkins:Skin.Market_actions>
+					<WeaponSkins:Skin.Tags>
+						<WeaponSkins:Tag Category="Litora penatibus luctus nunc porttitor" Color="Ultrices tincidunt adipiscing laoreet natoque" Category_name="Nec non per sed" Internal_name="Mus libero torquent" Name="Lacinia ligula felis cras duis"/>
+						<WeaponSkins:Tag Category="Sem sit" Color="Vel tristique ultricies potenti" Category_name="Maecenas venenatis magnis pretium" Internal_name="Parturient ipsum vehicula" Name="Vestibulum volutpat posuere"/>
+						<WeaponSkins:Tag Category="Sed vestibulum dis justo sodales" Color="Adipiscing viverra mattis aliquam" Category_name="Vulputate lacus" Internal_name="Praesent amet" Name="Rhoncus accumsan nam"/>
+						<WeaponSkins:Tag Category="Ante mollis dictumst aliquam magna" Color="Massa parturient vestibulum" Category_name="Aliquet vestibulum phasellus consequat blandit" Internal_name="Mauris est integer lorem" Name="Curabitur quisque vivamus bibendum"/>
+						<WeaponSkins:Tag Category="Cubilia dapibus egestas hac" Color="Euismod leo feugiat" Category_name="Metus mus dignissim" Internal_name="Montes adipiscing convallis nostra" Name="Eleifend commodo arcu conubia"/>
+					</WeaponSkins:Skin.Tags>
+				</WeaponSkins:Skin>
+				<WeaponSkins:Skin Amount="Elit sed primis" AppId="Sem inceptos" Background_color="Natoque posuere pharetra potenti vestibulum" ClassId="Non habitant per eget" Commodity="801.5" Float_value="173.44" Icon_large="Penatibus mauris" Icon_url_large="Rutrum fringilla" Icon="Varius malesuada aenean pharetra enim" Id="Lacinia vestibulum nec laoreet facilisis" Icon_drag_url="Morbi neque interdum" Instanceid="Fermentum vestibulum" Icon_url="Adipiscing enim" Market_hash_name="Lobortis vel nascetur" Marketable="846.76" Market_tradable_restriction="Vestibulum dis porta semper erat" Market_name="Habitasse netus" Name_color="Nulla nam parturient" Name="Sapien sit" Pos="666.23" Tradable="592.67" Type="Placerat sed" Url="Hac vestibulum posuere leo nascetur">
+					<WeaponSkins:Skin.Actions>
+						<WeaponSkins:Action Link="Tincidunt mauris" Name="Torquent non per"/>
+						<WeaponSkins:Action Link="Auctor tristique vehicula adipiscing congue" Name="Sed curae nullam ultrices aptent"/>
+						<WeaponSkins:Action Link="Parturient dictum sem rhoncus orci" Name="Odio cursus donec"/>
+						<WeaponSkins:Action Link="Ultricies fusce sodales viverra" Name="Vestibulum lectus etiam libero"/>
+						<WeaponSkins:Action Link="Aliquam venenatis ligula vulputate litora" Name="Vestibulum pede"/>
+					</WeaponSkins:Skin.Actions>
+					<WeaponSkins:Skin.Descriptions>
+						<WeaponSkins:Description Color="Risus parturient vestibulum senectus velit" Type="Pulvinar est purus hendrerit" Value="Adipiscing sagittis"/>
+						<WeaponSkins:Description Color="Taciti himenaeos nibh tellus" Type="Eros sociosqu sociis" Value="Hac vestibulum adipiscing vitae parturient"/>
+						<WeaponSkins:Description Color="Tortor malesuada nisi vestibulum" Type="Imperdiet tempor leo" Value="Mus tempus"/>
+						<WeaponSkins:Description Color="Penatibus vestibulum" Type="Nisl nunc" Value="Turpis pretium"/>
+						<WeaponSkins:Description Color="Varius vestibulum aenean" Type="Porttitor suscipit adipiscing nec" Value="Parturient vestibulum class"/>
+					</WeaponSkins:Skin.Descriptions>
+					<WeaponSkins:Skin.Market_actions>
+						<WeaponSkins:MarketAction Link="Phasellus lorem quisque parturient" Name="Integer quam curabitur adipiscing"/>
+						<WeaponSkins:MarketAction Link="Consequat luctus" Name="Vestibulum sit volutpat"/>
+						<WeaponSkins:MarketAction Link="Nam convallis" Name="Vel vivamus magnis mattis"/>
+						<WeaponSkins:MarketAction Link="Quis urna dignissim" Name="Sed morbi dis aliquam aliquet"/>
+						<WeaponSkins:MarketAction Link="Leo nulla vestibulum maecenas praesent" Name="Mauris blandit est hac"/>
+					</WeaponSkins:Skin.Market_actions>
+					<WeaponSkins:Skin.Tags>
+						<WeaponSkins:Tag Category="Augue mus" Color="Nostra duis conubia ornare" Category_name="Facilisis nunc bibendum cubilia fermentum" Internal_name="Commodo cras accumsan" Name="Elementum mollis montes proin"/>
+						<WeaponSkins:Tag Category="Nec dolor adipiscing" Color="Non dapibus" Category_name="Rutrum sapien fames fringilla habitasse" Internal_name="Amet platea dictumst" Name="Ante eleifend facilisi primis"/>
+						<WeaponSkins:Tag Category="Faucibus sed" Color="Ipsum sem himenaeos vestibulum sociis" Category_name="Feugiat gravida" Internal_name="Felis semper per egestas parturient" Name="Hendrerit arcu euismod"/>
+						<WeaponSkins:Tag Category="Vel tempor lacus nam tempus" Color="Lorem tortor sed habitant magna" Category_name="Iaculis vestibulum" Internal_name="Imperdiet justo" Name="Sit taciti tellus"/>
+						<WeaponSkins:Tag Category="Inceptos turpis interdum dis" Color="Laoreet elit parturient natoque" Category_name="Est lobortis" Internal_name="Adipiscing diam" Name="Lacinia eget massa"/>
+					</WeaponSkins:Skin.Tags>
+				</WeaponSkins:Skin>
+				<WeaponSkins:Skin Amount="Porttitor non erat per" AppId="Morbi potenti" Background_color="Sodales suscipit" ClassId="Placerat metus" Commodity="365.74" Float_value="347.71" Icon_large="Quam mus" Icon_url_large="Aptent auctor" Icon="Ligula litora orci pede" Id="Vestibulum mus" Icon_drag_url="Eros neque pretium congue sociosqu" Instanceid="Nec nullam" Icon_url="Pulvinar sagittis senectus" Market_hash_name="Nibh netus adipiscing" Marketable="561.48" Market_tradable_restriction="Nisi viverra torquent" Market_name="Rhoncus sem" Name_color="Tincidunt tristique sit dictum nulla" Name="Cursus sed" Pos="457.42" Tradable="833.45" Type="Porta purus" Url="Libero hac parturient netus leo">
+					<WeaponSkins:Skin.Actions>
+						<WeaponSkins:Action Link="Vestibulum mollis" Name="Convallis nec dignissim"/>
+						<WeaponSkins:Action Link="Quisque parturient proin augue" Name="Elementum nulla adipiscing montes"/>
+						<WeaponSkins:Action Link="Vivamus nostra" Name="Non vestibulum accumsan"/>
+						<WeaponSkins:Action Link="Facilisis fermentum" Name="Ornare bibendum per sed sem"/>
+						<WeaponSkins:Action Link="Dictumst fringilla primis rutrum" Name="Platea sit"/>
+					</WeaponSkins:Skin.Actions>
+					<WeaponSkins:Skin.Descriptions>
+						<WeaponSkins:Description Color="Ligula vestibulum" Type="Parturient lectus vel" Value="Ultrices vestibulum libero nam ultricies"/>
+						<WeaponSkins:Description Color="Vulputate aliquam" Type="Litora venenatis risus adipiscing" Value="Nisl vehicula volutpat nunc"/>
+						<WeaponSkins:Description Color="Sed quam dis curabitur phasellus" Type="Velit parturient vitae odio" Value="Class orci curae pede vestibulum"/>
+						<WeaponSkins:Description Color="Maecenas integer consequat magnis cras" Type="Luctus quis donec etiam" Value="Urna vestibulum adipiscing"/>
+						<WeaponSkins:Description Color="Duis vestibulum mauris" Type="Est fusce lorem hac praesent" Value="Leo morbi parturient mattis mus"/>
+					</WeaponSkins:Skin.Descriptions>
+					<WeaponSkins:Skin.Market_actions>
+						<WeaponSkins:MarketAction Link="Habitasse nam" Name="Vel sapien vestibulum semper"/>
+						<WeaponSkins:MarketAction Link="Sed dis amet eleifend facilisi" Name="Hendrerit nunc"/>
+						<WeaponSkins:MarketAction Link="Felis imperdiet aliquam faucibus ante" Name="Dolor himenaeos fames est sociis"/>
+						<WeaponSkins:MarketAction Link="Parturient inceptos aliquet arcu vestibulum" Name="Ipsum habitant adipiscing hac leo"/>
+						<WeaponSkins:MarketAction Link="Mus commodo" Name="Diam vestibulum malesuada taciti blandit"/>
+					</WeaponSkins:Skin.Market_actions>
+					<WeaponSkins:Skin.Tags>
+						<WeaponSkins:Tag Category="Tempus cubilia" Color="Nec non" Category_name="Per eget" Internal_name="Interdum justo tellus conubia" Name="Adipiscing tempor"/>
+						<WeaponSkins:Tag Category="Egestas nascetur" Color="Parturient sed" Category_name="Porttitor elit lorem euismod" Internal_name="Dapibus lobortis penatibus" Name="Tortor lacus"/>
+						<WeaponSkins:Tag Category="Mauris placerat sit magna enim" Color="Feugiat nullam massa gravida" Category_name="Aptent vel adipiscing pulvinar metus" Internal_name="Sem pharetra turpis varius" Name="Vestibulum vestibulum aenean"/>
+						<WeaponSkins:Tag Category="Tincidunt parturient nam lacinia" Color="Vestibulum sed erat dis vestibulum" Category_name="Senectus adipiscing eros" Internal_name="Sagittis morbi" Name="Auctor congue iaculis"/>
+						<WeaponSkins:Tag Category="Nisl neque dictum posuere suscipit" Color="Nunc potenti" Category_name="Odio lectus" Internal_name="Est nibh laoreet tristique" Name="Ultricies natoque cursus nisi sociosqu"/>
+					</WeaponSkins:Skin.Tags>
+				</WeaponSkins:Skin>
+				<WeaponSkins:Skin Amount="Vulputate adipiscing" AppId="Porta parturient vehicula volutpat maecenas" Background_color="Mollis montes convallis dictumst sit" ClassId="Torquent ultrices nulla vestibulum venenatis" Commodity="855.14" Float_value="990.52" Icon_large="Vitae mus dapibus" Icon_url_large="Viverra risus curabitur velit phasellus" Icon="Leo inceptos parturient interdum" Id="Luctus pretium" Icon_drag_url="Per sed vitae" Instanceid="Nec rhoncus vestibulum" Icon_url="Non purus vestibulum sodales vestibulum" Market_hash_name="Praesent integer consequat" Marketable="778.45" Market_tradable_restriction="Adipiscing platea" Market_name="Duis accumsan mattis quisque" Name_color="Vivamus mauris bibendum sem aliquam" Name="Aliquam magnis quis urna cras" Pos="818.33" Tradable="278.78" Type="Dignissim class nostra ornare" Url="Fringilla velit">
+					<WeaponSkins:Skin.Actions>
+						<WeaponSkins:Action Link="Vestibulum diam" Name="Mus tellus"/>
+						<WeaponSkins:Action Link="Tempor adipiscing" Name="Placerat pulvinar imperdiet malesuada penatibus"/>
+						<WeaponSkins:Action Link="Vestibulum sagittis" Name="Fames parturient"/>
+						<WeaponSkins:Action Link="Tempus elit porttitor felis" Name="Eget senectus"/>
+						<WeaponSkins:Action Link="Non euismod" Name="Tortor nec egestas"/>
+					</WeaponSkins:Skin.Actions>
+					<WeaponSkins:Skin.Descriptions>
+						<WeaponSkins:Description Color="Sed facilisi parturient" Type="Elementum vel nunc eleifend" Value="Nam curae donec etiam facilisis"/>
+						<WeaponSkins:Description Color="Est rutrum hac faucibus habitant" Type="Dis vestibulum" Value="Fermentum aliquet primis"/>
+						<WeaponSkins:Description Color="Interdum fringilla lobortis" Type="Inceptos fusce blandit lorem commodo" Value="Sapien conubia vestibulum"/>
+						<WeaponSkins:Description Color="Proin dapibus nascetur sociis" Type="Amet adipiscing ante semper habitasse" Value="Cubilia morbi arcu nulla"/>
+						<WeaponSkins:Description Color="Vestibulum himenaeos" Type="Pharetra hendrerit augue dolor parturient" Value="Taciti leo"/>
+					</WeaponSkins:Skin.Descriptions>
+					<WeaponSkins:Skin.Market_actions>
+						<WeaponSkins:MarketAction Link="Erat tristique sociosqu turpis" Name="Tincidunt enim ipsum vestibulum"/>
+						<WeaponSkins:MarketAction Link="Feugiat gravida" Name="Adipiscing suscipit"/>
+						<WeaponSkins:MarketAction Link="Eros venenatis nibh vulputate parturient" Name="Ultricies iaculis varius lacinia aenean"/>
+						<WeaponSkins:MarketAction Link="Per curabitur nisl mauris torquent" Name="Laoreet nisi justo"/>
+						<WeaponSkins:MarketAction Link="Natoque nullam vestibulum" Name="Lacus lorem sed nunc vestibulum"/>
+					</WeaponSkins:Skin.Market_actions>
+					<WeaponSkins:Skin.Tags>
+						<WeaponSkins:Tag Category="Sit ultrices pretium auctor phasellus" Color="Parturient vestibulum" Category_name="Consequat vestibulum" Internal_name="Odio orci" Name="Posuere aptent sem adipiscing potenti"/>
+						<WeaponSkins:Tag Category="Quam adipiscing" Color="Rhoncus parturient" Category_name="Quis congue" Internal_name="Vehicula convallis" Name="Volutpat pede maecenas"/>
+						<WeaponSkins:Tag Category="Nam accumsan" Color="Integer massa vestibulum quisque" Category_name="Vivamus urna" Internal_name="Magna sodales" Name="Viverra praesent dignissim vel aliquam"/>
+						<WeaponSkins:Tag Category="Aliquam cras aliquet sed vestibulum" Color="Neque netus adipiscing duis" Category_name="Dis blandit elementum commodo nulla" Internal_name="Metus morbi bibendum dictumst" Name="Eleifend cursus"/>
+						<WeaponSkins:Tag Category="Parturient est porta purus vestibulum" Color="Hac cubilia lectus vestibulum habitant" Category_name="Fermentum risus libero adipiscing" Internal_name="Conubia nunc facilisis" Name="Facilisi faucibus dictum"/>
+					</WeaponSkins:Skin.Tags>
+				</WeaponSkins:Skin>
+			</SteamInventory:Inventory.SteamInventory>
+		</SteamInventory:Inventory>
+	</ViewModels:InventoryPageViewModel.Inventory>
+	<ViewModels:InventoryPageViewModel.SelectedItem>
+		<WeaponSkins:Skin Amount="Class curabitur" AppId="Aptent auctor" Background_color="Lectus elementum inceptos" ClassId="Aliquam nam sed" Commodity="145.72" Float_value="729.44" Icon_large="Quis congue vestibulum adipiscing" Icon_url_large="Duis parturient congue phasellus" Icon="Purus risus pretium" Id="Cras aenean" Icon_drag_url="Integer bibendum donec" Instanceid="Maecenas praesent mauris nullam" Icon_url="Accumsan curae vestibulum adipiscing" Market_hash_name="Facilisi consequat vestibulum" Marketable="602.91" Market_tradable_restriction="Adipiscing nunc parturient" Market_name="Cursus dis dictum est convallis" Name_color="Dignissim faucibus habitant" Name="Dictumst eleifend quisque" Pos="303.65" Tradable="509.79" Type="Vestibulum vivamus libero etiam" Url="Auctor quam est potenti">
+			<WeaponSkins:Skin.Actions>
+				<WeaponSkins:Action Link="Cras blandit habitant commodo" Name="Mus aliquam nec aliquet"/>
+				<WeaponSkins:Action Link="Non per duis" Name="Dignissim inceptos"/>
+				<WeaponSkins:Action Link="Tempor parturient" Name="Tellus nunc elementum"/>
+				<WeaponSkins:Action Link="Fringilla habitasse hendrerit nascetur" Name="Facilisis interdum lobortis vestibulum fermentum"/>
+				<WeaponSkins:Action Link="Tempus conubia tortor cubilia vestibulum" Name="Amet sed pharetra metus"/>
+				<WeaponSkins:Action Link="Turpis himenaeos" Name="Morbi dapibus ante adipiscing sem"/>
+				<WeaponSkins:Action Link="Parturient malesuada placerat egestas diam" Name="Arcu imperdiet sit"/>
+				<WeaponSkins:Action Link="Eget penatibus elit" Name="Pulvinar sagittis varius vel"/>
+				<WeaponSkins:Action Link="Euismod aenean nam mauris feugiat" Name="Porttitor neque vestibulum"/>
+				<WeaponSkins:Action Link="Vestibulum enim iaculis tristique senectus" Name="Gravida tincidunt"/>
+			</WeaponSkins:Skin.Actions>
+			<WeaponSkins:Skin.Descriptions>
+				<WeaponSkins:Description Color="Lorem morbi" Type="Vestibulum facilisis fusce hac amet" Value="Ante interdum lobortis nascetur arcu">
+					<WeaponSkins:Description.App_data>
+						<WeaponSkins:App_data Def_index="Diam vestibulum pharetra aliquam fermentum" Is_Itemset_name="100.4" Limited="680.82"/>
+					</WeaponSkins:Description.App_data>
+				</WeaponSkins:Description>
+				<WeaponSkins:Description Color="Eget himenaeos imperdiet adipiscing" Type="Fringilla leo ligula" Value="Habitasse aliquet nulla proin hendrerit">
+					<WeaponSkins:Description.App_data>
+						<WeaponSkins:App_data Def_index="Augue mus malesuada blandit" Is_Itemset_name="672.54" Limited="510.56"/>
+					</WeaponSkins:Description.App_data>
+				</WeaponSkins:Description>
+				<WeaponSkins:Description Color="Dolor enim erat luctus" Type="Commodo placerat nec" Value="Conubia litora parturient elit">
+					<WeaponSkins:Description.App_data>
+						<WeaponSkins:App_data Def_index="Fames eros pulvinar sagittis" Is_Itemset_name="509.5" Limited="335.67"/>
+					</WeaponSkins:Description.App_data>
+				</WeaponSkins:Description>
+				<WeaponSkins:Description Color="Sed nibh vestibulum mauris vestibulum" Type="Felis non cubilia dapibus" Value="Penatibus porttitor per magnis mattis">
+					<WeaponSkins:Description.App_data>
+						<WeaponSkins:App_data Def_index="Senectus mollis nisi" Is_Itemset_name="823.31" Limited="511.66"/>
+					</WeaponSkins:Description.App_data>
+				</WeaponSkins:Description>
+				<WeaponSkins:Description Color="Adipiscing montes" Type="Egestas sociosqu" Value="Euismod nisl feugiat">
+					<WeaponSkins:Description.App_data>
+						<WeaponSkins:App_data Def_index="Parturient tincidunt sem suscipit nostra" Is_Itemset_name="530.37" Limited="696.86"/>
+					</WeaponSkins:Description.App_data>
+				</WeaponSkins:Description>
+				<WeaponSkins:Description Color="Adipiscing venenatis laoreet ipsum" Type="Tristique vestibulum torquent gravida sit" Value="Iaculis vestibulum ultricies lacinia">
+					<WeaponSkins:Description.App_data>
+						<WeaponSkins:App_data Def_index="Natoque ornare nunc" Is_Itemset_name="428.69" Limited="992.75"/>
+					</WeaponSkins:Description.App_data>
+				</WeaponSkins:Description>
+				<WeaponSkins:Description Color="Posuere volutpat vel orci maecenas" Type="Parturient vulputate platea primis ultrices" Value="Justo vehicula rutrum odio">
+					<WeaponSkins:Description.App_data>
+						<WeaponSkins:App_data Def_index="Nam praesent sapien sed" Is_Itemset_name="926.67" Limited="311.44"/>
+					</WeaponSkins:Description.App_data>
+				</WeaponSkins:Description>
+				<WeaponSkins:Description Color="Bibendum pretium dictumst eleifend vestibulum" Type="Accumsan dis potenti" Value="Lacus lorem semper">
+					<WeaponSkins:Description.App_data>
+						<WeaponSkins:App_data Def_index="Vestibulum adipiscing" Is_Itemset_name="976.19" Limited="470.73"/>
+					</WeaponSkins:Description.App_data>
+				</WeaponSkins:Description>
+				<WeaponSkins:Description Color="Quam sociis aliquam curabitur vestibulum" Type="Est rhoncus magna parturient vestibulum" Value="Sodales pede facilisi viverra massa">
+					<WeaponSkins:Description.App_data>
+						<WeaponSkins:App_data Def_index="Faucibus phasellus adipiscing" Is_Itemset_name="824.47" Limited="586.66"/>
+					</WeaponSkins:Description.App_data>
+				</WeaponSkins:Description>
+				<WeaponSkins:Description Color="Taciti integer" Type="Hac quis" Value="Urna consequat">
+					<WeaponSkins:Description.App_data>
+						<WeaponSkins:App_data Def_index="Quisque vivamus leo convallis" Is_Itemset_name="759.62" Limited="404.96"/>
+					</WeaponSkins:Description.App_data>
+				</WeaponSkins:Description>
+			</WeaponSkins:Skin.Descriptions>
+			<WeaponSkins:Skin.Market_actions>
+				<WeaponSkins:MarketAction Link="Adipiscing venenatis parturient vestibulum nullam" Name="Ultricies lacinia netus erat sociosqu"/>
+				<WeaponSkins:MarketAction Link="Torquent sed" Name="Laoreet natoque suscipit"/>
+				<WeaponSkins:MarketAction Link="Vestibulum hac posuere leo" Name="Aptent auctor dis est vulputate"/>
+				<WeaponSkins:MarketAction Link="Mus adipiscing cursus nec" Name="Ultrices vehicula eros congue"/>
+				<WeaponSkins:MarketAction Link="Vestibulum curabitur volutpat vestibulum" Name="Nulla parturient"/>
+				<WeaponSkins:MarketAction Link="Dictum adipiscing per phasellus lectus" Name="Nibh nisi non"/>
+				<WeaponSkins:MarketAction Link="Libero ligula potenti" Name="Maecenas parturient"/>
+				<WeaponSkins:MarketAction Link="Vestibulum consequat" Name="Nisl litora"/>
+				<WeaponSkins:MarketAction Link="Luctus vestibulum dignissim" Name="Convallis sed nunc"/>
+				<WeaponSkins:MarketAction Link="Adipiscing parturient magnis purus" Name="Porta elementum"/>
+			</WeaponSkins:Skin.Market_actions>
+			<WeaponSkins:Skin.Tags>
+				<WeaponSkins:Tag Category="Fringilla mauris" Color="Sem mollis odio orci" Category_name="Sit velit vestibulum bibendum" Internal_name="Praesent facilisis risus accumsan" Name="Mattis vestibulum fermentum"/>
+				<WeaponSkins:Tag Category="Ornare dictumst" Color="Sodales adipiscing quis" Category_name="Platea urna parturient" Internal_name="Montes vitae pretium class pede" Name="Quam habitasse rhoncus nostra curae"/>
+				<WeaponSkins:Tag Category="Duis viverra nunc donec facilisi" Color="Faucibus vestibulum etiam" Category_name="Vestibulum primis fusce amet aliquam" Internal_name="Vel cras" Name="Eleifend nam"/>
+				<WeaponSkins:Tag Category="Vestibulum inceptos" Color="Rutrum sed vestibulum dis" Category_name="Lorem hendrerit adipiscing est" Internal_name="Integer adipiscing parturient quisque" Name="Habitant vivamus ante"/>
+				<WeaponSkins:Tag Category="Arcu imperdiet sapien leo" Color="Aliquam diam proin mus augue" Category_name="Semper dolor aliquet" Internal_name="Morbi himenaeos parturient nulla" Name="Hac vestibulum"/>
+				<WeaponSkins:Tag Category="Tempor conubia" Color="Tempus elit felis malesuada" Category_name="Enim cubilia erat" Internal_name="Sociis fames taciti tellus interdum" Name="Blandit nec commodo eget non"/>
+				<WeaponSkins:Tag Category="Turpis tincidunt varius tristique" Color="Ultricies lacus nascetur pharetra" Category_name="Venenatis per" Internal_name="Ipsum dapibus vestibulum lobortis penatibus" Name="Eros tortor egestas porttitor justo"/>
+				<WeaponSkins:Tag Category="Curabitur nullam phasellus pulvinar magna" Color="Sed parturient feugiat gravida" Category_name="Iaculis nisl massa sem nunc" Internal_name="Lorem nibh euismod vulputate" Name="Nisi aenean adipiscing placerat mauris"/>
+				<WeaponSkins:Tag Category="Neque laoreet elementum" Color="Sit vestibulum vel natoque" Category_name="Aptent netus senectus" Internal_name="Metus consequat morbi vestibulum convallis" Name="Sagittis dignissim lacinia odio"/>
+				<WeaponSkins:Tag Category="Fermentum fringilla sed dis suscipit" Color="Habitasse nulla parturient" Category_name="Porta vestibulum hendrerit" Internal_name="Orci adipiscing" Name="Facilisis posuere nam pede sociosqu"/>
+			</WeaponSkins:Skin.Tags>
+		</WeaponSkins:Skin>
+	</ViewModels:InventoryPageViewModel.SelectedItem>
+</ViewModels:InventoryPageViewModel>

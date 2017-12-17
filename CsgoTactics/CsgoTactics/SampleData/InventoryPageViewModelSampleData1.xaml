@@ -1,0 +1,5 @@
+﻿<ViewModels:InventoryPageViewModel xmlns:ViewModels="using:CsgoTactics.ViewModels" xmlns:SteamInventory="using:CsgoTactics.Models.SteamInventory" State="Error">
+	<ViewModels:InventoryPageViewModel.Inventory>
+		<SteamInventory:Inventory InventoryString2="Porttitor facilisi per conubia" InventoryString1="Penatibus commodo urna vestibulum non"/>
+	</ViewModels:InventoryPageViewModel.Inventory>
+</ViewModels:InventoryPageViewModel>

@@ -1,0 +1,30 @@
+﻿<Page
+    x:Class="CsgoTactics.Views.InGameLivePageScenarios.Scenario3_Armor"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:CsgoTactics.Views.InGameLivePageScenarios"
+    xmlns:controls="using:CsgoTactics.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <StackPanel>
+            <Border Style="{StaticResource ScenarioHeaderBorderStyle}">
+                <TextBlock Text="Armor" Style="{StaticResource SampleHeaderTextStyle}" />
+            </Border>
+            <ScrollViewer x:Name="RootScrollViewer" Style="{StaticResource RootScrollViewerStyle}">
+                <StackPanel Orientation="Vertical">
+                    <StackPanel Orientation="Horizontal">
+                        <controls:EquipmentPresenter Style="{StaticResource EquipentPresenterStyle}" Width="500"
+                            EquipmentType="Kevlar" EquipmentPictureUri="ms-appx:///Images/Equipment/NoImage.png" 
+                            EquipmentName="" EquipmentCurrentValue="25" EquipmentTotalValue="100" PresenterType="Armor" />
+                        <controls:EquipmentPresenter Style="{StaticResource EquipentPresenterStyle}" Width="500"
+                            EquipmentType="Helmet" EquipmentPictureUri="ms-appx:///Images/Equipment/NoImage.png" 
+                            EquipmentName="" EquipmentCurrentValue="0" EquipmentTotalValue="100" PresenterType="Armor" />
+                    </StackPanel>
+                </StackPanel>
+            </ScrollViewer>
+        </StackPanel>
+    </Grid>
+</Page>

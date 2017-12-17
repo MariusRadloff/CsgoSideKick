@@ -1,0 +1,322 @@
+﻿<Page
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:CsgoTactics.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:Data="using:CsgoTactics.Models"
+    xmlns:Controls="using:CsgoTactics.Controls"
+    xmlns:Converters="using:CsgoTactics.Converters"
+    xmlns:ViewModels="using:CsgoTactics.ViewModels"
+    xmlns:System="using:System"
+    x:Class="CsgoTactics.Views.InventoryPage"
+    d:DataContext="{d:DesignData /SampleData/InventoryPageViewModelSampleData1.xaml}"
+    mc:Ignorable="d">
+    <Page.Resources>
+        <Converters:InventoryStateToBool x:Key="InventoryStateToBool"/>
+        <Converters:ObjektIsNullToBool x:Key="ObjektIsNullToBool"/>
+        <Converters:IsCheckedToVisibility x:Key="IsCheckedToVisibility"/>
+        <Converters:BoolToSymbolIcon x:Key="BoolToSymbolIcon"/>
+        <Converters:DataContextIsWeaponSkinToBool x:Key="DataContextIsWeaponSkinToBool"/>
+        <Converters:DataContextIsWeaponSkinToVisibility x:Key="DataContextIsWeaponSkinToVisibility"/>
+        <Style x:Key="InventoryListViewItemContainerStyleTemplate" TargetType="ListViewItem">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ListViewItem">
+                        <ListViewItemPresenter ContentMargin="4"/>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="InventoryGroupListViewItemContainerStyleTemplate" TargetType="ListViewItem">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ListViewItem">
+                        <ListViewItemPresenter ContentMargin="0" Height="25" Margin="0" Padding="0"/>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <DataTemplate x:Key="InventoryGroupListViewItemTemplate">
+            <StackPanel Height="auto" Width="500" Orientation="Horizontal" BorderBrush="{Binding InvGroup[0].Name_color}" Background="White">
+                <StackPanel Width="100" Padding="4">
+                    <Image x:Name="ItemIconImage" Source="{Binding InvGroup[0].Icon}" Width="100" Height="100" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+                </StackPanel>
+                <StackPanel Width="400" Orientation="Vertical">
+                    <StackPanel Orientation="Horizontal" Padding="4">
+                        <TextBlock x:Name="ItemNameTextBlock" Text="{Binding GroupName}" Margin="0,0,0,0" Foreground="{Binding InvGroup[0].Name_color}" />
+                        <TextBlock x:Name="ItemCountTextBlock" Text="{Binding GroupItemCount}" Margin="12,0,0,0" Foreground="DarkGray" />
+                    </StackPanel>
+                    <StackPanel x:Name="ItemListStackPanel" Orientation="Horizontal" Padding="4" Width="330">
+                        <ToggleButton x:Name="InventoryGroupListToggleButton" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="4" Padding="0">
+                            <SymbolIcon 
+                                Symbol="{Binding ElementName=InventoryGroupListToggleButton, Path=IsChecked, Converter={StaticResource BoolToSymbolIcon}, FallbackValue=Add}"/>
+                        </ToggleButton>
+                        <ListView x:Name="ItemsListView"
+                              Visibility="{Binding ElementName=InventoryGroupListToggleButton, Path=IsChecked, Converter={StaticResource IsCheckedToVisibility}}"
+                              ItemContainerStyle="{StaticResource InventoryGroupListViewItemContainerStyleTemplate}"
+                              ItemsSource="{Binding InvGroup}"
+                              SelectedIndex="-1"
+                              HorizontalAlignment="Center" 
+                              Height="auto"
+                              MaxHeight="500"
+                              VerticalAlignment="Top" 
+                              IsItemClickEnabled="True"
+                              ItemClick="ItemsListView_ItemClick">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Background="DarkGray" Orientation="Horizontal">
+                                        <TextBlock x:Name="ConditionTextBlock" Grid.Row="0" Grid.Column="0" Text="{Binding Tags[5].Name, FallbackValue=N/A}" Margin="4,0,0,0"/>
+                                        <TextBlock Text="["/>
+                                        <TextBlock x:Name="FloatValueTextBlock" Grid.Row="0" Grid.Column="1" Text="{Binding Float_value, FallbackValue=N/A}" Margin="0"/>
+                                        <TextBlock Text="] "/>
+                                        <TextBlock x:Name="BuyPriceTextBlock" Text="{Binding BuyPrice.Price, FallbackValue=N/A}" Grid.Row="1" Grid.Column="1" Margin="8,0,0,0"/>
+                                        <TextBlock Text=" / "/>
+                                        <TextBlock x:Name="BuyDateTextBlock" Text="{Binding PriceCol[0].MarketLowestPrice, FallbackValue=N/A}" Grid.Row="1" Grid.Column="0" Margin="0"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </StackPanel>
+                </StackPanel>
+            </StackPanel>
+        </DataTemplate>
+        <DataTemplate x:Key="InventoryListViewItemTemplateSmall">
+            <Border Margin="0" BorderBrush="{Binding Name_color}" BorderThickness="2">
+                <Image x:Name="ItemIcon" Source="{Binding Icon}" Width="100" Height="100" HorizontalAlignment="Center" VerticalAlignment="Center" RenderTransformOrigin="0.5,0.5"/>
+                <!--<ItemsWrapGrid Orientation="Horizontal" Height="120" Width="120" Margin="8" Background="DimGray">
+                    <Image x:Name="ItemIcon" Source="{Binding Icon}" Width="100" Height="100" HorizontalAlignment="Center" VerticalAlignment="Center" RenderTransformOrigin="0.5,0.5"/>
+                </ItemsWrapGrid>-->
+            </Border>
+        </DataTemplate>
+        <DataTemplate x:Key="DescriptionListViewItemTemplate">
+            <StackPanel Orientation="Horizontal" Width="300" Margin="0" Padding="0" Background="Transparent">
+                <TextBlock x:Name="DescriptionValue" Text="{Binding Value}" Foreground="{Binding Color}" FontSize="12" TextWrapping="WrapWholeWords"/>
+            </StackPanel>
+        </DataTemplate>
+        <Style x:Key="FilterCheckBoxStyle" TargetType="ToggleButton">
+            <Setter Property="Margin" Value="6,0,6,0"/>
+            <Setter Property="Width" Value="auto"/>
+        </Style>
+
+    </Page.Resources>
+    <Grid x:Name="rootGrid" Background="Gainsboro">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40" />
+            <RowDefinition Height ="auto" />
+            <RowDefinition Height ="*" />
+        </Grid.RowDefinitions>
+        <StackPanel x:Name="HeaderPanel" Orientation="Horizontal" Grid.Row="0"/>
+        <StackPanel x:Name="Navi" Orientation="Horizontal">
+            <Border Background="{ThemeResource SystemControlBackgroundChromeMediumBrush}" Width="44">
+                <ToggleButton Style="{StaticResource SymbolButton}">
+                    <FontIcon x:Name="Hamburger" FontFamily="Segoe MDL2 Assets" Glyph="&#xE700;"/>
+                </ToggleButton>
+            </Border>
+            <Button x:Name="MainPageButton" Content="Main Page" Click="MainPageButton_Click" Background="Transparent" Margin="12,0,0,0"/>
+            <Button x:Name="InventoryPageButton" Content="Inventory Page" Click="InventoryPageButton_Click" Background="Transparent" Margin="12,0,0,0"/>
+            <Button x:Name="LivePageButton" Content="Live Page" Click="LivePageButton_Click" Background="Transparent" Margin="12,0,0,0"/>
+            <Button x:Name="OptionsPageButton" Content="Options Page" Click="OptionsPageButton_Click" Background="Transparent" Margin="12,0,0,0"/>
+            <Button x:Name="TestPageButton" Content="Test Page" Click="TestPageButton_Click" Background="Transparent" Margin="12,0,0,0"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Margin="0" Grid.Row="2">
+            <RelativePanel DataContext="{Binding}">
+                <StackPanel x:Name="FilterPanel" RelativePanel.AlignTopWithPanel="True" RelativePanel.AlignLeftWithPanel="True" Height="auto" Orientation="Horizontal">
+                    <Border Background="{ThemeResource SystemControlBackgroundChromeMediumBrush}" Width="44">
+                        <ToggleButton x:Name="FilterToggleButton" Style="{StaticResource SymbolButton}" VerticalAlignment="Top" IsChecked="false">
+                            <FontIcon x:Name="FilterToggleButtonIcon" FontFamily="Segoe MDL2 Assets" Glyph="&#xE71C;"/>
+                        </ToggleButton>
+                    </Border>
+                    <!--<Button x:Name="FilterButton" FontFamily="Segoe MDL2 Assets" Content="&#xE71C;" Width="44" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignTopWithPanel="True" Click="FilterButton_Click"/>-->
+                    <CheckBox x:Name="AllCheckBox" Style="{StaticResource FilterCheckBoxStyle}" Content="All" Checked="AllCheckBox_Checked" Unchecked="AllCheckBox_Unchecked" IsEnabled="{Binding State, Converter={StaticResource InventoryStateToBool}}" VerticalAlignment="Top"/>
+                    <StackPanel>
+                        <CheckBox x:Name="PistolsCheckBox" Style="{StaticResource FilterCheckBoxStyle}" Content="Pistols" Checked="PistolsCheckBox_Checked" Unchecked="PistolsCheckBox_Unchecked" IsThreeState="false" IsEnabled="{Binding State, Converter={StaticResource InventoryStateToBool}}"/>
+                        <StackPanel x:Name="PistolFilterStackPanel" Visibility="{Binding ElementName=FilterToggleButton, Path=IsChecked, Converter={StaticResource IsCheckedToVisibility}}">
+                            <!--<CheckBox x:Name="CZ75AutoCheckBox" Style="{StaticResource FilterCheckBoxStyle}" Content="CZ75-Auto" Checked="CZ75AutoCheckBox_Checked" Unchecked="CZ75AutoCheckBox_Unchecked"/>
+                            <CheckBox x:Name="DesertEagleCheckBox" Style="{StaticResource FilterCheckBoxStyle}" Content="Desert Eagle" Checked="DesertEagleCheckBox_Checked" Unchecked="DesertEagleCheckBox_Unchecked"/>
+                            <CheckBox x:Name="DualBerettasCheckBox" Style="{StaticResource FilterCheckBoxStyle}" Content="Dual Berettas" Checked="DualBerettasCheckBox_Checked" Unchecked="DualBerettasCheckBox_Unchecked"/>
+                            <CheckBox x:Name="FiveSeveNCheckBox" Style="{StaticResource FilterCheckBoxStyle}" Content="Five-SeveN" Checked="FiveSeveNCheckBox_Checked" Unchecked="FiveSeveNCheckBox_Unchecked"/>
+                            <CheckBox x:Name="Glock18CheckBox" Style="{StaticResource FilterCheckBoxStyle}" Content="Glock-18" Checked="Glock18CheckBox_Checked" Unchecked="Glock18CheckBox_Unchecked"/>
+                            <CheckBox x:Name="P2000CheckBox" Style="{StaticResource FilterCheckBoxStyle}" Content="P2000" Checked="P2000CheckBox_Checked" Unchecked="P2000CheckBox_Unchecked"/>
+                            <CheckBox x:Name="P250CheckBox" Style="{StaticResource FilterCheckBoxStyle}" Content="P250" Checked="P250CheckBox_Checked" Unchecked="P250CheckBox_Unchecked"/>
+                            <CheckBox x:Name="R8RevolverCheckBox" Style="{StaticResource FilterCheckBoxStyle}" Content="R8 Revolver" Checked="R8RevolverCheckBox_Checked" Unchecked="R8RevolverCheckBox_Unchecked"/>
+                            <CheckBox x:Name="Tec9CheckBox" Style="{StaticResource FilterCheckBoxStyle}" Content="Tec-9" Checked="Tec9CheckBox_Checked" Unchecked="Tec9CheckBox_Unchecked"/>
+                            <CheckBox x:Name="USPSCheckBox" Style="{StaticResource FilterCheckBoxStyle}" Content="USP-S" Checked="USPSCheckBox_Checked" Unchecked="USPSCheckBox_Unchecked"/>-->
+                            <CheckBox x:Name="CZ75AutoCheckBox" Style="{StaticResource FilterCheckBoxStyle}" Content="CZ75-Auto" Checked="PistolNameCheckBox_Checked" Unchecked="PistolNameCheckBox_Unchecked"/>
+                            <CheckBox x:Name="DesertEagleCheckBox" Style="{StaticResource FilterCheckBoxStyle}" Content="Desert Eagle" Checked="PistolNameCheckBox_Checked" Unchecked="PistolNameCheckBox_Unchecked"/>
+                            <CheckBox x:Name="DualBerettasCheckBox" Style="{StaticResource FilterCheckBoxStyle}" Content="Dual Berettas" Checked="PistolNameCheckBox_Checked" Unchecked="PistolNameCheckBox_Unchecked"/>
+                            <CheckBox x:Name="FiveSeveNCheckBox" Style="{StaticResource FilterCheckBoxStyle}" Content="Five-SeveN" Checked="PistolNameCheckBox_Checked" Unchecked="PistolNameCheckBox_Unchecked"/>
+                            <CheckBox x:Name="Glock18CheckBox" Style="{StaticResource FilterCheckBoxStyle}" Content="Glock-18" Checked="PistolNameCheckBox_Checked" Unchecked="PistolNameCheckBox_Unchecked"/>
+                            <CheckBox x:Name="P2000CheckBox" Style="{StaticResource FilterCheckBoxStyle}" Content="P2000" Checked="PistolNameCheckBox_Checked" Unchecked="PistolNameCheckBox_Unchecked"/>
+                            <CheckBox x:Name="P250CheckBox" Style="{StaticResource FilterCheckBoxStyle}" Content="P250" Checked="PistolNameCheckBox_Checked" Unchecked="PistolNameCheckBox_Unchecked"/>
+                            <CheckBox x:Name="R8RevolverCheckBox" Style="{StaticResource FilterCheckBoxStyle}" Content="R8 Revolver" Checked="PistolNameCheckBox_Checked" Unchecked="PistolNameCheckBox_Unchecked"/>
+                            <CheckBox x:Name="Tec9CheckBox" Style="{StaticResource FilterCheckBoxStyle}" Content="Tec-9" Checked="PistolNameCheckBox_Checked" Unchecked="PistolNameCheckBox_Unchecked"/>
+                            <CheckBox x:Name="USPSCheckBox" Style="{StaticResource FilterCheckBoxStyle}" Content="USP-S" Checked="PistolNameCheckBox_Checked" Unchecked="PistolNameCheckBox_Unchecked"/>
+                        </StackPanel>
+                    </StackPanel>
+                    <StackPanel>
+                        <CheckBox x:Name="RiflesCheckBox" Style="{StaticResource FilterCheckBoxStyle}" Content="Rifles" Checked="RiflesCheckBox_Checked" Unchecked="RiflesCheckBox_Unchecked" IsThreeState="False" IsEnabled="{Binding State, Converter={StaticResource InventoryStateToBool}}"/>
+                        <StackPanel  x:Name="RifleFilterStackPanel" Visibility="{Binding ElementName=FilterToggleButton, Path=IsChecked, Converter={StaticResource IsCheckedToVisibility}}">
+                            <CheckBox x:Name="AK47CheckBox" Style="{StaticResource FilterCheckBoxStyle}" Content="AK-47" Checked="RifleNameCheckBox_Checked" Unchecked="RifleNameCheckBox_Unchecked"/>
+                            <CheckBox x:Name="AUGCheckBox" Style="{StaticResource FilterCheckBoxStyle}" Content="AUG" Checked="RifleNameCheckBox_Checked" Unchecked="RifleNameCheckBox_Unchecked"/>
+                            <CheckBox x:Name="FAMASCheckBox" Style="{StaticResource FilterCheckBoxStyle}" Content="FAMAS" Checked="RifleNameCheckBox_Checked" Unchecked="RifleNameCheckBox_Unchecked"/>
+                            <CheckBox x:Name="GalilARCheckBox" Style="{StaticResource FilterCheckBoxStyle}" Content="Galil AR" Checked="RifleNameCheckBox_Checked" Unchecked="RifleNameCheckBox_Unchecked"/>
+                            <CheckBox x:Name="M4A1sCheckBox" Style="{StaticResource FilterCheckBoxStyle}" Content="M4A1-S" Checked="RifleNameCheckBox_Checked" Unchecked="RifleNameCheckBox_Unchecked"/>
+                            <CheckBox x:Name="M4A4CheckBox" Style="{StaticResource FilterCheckBoxStyle}" Content="M4A4" Checked="RifleNameCheckBox_Checked" Unchecked="RifleNameCheckBox_Unchecked"/>
+                            <CheckBox x:Name="SG553CheckBox" Style="{StaticResource FilterCheckBoxStyle}" Content="SG 553" Checked="RifleNameCheckBox_Checked" Unchecked="RifleNameCheckBox_Unchecked"/>
+                        </StackPanel>
+                    </StackPanel>
+                    <StackPanel>
+                        <CheckBox x:Name="SnipersCheckBox" Style="{StaticResource FilterCheckBoxStyle}" IsEnabled="{Binding State, Converter={StaticResource InventoryStateToBool}}" Content="Snipers" Checked="SnipersCheckBox_Checked" Unchecked="SnipersCheckBox_Unchecked"/>
+                        <StackPanel  x:Name="SniperFilterStackPanel" Visibility="{Binding ElementName=FilterToggleButton, Path=IsChecked, Converter={StaticResource IsCheckedToVisibility}}">
+                            <CheckBox x:Name="AWPCheckBox" Style="{StaticResource FilterCheckBoxStyle}" Content="AWP" Checked="SniperNameCheckBox_Checked" Unchecked="SniperNameCheckBox_Unchecked"/>
+                            <CheckBox x:Name="G3SG1CheckBox" Style="{StaticResource FilterCheckBoxStyle}" Content="G3SG1" Checked="SniperNameCheckBox_Checked" Unchecked="SniperNameCheckBox_Unchecked"/>
+                            <CheckBox x:Name="SCAR20CheckBox" Style="{StaticResource FilterCheckBoxStyle}" Content="SCAR-20" Checked="SniperNameCheckBox_Checked" Unchecked="SniperNameCheckBox_Unchecked"/>
+                            <CheckBox x:Name="SSG08CheckBox" Style="{StaticResource FilterCheckBoxStyle}" Content="SSG 08" Checked="SniperNameCheckBox_Checked" Unchecked="SniperNameCheckBox_Unchecked"/>
+                        </StackPanel>
+                    </StackPanel>
+                    <StackPanel>
+                        <CheckBox x:Name="SmgsCheckBox" Style="{StaticResource FilterCheckBoxStyle}" IsEnabled="{Binding State, Converter={StaticResource InventoryStateToBool}}" Content="SMGs" Checked="SmgsCheckBox_Checked" Unchecked="SmgsCheckBox_Unchecked"/>
+                        <StackPanel  x:Name="SmgFilterStackPanel" Visibility="{Binding ElementName=FilterToggleButton, Path=IsChecked, Converter={StaticResource IsCheckedToVisibility}}">
+                            <CheckBox x:Name="MAC10CheckBox" Style="{StaticResource FilterCheckBoxStyle}" Content="MAC-10" Checked="SmgNameCheckBox_Checked" Unchecked="SmgNameCheckBox_Unchecked"/>
+                            <CheckBox x:Name="MP7CheckBox" Style="{StaticResource FilterCheckBoxStyle}" Content="MP7" Checked="SmgNameCheckBox_Checked" Unchecked="SmgNameCheckBox_Unchecked"/>
+                            <CheckBox x:Name="MP9CheckBox" Style="{StaticResource FilterCheckBoxStyle}" Content="MP9" Checked="SmgNameCheckBox_Checked" Unchecked="SmgNameCheckBox_Unchecked"/>
+                            <CheckBox x:Name="PPBizonCheckBox" Style="{StaticResource FilterCheckBoxStyle}" Content="PP-Bizon" Checked="SmgNameCheckBox_Checked" Unchecked="SmgNameCheckBox_Unchecked"/>
+                            <CheckBox x:Name="P90CheckBox" Style="{StaticResource FilterCheckBoxStyle}" Content="P90" Checked="SmgNameCheckBox_Checked" Unchecked="SmgNameCheckBox_Unchecked"/>
+                            <CheckBox x:Name="UMP45CheckBox" Style="{StaticResource FilterCheckBoxStyle}" Content="UMP-45" Checked="SmgNameCheckBox_Checked" Unchecked="SmgNameCheckBox_Unchecked"/>
+                        </StackPanel>
+                    </StackPanel>
+                    <StackPanel>
+                        <CheckBox x:Name="HeavysCheckBox" Style="{StaticResource FilterCheckBoxStyle}" IsEnabled="{Binding State, Converter={StaticResource InventoryStateToBool}}" Content="Heavy" Checked="HeavysCheckBox_Checked" Unchecked="HeavysCheckBox_Unchecked"/>
+                        <StackPanel  x:Name="HeavyFilterStackPanel" Visibility="{Binding ElementName=FilterToggleButton, Path=IsChecked, Converter={StaticResource IsCheckedToVisibility}}">
+                            <CheckBox x:Name="MAG7CheckBox" Style="{StaticResource FilterCheckBoxStyle}" Content="MAG-7" Checked="HeavyNameCheckBox_Checked" Unchecked="HeavyNameCheckBox_Unchecked"/>
+                            <CheckBox x:Name="NovaCheckBox" Style="{StaticResource FilterCheckBoxStyle}" Content="Nova" Checked="HeavyNameCheckBox_Checked" Unchecked="HeavyNameCheckBox_Unchecked"/>
+                            <CheckBox x:Name="SawedOffCheckBox" Style="{StaticResource FilterCheckBoxStyle}" Content="Sawed-Off" Checked="HeavyNameCheckBox_Checked" Unchecked="HeavyNameCheckBox_Unchecked"/>
+                            <CheckBox x:Name="XM1014CheckBox" Style="{StaticResource FilterCheckBoxStyle}" Content="XM1014" Checked="HeavyNameCheckBox_Checked" Unchecked="HeavyNameCheckBox_Unchecked"/>
+                            <CheckBox x:Name="M249CheckBox" Style="{StaticResource FilterCheckBoxStyle}" Content="M249" Checked="HeavyNameCheckBox_Checked" Unchecked="HeavyNameCheckBox_Unchecked"/>
+                            <CheckBox x:Name="NegevCheckBox" Style="{StaticResource FilterCheckBoxStyle}" Content="Negev" Checked="HeavyNameCheckBox_Checked" Unchecked="HeavyNameCheckBox_Unchecked"/>
+                        </StackPanel>
+                    </StackPanel>
+                    <StackPanel>
+                        <CheckBox x:Name="KnivesCheckBox" Style="{StaticResource FilterCheckBoxStyle}" IsEnabled="{Binding State, Converter={StaticResource InventoryStateToBool}}" Content="Knives" Checked="KnivesCheckBox_Checked" Unchecked="KnivesCheckBox_Unchecked"/>
+                        <StackPanel  x:Name="KniveFilterStackPanel" Visibility="{Binding ElementName=FilterToggleButton, Path=IsChecked, Converter={StaticResource IsCheckedToVisibility}}">
+                            <CheckBox x:Name="BayonetCheckBox" Style="{StaticResource FilterCheckBoxStyle}" Content="Bayonet" Checked="KniveNameCheckBox_Checked" Unchecked="KniveNameCheckBox_Unchecked"/>
+                            <CheckBox x:Name="BowieKnifeCheckBox" Style="{StaticResource FilterCheckBoxStyle}" Content="Bowie Knife" Checked="KniveNameCheckBox_Checked" Unchecked="KniveNameCheckBox_Unchecked"/>
+                            <CheckBox x:Name="ButterflyKnifeCheckBox" Style="{StaticResource FilterCheckBoxStyle}" Content="Butterfly Knife" Checked="KniveNameCheckBox_Checked" Unchecked="KniveNameCheckBox_Unchecked"/>
+                            <CheckBox x:Name="FalchionKnifeCheckBox" Style="{StaticResource FilterCheckBoxStyle}" Content="Falchion Knife" Checked="KniveNameCheckBox_Checked" Unchecked="KniveNameCheckBox_Unchecked"/>
+                            <CheckBox x:Name="FlipKnipeCheckBox" Style="{StaticResource FilterCheckBoxStyle}" Content="Flip Knife" Checked="KniveNameCheckBox_Checked" Unchecked="KniveNameCheckBox_Unchecked"/>
+                            <CheckBox x:Name="GutKnifeCheckBox" Style="{StaticResource FilterCheckBoxStyle}" Content="Gut Knife" Checked="KniveNameCheckBox_Checked" Unchecked="KniveNameCheckBox_Unchecked"/>
+                            <CheckBox x:Name="HuntsmanKnifeCheckBox" Style="{StaticResource FilterCheckBoxStyle}" Content="Huntsman Knife" Checked="KniveNameCheckBox_Checked" Unchecked="KniveNameCheckBox_Unchecked"/>
+                            <CheckBox x:Name="KarambitCheckBox" Style="{StaticResource FilterCheckBoxStyle}" Content="Karambit" Checked="KniveNameCheckBox_Checked" Unchecked="KniveNameCheckBox_Unchecked"/>
+                            <CheckBox x:Name="M9BayonetCheckBox" Style="{StaticResource FilterCheckBoxStyle}" Content="M9 Bayonet" Checked="KniveNameCheckBox_Checked" Unchecked="KniveNameCheckBox_Unchecked"/>
+                            <CheckBox x:Name="ShaddowDaggersCheckBox" Style="{StaticResource FilterCheckBoxStyle}" Content="Shaddow Daggers" Checked="KniveNameCheckBox_Checked" Unchecked="KniveNameCheckBox_Unchecked"/>
+                        </StackPanel>
+                    </StackPanel>
+                    <StackPanel>
+                        <CheckBox x:Name="CasesCheckBox" Style="{StaticResource FilterCheckBoxStyle}" IsEnabled="{Binding State, Converter={StaticResource InventoryStateToBool}}" Content="Cases" Checked="CasesCheckBox_Checked" Unchecked="CasesCheckBox_Unchecked"/>
+                        <StackPanel  x:Name="CaseFilterStackPanel" Visibility="{Binding ElementName=FilterToggleButton, Path=IsChecked, Converter={StaticResource IsCheckedToVisibility}}">
+                            <!--<CheckBox x:Name="CSGOWeaponCaseCheckBox" Style="{StaticResource FilterCheckBoxStyle}" Content="CS:GO Weapon Case" Checked="CaseNameCheckBox_Checked" Unchecked="CaseNameCheckBox_Unchecked"/>
+                            <CheckBox x:Name="CSGOWeaponCase2CheckBox" Style="{StaticResource FilterCheckBoxStyle}" Content="CS:GO Weapon Case 2" Checked="CaseNameCheckBox_Checked" Unchecked="CaseNameCheckBox_Unchecked"/>
+                            <CheckBox x:Name="CSGOWeaponCase3CheckBox" Style="{StaticResource FilterCheckBoxStyle}" Content="CS:GO Weapon Case 3" Checked="CaseNameCheckBox_Checked" Unchecked="CaseNameCheckBox_Unchecked"/>
+                            <CheckBox x:Name="ChromaCaseCheckBox" Style="{StaticResource FilterCheckBoxStyle}" Content="Chroma Case" Checked="CaseNameCheckBox_Checked" Unchecked="CaseNameCheckBox_Unchecked"/>
+                            <CheckBox x:Name="Chroma2CaseCheckBox" Style="{StaticResource FilterCheckBoxStyle}" Content="Chroma 2 Case" Checked="CaseNameCheckBox_Checked" Unchecked="CaseNameCheckBox_Unchecked"/>
+                            <CheckBox x:Name="Chroma3CaseCheckBox" Style="{StaticResource FilterCheckBoxStyle}" Content="Chroma 3 Case" Checked="CaseNameCheckBox_Checked" Unchecked="CaseNameCheckBox_Unchecked"/>
+                            <CheckBox x:Name="eSports2013CaseCheckBox" Style="{StaticResource FilterCheckBoxStyle}" Content="eSports 2013 Case" Checked="CaseNameCheckBox_Checked" Unchecked="CaseNameCheckBox_Unchecked"/>
+                            <CheckBox x:Name="eSports2013WinterCaseCheckBox" Style="{StaticResource FilterCheckBoxStyle}" Content="eSports 2013 Winter Case" Checked="CaseNameCheckBox_Checked" Unchecked="CaseNameCheckBox_Unchecked"/>
+                            <CheckBox x:Name="eSports2014SummerCaseCheckBox" Style="{StaticResource FilterCheckBoxStyle}" Content="eSports 2014 Summer Case" Checked="CaseNameCheckBox_Checked" Unchecked="CaseNameCheckBox_Unchecked"/>
+                            <CheckBox x:Name="FalchionCaseCheckBox" Style="{StaticResource FilterCheckBoxStyle}" Content="Falchion Case" Checked="CaseNameCheckBox_Checked" Unchecked="CaseNameCheckBox_Unchecked"/>
+                            <CheckBox x:Name="GammaCaseCheckBox" Style="{StaticResource FilterCheckBoxStyle}" Content="Gamma Case" Checked="CaseNameCheckBox_Checked" Unchecked="CaseNameCheckBox_Unchecked"/>
+                            <CheckBox x:Name="Gamma2CaseCheckBox" Style="{StaticResource FilterCheckBoxStyle}" Content="Gamma 2 Case" Checked="CaseNameCheckBox_Checked" Unchecked="CaseNameCheckBox_Unchecked"/>
+                            <CheckBox x:Name="HuntsmanWeaponCaseCheckBox" Style="{StaticResource FilterCheckBoxStyle}" Content="Huntsman Weapon Case" Checked="CaseNameCheckBox_Checked" Unchecked="CaseNameCheckBox_Unchecked"/>
+                            <CheckBox x:Name="OperationBravoCaseCheckBox" Style="{StaticResource FilterCheckBoxStyle}" Content="Operation Bravo Case" Checked="CaseNameCheckBox_Checked" Unchecked="CaseNameCheckBox_Unchecked"/>
+                            <CheckBox x:Name="OperationBreakoutCaseCheckBox" Style="{StaticResource FilterCheckBoxStyle}" Content="Operation Breakout Case" Checked="CaseNameCheckBox_Checked" Unchecked="CaseNameCheckBox_Unchecked"/>
+                            <CheckBox x:Name="OperationPhoenixWeaponCaseCheckBox" Style="{StaticResource FilterCheckBoxStyle}" Content="Operation Phoenix Weapon Case" Checked="CaseNameCheckBox_Checked" Unchecked="CaseNameCheckBox_Unchecked"/>
+                            <CheckBox x:Name="OperationVanguardWeaponCaseCheckBox" Style="{StaticResource FilterCheckBoxStyle}" Content="Operation Vanguard Weapon Case" Checked="CaseNameCheckBox_Checked" Unchecked="CaseNameCheckBox_Unchecked"/>
+                            <CheckBox x:Name="OperationWildfireCaseCheckBox" Style="{StaticResource FilterCheckBoxStyle}" Content="Operation Wildfire Case" Checked="CaseNameCheckBox_Checked" Unchecked="CaseNameCheckBox_Unchecked"/>
+                            <CheckBox x:Name="RevolverCaseCheckBox" Style="{StaticResource FilterCheckBoxStyle}" Content="Revolver" Checked="CaseNameCheckBox_Checked" Unchecked="CaseNameCheckBox_Unchecked"/>
+                            <CheckBox x:Name="ShadowCaseCheckBox" Style="{StaticResource FilterCheckBoxStyle}" Content="Shadow Case" Checked="CaseNameCheckBox_Checked" Unchecked="CaseNameCheckBox_Unchecked"/>
+                            <CheckBox x:Name="WinterOffensiveWeaponCaseCheckBox" Style="{StaticResource FilterCheckBoxStyle}" Content="Winter Offensive Weapon Case" Checked="CaseNameCheckBox_Checked" Unchecked="CaseNameCheckBox_Unchecked"/>
+                            <CheckBox x:Name="SouvenirPackages" Style="{StaticResource FilterCheckBoxStyle}" Content="Souvenir Packages" Checked="CaseNameCheckBox_Checked" Unchecked="CaseNameCheckBox_Unchecked"/>
+                            <CheckBox x:Name="GiftPackages" Style="{StaticResource FilterCheckBoxStyle}" Content="Gift Packages" Checked="CaseNameCheckBox_Checked" Unchecked="CaseNameCheckBox_Unchecked"/>-->
+                        </StackPanel>
+                    </StackPanel>
+                    <StackPanel>
+                        <CheckBox x:Name="StickersCheckBox" Style="{StaticResource FilterCheckBoxStyle}" IsEnabled="{Binding State, Converter={StaticResource InventoryStateToBool}}" Content="Stickers" Checked="StickersCheckBox_Checked" Unchecked="StickersCheckBox_Unchecked"/>
+                        <StackPanel  x:Name="StickerFilterStackPanel" Visibility="{Binding ElementName=FilterToggleButton, Path=IsChecked, Converter={StaticResource IsCheckedToVisibility}}">
+                        </StackPanel>
+                    </StackPanel>
+                    <StackPanel>
+                        <CheckBox x:Name="SpraysCheckBox" Style="{StaticResource FilterCheckBoxStyle}" IsEnabled="{Binding State, Converter={StaticResource InventoryStateToBool}}" Content="Sprays" Checked="SpraysCheckBox_Checked" Unchecked="SpraysCheckBox_Unchecked"/>
+                        <StackPanel  x:Name="SprayFilterStackPanel" Visibility="{Binding ElementName=FilterToggleButton, Path=IsChecked, Converter={StaticResource IsCheckedToVisibility}}">
+                        </StackPanel>
+                    </StackPanel>
+                    <StackPanel>
+                        <CheckBox x:Name="CollectiblesCheckBox" Style="{StaticResource FilterCheckBoxStyle}" IsEnabled="{Binding State, Converter={StaticResource InventoryStateToBool}}" Content="Collectibles" Checked="CollectiblesCheckBox_Checked" Unchecked="CollectiblesCheckBox_Unchecked"/>
+                        <StackPanel  x:Name="CollectibleFilterStackPanel" Visibility="{Binding ElementName=FilterToggleButton, Path=IsChecked, Converter={StaticResource IsCheckedToVisibility}}">
+                        </StackPanel>
+                    </StackPanel>
+                    <StackPanel Visibility="Collapsed">
+                        <CheckBox x:Name="OthersCheckBox" Style="{StaticResource FilterCheckBoxStyle}" IsEnabled="{Binding State, Converter={StaticResource InventoryStateToBool}}" Content="Others" Checked="OthersCheckBox_Checked" Unchecked="OthersCheckBox_Unchecked"/>
+                        <StackPanel  x:Name="OtherFilterStackPanel" Visibility="{Binding ElementName=FilterToggleButton, Path=IsChecked, Converter={StaticResource IsCheckedToVisibility}}">
+                        </StackPanel>
+                    </StackPanel>
+                </StackPanel>
+                <StackPanel x:Name="InventoryPanel" RelativePanel.Below="FilterPanel" Orientation="Horizontal">
+                    <Border Background="{ThemeResource SystemControlBackgroundChromeMediumBrush}" Width="44"/>
+                    <StackPanel x:Name="ItemGroupsStackPanel">
+                        <Button x:Name="LoadInventoryButton" Content="Load Inventory" Width="300" RelativePanel.Below="ItemGroupsStackPanel" Click="LoadInventoryButton_Click" Margin="4"/>
+                        <Button x:Name="SerializeInventory" Content="Serialize Inventory" Width="300" RelativePanel.Below="LoadInventoryButton" IsEnabled="{Binding State, Converter={StaticResource InventoryStateToBool}}" Click="SerializeInventory_Click" Margin="4"/>
+                        <ListView x:Name="ItemGroupsListView"
+                                  ItemContainerStyle="{StaticResource InventoryListViewItemContainerStyleTemplate}"
+                                  ItemTemplate="{StaticResource InventoryGroupListViewItemTemplate}"
+                                  ItemsSource="{Binding Items}"
+                                  SelectedIndex="-1"
+                                  HorizontalAlignment="Center"
+                                  Height="700"
+                                  VerticalAlignment="Top"
+                                  IsItemClickEnabled="False" 
+                                  SelectionChanged="ItemGroupsListView_SelectionChanged"/>
+                        <ProgressRing x:Name="LoadInventoryProgressRing" RelativePanel.AlignHorizontalCenterWith="ItemGroupsListView" RelativePanel.AlignVerticalCenterWith="ItemGroupsListView" IsActive="{Binding IsPressed, ElementName=LoadInventoryButton, FallbackValue=false}" Height="200" Width="200" Foreground="White"/>
+                    </StackPanel>
+                    <ScrollViewer RelativePanel.AlignTopWith="ItemGroupsStackPanel" RelativePanel.RightOf="ItemGroupsStackPanel" Visibility="{Binding DataContext, Converter={StaticResource DataContextIsWeaponSkinToVisibility}, ElementName=SelectedItemStackPanel}" >
+                        <StackPanel x:Name="SelectedItemStackPanel" Width="800" Height="auto" Padding="10" Orientation="Vertical" HorizontalAlignment="Left">
+                            <Border BorderBrush="{Binding Name_color}" BorderThickness="2" Width="500" Height="300" HorizontalAlignment="Left" >
+                                <Image Source="{Binding Icon_large}" Width="500" Height="300"/>
+                            </Border>
+                            <TextBlock x:Name="ItemMarketNameTextBlock" Text="{Binding Market_name, FallbackValue=ItemName}" Foreground="{Binding Name_color}" Padding="0,4" FontSize="30"/>
+                            <Grid DataContext="{Binding}">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="2*"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
+                                <TextBlock Text="Steam Market Price Data:" Grid.Row="0" Grid.ColumnSpan="2"/>
+                                <StackPanel x:Name="ItemMarketPriceStackPanel" Grid.Column="0" Grid.Row="1" DataContext="{Binding PriceCol[0]}" >
+                                    <TextBlock x:Name="ItemMarketMarketMedianPriceTextBlock" Text="{Binding MarketMedianPrice, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, FallbackValue=N/A}" Padding="0,4"/>
+                                    <TextBlock x:Name="ItemMarketLowestPriceTextBlock" Text="{Binding MarketLowestPrice, FallbackValue=N/A}" Padding="0,4"/>
+                                    <TextBlock x:Name="ItemMarketVolumeTextBlock" Text="{Binding MarketVolume, FallbackValue=N/A}" Padding="0,4"/>
+                                    <TextBlock x:Name="ItemDataPriceTextBlock" Text="{Binding DatePrice, FallbackValue=N/A}" Padding="0,4"/>
+                                </StackPanel>
+                                <TextBlock Text="Buy Price Data:" Grid.Row="0" Grid.Column="2"/>
+                                <StackPanel x:Name="ItemBuyPriceStackPanel" Grid.Column="2" Grid.Row="1" DataContext="{Binding BuyPrice}">
+                                    <TextBox x:Name="BuyPriceTextBox" Text="{Binding Price, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="80" HorizontalAlignment="Left"/>
+                                    <DatePicker x:Name="BuyDateDatePicker" Date="{Binding Date, Mode=TwoWay}"/>
+                                </StackPanel>
+                            </Grid>
+                            <Button x:Name="GetPriceButton" Content="Get current Price" IsEnabled="{Binding DataContext, Converter={StaticResource DataContextIsWeaponSkinToBool}, ElementName=SelectedItemStackPanel}" Click="GetPriceButton_Click" />
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="Float Value:" Width="100"/>
+                                <TextBlock Text="{Binding Float_value}" Width="300"/>
+                            </StackPanel>
+                            <StackPanel x:Name="DescriptionStackPanel" Orientation="Vertical" DataContext="{Binding Descriptions}" HorizontalAlignment="Left"/>
+                        </StackPanel>
+                    </ScrollViewer>
+                </StackPanel>
+            </RelativePanel>
+        </StackPanel>
+    </Grid>
+</Page>

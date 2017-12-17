@@ -1,0 +1,15 @@
+App.xbf
+Styles\AppStyle.xbf
+Styles\Styles.xbf
+Views\AddMapPage.xbf
+Views\EditMapPage.xbf
+Views\InGameLivePage.xbf
+Views\InGameLivePageScenarios\Scenario1_Overview.xbf
+Views\InGameLivePageScenarios\Scenario2_Equipment.xbf
+Views\InGameLivePageScenarios\Scenario3_Armor.xbf
+Views\InGameLivePageScenarios\Scenario4_Bomb.xbf
+Views\InGameLivePageScenarios\Scenario5_Stats.xbf
+Views\InventoryPage.xbf
+Views\MainPage.xbf
+Views\OptionsPage.xbf
+Views\Test.xbf
