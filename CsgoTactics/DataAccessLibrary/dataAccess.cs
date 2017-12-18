@@ -40,7 +40,7 @@ namespace DataAccessLibrary
                 String rgInventoryTableCommand = "CREATE TABLE IF NOT EXISTS rgInventory (" +
                     "id	TEXT NOT NULL PRIMARY KEY," +
                     "classid	TEXT," +
-                    "insatnceid	TEXT," +
+                    "instanceid	TEXT," +
                     "amount	TEXT," +
                     "pos	TEXT," +
                     "csgoInventoryId	TEXT," +
@@ -75,7 +75,7 @@ namespace DataAccessLibrary
                     ");";
 
                 String descriptionsTableCommand = "CREATE TABLE IF NOT EXISTS descriptions (" +
-                    "id	INTEGER NOT NULL PRIMARY KEY," +
+                    "id	INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT," +
                     "type	TEXT," +
                     "value	TEXT," +
                     "color	TEXT," +
@@ -84,9 +84,10 @@ namespace DataAccessLibrary
                     ");";
 
                 String app_dataTableCommand = "CREATE TABLE IF NOT EXISTS app_data (" +
-                    "id	INTEGER NOT NULL PRIMARY KEY," +
+                    "id	INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT," +
                     "def_index	TEXT," +
-                    "is_itemset_name	TEXT," +
+                    "is_itemset_name	REAL," +
+                    "limited INTEGER," +
                     "descriptionsId	INTEGER," +
                     "FOREIGN KEY(descriptionsId) REFERENCES descriptions(id)" +
                     ");";
@@ -134,6 +135,18 @@ namespace DataAccessLibrary
                     "FOREIGN KEY(priceDataId) REFERENCES priceData(id)" +
                     ");";
 
+                String app_dataDescriptionsRelTableCommand = "CREATE TABLE IF NOT EXISTS app_dataDescriptionsRel(" +
+                    "descriptionsId INTEGER NOT NULL," +
+                    "app_dataId INTEGER NOT NULL," +
+                    "PRIMARY KEY ( descriptionsId, app_dataId )" +
+                    ");";
+
+                String descriptionsRgDescriptionRelTableCommand = "CREATE TABLE IF NOT EXISTS descriptionsRgDescriptionRel(" +
+                    "descriptionsId INTEGER NOT NULL," +
+                    "rgDescriptionId INTEGER NOT NULL," +
+                     "PRIMARY KEY ( descriptionsId, rgDescriptionId )" +
+                    ");";
+
                 #endregion
 
                 db.Open();
@@ -150,6 +163,8 @@ namespace DataAccessLibrary
                 SqliteCommand createTagsTable = new SqliteCommand(tagsTableCommand, db);
                 SqliteCommand createPriceDataTable = new SqliteCommand(priceDataTableCommand, db);
                 SqliteCommand createPriceCollectionTable = new SqliteCommand(priceCollectionTableCommand, db);
+                SqliteCommand createApp_dataRgDescriptionRelTable = new SqliteCommand(app_dataDescriptionsRelTableCommand, db);
+                SqliteCommand createDescriptionsRgDescriptionRelTable = new SqliteCommand(descriptionsRgDescriptionRelTableCommand, db);
 
                 createSteamInventoryTable.ExecuteReader();
                 createCsgoInventoryTable.ExecuteReader();
@@ -163,6 +178,8 @@ namespace DataAccessLibrary
                 createTagsTable.ExecuteReader();
                 createPriceDataTable.ExecuteReader();
                 createPriceCollectionTable.ExecuteReader();
+                createApp_dataRgDescriptionRelTable.ExecuteReader();
+                createDescriptionsRgDescriptionRelTable.ExecuteReader();
             }
         }
 
@@ -268,10 +285,10 @@ namespace DataAccessLibrary
         {
             using (SqliteConnection db = new SqliteConnection(DbConnectionString))
             {
-                JsonObject CsgoInventoryJsonObject = new JsonObject();
+                JsonObject csgoInventory = new JsonObject();
                 try
                 {
-                    CsgoInventoryJsonObject = JsonObject.Parse(inventoryString);
+                    csgoInventory = JsonObject.Parse(inventoryString);
                 }
                 catch (Exception)
                 {
@@ -282,69 +299,73 @@ namespace DataAccessLibrary
 
                 db.Open();
 
-                List<Object> parameters = new List<Object>
+                List<(String, Object)> csgoInventoryParameter = new List<(String, Object)>
                 {
-                    csgoInventoryId,
-                    CsgoInventoryJsonObject.GetNamedBoolean("success"),
-                    CsgoInventoryJsonObject.GetNamedBoolean("more"),
-                    CsgoInventoryJsonObject.GetNamedBoolean("more_start"),
-                    Steam64Id
+                    ("id", csgoInventoryId),
+                    ("success", csgoInventory.ContainsKey("success") ? (Object)csgoInventory.GetNamedBoolean("success") : (Object)DBNull.Value),
+                    ("more", csgoInventory.ContainsKey("more") ? (Object)csgoInventory.GetNamedBoolean("more") : (Object)DBNull.Value),
+                    ("more_start", csgoInventory.ContainsKey("more_start") ? (Object)csgoInventory.GetNamedBoolean("more_start") : (Object)DBNull.Value),
+                    ("steamInventoryId", Steam64Id)
                 };
 
-                InsertIntoTable(parameters, parameters.First(), "csgoInventory", db);
+                if (!DataSetExists(csgoInventoryParameter, new List<int> {0, 1, 2, 3, 4 }, "csgoInventory", db))
+                {
+                    InsertIntoTable(csgoInventoryParameter, csgoInventoryParameter.First().Item2, "csgoInventory", db);
+                }
 
-
-                JsonObject rgInventory = CsgoInventoryJsonObject.GetNamedObject("rgInventory");
+                JsonObject rgInventory = csgoInventory.GetNamedObject("rgInventory");
 
                 for (int i = 0; i < rgInventory.Count; i++)
                 {
-                    JsonObject element = rgInventory.GetNamedObject(rgInventory.ElementAt(i).Key);
+                    JsonObject rgInventoryElement = rgInventory.GetNamedObject(rgInventory.ElementAt(i).Key);
 
-                    parameters = new List<Object>{
-                        element.GetNamedString("id"),
-                        element.GetNamedString("classid"),
-                        element.GetNamedString("instanceid"),
-                        element.GetNamedString("amount"),
-                        element.GetNamedNumber("pos"),
-                        csgoInventoryId
-
-                        //skin.PriceCol = new ObservableCollection<SteamItem.SteamPrice>();
-                        //skin.PriceCol.Add(new SteamItem.SteamPrice());
-                        //skin.BuyPrice = new SteamItem.PurchaseData();
+                    List<(String, Object)> rgInventoryParameter = new List<(String, Object)>
+                    {
+                        ("id", csgoInventoryId),
+                        ("classid", rgInventoryElement.ContainsKey("classid") ? (Object)rgInventoryElement.GetNamedString("classid") : (Object)DBNull.Value),
+                        ("instanceid", rgInventoryElement.ContainsKey("instanceid") ? (Object)rgInventoryElement.GetNamedString("instanceid") : (Object)DBNull.Value),
+                        ("amount", rgInventoryElement.ContainsKey("amount") ? (Object)rgInventoryElement.GetNamedString("amount") : (Object)DBNull.Value),
+                        ("pos", rgInventoryElement.ContainsKey("pos") ? (Object)rgInventoryElement.GetNamedNumber("pos") : (Object)DBNull.Value),
+                        ("csgoInventoryId", csgoInventoryId)
                     };
 
-                    InsertIntoTable(parameters, parameters.First(), "rgInventory", db);
+                    if (!DataSetExists(rgInventoryParameter, new List<int> { 1, 2, 3, 4, 5 }, "rgInventory", db))
+                    {
+                        InsertIntoTable(rgInventoryParameter, rgInventoryParameter.First().Item2, "rgInventory", db);
+                    }
                 }
 
-                JsonObject rgDescriptions = CsgoInventoryJsonObject.GetNamedObject("rgDescriptions");
+                JsonObject rgDescriptions = csgoInventory.GetNamedObject("rgDescriptions");
 
                 for (int n = 0; n < rgDescriptions.Count; n++)
                 {
                     JsonObject rgDescription = rgDescriptions.GetNamedObject(rgDescriptions.ElementAt(n).Key);
 
-                    parameters = new List<Object>
+                    List<(String, Object)> rgDescriptionParameter = new List<(String, Object)>
                     {
-                        rgDescriptions.ElementAt(n).Key,
-                        rgDescription.ContainsKey("appid") ? (Object)rgDescription.GetNamedString("appid") : (Object)DBNull.Value,
-                        rgDescription.ContainsKey("instanceid") ? (Object)rgDescription.GetNamedString("instanceid") : (Object)DBNull.Value,
-                        rgDescription.ContainsKey("icon_url") ? (Object)rgDescription.GetNamedString("icon_url") : (Object)DBNull.Value,
-                        rgDescription.ContainsKey("icon_url_large") ? (Object)rgDescription.GetNamedString("icon_url_large") : (Object)DBNull.Value,
-                        rgDescription.ContainsKey("icon_drag_url") ? (Object)rgDescription.GetNamedString("icon_drag_url") : (Object)DBNull.Value,
-                        rgDescription.ContainsKey("name") ? (Object)rgDescription.GetNamedString("name") : (Object)DBNull.Value,
-                        rgDescription.ContainsKey("market_hash_name") ? (Object)rgDescription.GetNamedString("market_hash_name") : (Object)DBNull.Value,
-                        rgDescription.ContainsKey("market_name") ? (Object)rgDescription.GetNamedString("market_name") : (Object)DBNull.Value,
-                        rgDescription.ContainsKey("name_color") ? (Object)rgDescription.GetNamedString("name_color") : (Object)DBNull.Value,
-                        rgDescription.ContainsKey("background_color") ? (Object)rgDescription.GetNamedString("background_color") : (Object)DBNull.Value,
-                        rgDescription.ContainsKey("type") ? (Object)rgDescription.GetNamedString("type") : (Object)DBNull.Value,
-                        rgDescription.ContainsKey("tradable") ? (Object)rgDescription.GetNamedNumber("tradable") : (Object)DBNull.Value,
-                        rgDescription.ContainsKey("marketable") ? (Object)rgDescription.GetNamedNumber("marketable") : (Object)DBNull.Value,
-                        rgDescription.ContainsKey("commodity") ? (Object)rgDescription.GetNamedNumber("commodity") : (Object)DBNull.Value,
-                        rgDescription.ContainsKey("market_tradable_restriction") ? (Object)rgDescription.GetNamedString("market_tradable_restriction") : (Object)DBNull.Value,
-                        csgoInventoryId
+                        ("id", rgDescriptions.ElementAt(n).Key),
+                        ("appid", csgoInventory.ContainsKey("appid") ? (Object)csgoInventory.GetNamedBoolean("appid") : (Object)DBNull.Value),
+                        ("instanceid", csgoInventory.ContainsKey("instanceid") ? (Object)csgoInventory.GetNamedBoolean("instanceid") : (Object)DBNull.Value),
+                        ("icon_url", csgoInventory.ContainsKey("icon_url") ? (Object)csgoInventory.GetNamedBoolean("icon_url") : (Object)DBNull.Value),
+                        ("icon_url_large", csgoInventory.ContainsKey("icon_url_large") ? (Object)csgoInventory.GetNamedBoolean("icon_url_large") : (Object)DBNull.Value),
+                        ("icon_drag_url", csgoInventory.ContainsKey("icon_drag_url") ? (Object)csgoInventory.GetNamedBoolean("icon_drag_url") : (Object)DBNull.Value),
+                        ("name", csgoInventory.ContainsKey("name") ? (Object)csgoInventory.GetNamedBoolean("name") : (Object)DBNull.Value),
+                        ("market_hash_name", csgoInventory.ContainsKey("market_hash_name") ? (Object)csgoInventory.GetNamedBoolean("market_hash_name") : (Object)DBNull.Value),
+                        ("market_name", csgoInventory.ContainsKey("market_name") ? (Object)csgoInventory.GetNamedBoolean("market_name") : (Object)DBNull.Value),
+                        ("name_color", csgoInventory.ContainsKey("name_color") ? (Object)csgoInventory.GetNamedBoolean("name_color") : (Object)DBNull.Value),
+                        ("background_color", csgoInventory.ContainsKey("background_color") ? (Object)csgoInventory.GetNamedBoolean("background_color") : (Object)DBNull.Value),
+                        ("type", csgoInventory.ContainsKey("type") ? (Object)csgoInventory.GetNamedBoolean("type") : (Object)DBNull.Value),
+                        ("tradable", csgoInventory.ContainsKey("tradable") ? (Object)csgoInventory.GetNamedBoolean("tradable") : (Object)DBNull.Value),
+                        ("marketable", csgoInventory.ContainsKey("marketable") ? (Object)csgoInventory.GetNamedBoolean("marketable") : (Object)DBNull.Value),
+                        ("commodity", csgoInventory.ContainsKey("commodity") ? (Object)csgoInventory.GetNamedBoolean("commodity") : (Object)DBNull.Value),
+                        ("market_tradable_restriction", csgoInventory.ContainsKey("market_tradable_restriction") ? (Object)csgoInventory.GetNamedBoolean("market_tradable_restriction") : (Object)DBNull.Value),
+                        ("csgoInventoryId", csgoInventoryId)
                     };
 
-                    InsertIntoTable(parameters, parameters.First(), "rgDescription", db);
-
+                    if (!DataSetExists(rgDescriptionParameter, new List<int> { 1, 2, 3, 4, 5 }, "rgDescription", db))
+                    {
+                        InsertIntoTable(rgDescriptionParameter, rgDescriptionParameter.First().Item2, "rgDescription", db);
+                    }
 
                     if (rgDescription.ContainsKey("descriptions"))
                     {
@@ -354,35 +375,39 @@ namespace DataAccessLibrary
                         {
                             JsonObject description = descriptions.GetObjectAt(m);
 
-                            string descriptionValuesString = (description.ContainsKey("type") ? description.GetNamedString("type") : "") + (description.ContainsKey("value") ? description.GetNamedString("value") : "") + (description.ContainsKey("color") ? description.GetNamedString("color") : "");
-
-                            parameters = new List<Object>
+                            List<(String, Object)> descriptionParameter = new List<(String, Object)>
                             {
-                                descriptionValuesString.GetHashCode(),
-                                description.ContainsKey("type") ? (Object)description.GetNamedString("type") : (Object)DBNull.Value,
-                                description.ContainsKey("value") ? (Object)description.GetNamedString("value") : (Object)DBNull.Value,
-                                description.ContainsKey("color") ? (Object)description.GetNamedString("color") : (Object)DBNull.Value,
-                                rgDescriptions.ElementAt(n).Key
+                                ("id", DBNull.Value),
+                                ("type", description.ContainsKey("type") ? (Object)description.GetNamedString("type") : (Object)DBNull.Value),
+                                ("value", description.ContainsKey("value") ? (Object)description.GetNamedString("value") : (Object)DBNull.Value),
+                                ("color", description.ContainsKey("color") ? (Object)description.GetNamedString("color") : (Object)DBNull.Value),
+                                ("rgDescriptionId", rgDescriptions.ElementAt(n).Key)
                             };
 
-                            InsertIntoTable(parameters, parameters.First(), "descriptions", db);
+                            if (!DataSetExists(descriptionParameter, new List<int> { 1, 2, 3 }, "descriptions", db))
+                            {
+                                InsertIntoTable(descriptionParameter, descriptionParameter.First().Item2, "descriptions", db);
+                            }
 
                             if (description.ContainsKey("app_data"))
                             {
                                 JsonObject appData = description.GetNamedObject("app_data");
 
-                                string appDataValuesString = (appData.ContainsKey("def_index") ? appData.GetNamedString("def_index") : "") + (appData.ContainsKey("is_itemset_name") ? appData.GetNamedNumber("is_itemset_name").ToString() : "");
-
-                                parameters = new List<Object>
+                                List<(String, Object)> appDataParameter = new List<(String, Object)>
                                 {
-                                    appDataValuesString.GetHashCode(),
-                                    appData.ContainsKey("def_index") ? (Object)appData.GetNamedString("def_index") : (Object)DBNull.Value,
-                                    appData.ContainsKey("is_itemset_name") ? (Object)appData.GetNamedNumber("is_itemset_name") : (Object)DBNull.Value,
-                                    description.GetHashCode()
+                                    ("id", DBNull.Value),
+                                    ("def_index", appData.ContainsKey("def_index") ? (Object)appData.GetNamedString("def_index") : (Object)DBNull.Value),
+                                    ("is_itemset_name", appData.ContainsKey("is_itemset_name") ? (Object)appData.GetNamedNumber("is_itemset_name") : (Object)DBNull.Value),
+                                    ("limited", appData.ContainsKey("limited") ? (Object)appData.GetNamedNumber("limited") : (Object)DBNull.Value),
+                                    ("descriptionsId", rgDescriptions.ElementAt(n).Key)
                                 };
 
-                                InsertIntoTable(parameters, parameters.First(), "app_data", db);
+                                if (!DataSetExists(appDataParameter, new List<int> { 1, 2, 3, 4 }, "app_data", db))
+                                {
+                                    InsertIntoTable(appDataParameter, appDataParameter.First().Item2, "app_data", db);
+                                }
                             }
+
                         }
                     }
 
@@ -393,13 +418,17 @@ namespace DataAccessLibrary
                         {
                             JsonObject action = actions.GetObjectAt(o);
 
-                            using (SqliteCommand actionsInsertCommand = new SqliteCommand("INSERT INTO actions VALUES (@id, @name, @link, @rgDescriptionID);", db))
+                            List<(String, Object)> actionParameter = new List<(String, Object)>
                             {
-                                actionsInsertCommand.Parameters.AddWithValue("@id", DBNull.Value);
-                                if (action.ContainsKey("name")) { actionsInsertCommand.Parameters.AddWithValue("@name", action.GetNamedString("name")); } else { actionsInsertCommand.Parameters.AddWithValue("@name", DBNull.Value); }
-                                if (action.ContainsKey("link")) { actionsInsertCommand.Parameters.AddWithValue("@link", action.GetNamedString("link")); } else { actionsInsertCommand.Parameters.AddWithValue("@link", DBNull.Value); }
-                                actionsInsertCommand.Parameters.AddWithValue("@rgDescriptionID", rgDescriptions.ElementAt(n).Key);
-                                actionsInsertCommand.ExecuteReader();
+                                ("id", DBNull.Value),
+                                ("name", action.ContainsKey("name") ? (Object)action.GetNamedString("name") : (Object)DBNull.Value),
+                                ("link", action.ContainsKey("link") ? (Object)action.GetNamedString("link") : (Object)DBNull.Value),
+                                ("rgDescriptionId", rgDescriptions.ElementAt(n).Key)
+                            };
+
+                            if (!DataSetExists(actionParameter, new List<int> { 1, 2, 3 }, "actions", db))
+                            {
+                                InsertIntoTable(actionParameter, actionParameter.First().Item2, "actions", db);
                             }
                         }
                     }
@@ -411,13 +440,17 @@ namespace DataAccessLibrary
                         {
                             JsonObject marketAction = marketActions.GetObjectAt(o);
 
-                            using (SqliteCommand actionsInsertCommand = new SqliteCommand("INSERT INTO market_actions VALUES (@id, @name, @link, @rgDescriptionID);", db))
+                            List<(String, Object)> marketActionParameter = new List<(String, Object)>
                             {
-                                actionsInsertCommand.Parameters.AddWithValue("@id", DBNull.Value);
-                                if (marketAction.ContainsKey("name")) { actionsInsertCommand.Parameters.AddWithValue("@name", marketAction.GetNamedString("name")); } else { actionsInsertCommand.Parameters.AddWithValue("@name", DBNull.Value); }
-                                if (marketAction.ContainsKey("link")) { actionsInsertCommand.Parameters.AddWithValue("@link", marketAction.GetNamedString("link")); } else { actionsInsertCommand.Parameters.AddWithValue("@link", DBNull.Value); }
-                                actionsInsertCommand.Parameters.AddWithValue("@rgDescriptionID", rgDescriptions.ElementAt(n).Key);
-                                actionsInsertCommand.ExecuteReader();
+                                ("id", DBNull.Value),
+                                ("name", marketAction.ContainsKey("name") ? (Object)marketAction.GetNamedString("name") : (Object)DBNull.Value),
+                                ("link", marketAction.ContainsKey("link") ? (Object)marketAction.GetNamedString("link") : (Object)DBNull.Value),
+                                ("rgDescriptionId", rgDescriptions.ElementAt(n).Key)
+                            };
+
+                            if (!DataSetExists(marketActionParameter, new List<int> { 1, 2, 3 }, "market_actions", db))
+                            {
+                                InsertIntoTable(marketActionParameter, marketActionParameter.First().Item2, "market_actions", db);
                             }
                         }
                     }
@@ -429,21 +462,25 @@ namespace DataAccessLibrary
                         {
                             JsonObject tag = tags.GetObjectAt(p);
 
-                            using (SqliteCommand tagsInsertCommand = new SqliteCommand("INSERT INTO tags VALUES (@id, @internal_name, @name, @category, @color, @category_name, @rgDescriptionID);", db))
+                            List<(String, Object)> tagParameter = new List<(String, Object)>
                             {
-                                tagsInsertCommand.Parameters.AddWithValue("@id", DBNull.Value);
-                                if (tag.ContainsKey("internal_name")) { tagsInsertCommand.Parameters.AddWithValue("@internal_name", tag.GetNamedString("internal_name")); } else { tagsInsertCommand.Parameters.AddWithValue("@internal_name", DBNull.Value); }
-                                if (tag.ContainsKey("name")) { tagsInsertCommand.Parameters.AddWithValue("@name", tag.GetNamedString("name")); } else { tagsInsertCommand.Parameters.AddWithValue("@name", DBNull.Value); }
-                                if (tag.ContainsKey("category")) { tagsInsertCommand.Parameters.AddWithValue("@category", tag.GetNamedString("category")); } else { tagsInsertCommand.Parameters.AddWithValue("@category", DBNull.Value); }
-                                if (tag.ContainsKey("color")) { tagsInsertCommand.Parameters.AddWithValue("@color", tag.GetNamedString("color")); } else { tagsInsertCommand.Parameters.AddWithValue("@color", DBNull.Value); }
-                                if (tag.ContainsKey("category_name")) { tagsInsertCommand.Parameters.AddWithValue("@category_name", tag.GetNamedString("category_name")); } else { tagsInsertCommand.Parameters.AddWithValue("@category_name", DBNull.Value); }
-                                tagsInsertCommand.Parameters.AddWithValue("@rgDescriptionID", rgDescriptions.ElementAt(n).Key);
-                                tagsInsertCommand.ExecuteReader();
+                                ("id", DBNull.Value),
+                                ("internal_name", tag.ContainsKey("internal_name") ? (Object)tag.GetNamedString("internal_name") : (Object)DBNull.Value),
+                                ("name", tag.ContainsKey("name") ? (Object)tag.GetNamedString("name") : (Object)DBNull.Value),
+                                ("category", tag.ContainsKey("category") ? (Object)tag.GetNamedString("category") : (Object)DBNull.Value),
+                                ("color", tag.ContainsKey("color") ? (Object)tag.GetNamedString("color") : (Object)DBNull.Value),
+                                ("category_name", tag.ContainsKey("category_name") ? (Object)tag.GetNamedString("category_name") : (Object)DBNull.Value),
+                                ("rgDescriptionId", rgDescriptions.ElementAt(n).Key)
+                            };
+
+                            if (!DataSetExists(tagParameter, new List<int> { 1, 2, 3 }, "tags", db))
+                            {
+                                InsertIntoTable(tagParameter, tagParameter.First().Item2, "tags", db);
                             }
                         }
                     }
                 }
-                JsonArray rgCurrency = CsgoInventoryJsonObject.GetNamedArray("rgCurrency");
+                JsonArray rgCurrency = csgoInventory.GetNamedArray("rgCurrency");
 
                 db.Close();
             }
@@ -542,48 +579,121 @@ namespace DataAccessLibrary
             }
         }
 
-        private static void InsertIntoTable(List<Object> parameters, object id, string tableName, SqliteConnection connection)
+        private static void InsertIntoTable(List<(String, Object)> parameters, object id, string tableName, SqliteConnection connection)
         {
-            string selectCommandString;
             string insertCommandString = "INSERT OR IGNORE INTO " + tableName + " VALUES (";
-            int parameterNumber = 0;
-            string parameterName = "";
-
-            if (id.GetType() == typeof(string))
-            {
-                selectCommandString = "SELECT * FROM " + tableName + " WHERE id = \"" + parameters.First() + "\"";
-            }
-            else
-            {
-                selectCommandString = "SELECT * FROM " + tableName + " WHERE id = " + parameters.First();
-            }
 
             using (SqliteCommand command = new SqliteCommand())
             {
                 command.Connection = connection;
-                command.CommandText = selectCommandString;
-                SqliteDataReader query = command.ExecuteReader();
 
-                if (!query.HasRows)
+                foreach ((String, Object) parameter in parameters)
                 {
-                    foreach (Object parameter in parameters)
-                    {
-                        parameterNumber++;
-                        parameterName = "@param" + parameterNumber;
-                        insertCommandString = insertCommandString + parameterName + ", ";
-                        command.Parameters.AddWithValue(parameterName, parameter);
-                    }
-                    insertCommandString = insertCommandString.Remove(insertCommandString.Length - 2);
-                    insertCommandString = insertCommandString + ");";
-                    command.CommandText = insertCommandString;
-                    command.ExecuteReader();
+                    string name = "@" + parameter.Item1;
+
+                    insertCommandString = insertCommandString + name + ", ";
+                    command.Parameters.AddWithValue(name, parameter.Item2);
+
+                    //insertCommandString = insertCommandString + parameter.Item1 + ", ";
+                    //command.Parameters.AddWithValue(parameter.Item1, parameter.Item2);
                 }
+                insertCommandString = insertCommandString.Remove(insertCommandString.Length - 2);
+                insertCommandString = insertCommandString + ");";
+                command.CommandText = insertCommandString;
+                command.ExecuteReader();
             }
         }
 
-        private static object GetIdForValues(List<Object> parameters, string tableName, SqliteConnection connection)
+        private static void InsertIntoRelTable(List<Object> parameters, object id, string tableName, SqliteConnection connection)
         {
-            return 3;
+
         }
-    } 
+
+        private static bool DataSetExists(List<(String, Object)> parameter, List<int> parameterNumbers, string tableName, SqliteConnection connection)
+        {
+            string selectCommandText = "SELECT * FROM " + tableName;
+            int index = 0;
+
+            foreach (var num in parameterNumbers)
+            {
+                if (parameter[num].Item2.GetType() == typeof(String))
+                {
+
+                    var b = parameter[num].Item2;
+                    if (index == 0)
+                    {
+                        selectCommandText = selectCommandText + " WHERE " + parameter[num].Item1 + " = " + "\"" + parameter[num].Item2 + "\"";
+                    }
+                    else
+                    {
+                        selectCommandText = selectCommandText + " AND " + parameter[num].Item1 + " = " + "\"" + parameter[num].Item2 + "\"";
+                    }
+                }
+                else if (parameter[num].Item2.GetType() == typeof(Double))
+                {
+                    if (index == 0)
+                    {
+                        selectCommandText = selectCommandText + " WHERE " + parameter[num].Item1 + " = " + parameter[num].Item2;
+                    }
+                    else
+                    {
+                        selectCommandText = selectCommandText + " AND " + parameter[num].Item1 + " = " + parameter[num].Item2;
+                    }
+                }
+                else if (parameter[num].Item2.GetType() == typeof(Boolean))
+                {
+                    if (index == 0)
+                    {
+                        if ((Boolean)parameter[num].Item2)
+                        {
+                            selectCommandText = selectCommandText + " WHERE " + parameter[num].Item1 + " = 1";
+                        }
+                        else
+                        {
+                            selectCommandText = selectCommandText + " WHERE " + parameter[num].Item1 + " = 0";
+                        }
+                    }
+                    else
+                    {
+                        if ((Boolean)parameter[num].Item2)
+                        {
+                            selectCommandText = selectCommandText + " ANd " + parameter[num].Item1 + " = 1";
+                        }
+                        else
+                        {
+                            selectCommandText = selectCommandText + " ANd " + parameter[num].Item1 + " = 0";
+                        }
+                    }
+                }
+                else if (parameter[num].Item2.GetType() == typeof(DBNull))
+                {
+                    if (index == 0)
+                    {
+                        selectCommandText = selectCommandText + " WHERE " + parameter[num].Item1 + " IS NULL";
+                    }
+                    else
+                    {
+                        selectCommandText = selectCommandText + " AND " + parameter[num].Item1 + " IS NULL";
+                    }
+                }
+                index ++;
+            }
+
+            selectCommandText += ";";
+
+            SqliteCommand selectCommand = new SqliteCommand(selectCommandText, connection);
+
+            SqliteDataReader query = selectCommand.ExecuteReader();
+
+            if (query.HasRows)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+    }
 }
