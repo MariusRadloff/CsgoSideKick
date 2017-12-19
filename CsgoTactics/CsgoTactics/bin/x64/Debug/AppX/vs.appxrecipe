@@ -31,13 +31,13 @@
     <AppXManifest Include="C:\Users\mariu\Source\Repos\CsgoSideKick\CsgoTactics\CsgoTactics\bin\x64\Debug\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2017-12-18T20:50:22.090</Modified>
+      <Modified>2017-12-19T20:36:21.082</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="C:\Users\mariu\Source\Repos\CsgoSideKick\CsgoTactics\CsgoTactics\bin\x64\Debug\CsgoTactics.exe">
       <PackagePath>entrypoint\CsgoTactics.exe</PackagePath>
-      <Modified>2017-12-18T20:50:21.432</Modified>
+      <Modified>2017-12-19T20:31:20.990</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\mariu\.nuget\packages\microsoft.applicationinsights\2.4.0\lib\uap10.0\Microsoft.ApplicationInsights.dll">
       <PackagePath>Microsoft.ApplicationInsights.dll</PackagePath>
@@ -729,7 +729,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\mariu\Source\Repos\CsgoSideKick\CsgoTactics\DataAccessLibrary\bin\x64\Debug\DataAccessLibrary.dll">
       <PackagePath>DataAccessLibrary.dll</PackagePath>
-      <Modified>2017-12-18T20:50:15.471</Modified>
+      <Modified>2017-12-19T20:31:15.613</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\mariu\Source\Repos\CsgoSideKick\CsgoTactics\CsgoTactics\ApplicationInsights.config">
       <PackagePath>ApplicationInsights.config</PackagePath>
@@ -876,11 +876,11 @@
     <AppxPackagedFile Include="C:\Users\mariu\Source\Repos\CsgoSideKick\CsgoTactics\CsgoTactics\bin\x64\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2017-12-18T20:50:21.868</Modified>
+      <Modified>2017-12-19T20:36:20.905</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\mariu\Source\Repos\CsgoSideKick\CsgoTactics\CsgoTactics\bin\x64\Debug\Core\CsgoTactics.exe">
       <PackagePath>CsgoTactics.exe</PackagePath>
-      <Modified>2017-12-18T20:50:22.085</Modified>
+      <Modified>2017-12-19T20:36:21.078</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>
