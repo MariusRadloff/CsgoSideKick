@@ -742,13 +742,12 @@ namespace DataAccessLibrary
 
             SqliteCommand selectCommand = new SqliteCommand(selectCommandText, connection);
 
-            SqliteDataReader query = selectCommand.ExecuteReader();
+            SqliteDataReader reader = selectCommand.ExecuteReader();
 
-            if (query.HasRows)
+            if (reader.HasRows)
             {
-                query.Read();
-
-                return (long)query.GetValue(0);
+                reader.Read();
+                return reader.GetInt64(0);
             }
             else
             {
