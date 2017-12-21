@@ -563,11 +563,11 @@ namespace DataAccessLibrary
 
                 SqliteCommand selectCommand = new SqliteCommand("SELECT * from rgInventory", db);
 
-                SqliteDataReader query = selectCommand.ExecuteReader();
+                SqliteDataReader reader = selectCommand.ExecuteReader();
 
-                while (query.Read())
+                while (reader.Read())
                 {
-                    entries.Add(query.GetString(0));
+                    entries.Add(reader.GetString(0));
                 }
                 db.Close();
             }
@@ -655,7 +655,7 @@ namespace DataAccessLibrary
                 if (reader.HasRows)
                 {
                     reader.Read();
-                    return (long)reader[0];
+                    return reader.GetInt64(0);
                 }
                 else
                 {
