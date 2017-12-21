@@ -18,13 +18,216 @@ namespace DataAccessLibrary
             get { return "Filename=steamInventory.db"; }
         }
 
-        public static void InitializeDatabase()
+        private static List<List<List<String>>> tableDataList;
+
+        public static List<List<List<String>>> TableDataList
+        {
+            get {
+                return new List<List<List<String>>>
+                {
+                    new List<List<String>>
+                    {
+                        new List<String>{ "steamInventory" },
+                        new List<String>{ "steamInventoryId",  "INTEGER", "NOT NULL", "PRIMARY KEY", "AUTOINCREMENT" },
+                        new List<String>{ "userId", "TEXT", "NOT NULL" },
+                        new List<String>{ "username", "TEXT", "NOT NULL" }
+                    },
+
+                    new List<List<String>>
+                    {
+                        new List<String>{ "csgoInventory" },
+                        new List<String>{ "csgoInventoryId", "INTEGER", "NOT NULL", "PRIMARY KEY", "AUTOINCREMENT" },
+                        new List<String>{ "gameId", "TEXT", " NOT NULL" },
+                        new List<String>{ "success", "TEXT" },
+                        new List<String>{ "more", "TEXT" },
+                        new List<String>{ "more_start", "TEXT" },
+                        new List<String>{ "steamInventoryId", "INTEGER" },
+                        new List<String>{ "FOREIGN KEY", "(steamInventoryId)", "REFERENCES", "steamInventory(steamInventoryId)" }
+                    },
+
+                    new List<List<String>>
+                    {
+                        new List<String>{ "rgInventory" },
+                        new List<String>{ "rgInventoryId", "INTEGER", "NOT NULL", "PRIMARY KEY", "AUTOINCREMENT" },
+                        new List<String>{ "id", "INTEGER", "NOT NULL" },
+                        new List<String>{ "classid", "INTEGER", "NOT NULL" },
+                        new List<String>{ "instanceid", "TEXT", " NOT NULL" },
+                        new List<String>{ "amount", "TEXT" },
+                        new List<String>{ "pos", "TEXT" },
+                        new List<String>{ "csgoInventoryId", "INTEGER" },
+                        new List<String>{ "FOREIGN KEY", "(csgoInventoryId)", "REFERENCES", "csgoInventory(csgoInventoryId)" }
+                    },
+
+                    new List<List<String>>
+                    {
+                        new List<String>{ "rgCurrency" },
+                        new List<String>{ "rgCurrencyId", "INTEGER", "NOT NULL", "PRIMARY KEY", "AUTOINCREMENT" },
+                        new List<String>{ "csgoInventoryId", "INTEGER", " NOT NULL" },
+                        new List<String>{ "FOREIGN KEY", "(csgoInventoryId)", "REFERENCES", "csgoInventory(csgoInventoryId)" }
+                    },
+
+                    new List<List<String>>
+                    {
+                        new List<String>{ "rgDescriptions" },
+                        new List<String>{ "rgDescriptionsId", "INTEGER", "NOT NULL", "PRIMARY KEY", "AUTOINCREMENT" },
+                        new List<String>{ "appId", "TEXT" },
+                        new List<String>{ "classid", "TEXT" },
+                        new List<String>{ "instanceid", "TEXT" },
+                        new List<String>{ "icon_url", "TEXT" },
+                        new List<String>{ "icon_url_large", "TEXT" },
+                        new List<String>{ "icon_drag_url", "TEXT" },
+                        new List<String>{ "name", "TEXT" },
+                        new List<String>{ "market_hash_name", "TEXT" },
+                        new List<String>{ "market_name", "TEXT" },
+                        new List<String>{ "name_color", "TEXT" },
+                        new List<String>{ "background_color", "TEXT" },
+                        new List<String>{ "type", "TEXT" },
+                        new List<String>{ "tradable", "NUMBER" },
+                        new List<String>{ "marketable", "NUMBER" },
+                        new List<String>{ "commodity", "NUMBER" },
+                        new List<String>{ "market_tradable_restriction", "TEXT" },
+                        new List<String>{ "csgoInventoryId", "INTEGER", " NOT NULL" },
+                        new List<String>{ "FOREIGN KEY", "(csgoInventoryId)", "REFERENCES", "csgoInventory(csgoInventoryId)" }
+                    },
+
+                    new List<List<String>>
+                    {
+                        new List<String>{ "descriptions" },
+                        new List<String>{ "descriptionsId", "INTEGER", "NOT NULL", "PRIMARY KEY", "AUTOINCREMENT" },
+                        new List<String>{ "type", "TEXT" },
+                        new List<String>{ "value", "TEXT" },
+                        new List<String>{ "color", "TEXT" }
+                    },
+
+                    new List<List<String>>
+                    {
+                        new List<String>{ "app_data" },
+                        new List<String>{ "app_dataId", "INTEGER", "NOT NULL", "PRIMARY KEY", "AUTOINCREMENT" },
+                        new List<String>{ "def_index", "TEXT" },
+                        new List<String>{ "is_itemset_name", "REAL" },
+                        new List<String>{ "limited", "INTEGER" }
+                    },
+
+                    new List<List<String>>
+                    {
+                        new List<String>{ "actions" },
+                        new List<String>{ "actionsId", "INTEGER", "NOT NULL", "PRIMARY KEY", "AUTOINCREMENT" },
+                        new List<String>{ "name", "TEXT" },
+                        new List<String>{ "link", "TEXT" },
+                        new List<String>{ "rgDescriptionsId", "INTEGER" },
+                        new List<String>{ "FOREIGN KEY", "(rgDescriptionsId)", "REFERENCES", "rgDescription(rgDescriptionsId)" }
+                    },
+
+                    new List<List<String>>
+                    {
+                        new List<String>{ "market_actions" },
+                        new List<String>{ "market_actionsId", "INTEGER", "NOT NULL", "PRIMARY KEY", "AUTOINCREMENT" },
+                        new List<String>{ "name", "TEXT" },
+                        new List<String>{ "link", "TEXT" },
+                        new List<String>{ "rgDescriptionsId", "INTEGER" },
+                        new List<String>{ "FOREIGN KEY", "(rgDescriptionsId)", "REFERENCES", "rgDescription(rgDescriptionsId)" }
+                    },
+
+                    new List<List<String>>
+                    {
+                        new List<String>{ "tags" },
+                        new List<String>{ "tagsId", "INTEGER", "NOT NULL", "PRIMARY KEY", "AUTOINCREMENT" },
+                        new List<String>{ "internal_name", "TEXT" },
+                        new List<String>{ "name", "TEXT" },
+                        new List<String>{ "category", "TEXT" },
+                        new List<String>{ "color", "TEXT" },
+                        new List<String>{ "category_name", "TEXT" },
+                        new List<String>{ "rgDescriptionsId", "INTEGER" },
+                        new List<String>{ "FOREIGN KEY", "(rgDescriptionsId)", "REFERENCES", "rgDescription(rgDescriptionsId)" }
+                    },
+
+                    new List<List<String>>
+                    {
+                        new List<String>{ "priceData" },
+                        new List<String>{ "priceDataId", "INTEGER", "NOT NULL", "PRIMARY KEY", "AUTOINCREMENT" },
+                        new List<String>{ "purchaseDate", "TEXT" },
+                        new List<String>{ "purchasePrice", "TEXT" },
+                        new List<String>{ "rgDescriptionsId", "INTEGER" },
+                        new List<String>{ "FOREIGN KEY", "(rgDescriptionsId)", "REFERENCES", "rgDescription(rgDescriptionsId)" }
+                    },
+
+                    new List<List<String>>
+                    {
+                        new List<String>{ "priceCollection" },
+                        new List<String>{ "priceCollectionId", "INTEGER", "NOT NULL", "PRIMARY KEY", "AUTOINCREMENT" },
+                        new List<String>{ "date", "TEXT" },
+                        new List<String>{ "price", "TEXT" },
+                        new List<String>{ "priceDataId", "INTEGER" },
+                        new List<String>{ "FOREIGN KEY", "(priceDataId)", "REFERENCES", "priceData(priceDataId)" }
+                    },
+
+                    new List<List<String>>
+                    {
+                        new List<String>{ "app_dataDescriptionsRgDescriptionsRel" },
+                        new List<String>{ "app_dataDescriptionsRgDescriptionsRelId", "INTEGER", "NOT NULL", "PRIMARY KEY", "AUTOINCREMENT" },
+                        new List<String>{ "descriptionsId", "INTEGER" },
+                        new List<String>{ "rgDescriptionsId", "INTEGER" },
+                        new List<String>{ "app_dataId", "INTEGER" },
+                        new List<String>{ "UNIQUE", "( descriptionsId, rgDescriptionsId )" }
+                    },
+
+                    new List<List<String>>
+                    {
+                        new List<String>{ "descriptionsRgDescriptionsRel" },
+                        new List<String>{ "descriptionsRgDescriptionsRelId", "INTEGER", "NOT NULL", "PRIMARY KEY", "AUTOINCREMENT" },
+                        new List<String>{ "descriptionsId", "INTEGER" },
+                        new List<String>{ "rgDescriptionsId", "INTEGER", "NOT NULL" },
+                        new List<String>{ "pos", "INTEGER", "NOT NULL" },
+                        new List<String>{ "UNIQUE", "( descriptionsId, rgDescriptionsId )" }
+                    }
+                };
+            }
+        }
+
+        public static void CreateTables()
+        {
+            using (SqliteConnection db = new SqliteConnection(DbConnectionString))
+            {
+                db.Open();
+                string createTableCommandString;
+
+                foreach (List<List<String>> tableData in TableDataList)
+                {
+                    int stringNumber = 0;
+                    createTableCommandString = "CREATE TABLE IF NOT EXISTS " + tableData[0][0] + " ( ";
+                    foreach (List<String> tableDataStrings in tableData)
+                    {
+                        foreach (String tableDataString in tableDataStrings)
+                        {
+                            if (stringNumber != 0)
+                            {
+                                createTableCommandString += tableDataString + " ";
+                            }
+                        }
+                        if (stringNumber != 0)
+                        {
+                            createTableCommandString += ", ";
+                        }
+                        stringNumber++;
+                    }
+                    createTableCommandString = createTableCommandString.Remove(createTableCommandString.Length - 2);
+                    createTableCommandString += ");";
+
+                    SqliteCommand createTableCommand = new SqliteCommand(createTableCommandString, db);
+                    createTableCommand.ExecuteReader();
+                }
+                db.Close();
+            }
+        }
+
+
+        public static void CreateTablesOld()
         {
             using (SqliteConnection db = new SqliteConnection(DbConnectionString))
             {
                 #region TableCommands
                 String steamInventoryTableCommand = "CREATE TABLE IF NOT EXISTS steamInventory (" +
-                    "id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT," +
+                    "steamInventoryId INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT," +
                     "userId	TEXT NOT NULL," +
                     "username	TEXT NOT NULL" +
                     ");";
@@ -35,7 +238,7 @@ namespace DataAccessLibrary
                     "success    TEXT," +
                     "more	TEXT," +
                     "more_start	TEXT," +
-                    "steamInventoryId	TEXT," +
+                    "steamInventoryId	INTEGER," +
                     "FOREIGN KEY(steamInventoryId) REFERENCES steamInventory(id)" +
                     ");";
 
@@ -46,14 +249,14 @@ namespace DataAccessLibrary
                     "instanceid	TEXT," +
                     "amount	TEXT," +
                     "pos	TEXT," +
-                    "csgoInventoryId	TEXT," +
+                    "csgoInventoryId	INTEGER," +
                     "FOREIGN KEY(csgoInventoryId) REFERENCES csgoInventory(id)" +
                     ");";
 
                 String rgCurrencyTableCommand = "CREATE TABLE IF NOT EXISTS rgCurrency (" +
                     "id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT," +
                     "rgCurrencyId	TEXT NOT NULL," +
-                    "csgoInventoryId	TEXT," +
+                    "csgoInventoryId	INTEGER," +
                     "FOREIGN KEY(csgoInventoryId) REFERENCES csgoInventory(id)" +
                     ");";
 
@@ -61,6 +264,7 @@ namespace DataAccessLibrary
                     "id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT," +
                     "appid_instanceid	TEXT NOT NULL," +
                     "appid	TEXT," +
+                    "classid TEXT," +
                     "instanceid	TEXT," +
                     "icon_url	TEXT," +
                     "icon_url_large	TEXT," +
@@ -75,7 +279,7 @@ namespace DataAccessLibrary
                     "marketable	NUMBER," +
                     "commodity	NUMBER," +
                     "market_tradable_restriction	TEXT," +
-                    "csgoInventoryId	TEXT," +
+                    "csgoInventoryId	INTEGER," +
                     "FOREIGN KEY(csgoInventoryId) REFERENCES csgoInventory(id)" +
                     ");";
 
@@ -97,7 +301,7 @@ namespace DataAccessLibrary
                     "id	INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT," +
                     "name	TEXT," +
                     "link	TEXT," +
-                    "rgDescriptionId	TEXT," +
+                    "rgDescriptionId	INTEGER," +
                     "FOREIGN KEY(rgDescriptionId) REFERENCES rgDescription(id)" +
                     ");";
 
@@ -105,7 +309,7 @@ namespace DataAccessLibrary
                     "id	INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT," +
                     "name	TEXT," +
                     "link	TEXT," +
-                    "rgDescriptionId	TEXT," +
+                    "rgDescriptionId	INTEGER," +
                     "FOREIGN KEY(rgDescriptionId) REFERENCES rgDescription(id)" +
                     ");";
 
@@ -116,7 +320,7 @@ namespace DataAccessLibrary
                     "category	TEXT," +
                     "color	TEXT," +
                     "category_name	TEXT," +
-                    "rgDescriptionId	TEXT," +
+                    "rgDescriptionId	INTEGER," +
                     "FOREIGN KEY(rgDescriptionId) REFERENCES rgDescription(id)" +
                     ");";
 
@@ -132,15 +336,16 @@ namespace DataAccessLibrary
                     "id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT," +
                     "date TEXT," +
                     "price TEXT," +
-                    "priceDataId TEXT," +
+                    "priceDataId INTEGER," +
                     "FOREIGN KEY(priceDataId) REFERENCES priceData(id)" +
                     ");";
 
-                String app_dataDescriptionsRelTableCommand = "CREATE TABLE IF NOT EXISTS app_dataDescriptionsRel(" +
+                String app_dataDescriptionsRgDescriptionRelTableCommand = "CREATE TABLE IF NOT EXISTS app_dataDescriptionsRgDescriptionRel(" +
                     "id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT," +
                     "descriptionsId INTEGER NOT NULL," +
+                    "rgDescriptionId INTEGER NOT NULL," +
                     "app_dataId INTEGER NOT NULL," +
-                    "UNIQUE ( descriptionsId, app_dataId )" +
+                    "UNIQUE ( descriptionsId, rgDescriptionId )" +
                     ");";
 
                 String descriptionsRgDescriptionRelTableCommand = "CREATE TABLE IF NOT EXISTS descriptionsRgDescriptionRel(" +
@@ -148,7 +353,7 @@ namespace DataAccessLibrary
                     "descriptionsId INTEGER NOT NULL," +
                     "rgDescriptionId INTEGER NOT NULL," +
                     "pos INTEGER NOT NULL," +
-                     "UNIQUE ( descriptionsId, rgDescriptionId )" +
+                    "UNIQUE ( descriptionsId, rgDescriptionId )" +
                     ");";
 
                 #endregion
@@ -167,7 +372,7 @@ namespace DataAccessLibrary
                 SqliteCommand createTagsTable = new SqliteCommand(tagsTableCommand, db);
                 SqliteCommand createPriceDataTable = new SqliteCommand(priceDataTableCommand, db);
                 SqliteCommand createPriceCollectionTable = new SqliteCommand(priceCollectionTableCommand, db);
-                SqliteCommand createApp_dataDescriptionsRelTable = new SqliteCommand(app_dataDescriptionsRelTableCommand, db);
+                SqliteCommand createApp_dataDescriptionsRelTable = new SqliteCommand(app_dataDescriptionsRgDescriptionRelTableCommand, db);
                 SqliteCommand createDescriptionsRgDescriptionRelTable = new SqliteCommand(descriptionsRgDescriptionRelTableCommand, db);
 
                 createSteamInventoryTable.ExecuteReader();
@@ -187,59 +392,32 @@ namespace DataAccessLibrary
             }
         }
 
-        public static void ResetDatabase()
+        public static void DeleteTables()
         {
             using (SqliteConnection db = new SqliteConnection(DbConnectionString))
             {
-                #region TableCommands
-                String deleteSteamInventoryTableCommand = "DELETE FROM steamInventory";
-                String deleteCsgoInventoryTableCommand = "DELETE FROM csgoInventory";
-                String deleteRgInventoryTableCommand = "DELETE FROM rgInventory";
-                String deleteRgCurrencyTableCommand = "DELETE FROM rgCurrency";
-                String deleteRgDescriptionTableCommand = "DELETE FROM rgDescription";
-                String deleteDescriptionsTableCommand = "DELETE FROM descriptions";
-                String deleteApp_dataTableCommand = "DELETE FROM app_data";
-                String deleteActionsTableCommand = "DELETE FROM actions";
-                String deleteMarket_actionsTableCommand = "DELETE FROM market_actions";
-                String deleteTagsTableCommand = "DELETE FROM tags";
-                String deletePriceDataTableCommand = "DELETE FROM priceData";
-                String deletePriceCollectionTableCommand = "DELETE FROM priceCollection";
-                String deleteApp_dataRgDescriptionRelTableCommand = "DELETE FROM app_dataDescriptionsRel";
-                String deleteDescriptionsRgDescriptionRelTableCommand = "DELETE FROM descriptionsRgDescriptionRel";
-                #endregion
-
-                SqliteCommand deleteSteamInventoryTable = new SqliteCommand(deleteSteamInventoryTableCommand, db);
-                SqliteCommand deleteCsgoInventoryTable = new SqliteCommand(deleteCsgoInventoryTableCommand, db);
-                SqliteCommand deleteRgInventoryTable = new SqliteCommand(deleteRgInventoryTableCommand, db);
-                SqliteCommand deleteRgCurrencyTable = new SqliteCommand(deleteRgCurrencyTableCommand, db);
-                SqliteCommand deleteRgDescriptionTable = new SqliteCommand(deleteRgDescriptionTableCommand, db);
-                SqliteCommand deleteDescriptionsTable = new SqliteCommand(deleteDescriptionsTableCommand, db);
-                SqliteCommand deleteApp_dataTable = new SqliteCommand(deleteApp_dataTableCommand, db);
-                SqliteCommand deleteActionsTable = new SqliteCommand(deleteActionsTableCommand, db);
-                SqliteCommand deleteMarket_actionsTable = new SqliteCommand(deleteMarket_actionsTableCommand, db);
-                SqliteCommand deleteTagsTable = new SqliteCommand(deleteTagsTableCommand, db);
-                SqliteCommand deletePriceDataTable = new SqliteCommand(deletePriceDataTableCommand, db);
-                SqliteCommand deletePriceCollectionTable = new SqliteCommand(deletePriceCollectionTableCommand, db);
-                SqliteCommand deleteApp_dataRgDescriptionRelTable = new SqliteCommand(deleteApp_dataRgDescriptionRelTableCommand, db);
-                SqliteCommand deleteDescriptionsRgDescriptionRelTable = new SqliteCommand(deleteDescriptionsRgDescriptionRelTableCommand, db);
-
                 db.Open();
+                foreach (List<List<String>> tableData in TableDataList)
+                {
+                    string deleteTableCommandString = "DELETE FROM " + tableData[0][0];
+                    SqliteCommand deleteTableCommand = new SqliteCommand(deleteTableCommandString, db);
+                    deleteTableCommand.ExecuteReader();
+                }
+                db.Close();
+            }
+        }
 
-                deleteSteamInventoryTable.ExecuteReader();
-                deleteCsgoInventoryTable.ExecuteReader();
-                deleteRgInventoryTable.ExecuteReader();
-                deleteRgCurrencyTable.ExecuteReader();
-                deleteRgDescriptionTable.ExecuteReader();
-                deleteDescriptionsTable.ExecuteReader();
-                deleteApp_dataTable.ExecuteReader();
-                deleteActionsTable.ExecuteReader();
-                deleteMarket_actionsTable.ExecuteReader();
-                deleteTagsTable.ExecuteReader();
-                deletePriceDataTable.ExecuteReader();
-                deletePriceCollectionTable.ExecuteReader();
-                deleteApp_dataRgDescriptionRelTable.ExecuteReader();
-                deleteDescriptionsRgDescriptionRelTable.ExecuteReader();
-
+        public static void DropTables()
+        {
+            using (SqliteConnection db = new SqliteConnection(DbConnectionString))
+            {
+                db.Open();
+                foreach (List<List<String>> tableData in TableDataList)
+                {
+                    string deleteTableCommandString = "DROP TABLE " + tableData[0][0];
+                    SqliteCommand deleteTableCommand = new SqliteCommand(deleteTableCommandString, db);
+                    deleteTableCommand.ExecuteReader();
+                }
                 db.Close();
             }
         }
@@ -279,8 +457,6 @@ namespace DataAccessLibrary
                             steamInventoryInsertCommand.Parameters.AddWithValue("@username", Username);
                             steamInventoryInsertCommand.ExecuteReader();
                         }
-
-
                     }
                 }
                 db.Close();
@@ -288,7 +464,7 @@ namespace DataAccessLibrary
 
         }
 
-        public static void AddCsgoInventory(string inventoryString, string Steam64Id, string csgoInventoryId)
+        public static void AddGameInventory(string inventoryString, string Steam64Id, string csgoInventoryId)
         {
             using (SqliteConnection db = new SqliteConnection(DbConnectionString))
             {
@@ -306,19 +482,21 @@ namespace DataAccessLibrary
 
                 db.Open();
 
-                List<(String, Object)> csgoInventoryParameter = new List<(String, Object)>
+                List<List<String>> TableData = TableDataList.Where(tdl => tdl[0][0] == "csgoInventory").First();
+
+                List <(String, Object)> csgoInventoryParameter = new List<(String, Object)>
                 {
-                    ("id", DBNull.Value),
-                    ("gameId", csgoInventoryId),
-                    ("success", csgoInventory.ContainsKey("success") ? (Object)csgoInventory.GetNamedBoolean("success") : (Object)DBNull.Value),
-                    ("more", csgoInventory.ContainsKey("more") ? (Object)csgoInventory.GetNamedBoolean("more") : (Object)DBNull.Value),
-                    ("more_start", csgoInventory.ContainsKey("more_start") ? (Object)csgoInventory.GetNamedBoolean("more_start") : (Object)DBNull.Value),
-                    ("steamInventoryId", Steam64Id)
+                    (TableData.ElementAt(1).First(), DBNull.Value),
+                    (TableData.ElementAt(2).First(), csgoInventoryId),
+                    (TableData.ElementAt(3).First(), csgoInventory.ContainsKey(TableData.ElementAt(3).First()) ? (Object)csgoInventory.GetNamedBoolean(TableData.ElementAt(3).First()) : (Object)DBNull.Value),
+                    (TableData.ElementAt(4).First(), csgoInventory.ContainsKey(TableData.ElementAt(4).First()) ? (Object)csgoInventory.GetNamedBoolean(TableData.ElementAt(4).First()) : (Object)DBNull.Value),
+                    (TableData.ElementAt(5).First(), csgoInventory.ContainsKey(TableData.ElementAt(5).First()) ? (Object)csgoInventory.GetNamedBoolean(TableData.ElementAt(5).First()) : (Object)DBNull.Value),
+                    (TableData.ElementAt(6).First(), Steam64Id)
                 };
 
-                if (GetIdOfDataSet(csgoInventoryParameter, new List<int> {0, 1, 2, 3, 4 }, "csgoInventory", db) == 0)
+                if (GetIdOfDataSet(csgoInventoryParameter, new List<int> {0, 1, 2, 3, 4 }, TableData.ElementAt(0).First(), db) == 0)
                 {
-                    InsertIntoTable(csgoInventoryParameter, "csgoInventory", db);
+                    InsertIntoTable(csgoInventoryParameter, TableData.ElementAt(0).First(), db);
                 }
 
                 JsonObject rgInventory = csgoInventory.GetNamedObject("rgInventory");
@@ -327,20 +505,22 @@ namespace DataAccessLibrary
                 {
                     JsonObject rgInventoryElement = rgInventory.GetNamedObject(rgInventory.ElementAt(i).Key);
 
+                    TableData = TableDataList.Where(tdl => tdl[0][0] == "rgInventory").First();
+
                     List<(String, Object)> rgInventoryParameter = new List<(String, Object)>
                     {
-                        ("id", DBNull.Value),
-                        ("rgInventoryId", rgInventoryElement.ContainsKey("id") ? (Object)rgInventoryElement.GetNamedString("id") : (Object)DBNull.Value),
-                        ("classid", rgInventoryElement.ContainsKey("classid") ? (Object)rgInventoryElement.GetNamedString("classid") : (Object)DBNull.Value),
-                        ("instanceid", rgInventoryElement.ContainsKey("instanceid") ? (Object)rgInventoryElement.GetNamedString("instanceid") : (Object)DBNull.Value),
-                        ("amount", rgInventoryElement.ContainsKey("amount") ? (Object)rgInventoryElement.GetNamedString("amount") : (Object)DBNull.Value),
-                        ("pos", rgInventoryElement.ContainsKey("pos") ? (Object)rgInventoryElement.GetNamedNumber("pos") : (Object)DBNull.Value),
-                        ("csgoInventoryId", csgoInventoryId)
+                        (TableData.ElementAt(1).First(), DBNull.Value),
+                        (TableData.ElementAt(2).First(), rgInventoryElement.ContainsKey(TableData.ElementAt(2).First()) ? (Object)rgInventoryElement.GetNamedString(TableData.ElementAt(2).First()) : (Object)DBNull.Value),
+                        (TableData.ElementAt(3).First(), rgInventoryElement.ContainsKey(TableData.ElementAt(3).First()) ? (Object)rgInventoryElement.GetNamedString(TableData.ElementAt(3).First()) : (Object)DBNull.Value),
+                        (TableData.ElementAt(4).First(), rgInventoryElement.ContainsKey(TableData.ElementAt(4).First()) ? (Object)rgInventoryElement.GetNamedString(TableData.ElementAt(4).First()) : (Object)DBNull.Value),
+                        (TableData.ElementAt(5).First(), rgInventoryElement.ContainsKey(TableData.ElementAt(5).First()) ? (Object)rgInventoryElement.GetNamedString(TableData.ElementAt(5).First()) : (Object)DBNull.Value),
+                        (TableData.ElementAt(6).First(), rgInventoryElement.ContainsKey(TableData.ElementAt(6).First()) ? (Object)rgInventoryElement.GetNamedNumber(TableData.ElementAt(6).First()) : (Object)DBNull.Value),
+                        (TableData.ElementAt(7).First(), csgoInventoryId)
                     };
 
-                    if (GetIdOfDataSet(rgInventoryParameter, new List<int> { 1, 2, 3, 4, 5 }, "rgInventory", db) == 0)
+                    if (GetIdOfDataSet(rgInventoryParameter, new List<int> { 1, 2, 3, 4, 5 }, TableData.ElementAt(0).First(), db) == 0)
                     {
-                        InsertIntoTable(rgInventoryParameter, "rgInventory", db);
+                        InsertIntoTable(rgInventoryParameter, TableData.ElementAt(0).First(), db);
                     }
                 }
 
@@ -349,35 +529,37 @@ namespace DataAccessLibrary
                 for (int n = 0; n < rgDescriptions.Count; n++)
                 {
                     JsonObject rgDescription = rgDescriptions.GetNamedObject(rgDescriptions.ElementAt(n).Key);
-                    long rgDescriptonId = 0;
+                    long rgDescriptonsId = 0;
+
+                    TableData = TableDataList.Where(tdl => tdl[0][0] == "rgDescriptions").First();
 
                     List<(String, Object)> rgDescriptionParameter = new List<(String, Object)>
                     {
-                        ("id", DBNull.Value),
-                        ("appid_instanceid", rgDescriptions.ElementAt(n).Key),
-                        ("appid", rgDescription.ContainsKey("appid") ? (Object)rgDescription.GetNamedString("appid") : (Object)DBNull.Value),
-                        ("instanceid", rgDescription.ContainsKey("instanceid") ? (Object)rgDescription.GetNamedString("instanceid") : (Object)DBNull.Value),
-                        ("icon_url", rgDescription.ContainsKey("icon_url") ? (Object)rgDescription.GetNamedString("icon_url") : (Object)DBNull.Value),
-                        ("icon_url_large", rgDescription.ContainsKey("icon_url_large") ? (Object)rgDescription.GetNamedString("icon_url_large") : (Object)DBNull.Value),
-                        ("icon_drag_url", rgDescription.ContainsKey("icon_drag_url") ? (Object)rgDescription.GetNamedString("icon_drag_url") : (Object)DBNull.Value),
-                        ("name", rgDescription.ContainsKey("name") ? (Object)rgDescription.GetNamedString("name") : (Object)DBNull.Value),
-                        ("market_hash_name", rgDescription.ContainsKey("market_hash_name") ? (Object)rgDescription.GetNamedString("market_hash_name") : (Object)DBNull.Value),
-                        ("market_name", rgDescription.ContainsKey("market_name") ? (Object)rgDescription.GetNamedString("market_name") : (Object)DBNull.Value),
-                        ("name_color", rgDescription.ContainsKey("name_color") ? (Object)rgDescription.GetNamedString("name_color") : (Object)DBNull.Value),
-                        ("background_color", rgDescription.ContainsKey("background_color") ? (Object)rgDescription.GetNamedString("background_color") : (Object)DBNull.Value),
-                        ("type", rgDescription.ContainsKey("type") ? (Object)rgDescription.GetNamedString("type") : (Object)DBNull.Value),
-                        ("tradable", rgDescription.ContainsKey("tradable") ? (Object)rgDescription.GetNamedNumber("tradable") : (Object)DBNull.Value),
-                        ("marketable", rgDescription.ContainsKey("marketable") ? (Object)rgDescription.GetNamedNumber("marketable") : (Object)DBNull.Value),
-                        ("commodity", rgDescription.ContainsKey("commodity") ? (Object)rgDescription.GetNamedNumber("commodity") : (Object)DBNull.Value),
-                        ("market_tradable_restriction", rgDescription.ContainsKey("market_tradable_restriction") ? (Object)rgDescription.GetNamedString("market_tradable_restriction") : (Object)DBNull.Value),
-                        ("csgoInventoryId", csgoInventoryId)
+                        (TableData.ElementAt(1).First(), DBNull.Value),
+                        (TableData.ElementAt(2).First(), rgDescription.ContainsKey(TableData.ElementAt(2).First()) ? (Object)rgDescription.GetNamedString(TableData.ElementAt(2).First()) : (Object)DBNull.Value),
+                        (TableData.ElementAt(3).First(), rgDescription.ContainsKey(TableData.ElementAt(3).First()) ? (Object)rgDescription.GetNamedString(TableData.ElementAt(3).First()) : (Object)DBNull.Value),
+                        (TableData.ElementAt(4).First(), rgDescription.ContainsKey(TableData.ElementAt(4).First()) ? (Object)rgDescription.GetNamedString(TableData.ElementAt(4).First()) : (Object)DBNull.Value),
+                        (TableData.ElementAt(5).First(), rgDescription.ContainsKey(TableData.ElementAt(5).First()) ? (Object)rgDescription.GetNamedString(TableData.ElementAt(5).First()) : (Object)DBNull.Value),
+                        (TableData.ElementAt(6).First(), rgDescription.ContainsKey(TableData.ElementAt(6).First()) ? (Object)rgDescription.GetNamedString(TableData.ElementAt(6).First()) : (Object)DBNull.Value),
+                        (TableData.ElementAt(7).First(), rgDescription.ContainsKey(TableData.ElementAt(7).First()) ? (Object)rgDescription.GetNamedString(TableData.ElementAt(7).First()) : (Object)DBNull.Value),
+                        (TableData.ElementAt(8).First(), rgDescription.ContainsKey(TableData.ElementAt(8).First()) ? (Object)rgDescription.GetNamedString(TableData.ElementAt(8).First()) : (Object)DBNull.Value),
+                        (TableData.ElementAt(9).First(), rgDescription.ContainsKey(TableData.ElementAt(9).First()) ? (Object)rgDescription.GetNamedString(TableData.ElementAt(9).First()) : (Object)DBNull.Value),
+                        (TableData.ElementAt(10).First(), rgDescription.ContainsKey(TableData.ElementAt(10).First()) ? (Object)rgDescription.GetNamedString(TableData.ElementAt(10).First()) : (Object)DBNull.Value),
+                        (TableData.ElementAt(11).First(), rgDescription.ContainsKey(TableData.ElementAt(11).First()) ? (Object)rgDescription.GetNamedString(TableData.ElementAt(11).First()) : (Object)DBNull.Value),
+                        (TableData.ElementAt(12).First(), rgDescription.ContainsKey(TableData.ElementAt(12).First()) ? (Object)rgDescription.GetNamedString(TableData.ElementAt(12).First()) : (Object)DBNull.Value),
+                        (TableData.ElementAt(13).First(), rgDescription.ContainsKey(TableData.ElementAt(13).First()) ? (Object)rgDescription.GetNamedString(TableData.ElementAt(13).First()) : (Object)DBNull.Value),
+                        (TableData.ElementAt(14).First(), rgDescription.ContainsKey(TableData.ElementAt(14).First()) ? (Object)rgDescription.GetNamedNumber(TableData.ElementAt(14).First()) : (Object)DBNull.Value),
+                        (TableData.ElementAt(15).First(), rgDescription.ContainsKey(TableData.ElementAt(15).First()) ? (Object)rgDescription.GetNamedNumber(TableData.ElementAt(15).First()) : (Object)DBNull.Value),
+                        (TableData.ElementAt(16).First(), rgDescription.ContainsKey(TableData.ElementAt(16).First()) ? (Object)rgDescription.GetNamedNumber(TableData.ElementAt(16).First()) : (Object)DBNull.Value),
+                        (TableData.ElementAt(17).First(), rgDescription.ContainsKey(TableData.ElementAt(17).First()) ? (Object)rgDescription.GetNamedString(TableData.ElementAt(17).First()) : (Object)DBNull.Value),
+                        (TableData.ElementAt(18).First(), csgoInventoryId)
                     };
 
-                    rgDescriptonId = GetIdOfDataSet(rgDescriptionParameter, new List<int> { 1, 2 }, "rgDescription", db);
+                    rgDescriptonsId = GetIdOfDataSet(rgDescriptionParameter, new List<int> { 1, 2 }, TableData.ElementAt(0).First(), db);
 
-                    if (rgDescriptonId == 0)
+                    if (rgDescriptonsId == 0)
                     {
-                        rgDescriptonId = InsertIntoTable(rgDescriptionParameter, "rgDescription", db);
+                        rgDescriptonsId = InsertIntoTable(rgDescriptionParameter, TableData.ElementAt(0).First(), db);
                     }
 
                     if (rgDescription.ContainsKey("descriptions"))
@@ -389,32 +571,36 @@ namespace DataAccessLibrary
                             JsonObject description = descriptions.GetObjectAt(m);
                             long descriptonsId = 0;
 
+                            TableData = TableDataList.Where(tdl => tdl[0][0] == "descriptions").First();
+
                             List<(String, Object)> descriptionParameter = new List<(String, Object)>
                             {
-                                ("id", DBNull.Value),
-                                ("type", description.ContainsKey("type") ? (Object)description.GetNamedString("type") : (Object)DBNull.Value),
-                                ("value", description.ContainsKey("value") ? (Object)description.GetNamedString("value") : (Object)DBNull.Value),
-                                ("color", description.ContainsKey("color") ? (Object)description.GetNamedString("color") : (Object)DBNull.Value),
+                                (TableData.ElementAt(1).First(), DBNull.Value),
+                                (TableData.ElementAt(2).First(), description.ContainsKey(TableData.ElementAt(2).First()) ? (Object)description.GetNamedString(TableData.ElementAt(2).First()) : (Object)DBNull.Value),
+                                (TableData.ElementAt(3).First(), description.ContainsKey(TableData.ElementAt(3).First()) ? (Object)description.GetNamedString(TableData.ElementAt(3).First()) : (Object)DBNull.Value),
+                                (TableData.ElementAt(4).First(), description.ContainsKey(TableData.ElementAt(4).First()) ? (Object)description.GetNamedString(TableData.ElementAt(4).First()) : (Object)DBNull.Value),
                             };
 
-                            descriptonsId = GetIdOfDataSet(descriptionParameter, new List<int> { 1, 2, 3 }, "descriptions", db);
+                            descriptonsId = GetIdOfDataSet(descriptionParameter, new List<int> { 1, 2, 3 }, TableData.ElementAt(0).First(), db);
 
                             if (descriptonsId == 0)
                             {
-                                descriptonsId = InsertIntoTable(descriptionParameter, "descriptions", db);
+                                descriptonsId = InsertIntoTable(descriptionParameter, TableData.ElementAt(0).First(), db);
                             }
+
+                            TableData = TableDataList.Where(tdl => tdl[0][0] == "descriptionsRgDescriptionsRel").First();
 
                             List<(String, Object)> descriptionsRgDescriptionsParameter = new List<(string, object)>
                             {
-                                ("id", DBNull.Value),
-                                ("descriptionsId", descriptonsId),
-                                ("rgDescriptionId", rgDescriptonId),
-                                ("pos", m)
+                                (TableData.ElementAt(1).First(), DBNull.Value),
+                                (TableData.ElementAt(2).First(), descriptonsId),
+                                (TableData.ElementAt(3).First(), rgDescriptonsId),
+                                (TableData.ElementAt(4).First(), m)
                             };
 
-                            if (GetIdOfDataSet(descriptionsRgDescriptionsParameter, new List<int> { 0, 1, 2 }, "descriptionsRgDescriptionRel", db) == 0)
+                            if (GetIdOfDataSet(descriptionsRgDescriptionsParameter, new List<int> { 0, 1, 2 }, TableData.ElementAt(0).First(), db) == 0)
                             {
-                                InsertIntoTable(descriptionsRgDescriptionsParameter, "descriptionsRgDescriptionRel", db);
+                                InsertIntoTable(descriptionsRgDescriptionsParameter, TableData.ElementAt(0).First(), db);
                             }
 
                             if (description.ContainsKey("app_data"))
@@ -422,31 +608,34 @@ namespace DataAccessLibrary
                                 JsonObject appData = description.GetNamedObject("app_data");
                                 long app_dataId = 0;
 
+                                TableData = TableDataList.Where(tdl => tdl[0][0] == "app_data").First();
+
                                 List<(String, Object)> appDataParameter = new List<(String, Object)>
                                 {
-                                    ("id", DBNull.Value),
-                                    ("def_index", appData.ContainsKey("def_index") ? (Object)appData.GetNamedString("def_index") : (Object)DBNull.Value),
-                                    ("is_itemset_name", appData.ContainsKey("is_itemset_name") ? (Object)appData.GetNamedNumber("is_itemset_name") : (Object)DBNull.Value),
-                                    ("limited", appData.ContainsKey("limited") ? (Object)appData.GetNamedNumber("limited") : (Object)DBNull.Value),
+                                    (TableData.ElementAt(1).First(), DBNull.Value),
+                                    (TableData.ElementAt(2).First(), appData.ContainsKey(TableData.ElementAt(2).First()) ? (Object)appData.GetNamedString(TableData.ElementAt(2).First()) : (Object)DBNull.Value),
+                                    (TableData.ElementAt(3).First(), appData.ContainsKey(TableData.ElementAt(3).First()) ? (Object)appData.GetNamedNumber(TableData.ElementAt(3).First()) : (Object)DBNull.Value),
+                                    (TableData.ElementAt(4).First(), appData.ContainsKey(TableData.ElementAt(4).First()) ? (Object)appData.GetNamedNumber(TableData.ElementAt(4).First()) : (Object)DBNull.Value),
                                 };
 
-                                app_dataId = GetIdOfDataSet(appDataParameter, new List<int> { 1, 2, 3 }, "app_data", db);
+                                app_dataId = GetIdOfDataSet(appDataParameter, new List<int> { 1, 2, 3 }, TableData.ElementAt(0).First(), db);
 
                                 if (app_dataId == 0)
                                 {
-                                    app_dataId = InsertIntoTable(appDataParameter, "app_data", db);
+                                    app_dataId = InsertIntoTable(appDataParameter, TableData.ElementAt(0).First(), db);
                                 }
 
-                                List<(String, Object)> appDataDescriptionsParameter = new List<(String, Object)>
+                                List<(String, Object)> appDataDescriptionsRgDescriptionParameter = new List<(String, Object)>
                                 {
                                     ("id", DBNull.Value),
                                     ("descriptionsId",descriptonsId),
+                                    ("rgDescriptionsId", rgDescriptonsId),
                                     ("app_dataId", app_dataId)
                                 };
 
-                                if (GetIdOfDataSet(appDataDescriptionsParameter, new List<int> { 1, 2 }, "app_dataDescriptionsRel", db) == 0)
+                                if (GetIdOfDataSet(appDataDescriptionsRgDescriptionParameter, new List<int> { 1, 2 }, "app_dataDescriptionsRgDescriptionsRel", db) == 0)
                                 {
-                                    InsertIntoTable(appDataDescriptionsParameter, "app_dataDescriptionsRel", db);
+                                    InsertIntoTable(appDataDescriptionsRgDescriptionParameter, "app_dataDescriptionsRgDescriptionsRel", db);
                                 }
                             }
 
@@ -465,7 +654,7 @@ namespace DataAccessLibrary
                                 ("id", DBNull.Value),
                                 ("name", action.ContainsKey("name") ? (Object)action.GetNamedString("name") : (Object)DBNull.Value),
                                 ("link", action.ContainsKey("link") ? (Object)action.GetNamedString("link") : (Object)DBNull.Value),
-                                ("rgDescriptionId", rgDescriptonId)
+                                ("rgDescriptionsId", rgDescriptonsId)
                             };
 
                             if (GetIdOfDataSet(actionParameter, new List<int> { 1, 2, 3 }, "actions", db) == 0)
@@ -487,7 +676,7 @@ namespace DataAccessLibrary
                                 ("id", DBNull.Value),
                                 ("name", marketAction.ContainsKey("name") ? (Object)marketAction.GetNamedString("name") : (Object)DBNull.Value),
                                 ("link", marketAction.ContainsKey("link") ? (Object)marketAction.GetNamedString("link") : (Object)DBNull.Value),
-                                ("rgDescriptionId", rgDescriptonId)
+                                ("rgDescriptionsId", rgDescriptonsId)
                             };
 
                             if (GetIdOfDataSet(marketActionParameter, new List<int> { 1, 2, 3 }, "market_actions", db) == 0)
@@ -512,7 +701,7 @@ namespace DataAccessLibrary
                                 ("category", tag.ContainsKey("category") ? (Object)tag.GetNamedString("category") : (Object)DBNull.Value),
                                 ("color", tag.ContainsKey("color") ? (Object)tag.GetNamedString("color") : (Object)DBNull.Value),
                                 ("category_name", tag.ContainsKey("category_name") ? (Object)tag.GetNamedString("category_name") : (Object)DBNull.Value),
-                                ("rgDescriptionId", rgDescriptonId)
+                                ("rgDescriptionsId", rgDescriptonsId)
                             };
 
                             if (GetIdOfDataSet(tagParameter, new List<int> { 1, 2, 3 }, "tags", db) == 0)
@@ -634,7 +823,7 @@ namespace DataAccessLibrary
                     //command.Parameters.AddWithValue(parameter.Item1, parameter.Item2);
                 }
                 insertCommandString = insertCommandString.Remove(insertCommandString.Length - 2);
-                insertCommandString = insertCommandString + ");";
+                insertCommandString += ");";
                 command.CommandText = insertCommandString;
                 command.ExecuteReader();
             }

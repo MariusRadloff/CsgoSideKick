@@ -35,7 +35,7 @@ namespace CsgoTactics
             this.InitializeComponent();
             this.Suspending += OnSuspending;
 
-            DataAccess.InitializeDatabase();
+            DataAccess.CreateTables();
         }
 
         /// <summary>

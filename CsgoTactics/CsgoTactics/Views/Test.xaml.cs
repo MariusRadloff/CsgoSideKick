@@ -61,39 +61,31 @@ namespace CsgoTactics.Views
 
         private void AddData(object sender, RoutedEventArgs e)
         {
-            //DataAccess.ReplaceData(Inventory.GetInventoryString()[0]);
+        }
 
-            //DataAccess.InitializeDatabase();
-
-            DataAccess.AddSteamInventory("123", "bdm");
-
-            DataAccess.AddCsgoInventory(WebServices.DataReceiver.GetInventoryString("http://steamcommunity.com/profiles/76561197988463243/inventory/json/730/2"), "123", "730");
-
-            //DataAccess.ResetDatabase();
-
-            //DataAccess.AddData(Input_Box.Text);
-
-            //Output.ItemsSource = DataAccess.GetData();
+        private void Button_Click_4(object sender, RoutedEventArgs e)
+        {
+            DataAccess.CreateTables();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            DataAccess.ResetDatabase();
+            DataAccess.DeleteTables();
+        }
+
+        private void Button_Click_3(object sender, RoutedEventArgs e)
+        {
+            DataAccess.DropTables();
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            DataAccess.AddCsgoInventory(WebServices.DataReceiver.GetInventoryString("http://steamcommunity.com/profiles/76561197988463243/inventory/json/730/2"), "123", "730");
+            DataAccess.AddGameInventory(WebServices.DataReceiver.GetInventoryString("http://steamcommunity.com/profiles/76561197988463243/inventory/json/730/2"), "123", "730");
         }
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
             DataAccess.AddSteamInventory("123", "bdm");
-        }
-
-        private void Button_Click_3(object sender, RoutedEventArgs e)
-        {
-            var a = DataAccess.GetData();
         }
     }
 }

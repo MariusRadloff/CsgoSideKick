@@ -637,3 +637,5 @@ C:\Users\mariu\Source\Repos\CsgoSideKick\CsgoTactics\CsgoTactics\obj\x64\Debug\M
 C:\Users\mariu\Source\Repos\CsgoSideKick\CsgoTactics\CsgoTactics\obj\x64\Debug\resources.en-us.resfiles
 C:\Users\mariu\Source\Repos\CsgoSideKick\CsgoTactics\CsgoTactics\obj\x64\Debug\resources.en-us.resfiles.intermediate
 C:\Users\mariu\Source\Repos\CsgoSideKick\CsgoTactics\CsgoTactics\obj\x64\Debug\ProjectArchitectures.txt
+C:\Users\mariu\Source\Repos\CsgoSideKick\CsgoTactics\CsgoTactics\bin\x64\Debug\SQLite.Net.Platform.WinRT.dll
+C:\Users\mariu\Source\Repos\CsgoSideKick\CsgoTactics\CsgoTactics\bin\x64\Debug\SQLite.Net.dll
