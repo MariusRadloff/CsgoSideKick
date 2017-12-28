@@ -132,19 +132,16 @@
   <data name="net_WebHeaderInvalidControlChars" xml:space="preserve">
     <value>Specified value has invalid Control characters.</value>
   </data>
-  <data name="net_WebHeaderInvalidNonAsciiChars" xml:space="preserve">
-    <value>Specified value has invalid non-ASCII characters.</value>
-  </data>
   <data name="net_WebHeaderInvalidHeaderChars" xml:space="preserve">
     <value>Specified value has invalid HTTP Header characters.</value>
   </data>
   <data name="net_headerrestrict" xml:space="preserve">
-    <value>The '{0}' header must be modified using the appropriate property or method.</value>
+    <value>The {0} header must be modified using the appropriate property or method.</value>
+  </data>
+  <data name="net_emptyStringCall" xml:space="preserve">
+    <value>The parameter '{0}' cannot be an empty string.</value>
   </data>
   <data name="net_WebHeaderInvalidCRLFChars" xml:space="preserve">
     <value>Specified value has invalid CRLF characters.</value>
-  </data>
-  <data name="net_emptystringcall" xml:space="preserve">
-    <value>The parameter '{0}' cannot be an empty string.</value>
   </data>
 </root>

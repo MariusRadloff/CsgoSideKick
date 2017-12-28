@@ -180,9 +180,6 @@
   <data name="IO_FileNotFound" xml:space="preserve">
     <value>Unable to find the specified file.</value>
   </data>
-  <data name="InvalidOperation_WrongAsyncResultOrEndWriteCalledMultiple" xml:space="preserve">
-    <value>Either the IAsyncResult object did not come from the corresponding async method on this type, or EndWrite was called multiple times with the same IAsyncResult.</value>
-  </data>
   <data name="ArgumentOutOfRange_FileLengthTooBig" xml:space="preserve">
     <value>Specified file length was too large for the file system.</value>
   </data>
@@ -193,22 +190,16 @@
     <value>Synchronous operations should not be performed on the UI thread.  Consider wrapping this method in Task.Run.</value>
   </data>
   <data name="IO_PathTooLong" xml:space="preserve">
-    <value>The specified path, file name, or both are too long. The fully qualified file name must be less than 260 characters, and the directory name must be less than 248 characters.</value>
+    <value>The specified file name or path is too long, or a component of the specified path is too long.</value>
   </data>
   <data name="Argument_InvalidAppendMode" xml:space="preserve">
     <value>Append access can be requested only in write-only mode.</value>
-  </data>
-  <data name="ArgumentOutOfRange_NeedNonNegInt32Range" xml:space="preserve">
-    <value>Specified handle value was out of range for the file system.</value>
   </data>
   <data name="IO_SourceDestMustBeDifferent" xml:space="preserve">
     <value>Source and destination path must be different.</value>
   </data>
   <data name="ArgumentOutOfRange_Enum" xml:space="preserve">
     <value>Enum value was out of legal range.</value>
-  </data>
-  <data name="InvalidOperation_EndReadCalledMultiple" xml:space="preserve">
-    <value>EndRead can only be called once for each asynchronous operation.</value>
   </data>
   <data name="Argument_InvalidOffLen" xml:space="preserve">
     <value>Offset and length were out of bounds for the array or count is greater than the number of elements from index to the end of the source collection.</value>
@@ -218,9 +209,6 @@
   </data>
   <data name="IO_SharingViolation_File" xml:space="preserve">
     <value>The process cannot access the file '{0}' because it is being used by another process.</value>
-  </data>
-  <data name="Argument_PathFormatNotSupported" xml:space="preserve">
-    <value>The given path's format is not supported.</value>
   </data>
   <data name="UnauthorizedAccess_IODenied_Path" xml:space="preserve">
     <value>Access to the path '{0}' is denied.</value>
@@ -234,17 +222,14 @@
   <data name="ArgumentNull_Path" xml:space="preserve">
     <value>Path cannot be null.</value>
   </data>
-  <data name="Arg_DevicesNotSupported" xml:space="preserve">
-    <value>FileStream will not open Win32 devices such as disk partitions and tape drives. Avoid use of '\\\\.\\' in the path.</value>
-  </data>
   <data name="Arg_HandleNotAsync" xml:space="preserve">
     <value>Handle does not support asynchronous operations. The parameters to the FileStream constructor may need to be changed to indicate that the handle was opened synchronously (that is, it was not opened for overlapped I/O).</value>
   </data>
   <data name="ArgumentOutOfRange_NeedNonNegNum" xml:space="preserve">
     <value>Non-negative number required.</value>
   </data>
-  <data name="Arg_WrongAsyncResult" xml:space="preserve">
-    <value>IAsyncResult object did not come from the corresponding async method on this type.</value>
+  <data name="ObjectDisposed_StreamClosed" xml:space="preserve">
+    <value>Cannot access a closed Stream.</value>
   </data>
   <data name="Argument_PathEmpty" xml:space="preserve">
     <value>Path cannot be the empty string or all whitespace.</value>
@@ -267,20 +252,17 @@
   <data name="IO_FileStreamHandlePosition" xml:space="preserve">
     <value>The OS handle's position is not what FileStream expected. Do not use a handle simultaneously in one FileStream and in Win32 code or another FileStream. This may cause data loss.</value>
   </data>
-  <data name="InvalidOperation_EndWriteCalledMultiple" xml:space="preserve">
-    <value>EndWrite can only be called once for each asynchronous operation.</value>
-  </data>
   <data name="ObjectDisposed_FileClosed" xml:space="preserve">
     <value>Cannot access a closed file.</value>
+  </data>
+  <data name="Argument_FileNotResized" xml:space="preserve">
+    <value>The stream's length cannot be changed.</value>
   </data>
   <data name="Argument_InvalidFileModeAndAccessCombo" xml:space="preserve">
     <value>Combining FileMode: {0} with FileAccess: {1} is invalid.</value>
   </data>
   <data name="Argument_InvalidPathChars" xml:space="preserve">
     <value>Illegal characters in path.</value>
-  </data>
-  <data name="UnknownError_Num" xml:space="preserve">
-    <value>Unknown error '{0}'.</value>
   </data>
   <data name="Arg_HandleNotSync" xml:space="preserve">
     <value>Handle does not support synchronous operations. The parameters to the FileStream constructor may need to be changed to indicate that the handle was opened asynchronously (that is, it was opened explicitly for overlapped I/O).</value>
@@ -291,14 +273,14 @@
   <data name="ArgumentOutOfRange_NeedPosNum" xml:space="preserve">
     <value>Positive number required.</value>
   </data>
+  <data name="PlatformNotSupported_FileEncryption" xml:space="preserve">
+    <value>File encryption is not supported on this platform.</value>
+  </data>
   <data name="IO_FileNotFound_FileName" xml:space="preserve">
     <value>Could not find file '{0}'.</value>
   </data>
   <data name="Argument_InvalidSeekOrigin" xml:space="preserve">
     <value>Invalid seek origin.</value>
-  </data>
-  <data name="InvalidOperation_WrongAsyncResultOrEndReadCalledMultiple" xml:space="preserve">
-    <value>Either the IAsyncResult object did not come from the corresponding async method on this type, or EndRead was called multiple times with the same IAsyncResult.</value>
   </data>
   <data name="IO_FileTooLongOrHandleNotSync" xml:space="preserve">
     <value>IO operation will not work. Most likely the file will become too long or the handle was not opened to support synchronous IO operations.</value>

@@ -1,1 +1,2 @@
-C:\Users\mariu\Source\Workspaces\Eigene Projekte\CsgoTactics\CsgoTactics\CsgoTactics.csproj;x86
+C:\Users\mariu\Source\Repos\CsgoSideKick\CsgoTactics\CsgoTactics\CsgoTactics.csproj;x86
+C:\Users\mariu\Source\Repos\CsgoSideKick\CsgoTactics\DataAccessLibrary\DataAccessLibrary.csproj;neutral

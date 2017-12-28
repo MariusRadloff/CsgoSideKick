@@ -28,6 +28,7 @@
             <Button x:ConnectionId='6' Content="Drop Tables" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"                       />
             <Button x:ConnectionId='7' Content="Insert CSGOINV" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"                       />
             <Button x:ConnectionId='8' Content="Add SteamINV" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"                       />
+            <Button x:ConnectionId='9' Content="Linq" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"                        />
         </StackPanel>
     </Grid>
 </Page>

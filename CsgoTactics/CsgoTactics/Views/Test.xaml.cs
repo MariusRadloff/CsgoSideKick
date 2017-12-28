@@ -1,4 +1,4 @@
-﻿//using System.IO;
+﻿using System.IO;
 using CsgoTactics.SteamInventory;
 using CsgoTactics.Models.WeaponSkins;
 using CsgoTactics.ViewModels;
@@ -18,7 +18,7 @@ using Windows.UI.Xaml.Shapes;
 using CsgoTactics.WebServices;
 using CsgoTactics.Models.SteamInventory;
 using Windows.UI.Core;
-using DataAccessLibrary;
+using SQLDataAccessLibrary;
 
 // Die Elementvorlage "Leere Seite" ist unter http://go.microsoft.com/fwlink/?LinkId=234238 dokumentiert.
 
@@ -65,27 +65,49 @@ namespace CsgoTactics.Views
 
         private void Button_Click_4(object sender, RoutedEventArgs e)
         {
-            DataAccess.CreateTables();
+            SqlDbDataAccess.CreateTablesSQL();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            DataAccess.DeleteTables();
+            SqlDbDataAccess.DeleteTablesSQL();
         }
 
         private void Button_Click_3(object sender, RoutedEventArgs e)
         {
-            DataAccess.DropTables();
+            SqlDbDataAccess.DropTablesSQL();
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            DataAccess.AddGameInventory(WebServices.DataReceiver.GetInventoryString("http://steamcommunity.com/profiles/76561197988463243/inventory/json/730/2"), "123", "730");
+            SqlDbDataAccess.AddGameInventorySQL(WebServices.DataReceiver.GetInventoryString("http://steamcommunity.com/profiles/76561197988463243/inventory/json/730/2"), "123", "730");
         }
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
-            DataAccess.AddSteamInventory("123", "bdm");
+            SqlDbDataAccess.AddSteamInventorySQL("123", "bdm");
+        }
+
+        private void Button_Click_5(object sender, RoutedEventArgs e)
+        {
+            using (var db = new LinqDataAccessLibrary.InventoryDbContext())
+            {
+                
+
+                var action = new LinqDataAccessLibrary.actionsItem { link = "testlink", name = "testname" };
+
+                var a = db.actions.Add(action);                
+
+                var appdata = new LinqDataAccessLibrary.app_dataItem { def_index = "test" };
+
+                //var x = db.app_data.Add(appdata);
+
+               
+
+                db.SaveChanges();
+
+                
+            }
         }
     }
 }

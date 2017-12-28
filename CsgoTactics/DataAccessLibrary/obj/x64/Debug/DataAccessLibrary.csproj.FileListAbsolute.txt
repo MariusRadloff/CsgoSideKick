@@ -19,7 +19,6 @@ C:\Users\mariu\Source\Workspaces\Eigene Projekte\CsgoTactics\DataAccessLibrary\o
 C:\Users\mariu\Source\Repos\CsgoSideKick\CsgoTactics\DataAccessLibrary\bin\x64\Debug\DataAccessLibrary.dll
 C:\Users\mariu\Source\Repos\CsgoSideKick\CsgoTactics\DataAccessLibrary\bin\x64\Debug\DataAccessLibrary.pdb
 C:\Users\mariu\Source\Repos\CsgoSideKick\CsgoTactics\DataAccessLibrary\bin\x64\Debug\DataAccessLibrary.pri
-C:\Users\mariu\Source\Repos\CsgoSideKick\CsgoTactics\DataAccessLibrary\obj\x64\Debug\DataAccessLibrary.csprojResolveAssemblyReference.cache
 C:\Users\mariu\Source\Repos\CsgoSideKick\CsgoTactics\DataAccessLibrary\obj\x64\Debug\DataAccessLibrary.csproj.CoreCompileInputs.cache
 C:\Users\mariu\Source\Repos\CsgoSideKick\CsgoTactics\DataAccessLibrary\obj\x64\Debug\DataAccessLibrary.dll
 C:\Users\mariu\Source\Repos\CsgoSideKick\CsgoTactics\DataAccessLibrary\obj\x64\Debug\DataAccessLibrary.pdb
@@ -34,3 +33,5 @@ C:\Users\mariu\Source\Repos\CsgoSideKick\CsgoTactics\DataAccessLibrary\obj\x64\D
 C:\Users\mariu\Source\Repos\CsgoSideKick\CsgoTactics\DataAccessLibrary\obj\x64\Debug\qualifiers.txt
 C:\Users\mariu\Source\Repos\CsgoSideKick\CsgoTactics\DataAccessLibrary\obj\x64\Debug\qualifiers.txt.intermediate
 C:\Users\mariu\Source\Repos\CsgoSideKick\CsgoTactics\DataAccessLibrary\obj\x64\Debug\MultipleQualifiersPerDimensionFound.txt
+C:\Users\mariu\Source\Repos\CsgoSideKick\CsgoTactics\DataAccessLibrary\obj\x64\Debug\DataAccessLibrary.csprojResolveAssemblyReference.cache
+C:\Users\mariu\Source\Repos\CsgoSideKick\CsgoTactics\DataAccessLibrary\bin\x64\Debug\e_sqlite3.dll

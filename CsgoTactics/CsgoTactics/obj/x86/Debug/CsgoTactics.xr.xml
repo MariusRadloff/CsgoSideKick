@@ -24,7 +24,6 @@
     <RootPropertyPathName Name="Icon" />
     <RootPropertyPathName Name="InvGroup" />
     <RootPropertyPathName Name="IsChecked" />
-    <RootPropertyPathName Name="Width" />
     <RootPropertyPathName Name="PriceCol" />
     <RootPropertyPathName Name="MarketLowestPrice" />
     <RootPropertyPathName Name="BuyPrice" />
@@ -34,13 +33,13 @@
     <RootPropertyPathName Name="Name" />
     <RootPropertyPathName Name="GroupItemCount" />
     <RootPropertyPathName Name="GroupName" />
-    <RootPropertyPathName Name="Market_name" />
     <RootPropertyPathName Name="DataContext" />
     <RootPropertyPathName Name="Descriptions" />
     <RootPropertyPathName Name="Date" />
     <RootPropertyPathName Name="DatePrice" />
     <RootPropertyPathName Name="MarketVolume" />
     <RootPropertyPathName Name="MarketMedianPrice" />
+    <RootPropertyPathName Name="Market_name" />
     <RootPropertyPathName Name="Icon_large" />
     <RootPropertyPathName Name="IsPressed" />
     <RootPropertyPathName Name="Items" />
@@ -87,7 +86,6 @@
     <RootPropertyPathName Name="OptSteam64Id" />
     <RootPropertyPathName Name="OptApiKey" />
     <RootPropertyPathName Name="TestViewModel" />
-    <RootPropertyPathName Name="skins" />
   </Roots.PropertyPathNames>
   <Roots.RootTypes>
     <RootType FullName="Windows.UI.Xaml.Application">
@@ -209,7 +207,7 @@
       <RootProperty Name="Width" />
       <RootProperty Name="HorizontalAlignment" />
       <RootProperty Name="Background" />
-      <RootProperty Name="Height" />
+      <RootProperty Name="Name" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.Grid">
       <RootProperty Name="Padding" />
@@ -242,6 +240,7 @@
       <RootProperty Name="Content" />
       <RootProperty Name="VerticalAlignment" />
       <RootProperty Name="HorizontalAlignment" />
+      <RootProperty Name="Margin" />
       <RootProperty Name="Padding" />
       <RootProperty Name="IsChecked" />
       <RootEvent Name="Click" />
@@ -346,8 +345,8 @@
       <RootProperty Name="Content" />
       <RootProperty Name="IsEnabled" />
       <RootProperty Name="Width" />
-      <RootProperty Name="Background" />
       <RootProperty Name="Margin" />
+      <RootProperty Name="Background" />
       <RootProperty Name="HorizontalAlignment" />
       <RootProperty Name="VerticalAlignment" />
       <RootEvent Name="Click" />
@@ -377,7 +376,6 @@
       <RootProperty Name="RingSliceColor2" />
       <RootProperty Name="Angle3" />
       <RootProperty Name="RingSliceColor3" />
-      <RootProperty Name="Padding" />
     </RootType>
     <RootType FullName="CsgoTactics.Views.EditMapPage" />
     <RootType FullName="CsgoTactics.Views.InGameLivePageScenarios.Scenario1_Overview" />
@@ -460,19 +458,22 @@
       <RootProperty Name="Height" />
       <RootProperty Name="MaxHeight" />
       <RootProperty Name="VerticalAlignment" />
-      <RootProperty Name="Width" />
       <RootProperty Name="IsItemClickEnabled" />
       <RootProperty Name="ItemTemplate" />
       <RootProperty Name="IsHoldingEnabled" />
       <RootProperty Name="IsRightTapEnabled" />
       <RootProperty Name="IsDoubleTapEnabled" />
+      <RootProperty Name="Name" />
       <RootEvent Name="ItemClick" />
+      <RootEvent Name="SelectionChanged" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.SymbolIcon">
       <RootProperty Name="Symbol" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.Primitives.ListViewItemPresenter">
       <RootProperty Name="ContentMargin" />
+      <RootProperty Name="Height" />
+      <RootProperty Name="Margin" />
       <RootProperty Name="Padding" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.DatePicker">
@@ -498,18 +499,6 @@
     <RootType FullName="CsgoTactics.Converters.IntToPercent" />
     <RootType FullName="CsgoTactics.Views.MainPage" />
     <RootType FullName="CsgoTactics.Views.OptionsPage" />
-    <RootType FullName="CsgoTactics.Controls.UpDown">
-      <RootProperty Name="Width" />
-      <RootProperty Name="Height" />
-      <RootProperty Name="VerticalAlignment" />
-      <RootProperty Name="HorizontalAlignment" />
-      <RootProperty Name="Background" />
-    </RootType>
-    <RootType FullName="Windows.UI.Xaml.Controls.Slider">
-      <RootProperty Name="Minimum" />
-      <RootProperty Name="Maximum" />
-      <RootProperty Name="Width" />
-    </RootType>
     <RootType FullName="CsgoTactics.Views.Test" />
   </Roots.RootTypes>
 </Roots>
