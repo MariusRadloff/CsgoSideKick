@@ -8,7 +8,7 @@ using Windows.Data.Json;
 
 namespace SQLDataAccessLibrary
 {
-    public static class SqlDbDataAccess
+    public static class SqlDataAccess
     {
         #region alt
         //private static string dbConnectionString;

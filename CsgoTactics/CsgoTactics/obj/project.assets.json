@@ -2,18 +2,13 @@
   "version": 3,
   "targets": {
     "UAP,Version=v10.0.16299": {
-      "Microsoft.ApplicationInsights/2.4.0": {
+      "Microsoft.ApplicationInsights/1.2.3": {
         "type": "package",
-        "dependencies": {
-          "NETStandard.Library": "1.6.1",
-          "System.Diagnostics.DiagnosticSource": "4.4.0",
-          "System.Diagnostics.StackTrace": "4.3.0"
-        },
         "compile": {
-          "lib/uap10.0/Microsoft.ApplicationInsights.dll": {}
+          "lib/portable-win81+wpa81/Microsoft.ApplicationInsights.dll": {}
         },
         "runtime": {
-          "lib/uap10.0/Microsoft.ApplicationInsights.dll": {}
+          "lib/portable-win81+wpa81/Microsoft.ApplicationInsights.dll": {}
         }
       },
       "Microsoft.ApplicationInsights.PersistenceChannel/1.2.3": {
@@ -715,24 +710,6 @@
           "lib/netstandard1.3/System.Diagnostics.DiagnosticSource.dll": {}
         }
       },
-      "System.Diagnostics.StackTrace/4.3.0": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.NETCore.Platforms": "1.1.0"
-        },
-        "compile": {
-          "ref/netstandard1.3/System.Diagnostics.StackTrace.dll": {}
-        },
-        "runtime": {
-          "lib/netstandard1.3/System.Diagnostics.StackTrace.dll": {}
-        },
-        "runtimeTargets": {
-          "runtimes/aot/lib/netcore50/System.Diagnostics.StackTrace.dll": {
-            "assetType": "runtime",
-            "rid": "aot"
-          }
-        }
-      },
       "System.Diagnostics.Tracing/4.3.0": {
         "type": "package",
         "dependencies": {
@@ -1117,7 +1094,7 @@
         "dependencies": {
           "Microsoft.EntityFrameworkCore.Sqlite": "2.0.1",
           "Microsoft.EntityFrameworkCore.Tools": "2.0.1",
-          "Microsoft.NETCore.UniversalWindowsPlatform": "6.0.4"
+          "Microsoft.NETCore.UniversalWindowsPlatform": "6.0.5"
         },
         "compile": {
           "bin/placeholder/LinqDataAccessLibrary.dll": {}
@@ -1133,7 +1110,7 @@
           "Microsoft.Data.Sqlite.Core": "2.0.0",
           "Microsoft.EntityFrameworkCore.Sqlite": "2.0.1",
           "Microsoft.EntityFrameworkCore.Tools": "2.0.1",
-          "Microsoft.NETCore.UniversalWindowsPlatform": "6.0.4"
+          "Microsoft.NETCore.UniversalWindowsPlatform": "6.0.5"
         },
         "compile": {
           "bin/placeholder/SQLDataAccessLibrary.dll": {}
@@ -1144,18 +1121,13 @@
       }
     },
     "UAP,Version=v10.0.16299/win10-arm": {
-      "Microsoft.ApplicationInsights/2.4.0": {
+      "Microsoft.ApplicationInsights/1.2.3": {
         "type": "package",
-        "dependencies": {
-          "NETStandard.Library": "1.6.1",
-          "System.Diagnostics.DiagnosticSource": "4.4.0",
-          "System.Diagnostics.StackTrace": "4.3.0"
-        },
         "compile": {
-          "lib/uap10.0/Microsoft.ApplicationInsights.dll": {}
+          "lib/portable-win81+wpa81/Microsoft.ApplicationInsights.dll": {}
         },
         "runtime": {
-          "lib/uap10.0/Microsoft.ApplicationInsights.dll": {}
+          "lib/portable-win81+wpa81/Microsoft.ApplicationInsights.dll": {}
         }
       },
       "Microsoft.ApplicationInsights.PersistenceChannel/1.2.3": {
@@ -2152,18 +2124,6 @@
           "lib/netstandard1.3/System.Diagnostics.DiagnosticSource.dll": {}
         }
       },
-      "System.Diagnostics.StackTrace/4.3.0": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.NETCore.Platforms": "1.1.0"
-        },
-        "compile": {
-          "ref/netstandard1.3/System.Diagnostics.StackTrace.dll": {}
-        },
-        "runtime": {
-          "lib/netstandard1.3/System.Diagnostics.StackTrace.dll": {}
-        }
-      },
       "System.Diagnostics.Tracing/4.3.0": {
         "type": "package",
         "dependencies": {
@@ -2534,7 +2494,7 @@
         "dependencies": {
           "Microsoft.EntityFrameworkCore.Sqlite": "2.0.1",
           "Microsoft.EntityFrameworkCore.Tools": "2.0.1",
-          "Microsoft.NETCore.UniversalWindowsPlatform": "6.0.4"
+          "Microsoft.NETCore.UniversalWindowsPlatform": "6.0.5"
         },
         "compile": {
           "bin/placeholder/LinqDataAccessLibrary.dll": {}
@@ -2550,7 +2510,7 @@
           "Microsoft.Data.Sqlite.Core": "2.0.0",
           "Microsoft.EntityFrameworkCore.Sqlite": "2.0.1",
           "Microsoft.EntityFrameworkCore.Tools": "2.0.1",
-          "Microsoft.NETCore.UniversalWindowsPlatform": "6.0.4"
+          "Microsoft.NETCore.UniversalWindowsPlatform": "6.0.5"
         },
         "compile": {
           "bin/placeholder/SQLDataAccessLibrary.dll": {}
@@ -2561,18 +2521,13 @@
       }
     },
     "UAP,Version=v10.0.16299/win10-arm-aot": {
-      "Microsoft.ApplicationInsights/2.4.0": {
+      "Microsoft.ApplicationInsights/1.2.3": {
         "type": "package",
-        "dependencies": {
-          "NETStandard.Library": "1.6.1",
-          "System.Diagnostics.DiagnosticSource": "4.4.0",
-          "System.Diagnostics.StackTrace": "4.3.0"
-        },
         "compile": {
-          "lib/uap10.0/Microsoft.ApplicationInsights.dll": {}
+          "lib/portable-win81+wpa81/Microsoft.ApplicationInsights.dll": {}
         },
         "runtime": {
-          "lib/uap10.0/Microsoft.ApplicationInsights.dll": {}
+          "lib/portable-win81+wpa81/Microsoft.ApplicationInsights.dll": {}
         }
       },
       "Microsoft.ApplicationInsights.PersistenceChannel/1.2.3": {
@@ -3639,18 +3594,6 @@
           "lib/netstandard1.3/System.Diagnostics.DiagnosticSource.dll": {}
         }
       },
-      "System.Diagnostics.StackTrace/4.3.0": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.NETCore.Platforms": "1.1.0"
-        },
-        "compile": {
-          "ref/netstandard1.3/System.Diagnostics.StackTrace.dll": {}
-        },
-        "runtime": {
-          "runtimes/aot/lib/netcore50/System.Diagnostics.StackTrace.dll": {}
-        }
-      },
       "System.Diagnostics.Tracing/4.3.0": {
         "type": "package",
         "dependencies": {
@@ -4067,7 +4010,7 @@
         "dependencies": {
           "Microsoft.EntityFrameworkCore.Sqlite": "2.0.1",
           "Microsoft.EntityFrameworkCore.Tools": "2.0.1",
-          "Microsoft.NETCore.UniversalWindowsPlatform": "6.0.4"
+          "Microsoft.NETCore.UniversalWindowsPlatform": "6.0.5"
         },
         "compile": {
           "bin/placeholder/LinqDataAccessLibrary.dll": {}
@@ -4083,7 +4026,7 @@
           "Microsoft.Data.Sqlite.Core": "2.0.0",
           "Microsoft.EntityFrameworkCore.Sqlite": "2.0.1",
           "Microsoft.EntityFrameworkCore.Tools": "2.0.1",
-          "Microsoft.NETCore.UniversalWindowsPlatform": "6.0.4"
+          "Microsoft.NETCore.UniversalWindowsPlatform": "6.0.5"
         },
         "compile": {
           "bin/placeholder/SQLDataAccessLibrary.dll": {}
@@ -4094,18 +4037,13 @@
       }
     },
     "UAP,Version=v10.0.16299/win10-x64": {
-      "Microsoft.ApplicationInsights/2.4.0": {
+      "Microsoft.ApplicationInsights/1.2.3": {
         "type": "package",
-        "dependencies": {
-          "NETStandard.Library": "1.6.1",
-          "System.Diagnostics.DiagnosticSource": "4.4.0",
-          "System.Diagnostics.StackTrace": "4.3.0"
-        },
         "compile": {
-          "lib/uap10.0/Microsoft.ApplicationInsights.dll": {}
+          "lib/portable-win81+wpa81/Microsoft.ApplicationInsights.dll": {}
         },
         "runtime": {
-          "lib/uap10.0/Microsoft.ApplicationInsights.dll": {}
+          "lib/portable-win81+wpa81/Microsoft.ApplicationInsights.dll": {}
         }
       },
       "Microsoft.ApplicationInsights.PersistenceChannel/1.2.3": {
@@ -5102,18 +5040,6 @@
           "lib/netstandard1.3/System.Diagnostics.DiagnosticSource.dll": {}
         }
       },
-      "System.Diagnostics.StackTrace/4.3.0": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.NETCore.Platforms": "1.1.0"
-        },
-        "compile": {
-          "ref/netstandard1.3/System.Diagnostics.StackTrace.dll": {}
-        },
-        "runtime": {
-          "lib/netstandard1.3/System.Diagnostics.StackTrace.dll": {}
-        }
-      },
       "System.Diagnostics.Tracing/4.3.0": {
         "type": "package",
         "dependencies": {
@@ -5484,7 +5410,7 @@
         "dependencies": {
           "Microsoft.EntityFrameworkCore.Sqlite": "2.0.1",
           "Microsoft.EntityFrameworkCore.Tools": "2.0.1",
-          "Microsoft.NETCore.UniversalWindowsPlatform": "6.0.4"
+          "Microsoft.NETCore.UniversalWindowsPlatform": "6.0.5"
         },
         "compile": {
           "bin/placeholder/LinqDataAccessLibrary.dll": {}
@@ -5500,7 +5426,7 @@
           "Microsoft.Data.Sqlite.Core": "2.0.0",
           "Microsoft.EntityFrameworkCore.Sqlite": "2.0.1",
           "Microsoft.EntityFrameworkCore.Tools": "2.0.1",
-          "Microsoft.NETCore.UniversalWindowsPlatform": "6.0.4"
+          "Microsoft.NETCore.UniversalWindowsPlatform": "6.0.5"
         },
         "compile": {
           "bin/placeholder/SQLDataAccessLibrary.dll": {}
@@ -5511,18 +5437,13 @@
       }
     },
     "UAP,Version=v10.0.16299/win10-x64-aot": {
-      "Microsoft.ApplicationInsights/2.4.0": {
+      "Microsoft.ApplicationInsights/1.2.3": {
         "type": "package",
-        "dependencies": {
-          "NETStandard.Library": "1.6.1",
-          "System.Diagnostics.DiagnosticSource": "4.4.0",
-          "System.Diagnostics.StackTrace": "4.3.0"
-        },
         "compile": {
-          "lib/uap10.0/Microsoft.ApplicationInsights.dll": {}
+          "lib/portable-win81+wpa81/Microsoft.ApplicationInsights.dll": {}
         },
         "runtime": {
-          "lib/uap10.0/Microsoft.ApplicationInsights.dll": {}
+          "lib/portable-win81+wpa81/Microsoft.ApplicationInsights.dll": {}
         }
       },
       "Microsoft.ApplicationInsights.PersistenceChannel/1.2.3": {
@@ -6589,18 +6510,6 @@
           "lib/netstandard1.3/System.Diagnostics.DiagnosticSource.dll": {}
         }
       },
-      "System.Diagnostics.StackTrace/4.3.0": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.NETCore.Platforms": "1.1.0"
-        },
-        "compile": {
-          "ref/netstandard1.3/System.Diagnostics.StackTrace.dll": {}
-        },
-        "runtime": {
-          "runtimes/aot/lib/netcore50/System.Diagnostics.StackTrace.dll": {}
-        }
-      },
       "System.Diagnostics.Tracing/4.3.0": {
         "type": "package",
         "dependencies": {
@@ -7017,7 +6926,7 @@
         "dependencies": {
           "Microsoft.EntityFrameworkCore.Sqlite": "2.0.1",
           "Microsoft.EntityFrameworkCore.Tools": "2.0.1",
-          "Microsoft.NETCore.UniversalWindowsPlatform": "6.0.4"
+          "Microsoft.NETCore.UniversalWindowsPlatform": "6.0.5"
         },
         "compile": {
           "bin/placeholder/LinqDataAccessLibrary.dll": {}
@@ -7033,7 +6942,7 @@
           "Microsoft.Data.Sqlite.Core": "2.0.0",
           "Microsoft.EntityFrameworkCore.Sqlite": "2.0.1",
           "Microsoft.EntityFrameworkCore.Tools": "2.0.1",
-          "Microsoft.NETCore.UniversalWindowsPlatform": "6.0.4"
+          "Microsoft.NETCore.UniversalWindowsPlatform": "6.0.5"
         },
         "compile": {
           "bin/placeholder/SQLDataAccessLibrary.dll": {}
@@ -7044,18 +6953,13 @@
       }
     },
     "UAP,Version=v10.0.16299/win10-x86": {
-      "Microsoft.ApplicationInsights/2.4.0": {
+      "Microsoft.ApplicationInsights/1.2.3": {
         "type": "package",
-        "dependencies": {
-          "NETStandard.Library": "1.6.1",
-          "System.Diagnostics.DiagnosticSource": "4.4.0",
-          "System.Diagnostics.StackTrace": "4.3.0"
-        },
         "compile": {
-          "lib/uap10.0/Microsoft.ApplicationInsights.dll": {}
+          "lib/portable-win81+wpa81/Microsoft.ApplicationInsights.dll": {}
         },
         "runtime": {
-          "lib/uap10.0/Microsoft.ApplicationInsights.dll": {}
+          "lib/portable-win81+wpa81/Microsoft.ApplicationInsights.dll": {}
         }
       },
       "Microsoft.ApplicationInsights.PersistenceChannel/1.2.3": {
@@ -8052,18 +7956,6 @@
           "lib/netstandard1.3/System.Diagnostics.DiagnosticSource.dll": {}
         }
       },
-      "System.Diagnostics.StackTrace/4.3.0": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.NETCore.Platforms": "1.1.0"
-        },
-        "compile": {
-          "ref/netstandard1.3/System.Diagnostics.StackTrace.dll": {}
-        },
-        "runtime": {
-          "lib/netstandard1.3/System.Diagnostics.StackTrace.dll": {}
-        }
-      },
       "System.Diagnostics.Tracing/4.3.0": {
         "type": "package",
         "dependencies": {
@@ -8434,7 +8326,7 @@
         "dependencies": {
           "Microsoft.EntityFrameworkCore.Sqlite": "2.0.1",
           "Microsoft.EntityFrameworkCore.Tools": "2.0.1",
-          "Microsoft.NETCore.UniversalWindowsPlatform": "6.0.4"
+          "Microsoft.NETCore.UniversalWindowsPlatform": "6.0.5"
         },
         "compile": {
           "bin/placeholder/LinqDataAccessLibrary.dll": {}
@@ -8450,7 +8342,7 @@
           "Microsoft.Data.Sqlite.Core": "2.0.0",
           "Microsoft.EntityFrameworkCore.Sqlite": "2.0.1",
           "Microsoft.EntityFrameworkCore.Tools": "2.0.1",
-          "Microsoft.NETCore.UniversalWindowsPlatform": "6.0.4"
+          "Microsoft.NETCore.UniversalWindowsPlatform": "6.0.5"
         },
         "compile": {
           "bin/placeholder/SQLDataAccessLibrary.dll": {}
@@ -8461,18 +8353,13 @@
       }
     },
     "UAP,Version=v10.0.16299/win10-x86-aot": {
-      "Microsoft.ApplicationInsights/2.4.0": {
+      "Microsoft.ApplicationInsights/1.2.3": {
         "type": "package",
-        "dependencies": {
-          "NETStandard.Library": "1.6.1",
-          "System.Diagnostics.DiagnosticSource": "4.4.0",
-          "System.Diagnostics.StackTrace": "4.3.0"
-        },
         "compile": {
-          "lib/uap10.0/Microsoft.ApplicationInsights.dll": {}
+          "lib/portable-win81+wpa81/Microsoft.ApplicationInsights.dll": {}
         },
         "runtime": {
-          "lib/uap10.0/Microsoft.ApplicationInsights.dll": {}
+          "lib/portable-win81+wpa81/Microsoft.ApplicationInsights.dll": {}
         }
       },
       "Microsoft.ApplicationInsights.PersistenceChannel/1.2.3": {
@@ -9539,18 +9426,6 @@
           "lib/netstandard1.3/System.Diagnostics.DiagnosticSource.dll": {}
         }
       },
-      "System.Diagnostics.StackTrace/4.3.0": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.NETCore.Platforms": "1.1.0"
-        },
-        "compile": {
-          "ref/netstandard1.3/System.Diagnostics.StackTrace.dll": {}
-        },
-        "runtime": {
-          "runtimes/aot/lib/netcore50/System.Diagnostics.StackTrace.dll": {}
-        }
-      },
       "System.Diagnostics.Tracing/4.3.0": {
         "type": "package",
         "dependencies": {
@@ -9967,7 +9842,7 @@
         "dependencies": {
           "Microsoft.EntityFrameworkCore.Sqlite": "2.0.1",
           "Microsoft.EntityFrameworkCore.Tools": "2.0.1",
-          "Microsoft.NETCore.UniversalWindowsPlatform": "6.0.4"
+          "Microsoft.NETCore.UniversalWindowsPlatform": "6.0.5"
         },
         "compile": {
           "bin/placeholder/LinqDataAccessLibrary.dll": {}
@@ -9983,7 +9858,7 @@
           "Microsoft.Data.Sqlite.Core": "2.0.0",
           "Microsoft.EntityFrameworkCore.Sqlite": "2.0.1",
           "Microsoft.EntityFrameworkCore.Tools": "2.0.1",
-          "Microsoft.NETCore.UniversalWindowsPlatform": "6.0.4"
+          "Microsoft.NETCore.UniversalWindowsPlatform": "6.0.5"
         },
         "compile": {
           "bin/placeholder/SQLDataAccessLibrary.dll": {}
@@ -9995,23 +9870,20 @@
     }
   },
   "libraries": {
-    "Microsoft.ApplicationInsights/2.4.0": {
-      "sha512": "4dX/zu3Psz9oM3ErU64xfOHuSxOwMxN6q5RabSkeYbX42Yn6dR/kDToqjs+txCRjrfHUxyYjfeJHu+MbCfvAsg==",
+    "Microsoft.ApplicationInsights/1.2.3": {
+      "sha512": "a34atobxpucCTTX9VCD7aIu6Ydzry+Va7TxK2tTQcfaMvefGW4kUKtg9GHKIn19IaXe+A4oZt/GBqsOt5vQrBA==",
       "type": "package",
-      "path": "microsoft.applicationinsights/2.4.0",
+      "path": "microsoft.applicationinsights/1.2.3",
       "files": [
         "lib/net40/Microsoft.ApplicationInsights.XML",
         "lib/net40/Microsoft.ApplicationInsights.dll",
         "lib/net45/Microsoft.ApplicationInsights.XML",
         "lib/net45/Microsoft.ApplicationInsights.dll",
-        "lib/net46/Microsoft.ApplicationInsights.XML",
-        "lib/net46/Microsoft.ApplicationInsights.dll",
-        "lib/netstandard1.3/Microsoft.ApplicationInsights.XML",
-        "lib/netstandard1.3/Microsoft.ApplicationInsights.dll",
+        "lib/portable-win81+wpa81/Microsoft.ApplicationInsights.XML",
         "lib/portable-win81+wpa81/Microsoft.ApplicationInsights.dll",
-        "lib/uap10.0/Microsoft.ApplicationInsights.dll",
+        "lib/wp8/Microsoft.ApplicationInsights.XML",
         "lib/wp8/Microsoft.ApplicationInsights.dll",
-        "microsoft.applicationinsights.2.4.0.nupkg.sha512",
+        "microsoft.applicationinsights.1.2.3.nupkg.sha512",
         "microsoft.applicationinsights.nuspec"
       ]
     },
@@ -14843,44 +14715,6 @@
         "version.txt"
       ]
     },
-    "System.Diagnostics.StackTrace/4.3.0": {
-      "sha512": "BiHg0vgtd35/DM9jvtaC1eKRpWZxr0gcQd643ABG7GnvSlf5pOkY2uyd42mMOJoOmKvnpNj0F4tuoS1pacTwYw==",
-      "type": "package",
-      "path": "system.diagnostics.stacktrace/4.3.0",
-      "files": [
-        "ThirdPartyNotices.txt",
-        "dotnet_library_license.txt",
-        "lib/MonoAndroid10/_._",
-        "lib/MonoTouch10/_._",
-        "lib/net46/System.Diagnostics.StackTrace.dll",
-        "lib/netstandard1.3/System.Diagnostics.StackTrace.dll",
-        "lib/xamarinios10/_._",
-        "lib/xamarinmac20/_._",
-        "lib/xamarintvos10/_._",
-        "lib/xamarinwatchos10/_._",
-        "ref/MonoAndroid10/_._",
-        "ref/MonoTouch10/_._",
-        "ref/net46/System.Diagnostics.StackTrace.dll",
-        "ref/netstandard1.3/System.Diagnostics.StackTrace.dll",
-        "ref/netstandard1.3/System.Diagnostics.StackTrace.xml",
-        "ref/netstandard1.3/de/System.Diagnostics.StackTrace.xml",
-        "ref/netstandard1.3/es/System.Diagnostics.StackTrace.xml",
-        "ref/netstandard1.3/fr/System.Diagnostics.StackTrace.xml",
-        "ref/netstandard1.3/it/System.Diagnostics.StackTrace.xml",
-        "ref/netstandard1.3/ja/System.Diagnostics.StackTrace.xml",
-        "ref/netstandard1.3/ko/System.Diagnostics.StackTrace.xml",
-        "ref/netstandard1.3/ru/System.Diagnostics.StackTrace.xml",
-        "ref/netstandard1.3/zh-hans/System.Diagnostics.StackTrace.xml",
-        "ref/netstandard1.3/zh-hant/System.Diagnostics.StackTrace.xml",
-        "ref/xamarinios10/_._",
-        "ref/xamarinmac20/_._",
-        "ref/xamarintvos10/_._",
-        "ref/xamarinwatchos10/_._",
-        "runtimes/aot/lib/netcore50/System.Diagnostics.StackTrace.dll",
-        "system.diagnostics.stacktrace.4.3.0.nupkg.sha512",
-        "system.diagnostics.stacktrace.nuspec"
-      ]
-    },
     "System.Diagnostics.Tracing/4.3.0": {
       "sha512": "rswfv0f/Cqkh78rA5S8eN8Neocz234+emGCtTF3lxPY96F+mmmUen6tbn0glN6PMvlKQb9bPAY5e9u7fgPTkKw==",
       "type": "package",
@@ -16469,7 +16303,7 @@
   "projectFileDependencyGroups": {
     "UAP,Version=v10.0.16299": [
       "LinqDataAccessLibrary >= 1.0.0",
-      "Microsoft.ApplicationInsights >= 2.4.0",
+      "Microsoft.ApplicationInsights >= 1.2.3",
       "Microsoft.ApplicationInsights.PersistenceChannel >= 1.2.3",
       "Microsoft.ApplicationInsights.WindowsApps >= 1.1.1",
       "Microsoft.Data.Sqlite.Core >= 2.0.0",
@@ -16527,7 +16361,7 @@
         "dependencies": {
           "Microsoft.ApplicationInsights": {
             "target": "Package",
-            "version": "[2.4.0, )"
+            "version": "[1.2.3, )"
           },
           "Microsoft.ApplicationInsights.PersistenceChannel": {
             "target": "Package",
@@ -16585,23 +16419,5 @@
         "#import": []
       }
     }
-  },
-  "logs": [
-    {
-      "code": "NU1608",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Erkannte Paketversion außerhalb der Abhängigkeitseinschränkung: \"Microsoft.ApplicationInsights.WindowsApps 1.1.1\" erfordert Microsoft.ApplicationInsights (= 1.2.3), aber es wurde Version Microsoft.ApplicationInsights 2.4.0 aufgelöst.",
-      "libraryId": "Microsoft.ApplicationInsights",
-      "targetGraphs": [
-        "UAP,Version=v10.0.16299",
-        "UAP,Version=v10.0.16299/win10-arm",
-        "UAP,Version=v10.0.16299/win10-arm-aot",
-        "UAP,Version=v10.0.16299/win10-x64",
-        "UAP,Version=v10.0.16299/win10-x64-aot",
-        "UAP,Version=v10.0.16299/win10-x86",
-        "UAP,Version=v10.0.16299/win10-x86-aot"
-      ]
-    }
-  ]
+  }
 }

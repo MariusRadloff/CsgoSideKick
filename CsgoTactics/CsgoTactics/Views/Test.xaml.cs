@@ -65,27 +65,27 @@ namespace CsgoTactics.Views
 
         private void Button_Click_4(object sender, RoutedEventArgs e)
         {
-            SqlDbDataAccess.CreateTablesSQL();
+            SqlDataAccess.CreateTablesSQL();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            SqlDbDataAccess.DeleteTablesSQL();
+            SqlDataAccess.DeleteTablesSQL();
         }
 
         private void Button_Click_3(object sender, RoutedEventArgs e)
         {
-            SqlDbDataAccess.DropTablesSQL();
+            SqlDataAccess.DropTablesSQL();
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            SqlDbDataAccess.AddGameInventorySQL(WebServices.DataReceiver.GetInventoryString("http://steamcommunity.com/profiles/76561197988463243/inventory/json/730/2"), "123", "730");
+            SqlDataAccess.AddGameInventorySQL(WebServices.DataReceiver.GetInventoryString("http://steamcommunity.com/profiles/76561197988463243/inventory/json/730/2"), "123", "730");
         }
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
-            SqlDbDataAccess.AddSteamInventorySQL("123", "bdm");
+            SqlDataAccess.AddSteamInventorySQL("123", "bdm");
         }
 
         private void Button_Click_5(object sender, RoutedEventArgs e)

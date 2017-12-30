@@ -37,7 +37,7 @@ namespace CsgoTactics
             this.InitializeComponent();
             this.Suspending += OnSuspending;
 
-            SqlDbDataAccess.CreateTablesSQL();
+            SqlDataAccess.CreateTablesSQL();
 
             using (var db = new LinqDataAccessLibrary.InventoryDbContext())
             {
