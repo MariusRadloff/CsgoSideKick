@@ -188,7 +188,7 @@ namespace SQLDataAccessLibrary
 
         public static void CreateTablesSQL()
         {
-            using (SqliteConnection db = new SqliteConnection(SqlDbModel.DbConnectionString))
+            using (SqliteConnection db = new SqliteConnection(SqlDbModel.SqlDbConnectionString))
             {
                 db.Open();
                 string createTableCommandString;
@@ -224,7 +224,7 @@ namespace SQLDataAccessLibrary
 
         public static void DeleteTablesSQL()
         {
-            using (SqliteConnection db = new SqliteConnection(SqlDbModel.DbConnectionString))
+            using (SqliteConnection db = new SqliteConnection(SqlDbModel.SqlDbConnectionString))
             {
                 db.Open();
                 foreach (List<List<String>> tableData in SqlDbModel.TableDataList)
@@ -239,7 +239,7 @@ namespace SQLDataAccessLibrary
 
         public static void DropTablesSQL()
         {
-            using (SqliteConnection db = new SqliteConnection(SqlDbModel.DbConnectionString))
+            using (SqliteConnection db = new SqliteConnection(SqlDbModel.SqlDbConnectionString))
             {
                 db.Open();
                 foreach (List<List<String>> tableData in SqlDbModel.TableDataList)
@@ -254,7 +254,7 @@ namespace SQLDataAccessLibrary
 
         public static void AddDataExample(string inputText)
         {
-            using (SqliteConnection db = new SqliteConnection(SqlDbModel.DbConnectionString))
+            using (SqliteConnection db = new SqliteConnection(SqlDbModel.SqlDbConnectionString))
             {
                 db.Open();
 
@@ -271,7 +271,7 @@ namespace SQLDataAccessLibrary
 
         public static void AddSteamInventorySQL(string Steam64Id, string Username)
         {
-            using (SqliteConnection db = new SqliteConnection(SqlDbModel.DbConnectionString))
+            using (SqliteConnection db = new SqliteConnection(SqlDbModel.SqlDbConnectionString))
             {
                 db.Open();
 
@@ -296,7 +296,7 @@ namespace SQLDataAccessLibrary
 
         public static void AddGameInventorySQL(string inventoryString, string Steam64Id, string csgoInventoryId)
         {
-            using (SqliteConnection db = new SqliteConnection(SqlDbModel.DbConnectionString))
+            using (SqliteConnection db = new SqliteConnection(SqlDbModel.SqlDbConnectionString))
             {
                 JsonObject csgoInventory = new JsonObject();
                 try
@@ -559,7 +559,7 @@ namespace SQLDataAccessLibrary
         {
             List<String> entries = new List<string>();
 
-            using (SqliteConnection db = new SqliteConnection(SqlDbModel.DbConnectionString))
+            using (SqliteConnection db = new SqliteConnection(SqlDbModel.SqlDbConnectionString))
             {
                 db.Open();
 

@@ -8,7 +8,7 @@ namespace SQLDataAccessLibrary
 {
     public static class SqlDbModel
     {
-        public static string DbConnectionString
+        public static string SqlDbConnectionString
         {
             //get { return "Filename=steamInventory.db"; }
             get { return "Filename=steamInventoryLinqTest.db"; }
@@ -44,11 +44,11 @@ namespace SQLDataAccessLibrary
                     {
                         new List<String>{ "rgInventory" },
                         new List<String>{ "rgInventoryItemId", "INTEGER", "NOT NULL", "PRIMARY KEY", "AUTOINCREMENT" },
-                        new List<String>{ "id", "INTEGER", "NOT NULL" },
-                        new List<String>{ "classid", "INTEGER", "NOT NULL" },
+                        new List<String>{ "id", "TEXT", "NOT NULL" },
+                        new List<String>{ "classid", "TEXT", "NOT NULL" },
                         new List<String>{ "instanceid", "TEXT", " NOT NULL" },
                         new List<String>{ "amount", "TEXT" },
-                        new List<String>{ "pos", "TEXT" },
+                        new List<String>{ "pos", "INTEGER" },
                         new List<String>{ "csgoInventoryItemId", "INTEGER" },
                         new List<String>{ "FOREIGN KEY", "(csgoInventoryItemId)", "REFERENCES", "csgoInventory(csgoInventoryItemId)" }
                     },

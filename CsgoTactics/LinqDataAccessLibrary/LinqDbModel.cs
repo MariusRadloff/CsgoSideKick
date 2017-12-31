@@ -7,6 +7,186 @@ using System.Threading.Tasks;
 
 namespace LinqDataAccessLibrary
 {
+    public static class LinqDbModel
+    {
+        public static string LinqDbConnectionString
+        {
+            //get { return "Filename=steamInventory.db"; }
+            get { return "Data Source=steamInventoryLinqTestStd.db"; }
+        }
+
+        public static string SqlDbConnectionString
+        {
+            //get { return "Filename=steamInventory.db"; }
+            get { return "Filename=steamInventoryLinqTest.db"; }
+        }
+
+        public static List<List<List<String>>> TableDataList
+        {
+            get
+            {
+                return new List<List<List<String>>>
+                {
+                    new List<List<String>>
+                    {
+                        new List<String>{ "steamInventory" },
+                        new List<String>{ "steamInventoryItemId",  "INTEGER", "NOT NULL", "PRIMARY KEY", "AUTOINCREMENT" },
+                        new List<String>{ "userId", "TEXT", "NOT NULL" },
+                        new List<String>{ "username", "TEXT", "NOT NULL" }
+                    },
+
+                    new List<List<String>>
+                    {
+                        new List<String>{ "csgoInventory" },
+                        new List<String>{ "csgoInventoryItemId", "INTEGER", "NOT NULL", "PRIMARY KEY", "AUTOINCREMENT" },
+                        new List<String>{ "gameId", "TEXT", " NOT NULL" },
+                        new List<String>{ "success", "TEXT" },
+                        new List<String>{ "more", "TEXT" },
+                        new List<String>{ "more_start", "TEXT" },
+                        new List<String>{ "steamInventoryId", "INTEGER" },
+                        new List<String>{ "FOREIGN KEY", "(steamInventoryId)", "REFERENCES", "steamInventory(steamInventoryItemId)" }
+                    },
+
+                    new List<List<String>>
+                    {
+                        new List<String>{ "rgInventory" },
+                        new List<String>{ "rgInventoryItemId", "INTEGER", "NOT NULL", "PRIMARY KEY", "AUTOINCREMENT" },
+                        new List<String>{ "id", "TEXT", "NOT NULL" },
+                        new List<String>{ "classid", "TEXT", "NOT NULL" },
+                        new List<String>{ "instanceid", "TEXT", " NOT NULL" },
+                        new List<String>{ "amount", "TEXT" },
+                        new List<String>{ "pos", "INTEGER" },
+                        new List<String>{ "csgoInventoryItemId", "INTEGER" },
+                        new List<String>{ "FOREIGN KEY", "(csgoInventoryItemId)", "REFERENCES", "csgoInventory(csgoInventoryItemId)" }
+                    },
+
+                    new List<List<String>>
+                    {
+                        new List<String>{ "rgCurrency" },
+                        new List<String>{ "rgCurrencyItemId", "INTEGER", "NOT NULL", "PRIMARY KEY", "AUTOINCREMENT" },
+                        new List<String>{ "csgoInventoryItemId", "INTEGER", " NOT NULL" },
+                        new List<String>{ "FOREIGN KEY", "(csgoInventoryItemId)", "REFERENCES", "csgoInventory(csgoInventoryItemId)" }
+                    },
+
+                    new List<List<String>>
+                    {
+                        new List<String>{ "rgDescriptions" },
+                        new List<String>{ "rgDescriptionsItemId", "INTEGER", "NOT NULL", "PRIMARY KEY", "AUTOINCREMENT" },
+                        new List<String>{ "appid", "TEXT" },
+                        new List<String>{ "classid", "TEXT" },
+                        new List<String>{ "instanceid", "TEXT" },
+                        new List<String>{ "icon_url", "TEXT" },
+                        new List<String>{ "icon_url_large", "TEXT" },
+                        new List<String>{ "icon_drag_url", "TEXT" },
+                        new List<String>{ "name", "TEXT" },
+                        new List<String>{ "market_hash_name", "TEXT" },
+                        new List<String>{ "market_name", "TEXT" },
+                        new List<String>{ "name_color", "TEXT" },
+                        new List<String>{ "background_color", "TEXT" },
+                        new List<String>{ "type", "TEXT" },
+                        new List<String>{ "tradable", "NUMBER" },
+                        new List<String>{ "marketable", "NUMBER" },
+                        new List<String>{ "commodity", "NUMBER" },
+                        new List<String>{ "market_tradable_restriction", "TEXT" },
+                        new List<String>{ "csgoInventoryItemId", "INTEGER", " NOT NULL" },
+                        new List<String>{ "FOREIGN KEY", "(csgoInventoryItemId)", "REFERENCES", "csgoInventory(csgoInventoryItemId)" }
+                    },
+
+                    new List<List<String>>
+                    {
+                        new List<String>{ "descriptions" },
+                        new List<String>{ "descriptionsItemId", "INTEGER", "NOT NULL", "PRIMARY KEY", "AUTOINCREMENT" },
+                        new List<String>{ "type", "TEXT" },
+                        new List<String>{ "value", "TEXT" },
+                        new List<String>{ "color", "TEXT" }
+                    },
+
+                    new List<List<String>>
+                    {
+                        new List<String>{ "app_data" },
+                        new List<String>{ "app_dataItemId", "INTEGER", "NOT NULL", "PRIMARY KEY", "AUTOINCREMENT" },
+                        new List<String>{ "def_index", "TEXT" },
+                        new List<String>{ "is_itemset_name", "REAL" },
+                        new List<String>{ "limited", "INTEGER" }
+                    },
+
+                    new List<List<String>>
+                    {
+                        new List<String>{ "actions" },
+                        new List<String>{ "actionsItemId", "INTEGER", "NOT NULL", "PRIMARY KEY", "AUTOINCREMENT" },
+                        new List<String>{ "name", "TEXT" },
+                        new List<String>{ "link", "TEXT" },
+                        new List<String>{ "rgDescriptionsItemId", "INTEGER" },
+                        new List<String>{ "FOREIGN KEY", "(rgDescriptionsItemId)", "REFERENCES", "rgDescriptions(rgDescriptionsItemId)" }
+                    },
+
+                    new List<List<String>>
+                    {
+                        new List<String>{ "market_actions" },
+                        new List<String>{ "market_actionsItemId", "INTEGER", "NOT NULL", "PRIMARY KEY", "AUTOINCREMENT" },
+                        new List<String>{ "name", "TEXT" },
+                        new List<String>{ "link", "TEXT" },
+                        new List<String>{ "rgDescriptionsItemId", "INTEGER" },
+                        new List<String>{ "FOREIGN KEY", "(rgDescriptionsItemId)", "REFERENCES", "rgDescriptions(rgDescriptionsItemId)" }
+                    },
+
+                    new List<List<String>>
+                    {
+                        new List<String>{ "tags" },
+                        new List<String>{ "tagsItemId", "INTEGER", "NOT NULL", "PRIMARY KEY", "AUTOINCREMENT" },
+                        new List<String>{ "internal_name", "TEXT" },
+                        new List<String>{ "name", "TEXT" },
+                        new List<String>{ "category", "TEXT" },
+                        new List<String>{ "color", "TEXT" },
+                        new List<String>{ "category_name", "TEXT" },
+                        new List<String>{ "rgDescriptionsItemId", "INTEGER" },
+                        new List<String>{ "FOREIGN KEY", "(rgDescriptionsItemId)", "REFERENCES", "rgDescriptions(rgDescriptionsItemId)" }
+                    },
+
+                    new List<List<String>>
+                    {
+                        new List<String>{ "priceData" },
+                        new List<String>{ "priceDataItemId", "INTEGER", "NOT NULL", "PRIMARY KEY", "AUTOINCREMENT" },
+                        new List<String>{ "purchaseDate", "TEXT" },
+                        new List<String>{ "purchasePrice", "TEXT" },
+                        new List<String>{ "rgDescriptionsItemId", "INTEGER" },
+                        new List<String>{ "FOREIGN KEY", "(rgDescriptionsItemId)", "REFERENCES", "rgDescriptions(rgDescriptionsItemId)" }
+                    },
+
+                    new List<List<String>>
+                    {
+                        new List<String>{ "priceCollection" },
+                        new List<String>{ "priceCollectionItemId", "INTEGER", "NOT NULL", "PRIMARY KEY", "AUTOINCREMENT" },
+                        new List<String>{ "date", "TEXT" },
+                        new List<String>{ "price", "TEXT" },
+                        new List<String>{ "priceDataItemId", "INTEGER" },
+                        new List<String>{ "FOREIGN KEY", "(priceDataItemId)", "REFERENCES", "priceData(priceDataItemId)" }
+                    },
+
+                    new List<List<String>>
+                    {
+                        new List<String>{ "app_dataDescriptionsRgDescriptionsRel" },
+                        new List<String>{ "app_dataDescriptionsRgDescriptionsRelId", "INTEGER", "NOT NULL", "PRIMARY KEY", "AUTOINCREMENT" },
+                        new List<String>{ "descriptionsItemId", "INTEGER" },
+                        new List<String>{ "rgDescriptionsItemId", "INTEGER" },
+                        new List<String>{ "app_dataItemId", "INTEGER" },
+                        new List<String>{ "UNIQUE", "( descriptionsItemId, rgDescriptionsItemId, app_dataItemId )" }
+                    },
+
+                    new List<List<String>>
+                    {
+                        new List<String>{ "descriptionsRgDescriptionsRel" },
+                        new List<String>{ "descriptionsRgDescriptionsRelId", "INTEGER", "NOT NULL", "PRIMARY KEY", "AUTOINCREMENT" },
+                        new List<String>{ "descriptionsItemId", "INTEGER" },
+                        new List<String>{ "rgDescriptionsItemId", "INTEGER", "NOT NULL" },
+                        new List<String>{ "pos", "INTEGER", "NOT NULL" },
+                        new List<String>{ "UNIQUE", "( descriptionsItemId, rgDescriptionsItemId, pos )" }
+                    }
+                };
+            }
+        }
+    }
+
     public class InventoryDbContext : DbContext
     {
         public DbSet<csgoInventoryItem> csgoInventory { get; set; }
@@ -22,7 +202,7 @@ namespace LinqDataAccessLibrary
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             //optionsBuilder.UseSqlite(DataAccess.DbConnectionString);
-            optionsBuilder.UseSqlite("Data Source=steamInventoryLinqTest.db");
+            optionsBuilder.UseSqlite(LinqDbModel.LinqDbConnectionString);
 
         }
 
@@ -43,7 +223,7 @@ namespace LinqDataAccessLibrary
             //modelBuilder.Entity<rgCurrencyItem>().HasKey(x => x.rgCurrencyItemId);
 
             //modelBuilder.Entity<rgDescriptionsItem>().HasKey(x => x.rgDescriptionsItemId);
-            modelBuilder.Entity<rgDescriptionsItem>().HasMany(x => x.descriptions).WithOne(x => x.rgDescriptionsItem).HasForeignKey(x => x.descriptionsItemId);
+            //modelBuilder.Entity<rgDescriptionsItem>().HasMany(x => x.descriptions).WithOne(x => x.rgDescriptionsItem).HasForeignKey(x => x.descriptionsItemId);
             //modelBuilder.Entity<rgDescriptionsItem>().HasMany(x => x.actions).WithOne(x => x.rgDescriptionsItem).HasForeignKey(x => x.actionsItemId);
             //modelBuilder.Entity<rgDescriptionsItem>().HasMany(x => x.market_actions).WithOne(x => x.rgDescriptionsItem).HasForeignKey(x => x.market_actionsItemId);
             //modelBuilder.Entity<rgDescriptionsItem>().HasMany(x => x.tags).WithOne(x => x.rgDescriptionsItem).HasForeignKey(x => x.tagsItemId);
@@ -69,7 +249,8 @@ namespace LinqDataAccessLibrary
         }
 
         public int csgoInventoryItemId { get; set; }
-        public bool success { get; set; }
+        public string gameId { get; set; }
+        public bool? success { get; set; }
         public virtual ICollection<rgInventoryItem> rgInventory { get; set; }
         public virtual ICollection<rgCurrencyItem> rgCurrency { get; set; }
         public virtual ICollection<rgDescriptionsItem> rgDescriptions { get; set; }
@@ -80,11 +261,11 @@ namespace LinqDataAccessLibrary
     public class rgInventoryItem
     {
         public int rgInventoryItemId { get; set; }
-        public int id { get; set; }
-        public int classid { get; set; }
+        public string id { get; set; }
+        public string classid { get; set; }
         public string instanceid { get; set; }
         public string amount { get; set; }
-        public string pos { get; set; }
+        public int pos { get; set; }
 
         //[ForeignKey("csgoInventoryItemId")]
         public virtual int csgoInventoryItemId { get; set; }
@@ -121,11 +302,11 @@ namespace LinqDataAccessLibrary
         public string market_hast_name { get; set; }
         public string market_name { get; set; }
         public string name_color { get; set; }
-        public string background_coloor { get; set; }
+        public string background_color { get; set; }
         public string type { get; set; }
-        public bool tradable { get; set; }
-        public bool marketable { get; set; }
-        public bool commodity { get; set; }
+        public int tradable { get; set; }
+        public int marketable { get; set; }
+        public int commodity { get; set; }
         public string market_tradable_restriction { get; set; }
 
         public virtual ICollection<descriptionsItem> descriptions { get; set; }
@@ -134,17 +315,17 @@ namespace LinqDataAccessLibrary
         public virtual ICollection<tagsItem> tags { get; set; }
 
         //[ForeignKey("csgoInventoryItemId")]
-        //public int csgoInventoryItemId { get; set; }
+        public int csgoInventoryItemId { get; set; }
         public virtual csgoInventoryItem csgoInventoryItem { get; set; }
 
     }
 
     public class descriptionsItem
     {
-        public descriptionsItem()
-        {
-            this.rgDescriptions = new HashSet<rgDescriptionsItem>();
-        }
+        //public descriptionsItem()
+        //{
+        //    this.rgDescriptions = new HashSet<rgDescriptionsItem>();
+        //}
 
 
         public int descriptionsItemId { get; set; }
@@ -152,9 +333,9 @@ namespace LinqDataAccessLibrary
         public string value { get; set; }
         public string color { get; set; }
 
-        public virtual app_dataItem app_data { get; set; }
+        //public virtual app_dataItem app_data { get; set; }
 
-        public virtual ICollection<rgDescriptionsItem> rgDescriptions { get; set; }
+        //public virtual ICollection<rgDescriptionsItem> rgDescriptions { get; set; }
 
         //[ForeignKey("rgDescriptionsId")]
         public virtual int rgDescriptionsId { get; set; }
@@ -169,7 +350,7 @@ namespace LinqDataAccessLibrary
         public long limited { get; set; }
 
         //[ForeignKey("descriptionsItemId")]
-        //public virtual int descriptionsItemId { get; set; }
+        public virtual int descriptionsItemId { get; set; }
         public virtual descriptionsItem descriptionsItem { get; set; }
     }
 
@@ -181,7 +362,7 @@ namespace LinqDataAccessLibrary
         public string link { get; set; }
 
         //[ForeignKey("rgDescriptionsItemId")]
-        //public virtual int rgDescriptionsItemId { get; set; }
+        public virtual int rgDescriptionsItemId { get; set; }
         public virtual rgDescriptionsItem rgDescriptionsItem { get; set; }
     }
 

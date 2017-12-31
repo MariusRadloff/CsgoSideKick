@@ -126,6 +126,9 @@
     <Compile Include="Converters\PercentToAngle.cs" />
     <Compile Include="Converters\RoundsToAngle.cs" />
     <Compile Include="Converters\ScenarioBindingConverter.cs" />
+    <Compile Include="DbDataAccess\Class1.cs" />
+    <Compile Include="DbDataAccess\LinqDataAccess.cs" />
+    <Compile Include="DbDataAccess\SqlDataAccess.cs" />
     <Compile Include="Models\Maps\GrenadeThrow.cs" />
     <Compile Include="Models\SteamInventory\WeaponSkinGroup.cs" />
     <Compile Include="Models\SteamInventory\Inventory.cs" />
@@ -340,7 +343,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\LinqDataAccessLibrary\LinqDataAccessLibrary.csproj">
-      <Project>{04d279bc-be06-492d-9c5a-a48b9a9ce61f}</Project>
+      <Project>{881d9a82-0c77-4a98-bc12-5f6b352832af}</Project>
       <Name>LinqDataAccessLibrary</Name>
     </ProjectReference>
     <ProjectReference Include="..\SQLDataAccessLibrary\SQLDataAccessLibrary.csproj">

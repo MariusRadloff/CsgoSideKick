@@ -1090,11 +1090,10 @@
       },
       "LinqDataAccessLibrary/1.0.0": {
         "type": "project",
-        "framework": "UAP,Version=v10.0.16299",
+        "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
           "Microsoft.EntityFrameworkCore.Sqlite": "2.0.1",
-          "Microsoft.EntityFrameworkCore.Tools": "2.0.1",
-          "Microsoft.NETCore.UniversalWindowsPlatform": "6.0.5"
+          "Microsoft.EntityFrameworkCore.Tools": "2.0.1"
         },
         "compile": {
           "bin/placeholder/LinqDataAccessLibrary.dll": {}
@@ -2490,11 +2489,10 @@
       },
       "LinqDataAccessLibrary/1.0.0": {
         "type": "project",
-        "framework": "UAP,Version=v10.0.16299",
+        "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
           "Microsoft.EntityFrameworkCore.Sqlite": "2.0.1",
-          "Microsoft.EntityFrameworkCore.Tools": "2.0.1",
-          "Microsoft.NETCore.UniversalWindowsPlatform": "6.0.5"
+          "Microsoft.EntityFrameworkCore.Tools": "2.0.1"
         },
         "compile": {
           "bin/placeholder/LinqDataAccessLibrary.dll": {}
@@ -4006,11 +4004,10 @@
       },
       "LinqDataAccessLibrary/1.0.0": {
         "type": "project",
-        "framework": "UAP,Version=v10.0.16299",
+        "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
           "Microsoft.EntityFrameworkCore.Sqlite": "2.0.1",
-          "Microsoft.EntityFrameworkCore.Tools": "2.0.1",
-          "Microsoft.NETCore.UniversalWindowsPlatform": "6.0.5"
+          "Microsoft.EntityFrameworkCore.Tools": "2.0.1"
         },
         "compile": {
           "bin/placeholder/LinqDataAccessLibrary.dll": {}
@@ -5406,11 +5403,10 @@
       },
       "LinqDataAccessLibrary/1.0.0": {
         "type": "project",
-        "framework": "UAP,Version=v10.0.16299",
+        "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
           "Microsoft.EntityFrameworkCore.Sqlite": "2.0.1",
-          "Microsoft.EntityFrameworkCore.Tools": "2.0.1",
-          "Microsoft.NETCore.UniversalWindowsPlatform": "6.0.5"
+          "Microsoft.EntityFrameworkCore.Tools": "2.0.1"
         },
         "compile": {
           "bin/placeholder/LinqDataAccessLibrary.dll": {}
@@ -6922,11 +6918,10 @@
       },
       "LinqDataAccessLibrary/1.0.0": {
         "type": "project",
-        "framework": "UAP,Version=v10.0.16299",
+        "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
           "Microsoft.EntityFrameworkCore.Sqlite": "2.0.1",
-          "Microsoft.EntityFrameworkCore.Tools": "2.0.1",
-          "Microsoft.NETCore.UniversalWindowsPlatform": "6.0.5"
+          "Microsoft.EntityFrameworkCore.Tools": "2.0.1"
         },
         "compile": {
           "bin/placeholder/LinqDataAccessLibrary.dll": {}
@@ -8322,11 +8317,10 @@
       },
       "LinqDataAccessLibrary/1.0.0": {
         "type": "project",
-        "framework": "UAP,Version=v10.0.16299",
+        "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
           "Microsoft.EntityFrameworkCore.Sqlite": "2.0.1",
-          "Microsoft.EntityFrameworkCore.Tools": "2.0.1",
-          "Microsoft.NETCore.UniversalWindowsPlatform": "6.0.5"
+          "Microsoft.EntityFrameworkCore.Tools": "2.0.1"
         },
         "compile": {
           "bin/placeholder/LinqDataAccessLibrary.dll": {}
@@ -9838,11 +9832,10 @@
       },
       "LinqDataAccessLibrary/1.0.0": {
         "type": "project",
-        "framework": "UAP,Version=v10.0.16299",
+        "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
           "Microsoft.EntityFrameworkCore.Sqlite": "2.0.1",
-          "Microsoft.EntityFrameworkCore.Tools": "2.0.1",
-          "Microsoft.NETCore.UniversalWindowsPlatform": "6.0.5"
+          "Microsoft.EntityFrameworkCore.Tools": "2.0.1"
         },
         "compile": {
           "bin/placeholder/LinqDataAccessLibrary.dll": {}
@@ -16346,11 +16339,11 @@
       "frameworks": {
         "uap10.0.16299": {
           "projectReferences": {
-            "C:\\Users\\mariu\\Source\\Repos\\CsgoSideKick\\CsgoTactics\\SQLDataAccessLibrary\\SQLDataAccessLibrary.csproj": {
-              "projectPath": "C:\\Users\\mariu\\Source\\Repos\\CsgoSideKick\\CsgoTactics\\SQLDataAccessLibrary\\SQLDataAccessLibrary.csproj"
-            },
             "C:\\Users\\mariu\\Source\\Repos\\CsgoSideKick\\CsgoTactics\\LinqDataAccessLibrary\\LinqDataAccessLibrary.csproj": {
               "projectPath": "C:\\Users\\mariu\\Source\\Repos\\CsgoSideKick\\CsgoTactics\\LinqDataAccessLibrary\\LinqDataAccessLibrary.csproj"
+            },
+            "C:\\Users\\mariu\\Source\\Repos\\CsgoSideKick\\CsgoTactics\\SQLDataAccessLibrary\\SQLDataAccessLibrary.csproj": {
+              "projectPath": "C:\\Users\\mariu\\Source\\Repos\\CsgoSideKick\\CsgoTactics\\SQLDataAccessLibrary\\SQLDataAccessLibrary.csproj"
             }
           }
         }

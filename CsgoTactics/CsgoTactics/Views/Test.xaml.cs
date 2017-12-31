@@ -19,6 +19,7 @@ using CsgoTactics.WebServices;
 using CsgoTactics.Models.SteamInventory;
 using Windows.UI.Core;
 using SQLDataAccessLibrary;
+using LinqDataAccessLibrary;
 
 // Die Elementvorlage "Leere Seite" ist unter http://go.microsoft.com/fwlink/?LinkId=234238 dokumentiert.
 
@@ -90,24 +91,34 @@ namespace CsgoTactics.Views
 
         private void Button_Click_5(object sender, RoutedEventArgs e)
         {
-            using (var db = new LinqDataAccessLibrary.InventoryDbContext())
-            {
+            //using (var db = new LinqDataAccessLibrary.InventoryDbContext())
+            //{
                 
 
-                var action = new LinqDataAccessLibrary.actionsItem { link = "testlink", name = "testname" };
+            //    var action = new LinqDataAccessLibrary.actionsItem { link = "testlink", name = "testname" };
 
-                var a = db.actions.Add(action);                
+            //    var a = db.actions.Add(action);                
 
-                var appdata = new LinqDataAccessLibrary.app_dataItem { def_index = "test" };
+            //    var appdata = new LinqDataAccessLibrary.app_dataItem { def_index = "test" };
 
-                //var x = db.app_data.Add(appdata);
+            //    //var x = db.app_data.Add(appdata);
 
                
 
-                db.SaveChanges();
+            //    db.SaveChanges();
 
                 
-            }
+
+
+            //}
+
+            LinqDataAccess.AddGameInventoryLinq(WebServices.DataReceiver.GetInventoryString("http://steamcommunity.com/profiles/76561197988463243/inventory/json/730/2"), "123", "730");
+
+        }
+
+        private void Button_Click_6(object sender, RoutedEventArgs e)
+        {
+            LinqDataAccess.InsertLINQ();
         }
     }
 }

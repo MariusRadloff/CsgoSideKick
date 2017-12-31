@@ -26,9 +26,10 @@
             <Button Content="Create Tables" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="Button_Click_4"/>
             <Button Content="Delete DB" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="Button_Click"/>
             <Button Content="Drop Tables" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="Button_Click_3"/>
-            <Button Content="Insert CSGOINV" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="Button_Click_1"/>
-            <Button Content="Add SteamINV" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="Button_Click_2"/>
-            <Button Content="Linq" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="Button_Click_5" />
+            <Button Content="Insert CSGOINV SQL" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="Button_Click_1"/>
+            <Button Content="Add SteamINV SQL" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="Button_Click_2"/>
+            <Button Content="Insert CSGOINV Linq " HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="Button_Click_5"/>
+            <Button Content="add csgo inv only Linq" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="Button_Click_6"/>
         </StackPanel>
     </Grid>
 </Page>

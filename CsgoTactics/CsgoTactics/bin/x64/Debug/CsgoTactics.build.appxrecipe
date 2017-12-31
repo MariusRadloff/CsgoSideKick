@@ -28,7 +28,7 @@
     <AppxPackagedFile Include="C:\Users\mariu\Source\Repos\CsgoSideKick\CsgoTactics\CsgoTactics\bin\x64\Debug\CsgoTactics.exe">
       <PackagePath>entrypoint\CsgoTactics.exe</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\mariu\.nuget\packages\microsoft.applicationinsights\2.4.0\lib\uap10.0\Microsoft.ApplicationInsights.dll">
+    <AppxPackagedFile Include="C:\Users\mariu\.nuget\packages\microsoft.applicationinsights\1.2.3\lib\portable-win81+wpa81\Microsoft.ApplicationInsights.dll">
       <PackagePath>Microsoft.ApplicationInsights.dll</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\mariu\.nuget\packages\microsoft.applicationinsights.persistencechannel\1.2.3\lib\portable-win81+wpa81\Microsoft.ApplicationInsights.PersistenceChannel.dll">
@@ -711,9 +711,6 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\mariu\.nuget\packages\sqlitepclraw.lib.e_sqlite3.v140\1.1.7\runtimes\win10-x64\native\e_sqlite3.dll">
       <PackagePath>LinqDataAccessLibrary\e_sqlite3.dll</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\mariu\.nuget\packages\sqlitepclraw.lib.e_sqlite3.v140\1.1.7\runtimes\win10-x64\native\e_sqlite3.dll">
-      <PackagePath>SQLDataAccessLibrary\e_sqlite3.dll</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\mariu\Source\Repos\CsgoSideKick\CsgoTactics\CsgoTactics\bin\x64\Debug\CsgoTactics.xr.xml">
       <PackagePath>CsgoTactics.xr.xml</PackagePath>
