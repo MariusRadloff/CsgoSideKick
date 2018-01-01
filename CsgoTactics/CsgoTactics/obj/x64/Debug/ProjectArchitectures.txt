@@ -1,3 +1,1 @@
 C:\Users\mariu\Source\Repos\CsgoSideKick\CsgoTactics\CsgoTactics\CsgoTactics.csproj;x64
-C:\Users\mariu\Source\Repos\CsgoSideKick\CsgoTactics\LinqDataAccessLibrary\LinqDataAccessLibrary.csproj;x64
-C:\Users\mariu\Source\Repos\CsgoSideKick\CsgoTactics\SQLDataAccessLibrary\SQLDataAccessLibrary.csproj;x64

@@ -30,6 +30,7 @@
             <Button Content="Add SteamINV SQL" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="Button_Click_2"/>
             <Button Content="Insert CSGOINV Linq " HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="Button_Click_5"/>
             <Button Content="add csgo inv only Linq" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="Button_Click_6"/>
+            <Button Content="delete Linq" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="Button_Click_7"/>
         </StackPanel>
     </Grid>
 </Page>

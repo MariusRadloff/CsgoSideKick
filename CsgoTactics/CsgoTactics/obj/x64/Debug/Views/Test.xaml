@@ -30,6 +30,7 @@
             <Button x:ConnectionId='8' Content="Add SteamINV SQL" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"                       />
             <Button x:ConnectionId='9' Content="Insert CSGOINV Linq " HorizontalAlignment="Stretch" VerticalAlignment="Stretch"                       />
             <Button x:ConnectionId='10' Content="add csgo inv only Linq" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"                       />
+            <Button x:ConnectionId='11' Content="delete Linq" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"                       />
         </StackPanel>
     </Grid>
 </Page>

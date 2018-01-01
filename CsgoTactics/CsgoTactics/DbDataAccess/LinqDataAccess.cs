@@ -4,9 +4,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-//using Windows.Data.Json;
+using Windows.Data.Json;
+using DbModel;
 
-namespace LinqDataAccessLibrary
+namespace CsgoTactics.DbDataAccess
 {
     public static class LinqDataAccess
     {
@@ -586,7 +587,7 @@ namespace LinqDataAccessLibrary
 
         public static void InsertLINQ()
         {
-            using (var db = new LinqDataAccessLibrary.InventoryDbContext())
+            using (var db = new InventoryDbContext())
             {
 
 
@@ -606,271 +607,249 @@ namespace LinqDataAccessLibrary
             }
         }
 
-        //public static void AddGameInventoryLinq(string inventoryString, string Steam64Id, string csgoInventoryId)
-        //{
-        //    using (InventoryDbContext db = new InventoryDbContext())
-        //    {
-        //        JsonObject csgoInventory = new JsonObject();
-        //        try
-        //        {
-        //            csgoInventory = JsonObject.Parse(inventoryString);
-        //        }
-        //        catch (Exception)
-        //        {
-        //            //CsgoInventoryJsonObject = JsonObject.Parse(inventoryString);
-        //            System.Diagnostics.Debug.Print("inventoryString ungültig");
-        //            return;
-        //        }
+        public static void AddGameInventoryLinq(string inventoryString, string Steam64Id, string csgoInventoryId)
+        {
+            using (InventoryDbContext db = new InventoryDbContext())
+            {
+                JsonObject csgoInventory = new JsonObject();
+                try
+                {
+                    csgoInventory = JsonObject.Parse(inventoryString);
+                }
+                catch (Exception)
+                {
+                    //CsgoInventoryJsonObject = JsonObject.Parse(inventoryString);
+                    System.Diagnostics.Debug.Print("inventoryString ungültig");
+                    return;
+                }
 
-        //        List<List<String>> TableData = LinqDbModel.TableDataList.Where(tdl => tdl[0][0] == "csgoInventory").First();
+                List<List<String>> TableData = DbModelStrings.TableDataList.Where(tdl => tdl[0][0] == "csgoInventory").First();
 
-        //        csgoInventoryItem currentCsgoInventoryItem = new csgoInventoryItem
-        //        {
-        //            gameId = csgoInventoryId,
-        //            success = csgoInventory.ContainsKey(TableData.ElementAt(3).First()) ? csgoInventory.GetNamedBoolean(TableData.ElementAt(3).First()) : false,
-        //            more = csgoInventory.ContainsKey(TableData.ElementAt(4).First()) ? csgoInventory.GetNamedBoolean(TableData.ElementAt(4).First()) : false,
-        //            more_start = csgoInventory.ContainsKey(TableData.ElementAt(5).First()) ? csgoInventory.GetNamedBoolean(TableData.ElementAt(5).First()) : false,
-        //            //steamInventoryItemId = 0//Steam64Id  todo index für steaminventoryid erstellen und evtl in steam und game in einer funktion hinzufügen
-        //        };
+                csgoInventoryItem currentCsgoInventoryItem = new csgoInventoryItem
+                {
+                    gameId = csgoInventoryId,
+                    success = csgoInventory.ContainsKey(TableData.ElementAt(3).First()) ? csgoInventory.GetNamedBoolean(TableData.ElementAt(3).First()) : false,
+                    more = csgoInventory.ContainsKey(TableData.ElementAt(4).First()) ? csgoInventory.GetNamedBoolean(TableData.ElementAt(4).First()) : false,
+                    more_start = csgoInventory.ContainsKey(TableData.ElementAt(5).First()) ? csgoInventory.GetNamedBoolean(TableData.ElementAt(5).First()) : false,
+                    //steamInventoryItemId = 0//Steam64Id  todo index für steaminventoryid erstellen und evtl in steam und game in einer funktion hinzufügen
+                };
 
-        //        if (!db.csgoInventory.Any(x => x.gameId == currentCsgoInventoryItem.gameId))
-        //        {
-        //            db.csgoInventory.Add(currentCsgoInventoryItem);
-        //            db.SaveChanges();
-        //        }
+                if (!db.csgoInventory.Any(x => x.gameId == currentCsgoInventoryItem.gameId))
+                {
+                    db.csgoInventory.Add(currentCsgoInventoryItem);
+                    db.SaveChanges();
+                }
 
-        //        int currentCsgoInventoryItemId = db.csgoInventory.Where(x => x.gameId == currentCsgoInventoryItem.gameId).FirstOrDefault().csgoInventoryItemId;
+                int currentCsgoInventoryItemId = db.csgoInventory.Where(x => x.gameId == currentCsgoInventoryItem.gameId).FirstOrDefault().csgoInventoryItemId;
 
-        //        JsonObject rgInventory = csgoInventory.GetNamedObject("rgInventory");
+                JsonObject rgInventory = csgoInventory.GetNamedObject("rgInventory");
 
-        //        for (int i = 0; i < rgInventory.Count; i++)
-        //        {
-        //            JsonObject rgInventoryElement = rgInventory.GetNamedObject(rgInventory.ElementAt(i).Key);
+                for (int i = 0; i < rgInventory.Count; i++)
+                {
+                    JsonObject rgInventoryElement = rgInventory.GetNamedObject(rgInventory.ElementAt(i).Key);
 
-        //            TableData = LinqDbModel.TableDataList.Where(tdl => tdl[0][0] == "rgInventory").First();
+                    TableData = DbModelStrings.TableDataList.Where(tdl => tdl[0][0] == "rgInventory").First();
 
-        //            rgInventoryItem currentRgInventoryItem = new rgInventoryItem
-        //            {
-        //                id = rgInventoryElement.ContainsKey(TableData.ElementAt(2).First()) ? rgInventoryElement.GetNamedString(TableData.ElementAt(2).First()) : "",
-        //                classid = rgInventoryElement.ContainsKey(TableData.ElementAt(3).First()) ? rgInventoryElement.GetNamedString(TableData.ElementAt(3).First()) : "",
-        //                instanceid = rgInventoryElement.ContainsKey(TableData.ElementAt(4).First()) ? rgInventoryElement.GetNamedString(TableData.ElementAt(4).First()) : "",
-        //                amount = rgInventoryElement.ContainsKey(TableData.ElementAt(5).First()) ? rgInventoryElement.GetNamedString(TableData.ElementAt(5).First()) : "",
-        //                pos = rgInventoryElement.ContainsKey(TableData.ElementAt(6).First()) ? (int)rgInventoryElement.GetNamedNumber(TableData.ElementAt(6).First()) : 0,
-        //                csgoInventoryItemId = currentCsgoInventoryItemId
-        //            };
+                    rgInventoryItem currentRgInventoryItem = new rgInventoryItem
+                    {
+                        id = rgInventoryElement.ContainsKey(TableData.ElementAt(2).First()) ? rgInventoryElement.GetNamedString(TableData.ElementAt(2).First()) : "",
+                        classid = rgInventoryElement.ContainsKey(TableData.ElementAt(3).First()) ? rgInventoryElement.GetNamedString(TableData.ElementAt(3).First()) : "",
+                        instanceid = rgInventoryElement.ContainsKey(TableData.ElementAt(4).First()) ? rgInventoryElement.GetNamedString(TableData.ElementAt(4).First()) : "",
+                        amount = rgInventoryElement.ContainsKey(TableData.ElementAt(5).First()) ? rgInventoryElement.GetNamedString(TableData.ElementAt(5).First()) : "",
+                        pos = rgInventoryElement.ContainsKey(TableData.ElementAt(6).First()) ? (int)rgInventoryElement.GetNamedNumber(TableData.ElementAt(6).First()) : 0,
+                        csgoInventoryItemId = currentCsgoInventoryItemId
+                    };
 
-        //            if (!db.rgInventory.Any(x => x.id == currentRgInventoryItem.id))
-        //            {
-        //                db.rgInventory.Add(currentRgInventoryItem);
-        //            }
-        //        }
+                    if (!db.rgInventory.Any(x => x.id == currentRgInventoryItem.id))
+                    {
+                        db.rgInventory.Add(currentRgInventoryItem);
+                    }
+                }
 
-        //        db.SaveChanges();
+                db.SaveChanges();
 
-        //        JsonObject rgDescriptions = csgoInventory.GetNamedObject("rgDescriptions");
+                JsonObject rgDescriptions = csgoInventory.GetNamedObject("rgDescriptions");
 
-        //        for (int n = 0; n < rgDescriptions.Count; n++)
-        //        {
-        //            JsonObject rgDescription = rgDescriptions.GetNamedObject(rgDescriptions.ElementAt(n).Key);
+                for (int n = 0; n < rgDescriptions.Count; n++)
+                {
+                    JsonObject rgDescription = rgDescriptions.GetNamedObject(rgDescriptions.ElementAt(n).Key);
 
-        //            TableData = LinqDbModel.TableDataList.Where(tdl => tdl[0][0] == "rgDescriptions").First();
+                    TableData = DbModelStrings.TableDataList.Where(tdl => tdl[0][0] == "rgDescriptions").First();
 
-        //            rgDescriptionsItem currentRgDescriptionsItem = new rgDescriptionsItem
-        //            {
-        //                appid = rgDescription.ContainsKey(TableData.ElementAt(2).First()) ? rgDescription.GetNamedString(TableData.ElementAt(2).First()) : "",
-        //                classid = rgDescription.ContainsKey(TableData.ElementAt(3).First()) ? rgDescription.GetNamedString(TableData.ElementAt(3).First()) : "",
-        //                instanceid = rgDescription.ContainsKey(TableData.ElementAt(4).First()) ? rgDescription.GetNamedString(TableData.ElementAt(4).First()) : "",
-        //                icon_url = rgDescription.ContainsKey(TableData.ElementAt(5).First()) ? rgDescription.GetNamedString(TableData.ElementAt(5).First()) : "",
-        //                icon_url_large = rgDescription.ContainsKey(TableData.ElementAt(6).First()) ? rgDescription.GetNamedString(TableData.ElementAt(6).First()) : "",
-        //                icon_drag_url = rgDescription.ContainsKey(TableData.ElementAt(7).First()) ? rgDescription.GetNamedString(TableData.ElementAt(7).First()) : "",
-        //                name = rgDescription.ContainsKey(TableData.ElementAt(8).First()) ? rgDescription.GetNamedString(TableData.ElementAt(8).First()) : "",
-        //                market_hast_name = rgDescription.ContainsKey(TableData.ElementAt(9).First()) ? rgDescription.GetNamedString(TableData.ElementAt(9).First()) : "",
-        //                market_name = rgDescription.ContainsKey(TableData.ElementAt(10).First()) ? rgDescription.GetNamedString(TableData.ElementAt(10).First()) : "",
-        //                name_color = rgDescription.ContainsKey(TableData.ElementAt(11).First()) ? rgDescription.GetNamedString(TableData.ElementAt(11).First()) : "",
-        //                background_color = rgDescription.ContainsKey(TableData.ElementAt(12).First()) ? rgDescription.GetNamedString(TableData.ElementAt(12).First()) : "",
-        //                type = rgDescription.ContainsKey(TableData.ElementAt(13).First()) ? rgDescription.GetNamedString(TableData.ElementAt(13).First()) : "",
-        //                tradable = rgDescription.ContainsKey(TableData.ElementAt(14).First()) ? (int)rgDescription.GetNamedNumber(TableData.ElementAt(14).First()) : 0,
-        //                marketable = rgDescription.ContainsKey(TableData.ElementAt(15).First()) ? (int)rgDescription.GetNamedNumber(TableData.ElementAt(15).First()) : 0,
-        //                commodity = rgDescription.ContainsKey(TableData.ElementAt(16).First()) ? (int)rgDescription.GetNamedNumber(TableData.ElementAt(16).First()) : 0,
-        //                market_tradable_restriction = rgDescription.ContainsKey(TableData.ElementAt(17).First()) ? rgDescription.GetNamedString(TableData.ElementAt(17).First()) : "",
-        //                csgoInventoryItemId = currentCsgoInventoryItemId
-        //            };
+                    rgDescriptionsItem currentRgDescriptionsItem = new rgDescriptionsItem
+                    {
+                        appid = rgDescription.ContainsKey(TableData.ElementAt(2).First()) ? rgDescription.GetNamedString(TableData.ElementAt(2).First()) : "",
+                        classid = rgDescription.ContainsKey(TableData.ElementAt(3).First()) ? rgDescription.GetNamedString(TableData.ElementAt(3).First()) : "",
+                        instanceid = rgDescription.ContainsKey(TableData.ElementAt(4).First()) ? rgDescription.GetNamedString(TableData.ElementAt(4).First()) : "",
+                        icon_url = rgDescription.ContainsKey(TableData.ElementAt(5).First()) ? rgDescription.GetNamedString(TableData.ElementAt(5).First()) : "",
+                        icon_url_large = rgDescription.ContainsKey(TableData.ElementAt(6).First()) ? rgDescription.GetNamedString(TableData.ElementAt(6).First()) : "",
+                        icon_drag_url = rgDescription.ContainsKey(TableData.ElementAt(7).First()) ? rgDescription.GetNamedString(TableData.ElementAt(7).First()) : "",
+                        name = rgDescription.ContainsKey(TableData.ElementAt(8).First()) ? rgDescription.GetNamedString(TableData.ElementAt(8).First()) : "",
+                        market_hast_name = rgDescription.ContainsKey(TableData.ElementAt(9).First()) ? rgDescription.GetNamedString(TableData.ElementAt(9).First()) : "",
+                        market_name = rgDescription.ContainsKey(TableData.ElementAt(10).First()) ? rgDescription.GetNamedString(TableData.ElementAt(10).First()) : "",
+                        name_color = rgDescription.ContainsKey(TableData.ElementAt(11).First()) ? rgDescription.GetNamedString(TableData.ElementAt(11).First()) : "",
+                        background_color = rgDescription.ContainsKey(TableData.ElementAt(12).First()) ? rgDescription.GetNamedString(TableData.ElementAt(12).First()) : "",
+                        type = rgDescription.ContainsKey(TableData.ElementAt(13).First()) ? rgDescription.GetNamedString(TableData.ElementAt(13).First()) : "",
+                        tradable = rgDescription.ContainsKey(TableData.ElementAt(14).First()) ? (int)rgDescription.GetNamedNumber(TableData.ElementAt(14).First()) : 0,
+                        marketable = rgDescription.ContainsKey(TableData.ElementAt(15).First()) ? (int)rgDescription.GetNamedNumber(TableData.ElementAt(15).First()) : 0,
+                        commodity = rgDescription.ContainsKey(TableData.ElementAt(16).First()) ? (int)rgDescription.GetNamedNumber(TableData.ElementAt(16).First()) : 0,
+                        market_tradable_restriction = rgDescription.ContainsKey(TableData.ElementAt(17).First()) ? rgDescription.GetNamedString(TableData.ElementAt(17).First()) : "",
+                        csgoInventoryItemId = currentCsgoInventoryItemId
+                    };
 
-        //            if (!db.rgDescriptions.Any(x => x.classid == currentRgDescriptionsItem.classid && x.instanceid == currentRgDescriptionsItem.instanceid))
-        //            {
-        //                db.rgDescriptions.Add(currentRgDescriptionsItem);
-        //            }
+                    if (!db.rgDescriptions.Any(x => x.classid == currentRgDescriptionsItem.classid && x.instanceid == currentRgDescriptionsItem.instanceid))
+                    {
+                        db.rgDescriptions.Add(currentRgDescriptionsItem);
+                    }
 
-        //            db.SaveChanges();
+                    db.SaveChanges();
 
-        //            int currentRgDescriptionsItemId = db.rgDescriptions.Where(x => x.classid == currentRgDescriptionsItem.classid && x.instanceid == currentRgDescriptionsItem.instanceid).FirstOrDefault().csgoInventoryItemId;
+                    int currentRgDescriptionsItemId = db.rgDescriptions.Where(x => x.classid == currentRgDescriptionsItem.classid && x.instanceid == currentRgDescriptionsItem.instanceid).FirstOrDefault().csgoInventoryItemId;
 
-        //            #region todo
+                    if (rgDescription.ContainsKey("descriptions"))
+                    {
+                        JsonArray descriptions = rgDescription.GetNamedArray("descriptions");
 
-        //            //    if (rgDescription.ContainsKey("descriptions"))
-        //            //    {
-        //            //        JsonArray descriptions = rgDescription.GetNamedArray("descriptions");
+                        for (uint m = 0; m < descriptions.Count; m++)
+                        {
+                            JsonObject description = descriptions.GetObjectAt(m);
 
-        //            //        for (uint m = 0; m < descriptions.Count; m++)
-        //            //        {
-        //            //            JsonObject description = descriptions.GetObjectAt(m);
-        //            //            long descriptonsId = 0;
+                            TableData = DbModelStrings.TableDataList.Where(tdl => tdl[0][0] == "descriptions").First();
 
-        //            //            TableData = SqlDbModel.TableDataList.Where(tdl => tdl[0][0] == "descriptions").First();
+                            descriptionsItem currentDescriptionsItem = new descriptionsItem
+                            {
+                                type = description.ContainsKey(TableData.ElementAt(2).First()) ? description.GetNamedString(TableData.ElementAt(2).First()) : "",
+                                value = description.ContainsKey(TableData.ElementAt(3).First()) ? description.GetNamedString(TableData.ElementAt(3).First()) : "",
+                                color = description.ContainsKey(TableData.ElementAt(4).First()) ? description.GetNamedString(TableData.ElementAt(4).First()) : ""
+                            };
 
-        //            //            List<(String, Object)> descriptionParameter = new List<(String, Object)>
-        //            //            {
-        //            //                (TableData.ElementAt(1).First(), DBNull.Value),
-        //            //                (TableData.ElementAt(2).First(), description.ContainsKey(TableData.ElementAt(2).First()) ? (Object)description.GetNamedString(TableData.ElementAt(2).First()) : (Object)DBNull.Value),
-        //            //                (TableData.ElementAt(3).First(), description.ContainsKey(TableData.ElementAt(3).First()) ? (Object)description.GetNamedString(TableData.ElementAt(3).First()) : (Object)DBNull.Value),
-        //            //                (TableData.ElementAt(4).First(), description.ContainsKey(TableData.ElementAt(4).First()) ? (Object)description.GetNamedString(TableData.ElementAt(4).First()) : (Object)DBNull.Value),
-        //            //            };
+                            if (!db.descriptions.Any(x => x.type == currentDescriptionsItem.type && x.value == currentDescriptionsItem.value && x.color == currentDescriptionsItem.color))
+                            {
+                                db.descriptions.Add(currentDescriptionsItem);
+                            }
 
-        //            //            descriptonsId = GetIdOfDataSetSQL(descriptionParameter, new List<int> { 1, 2, 3 }, TableData.ElementAt(0).First(), db);
+                            db.SaveChanges();
 
-        //            //            if (descriptonsId == 0)
-        //            //            {
-        //            //                descriptonsId = InsertIntoTableSQL(descriptionParameter, TableData.ElementAt(0).First(), db);
-        //            //            }
+                            int currentDescriptionsItemId = db.descriptions.Where(x => x.type == currentDescriptionsItem.type && x.value == currentDescriptionsItem.value && x.color == currentDescriptionsItem.color).FirstOrDefault().descriptionsItemId;
 
-        //            //            TableData = SqlDbModel.TableDataList.Where(tdl => tdl[0][0] == "descriptionsRgDescriptionsRel").First();
+                            TableData = DbModelStrings.TableDataList.Where(tdl => tdl[0][0] == "descriptionsRgDescriptionsRel").First();
 
-        //            //            List<(String, Object)> descriptionsRgDescriptionsParameter = new List<(string, object)>
-        //            //            {
-        //            //                (TableData.ElementAt(1).First(), DBNull.Value),
-        //            //                (TableData.ElementAt(2).First(), descriptonsId),
-        //            //                (TableData.ElementAt(3).First(), rgDescriptonsId),
-        //            //                (TableData.ElementAt(4).First(), m)
-        //            //            };
 
-        //            //            if (GetIdOfDataSetSQL(descriptionsRgDescriptionsParameter, new List<int> { 1, 2, 3 }, TableData.ElementAt(0).First(), db) == 0)
-        //            //            {
-        //            //                InsertIntoTableSQL(descriptionsRgDescriptionsParameter, TableData.ElementAt(0).First(), db);
-        //            //            }
+                            if (description.ContainsKey("app_data"))
+                            {
+                                JsonObject appData = description.GetNamedObject("app_data");
 
-        //            //            if (description.ContainsKey("app_data"))
-        //            //            {
-        //            //                JsonObject appData = description.GetNamedObject("app_data");
-        //            //                long app_dataId = 0;
+                                TableData = DbModelStrings.TableDataList.Where(tdl => tdl[0][0] == "app_data").First();
 
-        //            //                TableData = SqlDbModel.TableDataList.Where(tdl => tdl[0][0] == "app_data").First();
+                                app_dataItem currentApp_DataItem = new app_dataItem
+                                {
+                                    def_index = appData.ContainsKey(TableData.ElementAt(2).First()) ? appData.GetNamedString(TableData.ElementAt(2).First()) : "",
+                                    is_itemset_name = appData.ContainsKey(TableData.ElementAt(3).First()) ? (int)appData.GetNamedNumber(TableData.ElementAt(3).First()) : 0,
+                                    limited = appData.ContainsKey(TableData.ElementAt(4).First()) ? (int)appData.GetNamedNumber(TableData.ElementAt(4).First()) : 0
+                                };
 
-        //            //                List<(String, Object)> appDataParameter = new List<(String, Object)>
-        //            //                {
-        //            //                    (TableData.ElementAt(1).First(), DBNull.Value),
-        //            //                    (TableData.ElementAt(2).First(), appData.ContainsKey(TableData.ElementAt(2).First()) ? (Object)appData.GetNamedString(TableData.ElementAt(2).First()) : (Object)DBNull.Value),
-        //            //                    (TableData.ElementAt(3).First(), appData.ContainsKey(TableData.ElementAt(3).First()) ? (Object)appData.GetNamedNumber(TableData.ElementAt(3).First()) : (Object)DBNull.Value),
-        //            //                    (TableData.ElementAt(4).First(), appData.ContainsKey(TableData.ElementAt(4).First()) ? (Object)appData.GetNamedNumber(TableData.ElementAt(4).First()) : (Object)DBNull.Value),
-        //            //                };
+                                if (!db.app_data.Any(x => x.def_index == currentApp_DataItem.def_index && x.is_itemset_name == currentApp_DataItem.is_itemset_name && x.limited == currentApp_DataItem.limited))
+                                {
+                                    db.app_data.Add(currentApp_DataItem);
+                                }
 
-        //            //                app_dataId = GetIdOfDataSetSQL(appDataParameter, new List<int> { 1, 2, 3 }, TableData.ElementAt(0).First(), db);
+                                db.SaveChanges();
+                            }
+                        }
+                    }
 
-        //            //                if (app_dataId == 0)
-        //            //                {
-        //            //                    app_dataId = InsertIntoTableSQL(appDataParameter, TableData.ElementAt(0).First(), db);
-        //            //                }
+                    if (rgDescription.ContainsKey("actions"))
+                    {
+                        JsonArray actions = rgDescription.GetNamedArray("actions");
+                        for (uint o = 0; o < actions.Count; o++)
+                        {
+                            JsonObject action = actions.GetObjectAt(o);
 
-        //            //                TableData = SqlDbModel.TableDataList.Where(tdl => tdl[0][0] == "app_dataDescriptionsRgDescriptionsRel").First();
+                            TableData = DbModelStrings.TableDataList.Where(tdl => tdl[0][0] == "actions").First();
 
-        //            //                List<(String, Object)> appDataDescriptionsRgDescriptionParameter = new List<(String, Object)>
-        //            //                {
-        //            //                    (TableData.ElementAt(1).First(), DBNull.Value),
-        //            //                    (TableData.ElementAt(2).First(), descriptonsId),
-        //            //                    (TableData.ElementAt(3).First(), rgDescriptonsId),
-        //            //                    (TableData.ElementAt(4).First(), app_dataId)
-        //            //                };
+                            actionsItem currentActionsItem = new actionsItem
+                            {
+                                name = action.ContainsKey(TableData.ElementAt(2).First()) ? action.GetNamedString(TableData.ElementAt(2).First()) : "",
+                                link = action.ContainsKey(TableData.ElementAt(3).First()) ? action.GetNamedString(TableData.ElementAt(3).First()) : "",
+                                rgDescriptionsItemId = currentRgDescriptionsItemId
+                            };
 
-        //            //                if (GetIdOfDataSetSQL(appDataDescriptionsRgDescriptionParameter, new List<int> { 1, 2 }, TableData.ElementAt(0).First(), db) == 0)
-        //            //                {
-        //            //                    InsertIntoTableSQL(appDataDescriptionsRgDescriptionParameter, TableData.ElementAt(0).First(), db);
-        //            //                }
-        //            //            }
+                            if (!db.actions.Any(x => x.name == currentActionsItem.name && x.link == currentActionsItem.link))
+                            {
+                                db.actions.Add(currentActionsItem);
+                            }
 
-        //            //        }
-        //            //    }
+                            db.SaveChanges();
+                        }
+                    }
 
-        //            //    if (rgDescription.ContainsKey("actions"))
-        //            //    {
-        //            //        JsonArray actions = rgDescription.GetNamedArray("actions");
-        //            //        for (uint o = 0; o < actions.Count; o++)
-        //            //        {
-        //            //            JsonObject action = actions.GetObjectAt(o);
+                    if (rgDescription.ContainsKey("market_actions"))
+                    {
+                        JsonArray marketActions = rgDescription.GetNamedArray("market_actions");
+                        for (uint o = 0; o < marketActions.Count; o++)
+                        {
+                            JsonObject marketAction = marketActions.GetObjectAt(o);
 
-        //            //            TableData = SqlDbModel.TableDataList.Where(tdl => tdl[0][0] == "actions").First();
+                            TableData = DbModelStrings.TableDataList.Where(tdl => tdl[0][0] == "market_actions").First();
 
-        //            //            List<(String, Object)> actionParameter = new List<(String, Object)>
-        //            //            {
-        //            //                (TableData.ElementAt(1).First(), DBNull.Value),
-        //            //                (TableData.ElementAt(2).First(), action.ContainsKey(TableData.ElementAt(2).First()) ? (Object)action.GetNamedString(TableData.ElementAt(2).First()) : (Object)DBNull.Value),
-        //            //                (TableData.ElementAt(3).First(), action.ContainsKey(TableData.ElementAt(3).First()) ? (Object)action.GetNamedString(TableData.ElementAt(3).First()) : (Object)DBNull.Value),
-        //            //                (TableData.ElementAt(4).First(), rgDescriptonsId)
-        //            //            };
+                            market_actionsItem currentMarket_ActionsItem = new market_actionsItem
+                            {
+                                name = marketAction.ContainsKey(TableData.ElementAt(2).First()) ? marketAction.GetNamedString(TableData.ElementAt(2).First()) : "",
+                                link = marketAction.ContainsKey(TableData.ElementAt(3).First()) ? marketAction.GetNamedString(TableData.ElementAt(3).First()) : "",
+                                rgDescriptionsItemId = currentRgDescriptionsItemId
+                            };
 
-        //            //            if (GetIdOfDataSetSQL(actionParameter, new List<int> { 1, 2, 3 }, TableData.ElementAt(0).First(), db) == 0)
-        //            //            {
-        //            //                InsertIntoTableSQL(actionParameter, TableData.ElementAt(0).First(), db);
-        //            //            }
-        //            //        }
-        //            //    }
+                            if (!db.market_actions.Any(x => x.name == currentMarket_ActionsItem.name && x.link == currentMarket_ActionsItem.link))
+                            {
+                                db.market_actions.Add(currentMarket_ActionsItem);
+                            }
 
-        //            //    if (rgDescription.ContainsKey("market_actions"))
-        //            //    {
-        //            //        JsonArray marketActions = rgDescription.GetNamedArray("market_actions");
-        //            //        for (uint o = 0; o < marketActions.Count; o++)
-        //            //        {
-        //            //            JsonObject marketAction = marketActions.GetObjectAt(o);
+                            db.SaveChanges();
+                        }
+                    }
 
-        //            //            TableData = SqlDbModel.TableDataList.Where(tdl => tdl[0][0] == "market_actions").First();
+                    if (rgDescription.ContainsKey("tags"))
+                    {
+                        JsonArray tags = rgDescription.GetNamedArray("tags");
+                        for (uint p = 0; p < tags.Count; p++)
+                        {
+                            JsonObject tag = tags.GetObjectAt(p);
 
-        //            //            List<(String, Object)> marketActionParameter = new List<(String, Object)>
-        //            //            {
-        //            //                (TableData.ElementAt(1).First(), DBNull.Value),
-        //            //                (TableData.ElementAt(2).First(), marketAction.ContainsKey(TableData.ElementAt(2).First()) ? (Object)marketAction.GetNamedString(TableData.ElementAt(2).First()) : (Object)DBNull.Value),
-        //            //                (TableData.ElementAt(3).First(), marketAction.ContainsKey(TableData.ElementAt(3).First()) ? (Object)marketAction.GetNamedString(TableData.ElementAt(3).First()) : (Object)DBNull.Value),
-        //            //                (TableData.ElementAt(4).First(), rgDescriptonsId)
-        //            //            };
+                            TableData = DbModelStrings.TableDataList.Where(tdl => tdl[0][0] == "tags").First();
 
-        //            //            if (GetIdOfDataSetSQL(marketActionParameter, new List<int> { 1, 2, 3 }, "market_actions", db) == 0)
-        //            //            {
-        //            //                InsertIntoTableSQL(marketActionParameter, "market_actions", db);
-        //            //            }
-        //            //        }
-        //            //    }
+                            tagsItem currentTagsItem = new tagsItem
+                            {
+                                internal_name = tag.ContainsKey(TableData.ElementAt(2).First()) ? tag.GetNamedString(TableData.ElementAt(2).First()) : "",
+                                name = tag.ContainsKey(TableData.ElementAt(3).First()) ? tag.GetNamedString(TableData.ElementAt(3).First()) : "",
+                                category = tag.ContainsKey(TableData.ElementAt(4).First()) ? tag.GetNamedString(TableData.ElementAt(4).First()) : "",
+                                color = tag.ContainsKey(TableData.ElementAt(5).First()) ? tag.GetNamedString(TableData.ElementAt(5).First()) : "",
+                                category_name = tag.ContainsKey(TableData.ElementAt(6).First()) ? tag.GetNamedString(TableData.ElementAt(6).First()) : "",
+                                rgDescriptionsItemId = currentRgDescriptionsItemId
+                            };
 
-        //            //    if (rgDescription.ContainsKey("tags"))
-        //            //    {
-        //            //        JsonArray tags = rgDescription.GetNamedArray("tags");
-        //            //        for (uint p = 0; p < tags.Count; p++)
-        //            //        {
-        //            //            JsonObject tag = tags.GetObjectAt(p);
+                            if (!db.tags.Any(x => x.internal_name == currentTagsItem.internal_name && x.name == currentTagsItem.name && x.category == currentTagsItem.category && x.color == currentTagsItem.color && x.category_name == currentTagsItem.category_name && x.rgDescriptionsItemId == currentTagsItem.rgDescriptionsItemId))
+                            {
+                                db.tags.Add(currentTagsItem);
+                            }
 
-        //            //            TableData = SqlDbModel.TableDataList.Where(tdl => tdl[0][0] == "tags").First();
+                            db.SaveChanges();
+                        }
+                    }
+                }
+                JsonArray rgCurrency = csgoInventory.GetNamedArray("rgCurrency");
+            }
+        }
 
-        //            //            List<(String, Object)> tagParameter = new List<(String, Object)>
-        //            //            {
-        //            //                (TableData.ElementAt(1).First(), DBNull.Value),
-        //            //                (TableData.ElementAt(2).First(), tag.ContainsKey(TableData.ElementAt(2).First()) ? (Object)tag.GetNamedString(TableData.ElementAt(2).First()) : (Object)DBNull.Value),
-        //            //                (TableData.ElementAt(3).First(), tag.ContainsKey(TableData.ElementAt(3).First()) ? (Object)tag.GetNamedString(TableData.ElementAt(3).First()) : (Object)DBNull.Value),
-        //            //                (TableData.ElementAt(4).First(), tag.ContainsKey(TableData.ElementAt(4).First()) ? (Object)tag.GetNamedString(TableData.ElementAt(4).First()) : (Object)DBNull.Value),
-        //            //                (TableData.ElementAt(5).First(), tag.ContainsKey(TableData.ElementAt(5).First()) ? (Object)tag.GetNamedString(TableData.ElementAt(5).First()) : (Object)DBNull.Value),
-        //            //                (TableData.ElementAt(6).First(), tag.ContainsKey(TableData.ElementAt(6).First()) ? (Object)tag.GetNamedString(TableData.ElementAt(6).First()) : (Object)DBNull.Value),
-        //            //                (TableData.ElementAt(7).First(), rgDescriptonsId)
-        //            //            };
-
-        //            //            if (GetIdOfDataSetSQL(tagParameter, new List<int> { 1, 2, 3 }, "tags", db) == 0)
-        //            //            {
-        //            //                InsertIntoTableSQL(tagParameter, "tags", db);
-        //            //            }
-        //            //        }
-        //            //    }
-        //            //}
-        //            //JsonArray rgCurrency = csgoInventory.GetNamedArray("rgCurrency");
-
-        //            //db.Close();
-
-        //            #endregion
-        //        }
-        //    }
-        //}
+        internal static void DeleteDb()
+        {
+            using (InventoryDbContext db = new InventoryDbContext())
+            {
+                var a = db.actions.ToList();
+                var ma = db.market_actions.ToList();
+                db.actions.RemoveRange(a);
+                db.market_actions.RemoveRange(ma);
+                db.SaveChanges();
+            }
+        }
     }
 }

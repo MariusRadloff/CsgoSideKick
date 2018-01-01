@@ -2,11 +2,10 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Windows.Data.Json;
+using DbModel;
 
-namespace SQLDataAccessLibrary
+namespace CsgoTactics.DbDataAccess
 {
     public static class SqlDataAccess
     {
@@ -188,12 +187,12 @@ namespace SQLDataAccessLibrary
 
         public static void CreateTablesSQL()
         {
-            using (SqliteConnection db = new SqliteConnection(SqlDbModel.SqlDbConnectionString))
+            using (SqliteConnection db = new SqliteConnection(DbModelStrings.SqlDbConnectionString))
             {
                 db.Open();
                 string createTableCommandString;
 
-                foreach (List<List<String>> tableData in SqlDbModel.TableDataList)
+                foreach (List<List<String>> tableData in DbModelStrings.TableDataList)
                 {
                     int stringNumber = 0;
                     createTableCommandString = "CREATE TABLE IF NOT EXISTS " + tableData[0][0] + " ( ";
@@ -224,10 +223,10 @@ namespace SQLDataAccessLibrary
 
         public static void DeleteTablesSQL()
         {
-            using (SqliteConnection db = new SqliteConnection(SqlDbModel.SqlDbConnectionString))
+            using (SqliteConnection db = new SqliteConnection(DbModelStrings.SqlDbConnectionString))
             {
                 db.Open();
-                foreach (List<List<String>> tableData in SqlDbModel.TableDataList)
+                foreach (List<List<String>> tableData in DbModelStrings.TableDataList)
                 {
                     string deleteTableCommandString = "DELETE FROM " + tableData[0][0];
                     SqliteCommand deleteTableCommand = new SqliteCommand(deleteTableCommandString, db);
@@ -239,10 +238,10 @@ namespace SQLDataAccessLibrary
 
         public static void DropTablesSQL()
         {
-            using (SqliteConnection db = new SqliteConnection(SqlDbModel.SqlDbConnectionString))
+            using (SqliteConnection db = new SqliteConnection(DbModelStrings.SqlDbConnectionString))
             {
                 db.Open();
-                foreach (List<List<String>> tableData in SqlDbModel.TableDataList)
+                foreach (List<List<String>> tableData in DbModelStrings.TableDataList)
                 {
                     string deleteTableCommandString = "DROP TABLE " + tableData[0][0];
                     SqliteCommand deleteTableCommand = new SqliteCommand(deleteTableCommandString, db);
@@ -254,7 +253,7 @@ namespace SQLDataAccessLibrary
 
         public static void AddDataExample(string inputText)
         {
-            using (SqliteConnection db = new SqliteConnection(SqlDbModel.SqlDbConnectionString))
+            using (SqliteConnection db = new SqliteConnection(DbModelStrings.SqlDbConnectionString))
             {
                 db.Open();
 
@@ -271,11 +270,11 @@ namespace SQLDataAccessLibrary
 
         public static void AddSteamInventorySQL(string Steam64Id, string Username)
         {
-            using (SqliteConnection db = new SqliteConnection(SqlDbModel.SqlDbConnectionString))
+            using (SqliteConnection db = new SqliteConnection(DbModelStrings.SqlDbConnectionString))
             {
                 db.Open();
 
-                List<List<String>> TableData = SqlDbModel.TableDataList.Where(tdl => tdl[0][0] == "steamInventory").First();
+                List<List<String>> TableData = DbModelStrings.TableDataList.Where(tdl => tdl[0][0] == "steamInventory").First();
 
                 List<(String, Object)> csgoInventoryParameter = new List<(String, Object)>
                 {
@@ -296,7 +295,7 @@ namespace SQLDataAccessLibrary
 
         public static void AddGameInventorySQL(string inventoryString, string Steam64Id, string csgoInventoryId)
         {
-            using (SqliteConnection db = new SqliteConnection(SqlDbModel.SqlDbConnectionString))
+            using (SqliteConnection db = new SqliteConnection(DbModelStrings.SqlDbConnectionString))
             {
                 JsonObject csgoInventory = new JsonObject();
                 try
@@ -312,7 +311,7 @@ namespace SQLDataAccessLibrary
 
                 db.Open();
 
-                List<List<String>> TableData = SqlDbModel.TableDataList.Where(tdl => tdl[0][0] == "csgoInventory").First();
+                List<List<String>> TableData = DbModelStrings.TableDataList.Where(tdl => tdl[0][0] == "csgoInventory").First();
 
                 List<(String, Object)> csgoInventoryParameter = new List<(String, Object)>
                 {
@@ -335,7 +334,7 @@ namespace SQLDataAccessLibrary
                 {
                     JsonObject rgInventoryElement = rgInventory.GetNamedObject(rgInventory.ElementAt(i).Key);
 
-                    TableData = SqlDbModel.TableDataList.Where(tdl => tdl[0][0] == "rgInventory").First();
+                    TableData = DbModelStrings.TableDataList.Where(tdl => tdl[0][0] == "rgInventory").First();
 
                     List<(String, Object)> rgInventoryParameter = new List<(String, Object)>
                     {
@@ -361,7 +360,7 @@ namespace SQLDataAccessLibrary
                     JsonObject rgDescription = rgDescriptions.GetNamedObject(rgDescriptions.ElementAt(n).Key);
                     long rgDescriptonsId = 0;
 
-                    TableData = SqlDbModel.TableDataList.Where(tdl => tdl[0][0] == "rgDescriptions").First();
+                    TableData = DbModelStrings.TableDataList.Where(tdl => tdl[0][0] == "rgDescriptions").First();
 
                     List<(String, Object)> rgDescriptionParameter = new List<(String, Object)>
                     {
@@ -401,7 +400,7 @@ namespace SQLDataAccessLibrary
                             JsonObject description = descriptions.GetObjectAt(m);
                             long descriptonsId = 0;
 
-                            TableData = SqlDbModel.TableDataList.Where(tdl => tdl[0][0] == "descriptions").First();
+                            TableData = DbModelStrings.TableDataList.Where(tdl => tdl[0][0] == "descriptions").First();
 
                             List<(String, Object)> descriptionParameter = new List<(String, Object)>
                             {
@@ -418,7 +417,7 @@ namespace SQLDataAccessLibrary
                                 descriptonsId = InsertIntoTableSQL(descriptionParameter, TableData.ElementAt(0).First(), db);
                             }
 
-                            TableData = SqlDbModel.TableDataList.Where(tdl => tdl[0][0] == "descriptionsRgDescriptionsRel").First();
+                            TableData = DbModelStrings.TableDataList.Where(tdl => tdl[0][0] == "descriptionsRgDescriptionsRel").First();
 
                             List<(String, Object)> descriptionsRgDescriptionsParameter = new List<(string, object)>
                             {
@@ -438,7 +437,7 @@ namespace SQLDataAccessLibrary
                                 JsonObject appData = description.GetNamedObject("app_data");
                                 long app_dataId = 0;
 
-                                TableData = SqlDbModel.TableDataList.Where(tdl => tdl[0][0] == "app_data").First();
+                                TableData = DbModelStrings.TableDataList.Where(tdl => tdl[0][0] == "app_data").First();
 
                                 List<(String, Object)> appDataParameter = new List<(String, Object)>
                                 {
@@ -455,7 +454,7 @@ namespace SQLDataAccessLibrary
                                     app_dataId = InsertIntoTableSQL(appDataParameter, TableData.ElementAt(0).First(), db);
                                 }
 
-                                TableData = SqlDbModel.TableDataList.Where(tdl => tdl[0][0] == "app_dataDescriptionsRgDescriptionsRel").First();
+                                TableData = DbModelStrings.TableDataList.Where(tdl => tdl[0][0] == "app_dataDescriptionsRgDescriptionsRel").First();
 
                                 List<(String, Object)> appDataDescriptionsRgDescriptionParameter = new List<(String, Object)>
                                 {
@@ -481,7 +480,7 @@ namespace SQLDataAccessLibrary
                         {
                             JsonObject action = actions.GetObjectAt(o);
 
-                            TableData = SqlDbModel.TableDataList.Where(tdl => tdl[0][0] == "actions").First();
+                            TableData = DbModelStrings.TableDataList.Where(tdl => tdl[0][0] == "actions").First();
 
                             List<(String, Object)> actionParameter = new List<(String, Object)>
                             {
@@ -505,7 +504,7 @@ namespace SQLDataAccessLibrary
                         {
                             JsonObject marketAction = marketActions.GetObjectAt(o);
 
-                            TableData = SqlDbModel.TableDataList.Where(tdl => tdl[0][0] == "market_actions").First();
+                            TableData = DbModelStrings.TableDataList.Where(tdl => tdl[0][0] == "market_actions").First();
 
                             List<(String, Object)> marketActionParameter = new List<(String, Object)>
                             {
@@ -529,7 +528,7 @@ namespace SQLDataAccessLibrary
                         {
                             JsonObject tag = tags.GetObjectAt(p);
 
-                            TableData = SqlDbModel.TableDataList.Where(tdl => tdl[0][0] == "tags").First();
+                            TableData = DbModelStrings.TableDataList.Where(tdl => tdl[0][0] == "tags").First();
 
                             List<(String, Object)> tagParameter = new List<(String, Object)>
                             {
@@ -559,7 +558,7 @@ namespace SQLDataAccessLibrary
         {
             List<String> entries = new List<string>();
 
-            using (SqliteConnection db = new SqliteConnection(SqlDbModel.SqlDbConnectionString))
+            using (SqliteConnection db = new SqliteConnection(DbModelStrings.SqlDbConnectionString))
             {
                 db.Open();
 

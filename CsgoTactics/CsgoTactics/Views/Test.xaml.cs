@@ -18,8 +18,7 @@ using Windows.UI.Xaml.Shapes;
 using CsgoTactics.WebServices;
 using CsgoTactics.Models.SteamInventory;
 using Windows.UI.Core;
-using SQLDataAccessLibrary;
-using LinqDataAccessLibrary;
+using CsgoTactics.DbDataAccess;
 
 // Die Elementvorlage "Leere Seite" ist unter http://go.microsoft.com/fwlink/?LinkId=234238 dokumentiert.
 
@@ -119,6 +118,11 @@ namespace CsgoTactics.Views
         private void Button_Click_6(object sender, RoutedEventArgs e)
         {
             LinqDataAccess.InsertLINQ();
+        }
+
+        private void Button_Click_7(object sender, RoutedEventArgs e)
+        {
+            LinqDataAccess.DeleteDb();
         }
     }
 }

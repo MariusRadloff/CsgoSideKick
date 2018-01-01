@@ -16,9 +16,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
-using SQLDataAccessLibrary;
 using Microsoft.EntityFrameworkCore;
-
 
 namespace CsgoTactics
 {
@@ -37,9 +35,9 @@ namespace CsgoTactics
             this.InitializeComponent();
             this.Suspending += OnSuspending;
 
-            SqlDataAccess.CreateTablesSQL();
+            DbDataAccess.SqlDataAccess.CreateTablesSQL();
 
-            using (var db = new LinqDataAccessLibrary.InventoryDbContext())
+            using (var db = new DbModel.InventoryDbContext())
             {
                 db.Database.Migrate();
             }

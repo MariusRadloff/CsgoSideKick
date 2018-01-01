@@ -1088,7 +1088,7 @@
           "lib/win8/_._": {}
         }
       },
-      "LinqDataAccessLibrary/1.0.0": {
+      "DbModel/1.0.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
@@ -1096,26 +1096,10 @@
           "Microsoft.EntityFrameworkCore.Tools": "2.0.1"
         },
         "compile": {
-          "bin/placeholder/LinqDataAccessLibrary.dll": {}
+          "bin/placeholder/DbModel.dll": {}
         },
         "runtime": {
-          "bin/placeholder/LinqDataAccessLibrary.dll": {}
-        }
-      },
-      "SQLDataAccessLibrary/1.0.0": {
-        "type": "project",
-        "framework": "UAP,Version=v10.0.16299",
-        "dependencies": {
-          "Microsoft.Data.Sqlite.Core": "2.0.0",
-          "Microsoft.EntityFrameworkCore.Sqlite": "2.0.1",
-          "Microsoft.EntityFrameworkCore.Tools": "2.0.1",
-          "Microsoft.NETCore.UniversalWindowsPlatform": "6.0.5"
-        },
-        "compile": {
-          "bin/placeholder/SQLDataAccessLibrary.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/SQLDataAccessLibrary.dll": {}
+          "bin/placeholder/DbModel.dll": {}
         }
       }
     },
@@ -2487,7 +2471,7 @@
           "lib/win8/_._": {}
         }
       },
-      "LinqDataAccessLibrary/1.0.0": {
+      "DbModel/1.0.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
@@ -2495,26 +2479,10 @@
           "Microsoft.EntityFrameworkCore.Tools": "2.0.1"
         },
         "compile": {
-          "bin/placeholder/LinqDataAccessLibrary.dll": {}
+          "bin/placeholder/DbModel.dll": {}
         },
         "runtime": {
-          "bin/placeholder/LinqDataAccessLibrary.dll": {}
-        }
-      },
-      "SQLDataAccessLibrary/1.0.0": {
-        "type": "project",
-        "framework": "UAP,Version=v10.0.16299",
-        "dependencies": {
-          "Microsoft.Data.Sqlite.Core": "2.0.0",
-          "Microsoft.EntityFrameworkCore.Sqlite": "2.0.1",
-          "Microsoft.EntityFrameworkCore.Tools": "2.0.1",
-          "Microsoft.NETCore.UniversalWindowsPlatform": "6.0.5"
-        },
-        "compile": {
-          "bin/placeholder/SQLDataAccessLibrary.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/SQLDataAccessLibrary.dll": {}
+          "bin/placeholder/DbModel.dll": {}
         }
       }
     },
@@ -4002,7 +3970,7 @@
           "lib/win8/_._": {}
         }
       },
-      "LinqDataAccessLibrary/1.0.0": {
+      "DbModel/1.0.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
@@ -4010,26 +3978,10 @@
           "Microsoft.EntityFrameworkCore.Tools": "2.0.1"
         },
         "compile": {
-          "bin/placeholder/LinqDataAccessLibrary.dll": {}
+          "bin/placeholder/DbModel.dll": {}
         },
         "runtime": {
-          "bin/placeholder/LinqDataAccessLibrary.dll": {}
-        }
-      },
-      "SQLDataAccessLibrary/1.0.0": {
-        "type": "project",
-        "framework": "UAP,Version=v10.0.16299",
-        "dependencies": {
-          "Microsoft.Data.Sqlite.Core": "2.0.0",
-          "Microsoft.EntityFrameworkCore.Sqlite": "2.0.1",
-          "Microsoft.EntityFrameworkCore.Tools": "2.0.1",
-          "Microsoft.NETCore.UniversalWindowsPlatform": "6.0.5"
-        },
-        "compile": {
-          "bin/placeholder/SQLDataAccessLibrary.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/SQLDataAccessLibrary.dll": {}
+          "bin/placeholder/DbModel.dll": {}
         }
       }
     },
@@ -5401,7 +5353,7 @@
           "lib/win8/_._": {}
         }
       },
-      "LinqDataAccessLibrary/1.0.0": {
+      "DbModel/1.0.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
@@ -5409,26 +5361,10 @@
           "Microsoft.EntityFrameworkCore.Tools": "2.0.1"
         },
         "compile": {
-          "bin/placeholder/LinqDataAccessLibrary.dll": {}
+          "bin/placeholder/DbModel.dll": {}
         },
         "runtime": {
-          "bin/placeholder/LinqDataAccessLibrary.dll": {}
-        }
-      },
-      "SQLDataAccessLibrary/1.0.0": {
-        "type": "project",
-        "framework": "UAP,Version=v10.0.16299",
-        "dependencies": {
-          "Microsoft.Data.Sqlite.Core": "2.0.0",
-          "Microsoft.EntityFrameworkCore.Sqlite": "2.0.1",
-          "Microsoft.EntityFrameworkCore.Tools": "2.0.1",
-          "Microsoft.NETCore.UniversalWindowsPlatform": "6.0.5"
-        },
-        "compile": {
-          "bin/placeholder/SQLDataAccessLibrary.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/SQLDataAccessLibrary.dll": {}
+          "bin/placeholder/DbModel.dll": {}
         }
       }
     },
@@ -6916,7 +6852,7 @@
           "lib/win8/_._": {}
         }
       },
-      "LinqDataAccessLibrary/1.0.0": {
+      "DbModel/1.0.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
@@ -6924,26 +6860,10 @@
           "Microsoft.EntityFrameworkCore.Tools": "2.0.1"
         },
         "compile": {
-          "bin/placeholder/LinqDataAccessLibrary.dll": {}
+          "bin/placeholder/DbModel.dll": {}
         },
         "runtime": {
-          "bin/placeholder/LinqDataAccessLibrary.dll": {}
-        }
-      },
-      "SQLDataAccessLibrary/1.0.0": {
-        "type": "project",
-        "framework": "UAP,Version=v10.0.16299",
-        "dependencies": {
-          "Microsoft.Data.Sqlite.Core": "2.0.0",
-          "Microsoft.EntityFrameworkCore.Sqlite": "2.0.1",
-          "Microsoft.EntityFrameworkCore.Tools": "2.0.1",
-          "Microsoft.NETCore.UniversalWindowsPlatform": "6.0.5"
-        },
-        "compile": {
-          "bin/placeholder/SQLDataAccessLibrary.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/SQLDataAccessLibrary.dll": {}
+          "bin/placeholder/DbModel.dll": {}
         }
       }
     },
@@ -8315,7 +8235,7 @@
           "lib/win8/_._": {}
         }
       },
-      "LinqDataAccessLibrary/1.0.0": {
+      "DbModel/1.0.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
@@ -8323,26 +8243,10 @@
           "Microsoft.EntityFrameworkCore.Tools": "2.0.1"
         },
         "compile": {
-          "bin/placeholder/LinqDataAccessLibrary.dll": {}
+          "bin/placeholder/DbModel.dll": {}
         },
         "runtime": {
-          "bin/placeholder/LinqDataAccessLibrary.dll": {}
-        }
-      },
-      "SQLDataAccessLibrary/1.0.0": {
-        "type": "project",
-        "framework": "UAP,Version=v10.0.16299",
-        "dependencies": {
-          "Microsoft.Data.Sqlite.Core": "2.0.0",
-          "Microsoft.EntityFrameworkCore.Sqlite": "2.0.1",
-          "Microsoft.EntityFrameworkCore.Tools": "2.0.1",
-          "Microsoft.NETCore.UniversalWindowsPlatform": "6.0.5"
-        },
-        "compile": {
-          "bin/placeholder/SQLDataAccessLibrary.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/SQLDataAccessLibrary.dll": {}
+          "bin/placeholder/DbModel.dll": {}
         }
       }
     },
@@ -9830,7 +9734,7 @@
           "lib/win8/_._": {}
         }
       },
-      "LinqDataAccessLibrary/1.0.0": {
+      "DbModel/1.0.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
@@ -9838,26 +9742,10 @@
           "Microsoft.EntityFrameworkCore.Tools": "2.0.1"
         },
         "compile": {
-          "bin/placeholder/LinqDataAccessLibrary.dll": {}
+          "bin/placeholder/DbModel.dll": {}
         },
         "runtime": {
-          "bin/placeholder/LinqDataAccessLibrary.dll": {}
-        }
-      },
-      "SQLDataAccessLibrary/1.0.0": {
-        "type": "project",
-        "framework": "UAP,Version=v10.0.16299",
-        "dependencies": {
-          "Microsoft.Data.Sqlite.Core": "2.0.0",
-          "Microsoft.EntityFrameworkCore.Sqlite": "2.0.1",
-          "Microsoft.EntityFrameworkCore.Tools": "2.0.1",
-          "Microsoft.NETCore.UniversalWindowsPlatform": "6.0.5"
-        },
-        "compile": {
-          "bin/placeholder/SQLDataAccessLibrary.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/SQLDataAccessLibrary.dll": {}
+          "bin/placeholder/DbModel.dll": {}
         }
       }
     }
@@ -16282,20 +16170,15 @@
         "system.threading.tasks.nuspec"
       ]
     },
-    "LinqDataAccessLibrary/1.0.0": {
+    "DbModel/1.0.0": {
       "type": "project",
-      "path": "../LinqDataAccessLibrary/LinqDataAccessLibrary.csproj",
-      "msbuildProject": "../LinqDataAccessLibrary/LinqDataAccessLibrary.csproj"
-    },
-    "SQLDataAccessLibrary/1.0.0": {
-      "type": "project",
-      "path": "../SQLDataAccessLibrary/SQLDataAccessLibrary.csproj",
-      "msbuildProject": "../SQLDataAccessLibrary/SQLDataAccessLibrary.csproj"
+      "path": "../DbModel/DbModel.csproj",
+      "msbuildProject": "../DbModel/DbModel.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "UAP,Version=v10.0.16299": [
-      "LinqDataAccessLibrary >= 1.0.0",
+      "DbModel >= 1.0.0",
       "Microsoft.ApplicationInsights >= 1.2.3",
       "Microsoft.ApplicationInsights.PersistenceChannel >= 1.2.3",
       "Microsoft.ApplicationInsights.WindowsApps >= 1.1.1",
@@ -16303,7 +16186,6 @@
       "Microsoft.EntityFrameworkCore.Sqlite >= 2.0.1",
       "Microsoft.EntityFrameworkCore.Tools >= 2.0.1",
       "Microsoft.NETCore.UniversalWindowsPlatform >= 6.0.5",
-      "SQLDataAccessLibrary >= 1.0.0",
       "SQLite.Net-PCL >= 3.1.1"
     ]
   },
@@ -16339,11 +16221,8 @@
       "frameworks": {
         "uap10.0.16299": {
           "projectReferences": {
-            "C:\\Users\\mariu\\Source\\Repos\\CsgoSideKick\\CsgoTactics\\LinqDataAccessLibrary\\LinqDataAccessLibrary.csproj": {
-              "projectPath": "C:\\Users\\mariu\\Source\\Repos\\CsgoSideKick\\CsgoTactics\\LinqDataAccessLibrary\\LinqDataAccessLibrary.csproj"
-            },
-            "C:\\Users\\mariu\\Source\\Repos\\CsgoSideKick\\CsgoTactics\\SQLDataAccessLibrary\\SQLDataAccessLibrary.csproj": {
-              "projectPath": "C:\\Users\\mariu\\Source\\Repos\\CsgoSideKick\\CsgoTactics\\SQLDataAccessLibrary\\SQLDataAccessLibrary.csproj"
+            "C:\\Users\\mariu\\Source\\Repos\\CsgoSideKick\\CsgoTactics\\DbModel\\DbModel.csproj": {
+              "projectPath": "C:\\Users\\mariu\\Source\\Repos\\CsgoSideKick\\CsgoTactics\\DbModel\\DbModel.csproj"
             }
           }
         }

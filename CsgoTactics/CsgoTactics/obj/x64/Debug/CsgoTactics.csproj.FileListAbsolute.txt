@@ -749,9 +749,5 @@ C:\Users\mariu\Source\Repos\CsgoSideKick\CsgoTactics\CsgoTactics\obj\x64\Debug\M
 C:\Users\mariu\Source\Repos\CsgoSideKick\CsgoTactics\CsgoTactics\obj\x64\Debug\Microsoft.Extensions.Logging.Abstractions\en-US\Microsoft.Extensions.Logging.Abstractions.Resource.resw
 C:\Users\mariu\Source\Repos\CsgoSideKick\CsgoTactics\CsgoTactics\obj\x64\Debug\Microsoft.Extensions.Options\en-US\Microsoft.Extensions.Options.Resources.resw
 C:\Users\mariu\Source\Repos\CsgoSideKick\CsgoTactics\CsgoTactics\obj\x64\Debug\Microsoft.Extensions.Primitives\en-US\Microsoft.Extensions.Primitives.Resources.resw
-C:\Users\mariu\Source\Repos\CsgoSideKick\CsgoTactics\CsgoTactics\bin\x64\Debug\LinqDataAccessLibrary.dll
-C:\Users\mariu\Source\Repos\CsgoSideKick\CsgoTactics\CsgoTactics\bin\x64\Debug\SQLDataAccessLibrary.dll
-C:\Users\mariu\Source\Repos\CsgoSideKick\CsgoTactics\CsgoTactics\bin\x64\Debug\LinqDataAccessLibrary.pdb
-C:\Users\mariu\Source\Repos\CsgoSideKick\CsgoTactics\CsgoTactics\bin\x64\Debug\LinqDataAccessLibrary.pri
-C:\Users\mariu\Source\Repos\CsgoSideKick\CsgoTactics\CsgoTactics\bin\x64\Debug\SQLDataAccessLibrary.pdb
-C:\Users\mariu\Source\Repos\CsgoSideKick\CsgoTactics\CsgoTactics\bin\x64\Debug\SQLDataAccessLibrary.pri
+C:\Users\mariu\Source\Repos\CsgoSideKick\CsgoTactics\CsgoTactics\bin\x64\Debug\DbModel.dll
+C:\Users\mariu\Source\Repos\CsgoSideKick\CsgoTactics\CsgoTactics\bin\x64\Debug\DbModel.pdb

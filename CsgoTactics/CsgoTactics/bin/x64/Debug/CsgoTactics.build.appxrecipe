@@ -601,11 +601,8 @@
     <AppxPackagedFile Include="C:\Users\mariu\.nuget\packages\system.runtime.compilerservices.unsafe\4.4.0\lib\netstandard2.0\System.Runtime.CompilerServices.Unsafe.dll">
       <PackagePath>System.Runtime.CompilerServices.Unsafe.dll</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\mariu\Source\Repos\CsgoSideKick\CsgoTactics\LinqDataAccessLibrary\bin\x64\Debug\LinqDataAccessLibrary.dll">
-      <PackagePath>LinqDataAccessLibrary.dll</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\mariu\Source\Repos\CsgoSideKick\CsgoTactics\SQLDataAccessLibrary\bin\x64\Debug\SQLDataAccessLibrary.dll">
-      <PackagePath>SQLDataAccessLibrary.dll</PackagePath>
+    <AppxPackagedFile Include="C:\Users\mariu\Source\Repos\CsgoSideKick\CsgoTactics\DbModel\bin\Debug\netstandard2.0\DbModel.dll">
+      <PackagePath>DbModel.dll</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\mariu\Source\Repos\CsgoSideKick\CsgoTactics\CsgoTactics\ApplicationInsights.config">
       <PackagePath>ApplicationInsights.config</PackagePath>
@@ -708,9 +705,6 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\mariu\Source\Repos\CsgoSideKick\CsgoTactics\CsgoTactics\Properties\Default.rd.xml">
       <PackagePath>Properties\Default.rd.xml</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\mariu\.nuget\packages\sqlitepclraw.lib.e_sqlite3.v140\1.1.7\runtimes\win10-x64\native\e_sqlite3.dll">
-      <PackagePath>LinqDataAccessLibrary\e_sqlite3.dll</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\mariu\Source\Repos\CsgoSideKick\CsgoTactics\CsgoTactics\bin\x64\Debug\CsgoTactics.xr.xml">
       <PackagePath>CsgoTactics.xr.xml</PackagePath>

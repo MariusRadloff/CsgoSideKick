@@ -126,7 +126,6 @@
     <Compile Include="Converters\PercentToAngle.cs" />
     <Compile Include="Converters\RoundsToAngle.cs" />
     <Compile Include="Converters\ScenarioBindingConverter.cs" />
-    <Compile Include="DbDataAccess\Class1.cs" />
     <Compile Include="DbDataAccess\LinqDataAccess.cs" />
     <Compile Include="DbDataAccess\SqlDataAccess.cs" />
     <Compile Include="Models\Maps\GrenadeThrow.cs" />
@@ -342,13 +341,9 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\LinqDataAccessLibrary\LinqDataAccessLibrary.csproj">
-      <Project>{881d9a82-0c77-4a98-bc12-5f6b352832af}</Project>
-      <Name>LinqDataAccessLibrary</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\SQLDataAccessLibrary\SQLDataAccessLibrary.csproj">
-      <Project>{f43535a5-c361-44dc-89ad-1d76ef42e1f1}</Project>
-      <Name>SQLDataAccessLibrary</Name>
+    <ProjectReference Include="..\DbModel\DbModel.csproj">
+      <Project>{740f6f20-dd5e-4211-9a7f-fe3f8f8bb736}</Project>
+      <Name>DbModel</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
