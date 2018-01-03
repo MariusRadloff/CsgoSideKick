@@ -40,6 +40,28 @@ namespace DbModel.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "descriptions",
+                columns: table => new
+                {
+                    descriptionsItemId = table.Column<int>(nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    app_dataItemId = table.Column<int>(nullable: true),
+                    color = table.Column<string>(nullable: true),
+                    type = table.Column<string>(nullable: true),
+                    value = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_descriptions", x => x.descriptionsItemId);
+                    table.ForeignKey(
+                        name: "FK_descriptions_app_data_app_dataItemId",
+                        column: x => x.app_dataItemId,
+                        principalTable: "app_data",
+                        principalColumn: "app_dataItemId",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "rgCurrency",
                 columns: table => new
                 {
@@ -139,33 +161,30 @@ namespace DbModel.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "descriptions",
+                name: "descriptionsRgDescriptionsItem",
                 columns: table => new
                 {
-                    descriptionsItemId = table.Column<int>(nullable: false)
+                    descriptionsRgDescriptionsId = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    app_dataItemId = table.Column<int>(nullable: true),
-                    color = table.Column<string>(nullable: true),
-                    rgDescriptionsId = table.Column<int>(nullable: false),
-                    rgDescriptionsItemId = table.Column<int>(nullable: true),
-                    type = table.Column<string>(nullable: true),
-                    value = table.Column<string>(nullable: true)
+                    descriptionsItemId = table.Column<int>(nullable: false),
+                    pos = table.Column<int>(nullable: false),
+                    rgDescriptionsItemId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_descriptions", x => x.descriptionsItemId);
+                    table.PrimaryKey("PK_descriptionsRgDescriptionsItem", x => x.descriptionsRgDescriptionsId);
                     table.ForeignKey(
-                        name: "FK_descriptions_app_data_app_dataItemId",
-                        column: x => x.app_dataItemId,
-                        principalTable: "app_data",
-                        principalColumn: "app_dataItemId",
-                        onDelete: ReferentialAction.Restrict);
+                        name: "FK_descriptionsRgDescriptionsItem_descriptions_descriptionsItemId",
+                        column: x => x.descriptionsItemId,
+                        principalTable: "descriptions",
+                        principalColumn: "descriptionsItemId",
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_descriptions_rgDescriptions_rgDescriptionsItemId",
+                        name: "FK_descriptionsRgDescriptionsItem_rgDescriptions_rgDescriptionsItemId",
                         column: x => x.rgDescriptionsItemId,
                         principalTable: "rgDescriptions",
                         principalColumn: "rgDescriptionsItemId",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -224,8 +243,13 @@ namespace DbModel.Migrations
                 column: "app_dataItemId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_descriptions_rgDescriptionsItemId",
-                table: "descriptions",
+                name: "IX_descriptionsRgDescriptionsItem_descriptionsItemId",
+                table: "descriptionsRgDescriptionsItem",
+                column: "descriptionsItemId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_descriptionsRgDescriptionsItem_rgDescriptionsItemId",
+                table: "descriptionsRgDescriptionsItem",
                 column: "rgDescriptionsItemId");
 
             migrationBuilder.CreateIndex(
@@ -260,7 +284,7 @@ namespace DbModel.Migrations
                 name: "actions");
 
             migrationBuilder.DropTable(
-                name: "descriptions");
+                name: "descriptionsRgDescriptionsItem");
 
             migrationBuilder.DropTable(
                 name: "market_actions");
@@ -275,10 +299,13 @@ namespace DbModel.Migrations
                 name: "tags");
 
             migrationBuilder.DropTable(
-                name: "app_data");
+                name: "descriptions");
 
             migrationBuilder.DropTable(
                 name: "rgDescriptions");
+
+            migrationBuilder.DropTable(
+                name: "app_data");
 
             migrationBuilder.DropTable(
                 name: "csgoInventory");

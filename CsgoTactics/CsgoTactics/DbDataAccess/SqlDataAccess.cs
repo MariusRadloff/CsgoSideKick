@@ -293,7 +293,7 @@ namespace CsgoTactics.DbDataAccess
 
         }
 
-        public static void AddGameInventorySQL(string inventoryString, string Steam64Id, string csgoInventoryId)
+        public static void AddGameInventorySQL(string inventoryString, Int64 Steam64Id, string csgoInventoryId)
         {
             using (SqliteConnection db = new SqliteConnection(DbModelStrings.SqlDbConnectionString))
             {
@@ -417,7 +417,7 @@ namespace CsgoTactics.DbDataAccess
                                 descriptonsId = InsertIntoTableSQL(descriptionParameter, TableData.ElementAt(0).First(), db);
                             }
 
-                            TableData = DbModelStrings.TableDataList.Where(tdl => tdl[0][0] == "descriptionsRgDescriptionsRel").First();
+                            TableData = DbModelStrings.TableDataList.Where(tdl => tdl[0][0] == "descriptionsRgDescriptions").First();
 
                             List<(String, Object)> descriptionsRgDescriptionsParameter = new List<(string, object)>
                             {
@@ -643,7 +643,22 @@ namespace CsgoTactics.DbDataAccess
                     string name = "@" + parameter.Item1;
 
                     insertCommandString = insertCommandString + name + ", ";
-                    command.Parameters.AddWithValue(name, parameter.Item2);
+                    if (parameter.Item2.GetType() == typeof(DBNull))
+                    {
+                        command.Parameters.AddWithValue(name, (DBNull)parameter.Item2);
+                    }
+                    else if (parameter.Item2.GetType() == typeof(Boolean))
+                    {
+                        command.Parameters.AddWithValue(name, (bool)parameter.Item2);
+                    }
+                    else if (parameter.Item2.GetType() == typeof(Int64))
+                    {
+                        command.Parameters.AddWithValue(name, Int32.Parse(parameter.Item2.ToString()));
+                    }
+                    else if (parameter.Item2.GetType() == typeof(String))
+                    {
+                        command.Parameters.AddWithValue(name, (String)parameter.Item2);
+                    }
                 }
                 insertCommandString = insertCommandString.Remove(insertCommandString.Length - 2);
                 insertCommandString += " );";

@@ -31,13 +31,13 @@
     <AppXManifest Include="C:\Users\mariu\Source\Repos\CsgoSideKick\CsgoTactics\CsgoTactics\bin\x64\Debug\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2018-01-01T22:03:17.141</Modified>
+      <Modified>2018-01-02T23:21:38.363</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="C:\Users\mariu\Source\Repos\CsgoSideKick\CsgoTactics\CsgoTactics\bin\x64\Debug\CsgoTactics.exe">
       <PackagePath>entrypoint\CsgoTactics.exe</PackagePath>
-      <Modified>2018-01-01T22:03:15.865</Modified>
+      <Modified>2018-01-02T23:05:08.093</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\mariu\.nuget\packages\microsoft.applicationinsights\1.2.3\lib\portable-win81+wpa81\Microsoft.ApplicationInsights.dll">
       <PackagePath>Microsoft.ApplicationInsights.dll</PackagePath>
@@ -805,7 +805,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\mariu\Source\Repos\CsgoSideKick\CsgoTactics\DbModel\bin\Debug\netstandard2.0\DbModel.dll">
       <PackagePath>DbModel.dll</PackagePath>
-      <Modified>2018-01-01T19:36:00.624</Modified>
+      <Modified>2018-01-02T14:22:23.123</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\mariu\Source\Repos\CsgoSideKick\CsgoTactics\CsgoTactics\ApplicationInsights.config">
       <PackagePath>ApplicationInsights.config</PackagePath>
@@ -952,11 +952,11 @@
     <AppxPackagedFile Include="C:\Users\mariu\Source\Repos\CsgoSideKick\CsgoTactics\CsgoTactics\bin\x64\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2018-01-01T22:03:16.716</Modified>
+      <Modified>2018-01-02T23:21:37.924</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\mariu\Source\Repos\CsgoSideKick\CsgoTactics\CsgoTactics\bin\x64\Debug\Core\CsgoTactics.exe">
       <PackagePath>CsgoTactics.exe</PackagePath>
-      <Modified>2018-01-01T22:03:17.132</Modified>
+      <Modified>2018-01-02T23:21:38.355</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>

@@ -80,7 +80,7 @@ namespace CsgoTactics.Views
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            SqlDataAccess.AddGameInventorySQL(WebServices.DataReceiver.GetInventoryString("http://steamcommunity.com/profiles/76561197988463243/inventory/json/730/2"), "123", "730");
+            SqlDataAccess.AddGameInventorySQL(WebServices.DataReceiver.GetInventoryString("http://steamcommunity.com/profiles/76561197988463243/inventory/json/730/2"), 123, "730");
         }
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
@@ -90,39 +90,17 @@ namespace CsgoTactics.Views
 
         private void Button_Click_5(object sender, RoutedEventArgs e)
         {
-            //using (var db = new LinqDataAccessLibrary.InventoryDbContext())
-            //{
-                
-
-            //    var action = new LinqDataAccessLibrary.actionsItem { link = "testlink", name = "testname" };
-
-            //    var a = db.actions.Add(action);                
-
-            //    var appdata = new LinqDataAccessLibrary.app_dataItem { def_index = "test" };
-
-            //    //var x = db.app_data.Add(appdata);
-
-               
-
-            //    db.SaveChanges();
-
-                
-
-
-            //}
-
-            LinqDataAccess.AddGameInventoryLinq(WebServices.DataReceiver.GetInventoryString("http://steamcommunity.com/profiles/76561197988463243/inventory/json/730/2"), "123", "730");
-
+            LinqDataAccessVer.AddGameInventoryLinq(WebServices.DataReceiver.GetInventoryString("http://steamcommunity.com/profiles/76561197988463243/inventory/json/730/2"), "123", "730");
         }
 
         private void Button_Click_6(object sender, RoutedEventArgs e)
         {
-            LinqDataAccess.InsertLINQ();
+            LinqDataAccessVer.InsertLINQ();
         }
 
         private void Button_Click_7(object sender, RoutedEventArgs e)
         {
-            LinqDataAccess.DeleteDb();
+            LinqDataAccessVer.DeleteDb();
         }
     }
 }

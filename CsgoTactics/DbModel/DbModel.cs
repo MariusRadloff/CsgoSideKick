@@ -9,13 +9,13 @@ namespace DbModel
         public static string LinqDbConnectionString
         {
             //get { return "Filename=steamInventory.db"; }
-            get { return "Data Source=steamInventoryLinqTestStd.db"; }
+            get { return "Data Source=steamInventoryLinq.db"; }
         }
 
         public static string SqlDbConnectionString
         {
             //get { return "Filename=steamInventory.db"; }
-            get { return "Filename=steamInventoryLinqTest.db"; }
+            get { return "Filename=steamInventorySql.db"; }
         }
 
         public static List<List<List<String>>> TableDataList
@@ -172,8 +172,8 @@ namespace DbModel
 
                     new List<List<String>>
                     {
-                        new List<String>{ "descriptionsRgDescriptionsRel" },
-                        new List<String>{ "descriptionsRgDescriptionsRelId", "INTEGER", "NOT NULL", "PRIMARY KEY", "AUTOINCREMENT" },
+                        new List<String>{ "descriptionsRgDescriptions" },
+                        new List<String>{ "descriptionsRgDescriptionsId", "INTEGER", "NOT NULL", "PRIMARY KEY", "AUTOINCREMENT" },
                         new List<String>{ "descriptionsItemId", "INTEGER" },
                         new List<String>{ "rgDescriptionsItemId", "INTEGER", "NOT NULL" },
                         new List<String>{ "pos", "INTEGER", "NOT NULL" },
@@ -207,12 +207,7 @@ namespace DbModel
         {
             base.OnModelCreating(modelBuilder);
 
-            //modelBuilder.Entity<csgoInventoryItem>().HasKey(x => x.csgoInventoryItemId);
-            //modelBuilder.Entity<csgoInventoryItem>().HasMany(x => x.rgInventory).WithOne(x => x.csgoInventoryItem).HasForeignKey(x => x.rgInventoryItemId);
-            //modelBuilder.Entity<csgoInventoryItem>().HasMany(x => x.rgDescriptions).WithOne(x => x.csgoInventoryItem).HasForeignKey(x => x.rgDescriptionsItemId);
-            //modelBuilder.Entity<csgoInventoryItem>().HasMany(x => x.rgCurrency).WithOne(x => x.csgoInventoryItem).HasForeignKey(x => x.rgCurrencyItemId);
-            //modelBuilder.Entity<csgoInventoryItem>().HasMany(x => x.rgInventory).WithOne(x => x.csgoInventoryItem).HasForeignKey(x => x.rgInventoryItemId);
-
+            modelBuilder.Entity<csgoInventoryItem>().HasKey(x => x.csgoInventoryItemId);
 
             modelBuilder.Entity<rgInventoryItem>().HasKey(x => x.rgInventoryItemId);
             modelBuilder.Entity<rgInventoryItem>().HasOne(x => x.csgoInventoryItem).WithMany(x => x.rgInventory).HasForeignKey(x => x.csgoInventoryItemId);
@@ -223,14 +218,16 @@ namespace DbModel
             modelBuilder.Entity<rgDescriptionsItem>().HasKey(x => x.rgDescriptionsItemId);
             modelBuilder.Entity<rgDescriptionsItem>().HasOne(x => x.csgoInventoryItem).WithMany(x => x.rgDescriptions).HasForeignKey(x => x.csgoInventoryItemId);
 
+            modelBuilder.Entity<descriptionsRgDescriptionsItem>().HasKey(x => x.descriptionsRgDescriptionsId);
+            modelBuilder.Entity<descriptionsRgDescriptionsItem>().HasOne(x => x.rgDescriptionsItem).WithMany(x => x.descriptionsRgDescriptions).HasForeignKey(x => x.rgDescriptionsItemId);
+            modelBuilder.Entity<descriptionsRgDescriptionsItem>().HasOne(x => x.descriptionsItem).WithMany(X => X.descriptionsRgDescriptions).HasForeignKey(x => x.descriptionsItemId);
+
             modelBuilder.Entity<descriptionsItem>().HasKey(x => x.descriptionsItemId);
-            modelBuilder.Entity<descriptionsItem>().HasOne(x => x.rgDescriptionsItem).WithMany(x => x.descriptions);
 
             modelBuilder.Entity<app_dataItem>().HasKey(x => x.app_dataItemId);
-            modelBuilder.Entity<app_dataItem>().HasMany(x => x.descriptions).WithOne(x => x.app_data);
+            modelBuilder.Entity<app_dataItem>().HasMany(x => x.descriptions).WithOne(x => x.app_dataItem).HasForeignKey(x => x.app_dataItemId);
 
             modelBuilder.Entity<actionsItem>().HasKey(x => x.actionsItemId);
-            //modelBuilder.Entity<actionsItem>().Property(x => x.actionsItemId).ValueGeneratedOnAdd();
             modelBuilder.Entity<actionsItem>().HasOne(x => x.rgDescriptionsItem).WithMany(x => x.actions).HasForeignKey(x => x.rgDescriptionsItemId);
 
             modelBuilder.Entity<market_actionsItem>().HasKey(x => x.market_actionsItemId);
@@ -269,7 +266,6 @@ namespace DbModel
         public string amount { get; set; }
         public int pos { get; set; }
 
-        //[ForeignKey("csgoInventoryItemId")]
         public virtual int csgoInventoryItemId { get; set; }
         public virtual csgoInventoryItem csgoInventoryItem { get; set; }
     }
@@ -278,7 +274,6 @@ namespace DbModel
     {
         public int rgCurrencyItemId { get; set; }
 
-        //[ForeignKey("csgoInventoryItemId")]
         public virtual int csgoInventoryItemId { get; set; }
         public virtual csgoInventoryItem csgoInventoryItem { get; set; }
     }
@@ -287,7 +282,7 @@ namespace DbModel
     {
         public rgDescriptionsItem()
         {
-            this.descriptions = new HashSet<descriptionsItem>();
+            this.descriptionsRgDescriptions = new HashSet<descriptionsRgDescriptionsItem>();
             this.actions = new HashSet<actionsItem>();
             this.market_actions = new HashSet<market_actionsItem>();
             this.tags = new HashSet<tagsItem>();
@@ -311,12 +306,11 @@ namespace DbModel
         public int commodity { get; set; }
         public string market_tradable_restriction { get; set; }
 
-        public virtual ICollection<descriptionsItem> descriptions { get; set; }
+        public virtual ICollection<descriptionsRgDescriptionsItem> descriptionsRgDescriptions { get; set; }
         public virtual ICollection<actionsItem> actions { get; set; }
         public virtual ICollection<market_actionsItem> market_actions { get; set; }
         public virtual ICollection<tagsItem> tags { get; set; }
 
-        //[ForeignKey("csgoInventoryItemId")]
         public int csgoInventoryItemId { get; set; }
         public virtual csgoInventoryItem csgoInventoryItem { get; set; }
 
@@ -326,22 +320,30 @@ namespace DbModel
     {
         public descriptionsItem()
         {
-        //    this.rgDescriptions = new HashSet<rgDescriptionsItem>();
+            this.descriptionsRgDescriptions = new HashSet<descriptionsRgDescriptionsItem>();
         }
-
 
         public int descriptionsItemId { get; set; }
         public string type { get; set; }
         public string value { get; set; }
         public string color { get; set; }
 
-        public virtual app_dataItem app_data { get; set; }
+        public virtual int? app_dataItemId { get; set; }
+        public virtual app_dataItem app_dataItem { get; set; }
 
-        //public virtual ICollection<rgDescriptionsItem> rgDescriptions { get; set; }
+        public virtual ICollection<descriptionsRgDescriptionsItem> descriptionsRgDescriptions { get; set; }
+    }
 
-        //[ForeignKey("rgDescriptionsId")]
-        public virtual int rgDescriptionsId { get; set; }
-        public virtual rgDescriptionsItem rgDescriptionsItem { get; set; }
+    public class descriptionsRgDescriptionsItem
+    {
+        public int descriptionsRgDescriptionsId { get; set; }
+        public int pos { get; set; }
+
+        public int rgDescriptionsItemId { get; set; }
+        public rgDescriptionsItem rgDescriptionsItem { get; set; }
+
+        public int descriptionsItemId { get; set; }
+        public descriptionsItem descriptionsItem { get; set; }
     }
 
     public class app_dataItem
@@ -352,20 +354,14 @@ namespace DbModel
         public long limited { get; set; }
 
         public virtual ICollection<descriptionsItem> descriptions { get; set; }
-
-        //[ForeignKey("descriptionsItemId")]
-        //public virtual int descriptionsItemId { get; set; }
-        //public virtual descriptionsItem descriptionsItem { get; set; }
     }
 
     public class actionsItem
     {
-        //[DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int actionsItemId { get; set; }
         public string name { get; set; }
         public string link { get; set; }
 
-        //[ForeignKey("rgDescriptionsItemId")]
         public virtual int rgDescriptionsItemId { get; set; }
         public virtual rgDescriptionsItem rgDescriptionsItem { get; set; }
     }
@@ -376,7 +372,6 @@ namespace DbModel
         public string name { get; set; }
         public string link { get; set; }
 
-        //[ForeignKey("rgDescriptionsItemId")]
         public int rgDescriptionsItemId { get; set; }
         public rgDescriptionsItem rgDescriptionsItem { get; set; }
     }
@@ -390,7 +385,6 @@ namespace DbModel
         public string color { get; set; }
         public string category_name { get; set; }
 
-        //[ForeignKey("rgDescriptionsItemId")]
         public int rgDescriptionsItemId { get; set; }
         public rgDescriptionsItem rgDescriptionsItem { get; set; }
     }

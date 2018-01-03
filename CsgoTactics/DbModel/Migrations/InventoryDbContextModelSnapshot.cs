@@ -79,10 +79,6 @@ namespace DbModel.Migrations
 
                     b.Property<string>("color");
 
-                    b.Property<int>("rgDescriptionsId");
-
-                    b.Property<int?>("rgDescriptionsItemId");
-
                     b.Property<string>("type");
 
                     b.Property<string>("value");
@@ -91,9 +87,27 @@ namespace DbModel.Migrations
 
                     b.HasIndex("app_dataItemId");
 
+                    b.ToTable("descriptions");
+                });
+
+            modelBuilder.Entity("DbModel.descriptionsRgDescriptionsItem", b =>
+                {
+                    b.Property<int>("descriptionsRgDescriptionsId")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int>("descriptionsItemId");
+
+                    b.Property<int>("pos");
+
+                    b.Property<int>("rgDescriptionsItemId");
+
+                    b.HasKey("descriptionsRgDescriptionsId");
+
+                    b.HasIndex("descriptionsItemId");
+
                     b.HasIndex("rgDescriptionsItemId");
 
-                    b.ToTable("descriptions");
+                    b.ToTable("descriptionsRgDescriptionsItem");
                 });
 
             modelBuilder.Entity("DbModel.market_actionsItem", b =>
@@ -232,13 +246,22 @@ namespace DbModel.Migrations
 
             modelBuilder.Entity("DbModel.descriptionsItem", b =>
                 {
-                    b.HasOne("DbModel.app_dataItem", "app_data")
+                    b.HasOne("DbModel.app_dataItem", "app_dataItem")
                         .WithMany("descriptions")
                         .HasForeignKey("app_dataItemId");
+                });
+
+            modelBuilder.Entity("DbModel.descriptionsRgDescriptionsItem", b =>
+                {
+                    b.HasOne("DbModel.descriptionsItem", "descriptionsItem")
+                        .WithMany("descriptionsRgDescriptions")
+                        .HasForeignKey("descriptionsItemId")
+                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("DbModel.rgDescriptionsItem", "rgDescriptionsItem")
-                        .WithMany("descriptions")
-                        .HasForeignKey("rgDescriptionsItemId");
+                        .WithMany("descriptionsRgDescriptions")
+                        .HasForeignKey("rgDescriptionsItemId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("DbModel.market_actionsItem", b =>
