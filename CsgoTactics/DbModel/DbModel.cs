@@ -57,6 +57,26 @@ namespace DbModel
                         new List<String>{ "FOREIGN KEY", "(csgoInventoryItemId)", "REFERENCES", "csgoInventory(csgoInventoryItemId)" }
                     },
 
+                    new List<List<string>>
+                    {
+                        new List<string>{ "priceData" },
+                        new List<string>{ "priceDataItemId", "INTEGER", "NOT NULL", "PRIMARY KEY", "AUTOINCREMENT" },
+                        new List<string>{ "purchasePrice" , "TEXT" },
+                        new List<string>{ "currentPrice", "TEXT" },
+                        new List<string>{ "rgInventoryItemId", "INTEGER" },
+                        new List<string>{ "FOREIGN KEY", "(rgInventoryItemId)", "REFERENCES", "rgInventory(rgInventoryItemId)" }
+                    },
+
+                    new List<List<string>>
+                    {
+                        new List<string>{ "priceHistory" },
+                        new List<string>{ "priceHistoryItemId", "INTEGER", "NOT NULL", "PRIMARY KEY", "AUTOINCREMENT" },
+                        new List<string>{ "date", "TEXT" },
+                        new List<string>{ "price", "TEXT" },
+                        new List<string>{ "priceDataItemId", "INTEGER" },
+                        new List<string>{ "FOREIGN KEY", "(priceDataItemId)", "REFERENCES", "priceData(priceDataItemId)" }
+                    },
+
                     new List<List<String>>
                     {
                         new List<String>{ "rgCurrency" },
@@ -142,26 +162,6 @@ namespace DbModel
 
                     new List<List<String>>
                     {
-                        new List<String>{ "priceData" },
-                        new List<String>{ "priceDataItemId", "INTEGER", "NOT NULL", "PRIMARY KEY", "AUTOINCREMENT" },
-                        new List<String>{ "purchaseDate", "TEXT" },
-                        new List<String>{ "purchasePrice", "TEXT" },
-                        new List<String>{ "rgDescriptionsItemId", "INTEGER" },
-                        new List<String>{ "FOREIGN KEY", "(rgDescriptionsItemId)", "REFERENCES", "rgDescriptions(rgDescriptionsItemId)" }
-                    },
-
-                    new List<List<String>>
-                    {
-                        new List<String>{ "priceCollection" },
-                        new List<String>{ "priceCollectionItemId", "INTEGER", "NOT NULL", "PRIMARY KEY", "AUTOINCREMENT" },
-                        new List<String>{ "date", "TEXT" },
-                        new List<String>{ "price", "TEXT" },
-                        new List<String>{ "priceDataItemId", "INTEGER" },
-                        new List<String>{ "FOREIGN KEY", "(priceDataItemId)", "REFERENCES", "priceData(priceDataItemId)" }
-                    },
-
-                    new List<List<String>>
-                    {
                         new List<String>{ "app_dataDescriptionsRgDescriptionsRel" },
                         new List<String>{ "app_dataDescriptionsRgDescriptionsRelId", "INTEGER", "NOT NULL", "PRIMARY KEY", "AUTOINCREMENT" },
                         new List<String>{ "descriptionsItemId", "INTEGER" },
@@ -188,6 +188,8 @@ namespace DbModel
     {
         public DbSet<csgoInventoryItem> csgoInventory { get; set; }
         public DbSet<rgInventoryItem> rgInventory { get; set; }
+        public DbSet<priceDataItem> priceData { get; set; }
+        public DbSet<priceHistoryItem> priceHistory { get; set; }
         public DbSet<rgCurrencyItem> rgCurrency { get; set; }
         public DbSet<rgDescriptionsItem> rgDescriptions { get; set; }
         public DbSet<descriptionsItem> descriptions { get; set; }
@@ -211,6 +213,12 @@ namespace DbModel
 
             modelBuilder.Entity<rgInventoryItem>().HasKey(x => x.rgInventoryItemId);
             modelBuilder.Entity<rgInventoryItem>().HasOne(x => x.csgoInventoryItem).WithMany(x => x.rgInventory).HasForeignKey(x => x.csgoInventoryItemId);
+
+            modelBuilder.Entity<priceDataItem>().HasKey(x => x.priceDataItemId);
+            modelBuilder.Entity<priceDataItem>().HasOne(x => x.rgInventoryItem).WithOne(x => x.priceDataItem).HasForeignKey<priceDataItem>(x => x.rgInventoryItemId);
+
+            modelBuilder.Entity<priceHistoryItem>().HasKey(x => x.priceHistoryItemId);
+            modelBuilder.Entity<priceHistoryItem>().HasOne(x => x.priceDataItem).WithMany(x => x.priceHistory).HasForeignKey(x => x.priceDataItemId);
 
             modelBuilder.Entity<rgCurrencyItem>().HasKey(x => x.rgCurrencyItemId);
             modelBuilder.Entity<rgCurrencyItem>().HasOne(x => x.csgoInventoryItem).WithMany(x => x.rgCurrency).HasForeignKey(x => x.csgoInventoryItemId);
@@ -266,9 +274,34 @@ namespace DbModel
         public string amount { get; set; }
         public int pos { get; set; }
 
+        public virtual priceDataItem priceDataItem { get; set; }
+
         public virtual int csgoInventoryItemId { get; set; }
         public virtual csgoInventoryItem csgoInventoryItem { get; set; }
     }
+
+    public class priceDataItem
+    {
+        public int priceDataItemId { get; set; }
+        public string purchasePrice { get; set; }
+        public string currentPrice { get; set; }
+
+        public ICollection<priceHistoryItem> priceHistory { get; set; }
+
+        public virtual int rgInventoryItemId { get; set; }
+        public virtual rgInventoryItem rgInventoryItem { get; set; }
+    }
+
+    public class priceHistoryItem
+    {
+        public int priceHistoryItemId { get; set; }
+        public string date { get; set; }
+        public string price { get; set; }
+
+        public virtual int priceDataItemId { get; set; }
+        public virtual priceDataItem priceDataItem { get; set; }
+    }
+
 
     public class rgCurrencyItem
     {
