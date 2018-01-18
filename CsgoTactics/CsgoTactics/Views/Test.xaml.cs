@@ -34,7 +34,6 @@ namespace CsgoTactics.Views
         public Test()
         {
             this.InitializeComponent();
-            //ViewModel.getSkins();
             
         }
 
@@ -59,9 +58,11 @@ namespace CsgoTactics.Views
             base.OnNavigatedTo(e);
         }
 
-        private void AddData(object sender, RoutedEventArgs e)
+        private void ItemsListView_ItemClick(object sender, ItemClickEventArgs e)
         {
+
         }
+
 
         private void Button_Click_4(object sender, RoutedEventArgs e)
         {
@@ -90,17 +91,17 @@ namespace CsgoTactics.Views
 
         private void Button_Click_5(object sender, RoutedEventArgs e)
         {
-            LinqDataAccessVer.AddGameInventoryLinq(WebServices.DataReceiver.GetInventoryString("http://steamcommunity.com/profiles/76561197988463243/inventory/json/730/2"), "123", "730");
+            LinqDataAccess.AddGameInventoryLinq(WebServices.DataReceiver.GetInventoryString("http://steamcommunity.com/profiles/76561197988463243/inventory/json/730/2"), "123", "730");
         }
 
         private void Button_Click_6(object sender, RoutedEventArgs e)
         {
-            LinqDataAccessVer.InsertLINQ();
+            LinqDataAccess.InsertLINQ();
         }
 
         private void Button_Click_7(object sender, RoutedEventArgs e)
         {
-            LinqDataAccessVer.DeleteDb();
+            LinqDataAccess.DeleteDb();
         }
     }
 }

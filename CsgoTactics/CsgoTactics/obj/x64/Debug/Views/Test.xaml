@@ -11,11 +11,68 @@
     <Page.DataContext>
         <Binding Path="TestViewModel" Source="{StaticResource Locator}"/>
     </Page.DataContext>
+    <Page.Resources>
+        <Style x:Key="InventoryListViewItemContainerStyleTemplate" TargetType="ListViewItem">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ListViewItem">
+                        <ListViewItemPresenter ContentMargin="4"/>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+         </Style>
+        <DataTemplate x:Key="InventoryGroupListViewItemTemplate">
+            <StackPanel Height="auto" Width="500" Orientation="Horizontal" BorderBrush="{Binding InvGroup[0].Name_color}" Background="White">
+                <StackPanel Width="100" Padding="4">
+                    <Image x:Name="ItemIconImage" Source="{Binding InvGroup[0].Icon}" Width="100" Height="100" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+                </StackPanel>
+                <StackPanel Width="400" Orientation="Vertical">
+                    <StackPanel Orientation="Horizontal" Padding="4">
+                        <TextBlock x:Name="ItemNameTextBlock" Text="{Binding GroupName}" Margin="0,0,0,0" Foreground="{Binding InvGroup[0].Name_color}" />
+                        <TextBlock x:Name="ItemCountTextBlock" Text="{Binding GroupItemCount}" Margin="12,0,0,0" Foreground="DarkGray" />
+                    </StackPanel>
+                    <StackPanel x:Name="ItemListStackPanel" Orientation="Horizontal" Padding="4" Width="330">
+                        <ToggleButton x:Name="InventoryGroupListToggleButton" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="4" Padding="0">
+                            <SymbolIcon 
+                                Symbol="{Binding ElementName=InventoryGroupListToggleButton, Path=IsChecked, Converter={StaticResource BoolToSymbolIcon}, FallbackValue=Add}"/>
+                        </ToggleButton>
+                        <ListView x:ConnectionId='1' x:Name="ItemsListView"
+                              Visibility="{Binding ElementName=InventoryGroupListToggleButton, Path=IsChecked, Converter={StaticResource IsCheckedToVisibility}}"
+                              ItemContainerStyle="{StaticResource InventoryGroupListViewItemContainerStyleTemplate}"
+                              ItemsSource="{Binding InvGroup}"
+                              SelectedIndex="-1"
+                              HorizontalAlignment="Center" 
+                              Height="auto"
+                              MaxHeight="500"
+                              VerticalAlignment="Top" 
+                              IsItemClickEnabled="True"
+                                                                 >
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Background="DarkGray" Orientation="Horizontal">
+                                        <TextBlock x:Name="ConditionTextBlock" Grid.Row="0" Grid.Column="0" Text="{Binding Tags[5].Name, FallbackValue=N/A}" Margin="4,0,0,0"/>
+                                        <TextBlock Text="["/>
+                                        <TextBlock x:Name="FloatValueTextBlock" Grid.Row="0" Grid.Column="1" Text="{Binding Float_value, FallbackValue=N/A}" Margin="0"/>
+                                        <TextBlock Text="] "/>
+                                        <TextBlock x:Name="BuyPriceTextBlock" Text="{Binding BuyPrice.Price, FallbackValue=N/A}" Grid.Row="1" Grid.Column="1" Margin="8,0,0,0"/>
+                                        <TextBlock Text=" / "/>
+                                        <TextBlock x:Name="BuyDateTextBlock" Text="{Binding PriceCol[0].MarketLowestPrice, FallbackValue=N/A}" Grid.Row="1" Grid.Column="0" Margin="0"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </StackPanel>
+                </StackPanel>
+            </StackPanel>
+        </DataTemplate>
+
+    </Page.Resources>
+
+
 
     <Grid Background="{StaticResource ApplicationPageBackgroundThemeBrush}">
         <StackPanel Background="Aqua" HorizontalAlignment="Stretch">
-            <TextBox x:ConnectionId='1' Name="Input_Box"></TextBox>
-            <Button x:ConnectionId='2'                >Add</Button>
+            <TextBox x:ConnectionId='2' Name="Input_Box"></TextBox>
             <ListView x:ConnectionId='3' Name="Output">
                 <ListView.ItemTemplate>
                     <DataTemplate>
@@ -31,6 +88,17 @@
             <Button x:ConnectionId='9' Content="Insert CSGOINV Linq " HorizontalAlignment="Stretch" VerticalAlignment="Stretch"                       />
             <Button x:ConnectionId='10' Content="add csgo inv only Linq" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"                       />
             <Button x:ConnectionId='11' Content="delete Linq" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"                       />
+            <StackPanel DataContext="{Binding db}">
+                <ListView x:ConnectionId='12' x:Name="TestItemGroupsListView"
+                                  ItemContainerStyle="{StaticResource InventoryListViewItemContainerStyleTemplate}"
+                                  ItemTemplate="{StaticResource InventoryGroupListViewItemTemplate}"
+                                  ItemsSource="{Binding local}"
+                                  SelectedIndex="-1"
+                                  HorizontalAlignment="Center"
+                                  Height="700"
+                                  VerticalAlignment="Top"
+                                  IsItemClickEnabled="False"/>
+            </StackPanel>
         </StackPanel>
     </Grid>
 </Page>

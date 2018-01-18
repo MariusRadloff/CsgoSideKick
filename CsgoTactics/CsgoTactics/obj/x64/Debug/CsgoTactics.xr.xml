@@ -86,6 +86,8 @@
     <RootPropertyPathName Name="OptSteam64Id" />
     <RootPropertyPathName Name="OptApiKey" />
     <RootPropertyPathName Name="TestViewModel" />
+    <RootPropertyPathName Name="db" />
+    <RootPropertyPathName Name="local" />
   </Roots.PropertyPathNames>
   <Roots.RootTypes>
     <RootType FullName="Windows.UI.Xaml.Application">

@@ -8,13 +8,11 @@ namespace DbModel
     {
         public static string LinqDbConnectionString
         {
-            //get { return "Filename=steamInventory.db"; }
             get { return "Data Source=steamInventoryLinq.db"; }
         }
 
         public static string SqlDbConnectionString
         {
-            //get { return "Filename=steamInventory.db"; }
             get { return "Filename=steamInventorySql.db"; }
         }
 

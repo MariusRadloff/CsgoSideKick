@@ -19,7 +19,7 @@
     <DeployOptionalPackages>false</DeployOptionalPackages>
     <WindowsSdkPath>C:\Program Files %28x86%29\Windows Kits\10\</WindowsSdkPath>
     <LayoutDir>C:\Users\mariu\Source\Repos\CsgoSideKick\CsgoTactics\CsgoTactics\bin\x64\Debug\AppX</LayoutDir>
-    <RegisteredManifestChecksum>2831CE7CE6DFCF32BE7865A990BF55C8A10A8A3AB7BF5630CEFC70ED2D2D4E51</RegisteredManifestChecksum>
+    <RegisteredManifestChecksum>E9DA2D01A2A047A03A3EA0973D5941C464B8F33B1DA9F3ED220C003D327573B7</RegisteredManifestChecksum>
     <RegisteredPackageMoniker>9c8cb45d-e485-49c1-bd3f-b5f029b01492_1.0.0.0_x64__3qfwvwza3ecdg</RegisteredPackageMoniker>
     <RegisteredUserModeAppID>9c8cb45d-e485-49c1-bd3f-b5f029b01492_3qfwvwza3ecdg!App</RegisteredUserModeAppID>
     <RegisteredPackageID>9c8cb45d-e485-49c1-bd3f-b5f029b01492</RegisteredPackageID>
@@ -31,13 +31,13 @@
     <AppXManifest Include="C:\Users\mariu\Source\Repos\CsgoSideKick\CsgoTactics\CsgoTactics\bin\x64\Debug\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2018-01-02T23:21:38.363</Modified>
+      <Modified>2018-01-16T19:19:56.342</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="C:\Users\mariu\Source\Repos\CsgoSideKick\CsgoTactics\CsgoTactics\bin\x64\Debug\CsgoTactics.exe">
       <PackagePath>entrypoint\CsgoTactics.exe</PackagePath>
-      <Modified>2018-01-02T23:05:08.093</Modified>
+      <Modified>2018-01-16T19:18:42.383</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\mariu\.nuget\packages\microsoft.applicationinsights\1.2.3\lib\portable-win81+wpa81\Microsoft.ApplicationInsights.dll">
       <PackagePath>Microsoft.ApplicationInsights.dll</PackagePath>
@@ -805,7 +805,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\mariu\Source\Repos\CsgoSideKick\CsgoTactics\DbModel\bin\Debug\netstandard2.0\DbModel.dll">
       <PackagePath>DbModel.dll</PackagePath>
-      <Modified>2018-01-02T14:22:23.123</Modified>
+      <Modified>2018-01-16T18:40:40.854</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\mariu\Source\Repos\CsgoSideKick\CsgoTactics\CsgoTactics\ApplicationInsights.config">
       <PackagePath>ApplicationInsights.config</PackagePath>
@@ -943,7 +943,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\mariu\Source\Repos\CsgoSideKick\CsgoTactics\CsgoTactics\bin\x64\Debug\CsgoTactics.xr.xml">
       <PackagePath>CsgoTactics.xr.xml</PackagePath>
-      <Modified>2017-12-21T15:39:31.291</Modified>
+      <Modified>2018-01-16T19:04:05.825</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Windows Kits\10\UnionMetadata\10.0.16299.0\Windows.winmd">
       <PackagePath>WinMetadata\Windows.winmd</PackagePath>
@@ -952,11 +952,11 @@
     <AppxPackagedFile Include="C:\Users\mariu\Source\Repos\CsgoSideKick\CsgoTactics\CsgoTactics\bin\x64\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2018-01-02T23:21:37.924</Modified>
+      <Modified>2018-01-16T19:19:55.717</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\mariu\Source\Repos\CsgoSideKick\CsgoTactics\CsgoTactics\bin\x64\Debug\Core\CsgoTactics.exe">
       <PackagePath>CsgoTactics.exe</PackagePath>
-      <Modified>2018-01-02T23:21:38.355</Modified>
+      <Modified>2018-01-16T19:19:56.332</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>

@@ -11,6 +11,11 @@ namespace CsgoTactics.DbDataAccess
 {
     public static class LinqDataAccess
     {
+        public static InventoryDbContext getDb()
+        {
+            return new InventoryDbContext();
+        }
+
         public static void InsertLINQ()
         {
             using (var db = new InventoryDbContext())

@@ -7,28 +7,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using CsgoTactics.SteamInventory.Csgg;
+using CsgoTactics.DbDataAccess;
+using DbModel;
 
 namespace CsgoTactics.ViewModels
 {
     public class TestViewModel
     {
-        public ObservableCollection<WeaponSkin> skins = new ObservableCollection<WeaponSkin>();
-        public WeaponSkin skin1 = new WeaponSkin();
-        //public Skin skin2 = new Skin();
-
-        public async Task getSkins()
+        public TestViewModel()
         {
-            Task<ObservableCollection<WeaponSkin>> getSkinTask = SkinReceiver.GetSkins();
-
-            skins = await getSkinTask;
-
-            skin1 = skins[0];
-            
+            db = DbDataAccess.LinqDataAccess.getDb();
         }
-
-        private async Task<ObservableCollection<WeaponSkin>> getSkins2()
-        {
-            return await SkinReceiver.GetSkins();
-        }
+        public InventoryDbContext db;
     }
 }
